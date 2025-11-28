@@ -1,15 +1,106 @@
 {
-  "pages": {
-    "home": {
-      "home": "Accueil"
-    }
-  },
   "navbar": {
     "home": "Accueil",
-    "language": "Langage",
-    "languageChanged": "Langage changé en français."
+    "howItWorks": "Comment ça marche",
+    "journey": "Parcours client",
+    "dashboard": "Dashboard",
+    "about": "À propos",
+    "start": "Commencer",
+    "theme": "Thème",
+    "language": "Langue",
+    "languageChanged": "Langue changée en français."
   },
   "footer": {
-    "rights": "Votre entreprise. Tous droits réservés."
+    "tagline": "La révolution de la gestion immobilière digitale.",
+    "platform": "Plateforme",
+    "howItWorks": "Comment ça marche",
+    "journey": "Parcours client",
+    "dashboard": "Dashboard",
+    "professionals": "Professionnels",
+    "becomeExpert": "Devenir expert",
+    "sellerSpace": "Espace vendeur",
+    "promoterSpace": "Espace promoteur",
+    "aboutUs": "À propos",
+    "ourMission": "Notre mission",
+    "contact": "Contact",
+    "legal": "Mentions légales",
+    "rights": "© 2025 CIEL AVENUE. Tous droits réservés.",
+    "developedBy": "Application web développée par"
+  },
+  "home": {
+    "hero": {
+      "badge": "La révolution immobilière est en marche",
+      "titleStart": "L'immobilier",
+      "titleHighlight": "réinventé",
+      "titleEnd": "pour vous",
+      "description": "CIEL AVENUE révolutionne la gestion immobilière avec une plateforme digitale qui connecte acheteurs, vendeurs, promoteurs et experts. Trouvez votre bien idéal en toute simplicité.",
+      "ctaPrimary": "Découvrir le parcours",
+      "ctaSecondary": "Comment ça marche"
+    },
+    "vision": {
+      "title": "Notre vision",
+      "description": "Transformer l'expérience immobilière en offrant une plateforme transparente, efficace et centrée sur l'humain. Nous mettons la technologie au service de vos projets de vie.",
+      "card1": {
+        "title": "Transparence totale",
+        "description": "Des informations claires et vérifiées à chaque étape de votre parcours immobilier."
+      },
+      "card2": {
+        "title": "Rapidité d'exécution",
+        "description": "Un processus optimisé qui réduit considérablement les délais traditionnels."
+      },
+      "card3": {
+        "title": "Expertise humaine",
+        "description": "Des experts qualifiés vous accompagnent personnellement dans votre projet."
+      }
+    },
+    "mission": {
+      "title": "Notre mission",
+      "description": "Simplifier et moderniser l'accès à la propriété en France. Nous croyons que chaque projet immobilier mérite une attention personnalisée et des outils digitaux de pointe.",
+      "feature1": {
+        "title": "Matching intelligent",
+        "description": "entre acheteurs et biens"
+      },
+      "feature2": {
+        "title": "Préqualification automatique",
+        "description": "des profils acheteurs"
+      },
+      "feature3": {
+        "title": "Accompagnement sur mesure",
+        "description": "par des experts locaux"
+      },
+      "imageAlt": "CIEL AVENUE - Votre partenaire immobilier"
+    },
+    "value": {
+      "title": "Pourquoi CIEL AVENUE ?",
+      "description": "Une approche unique qui combine technologie de pointe et expertise humaine pour révolutionner votre expérience immobilière.",
+      "buyers": {
+        "title": "Pour les acheteurs",
+        "feature1": "Parcours guidé et personnalisé",
+        "feature2": "Évaluation de solvabilité rapide",
+        "feature3": "Matching avec les meilleurs biens",
+        "feature4": "Accompagnement d'experts locaux"
+      },
+      "professionals": {
+        "title": "Pour les professionnels",
+        "feature1": "Dossiers préqualifiés et sérieux",
+        "feature2": "Zéro prospection, matching automatique",
+        "feature3": "Clients dans votre zone géographique",
+        "feature4": "Outils de gestion intégrés"
+      }
+    },
+    "cta": {
+      "title": "Prêt à révolutionner votre projet immobilier ?",
+      "description": "Rejoignez des milliers d'utilisateurs qui ont déjà fait confiance à CIEL AVENUE pour concrétiser leurs projets immobiliers.",
+      "ctaPrimary": "Découvrir le parcours",
+      "ctaSecondary": "Rejoindre la plateforme"
+    }
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "code": "404",
+    "description": "Oups ! La page que vous recherchez semble avoir pris un autre chemin.",
+    "subtitle": "Pas de panique, même les meilleurs explorateurs s'égarent parfois.",
+    "backHome": "Retour à l'accueil",
+    "explore": "Explorer nos services"
   }
 }

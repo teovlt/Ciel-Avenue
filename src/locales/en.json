@@ -1,15 +1,106 @@
 {
-  "pages": {
-    "home": {
-      "home": "Home"
-    }
-  },
   "navbar": {
     "home": "Home",
+    "howItWorks": "How it works",
+    "journey": "Customer journey",
+    "dashboard": "Dashboard",
+    "about": "About",
+    "start": "Get started",
+    "theme": "Theme",
     "language": "Language",
     "languageChanged": "Language changed to English."
   },
   "footer": {
-    "rights": "Your company. All rights reserved."
+    "tagline": "The digital real estate management revolution.",
+    "platform": "Platform",
+    "howItWorks": "How it works",
+    "journey": "Customer journey",
+    "dashboard": "Dashboard",
+    "professionals": "Professionals",
+    "becomeExpert": "Become an expert",
+    "sellerSpace": "Seller space",
+    "promoterSpace": "Promoter space",
+    "aboutUs": "About us",
+    "ourMission": "Our mission",
+    "contact": "Contact",
+    "legal": "Legal notice",
+    "rights": "© 2025 CIEL AVENUE. All rights reserved.",
+    "developedBy": "Web application developed by"
+  },
+  "home": {
+    "hero": {
+      "badge": "The real estate revolution is underway",
+      "titleStart": "Real estate",
+      "titleHighlight": "reinvented",
+      "titleEnd": "for you",
+      "description": "CIEL AVENUE revolutionizes real estate management with a digital platform that connects buyers, sellers, developers and experts. Find your ideal property with ease.",
+      "ctaPrimary": "Discover the journey",
+      "ctaSecondary": "How it works"
+    },
+    "vision": {
+      "title": "Our vision",
+      "description": "Transform the real estate experience by offering a transparent, efficient and human-centered platform. We put technology at the service of your life projects.",
+      "card1": {
+        "title": "Total transparency",
+        "description": "Clear and verified information at every step of your real estate journey."
+      },
+      "card2": {
+        "title": "Speed of execution",
+        "description": "An optimized process that significantly reduces traditional delays."
+      },
+      "card3": {
+        "title": "Human expertise",
+        "description": "Qualified experts personally support you in your project."
+      }
+    },
+    "mission": {
+      "title": "Our mission",
+      "description": "Simplify and modernize access to property ownership in France. We believe that every real estate project deserves personalized attention and cutting-edge digital tools.",
+      "feature1": {
+        "title": "Intelligent matching",
+        "description": "between buyers and properties"
+      },
+      "feature2": {
+        "title": "Automatic prequalification",
+        "description": "of buyer profiles"
+      },
+      "feature3": {
+        "title": "Tailored support",
+        "description": "by local experts"
+      },
+      "imageAlt": "CIEL AVENUE - Your real estate partner"
+    },
+    "value": {
+      "title": "Why CIEL AVENUE?",
+      "description": "A unique approach that combines cutting-edge technology and human expertise to revolutionize your real estate experience.",
+      "buyers": {
+        "title": "For buyers",
+        "feature1": "Guided and personalized journey",
+        "feature2": "Quick creditworthiness assessment",
+        "feature3": "Matching with the best properties",
+        "feature4": "Support from local experts"
+      },
+      "professionals": {
+        "title": "For professionals",
+        "feature1": "Pre-qualified and serious leads",
+        "feature2": "Zero prospecting, automatic matching",
+        "feature3": "Clients in your geographic area",
+        "feature4": "Integrated management tools"
+      }
+    },
+    "cta": {
+      "title": "Ready to revolutionize your real estate project?",
+      "description": "Join thousands of users who have already trusted CIEL AVENUE to make their real estate projects a reality.",
+      "ctaPrimary": "Discover the journey",
+      "ctaSecondary": "Join the platform"
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "code": "404",
+    "description": "Oops! The page you're looking for seems to have taken a different path.",
+    "subtitle": "Don't panic, even the best explorers get lost sometimes.",
+    "backHome": "Back to home",
+    "explore": "Explore our services"
   }
 }

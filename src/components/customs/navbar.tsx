@@ -1,7 +1,6 @@
-"use client";
-
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Crown } from "lucide-react";
 import { ThemeChanger } from "@/components/customs/theme-changer";
@@ -9,6 +8,7 @@ import { LanguageChanger } from "@/components/customs/language-changer";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -23,22 +23,19 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <Link to="/" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              Accueil
+              {t("navbar.home")}
             </Link>
             <Link to="/how-it-works" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              Comment ça marche
+              {t("navbar.howItWorks")}
             </Link>
             <Link to="/journey" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              Parcours client
+              {t("navbar.journey")}
             </Link>
             <Link to="/dashboard" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              Dashboard
-            </Link>
-            <Link to="/expert" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              Devenir expert
+              {t("navbar.dashboard")}
             </Link>
             <Link to="/about" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              À propos
+              {t("navbar.about")}
             </Link>
           </div>
 
@@ -46,7 +43,7 @@ export function Navbar() {
             <ThemeChanger />
             <LanguageChanger />
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link to="/journey">Commencer</Link>
+              <Link to="/journey">{t("navbar.start")}</Link>
             </Button>
           </div>
 
@@ -61,29 +58,26 @@ export function Navbar() {
           <div className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">
               <Link to="/" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-                Accueil
+                {t("navbar.home")}
               </Link>
               <Link to="/how-it-works" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-                Comment ça marche
+                {t("navbar.howItWorks")}
               </Link>
               <Link to="/journey" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-                Parcours client
+                {t("navbar.journey")}
               </Link>
               <Link to="/dashboard" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-                Dashboard
-              </Link>
-              <Link to="/expert" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-                Devenir expert
+                {t("navbar.dashboard")}
               </Link>
               <Link to="/about" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-                À propos
+                {t("navbar.about")}
               </Link>
               <div className="flex items-center justify-between pt-2">
-                <span className="text-sm font-medium text-foreground">Theme</span>
+                <span className="text-sm font-medium text-foreground">{t("navbar.theme")}</span>
                 <ThemeChanger />
               </div>
               <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 w-full">
-                <Link to="/journey">Commencer</Link>
+                <Link to="/journey">{t("navbar.start")}</Link>
               </Button>
             </div>
           </div>
