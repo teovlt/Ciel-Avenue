@@ -71,9 +71,9 @@ export function Footer() {
               <Link to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 {t("footer.ourMission")}
               </Link>
-              <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link to="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 {t("footer.contact")}
-              </a>
+              </Link>
               <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 {t("footer.legal")}
               </a>

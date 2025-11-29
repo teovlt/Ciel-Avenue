@@ -84,7 +84,7 @@
         "title": "For professionals",
         "feature1": "Pre-qualified and serious leads",
         "feature2": "Zero prospecting, automatic matching",
-        "feature3": "Clients in your geographic area",
+        "feature3": "Matching with the best properties",
         "feature4": "Integrated management tools"
       }
     },
@@ -93,6 +93,62 @@
       "description": "Join thousands of users who have already trusted CIEL AVENUE to make their real estate projects a reality.",
       "ctaPrimary": "Discover the journey",
       "ctaSecondary": "Join the platform"
+    }
+  },
+  "contact": {
+    "hero": {
+      "badge": "Let's talk about your project",
+      "title": "Contact us",
+      "description": "Have a question, a real estate project, or just want to learn more? Our team is here to help you."
+    },
+    "form": {
+      "name": "Full name",
+      "namePlaceholder": "John Smith",
+      "email": "Email address",
+      "emailPlaceholder": "john.smith@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "Select a subject",
+      "subjects": {
+        "general": "General inquiry",
+        "buyer": "I'm a buyer",
+        "seller": "I'm a seller",
+        "expert": "Become an expert",
+        "partnership": "Partnership",
+        "other": "Other"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Describe your project or ask your question...",
+      "submit": "Send message",
+      "successTitle": "Message sent!",
+      "successMessage": "Thank you for your message. Our team will get back to you as soon as possible."
+    },
+    "info": {
+      "title": "Let's stay in touch",
+      "description": "We're available to answer all your questions and support you in your real estate project.",
+      "email": {
+        "title": "Email",
+        "description": "Response within 24h"
+      },
+      "phone": {
+        "title": "Phone",
+        "description": "Monday to Friday"
+      },
+      "address": {
+        "title": "Address",
+        "description": "Head office"
+      },
+      "hours": {
+        "title": "Hours",
+        "description": "We're available",
+        "schedule": "Mon - Fri: 9am - 6pm"
+      }
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "description": "Here are the most common questions:",
+      "question1": "How does the buyer journey work?",
+      "question2": "What are the platform fees?",
+      "question3": "How to become a partner expert?"
     }
   },
   "notFound": {

@@ -95,6 +95,62 @@
       "ctaSecondary": "Rejoindre la plateforme"
     }
   },
+  "contact": {
+    "hero": {
+      "badge": "Parlons de votre projet",
+      "title": "Contactez-nous",
+      "description": "Une question, un projet immobilier ou simplement envie d'en savoir plus ? Notre équipe est là pour vous accompagner."
+    },
+    "form": {
+      "name": "Nom complet",
+      "namePlaceholder": "Jean Dupont",
+      "email": "Adresse email",
+      "emailPlaceholder": "jean.dupont@exemple.fr",
+      "subject": "Sujet",
+      "subjectPlaceholder": "Sélectionnez un sujet",
+      "subjects": {
+        "general": "Question générale",
+        "buyer": "Je suis acheteur",
+        "seller": "Je suis vendeur",
+        "expert": "Devenir expert",
+        "partnership": "Partenariat",
+        "other": "Autre"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Décrivez votre projet ou posez votre question...",
+      "submit": "Envoyer le message",
+      "successTitle": "Message envoyé !",
+      "successMessage": "Merci pour votre message. Notre équipe vous répondra dans les plus brefs délais."
+    },
+    "info": {
+      "title": "Restons en contact",
+      "description": "Nous sommes disponibles pour répondre à toutes vos questions et vous accompagner dans votre projet immobilier.",
+      "email": {
+        "title": "Email",
+        "description": "Réponse sous 24h"
+      },
+      "phone": {
+        "title": "Téléphone",
+        "description": "Du lundi au vendredi"
+      },
+      "address": {
+        "title": "Adresse",
+        "description": "Siège social"
+      },
+      "hours": {
+        "title": "Horaires",
+        "description": "Nous sommes disponibles",
+        "schedule": "Lun - Ven : 9h - 18h"
+      }
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "description": "Voici les questions les plus posées :",
+      "question1": "Comment fonctionne le parcours acheteur ?",
+      "question2": "Quels sont les frais de la plateforme ?",
+      "question3": "Comment devenir expert partenaire ?"
+    }
+  },
   "notFound": {
     "title": "Page introuvable",
     "code": "404",
