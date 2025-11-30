@@ -204,7 +204,7 @@ export function Home() {
                 variant="outline"
                 className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 text-base px-8"
               >
-                <Link to="/expert">{t("home.cta.ctaSecondary")}</Link>
+                <Link to="/contact">{t("home.cta.ctaSecondary")}</Link>
               </Button>
             </div>
           </div>

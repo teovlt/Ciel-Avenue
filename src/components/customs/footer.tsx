@@ -52,7 +52,7 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="font-semibold text-foreground">{t("footer.professionals")}</h3>
             <div className="flex flex-col gap-3">
-              <Link to="/expert" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link to="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 {t("footer.becomeExpert")}
               </Link>
               <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
