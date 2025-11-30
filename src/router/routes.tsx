@@ -3,6 +3,7 @@ import { Contact } from "@/pages/Contact";
 import { NotFound } from "@/pages/NotFound";
 import { Routes, Route } from "react-router-dom";
 import { LayoutWrapper } from "./layout-wrapper";
+import Dashboard from "@/pages/Dashboard";
 
 export const Router = () => {
   return (
@@ -11,6 +12,7 @@ export const Router = () => {
         <Route element={<LayoutWrapper />}>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

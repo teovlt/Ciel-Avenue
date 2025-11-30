@@ -4,6 +4,7 @@
     "howItWorks": "Comment ça marche",
     "journey": "Parcours client",
     "dashboard": "Dashboard",
+    "contact": "Contact",
     "about": "À propos",
     "start": "Commencer",
     "theme": "Thème",
@@ -158,5 +159,64 @@
     "subtitle": "Pas de panique, même les meilleurs explorateurs s'égarent parfois.",
     "backHome": "Retour à l'accueil",
     "explore": "Explorer nos services"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Bienvenue sur votre espace personnel",
+    "activeProfile": "Profil actif",
+    "propertiesPending": "biens en attente",
+    "tabs": {
+      "needs": "Besoins",
+      "messages": "Messages",
+      "vendors": "Vendeurs",
+      "promoters": "Promoteurs",
+      "visits": "Visites"
+    },
+    "needs": {
+      "title": "Vos besoins en cours",
+      "searchPlaceholder": "Rechercher un bien...",
+      "status": {
+        "inProgress": "En cours",
+        "new": "Nouveau"
+      },
+      "match": "Match",
+      "price": "Prix",
+      "surface": "Surface",
+      "rooms": "Pièces",
+      "viewDetails": "Voir les détails",
+      "propertyType": {
+        "apartment": "Appartement"
+      }
+    },
+    "messages": {
+      "title": "Messagerie",
+      "writePlaceholder": "Écrire un message...",
+      "roles": {
+        "expert": "Expert",
+        "notification": "Notification",
+        "system": "Système"
+      }
+    },
+    "vendors": {
+      "title": "Park Vendeur",
+      "description": "Vendeurs correspondant à vos critères",
+      "status": {
+        "available": "Disponible",
+        "visitScheduled": "Visite prévue"
+      },
+      "contact": "Contacter"
+    },
+    "promoters": {
+      "title": "Park Promoteur",
+      "description": "Projets immobiliers neufs",
+      "learnMore": "En savoir plus"
+    },
+    "visits": {
+      "title": "Agenda des visites",
+      "description": "Vos rendez-vous programmés",
+      "expert": "Expert",
+      "confirm": "Confirmer",
+      "cancel": "Annuler"
+    }
   }
 }

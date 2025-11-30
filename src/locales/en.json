@@ -4,6 +4,7 @@
     "howItWorks": "How it works",
     "journey": "Customer journey",
     "dashboard": "Dashboard",
+    "contact": "Contact",
     "about": "About",
     "start": "Get started",
     "theme": "Theme",
@@ -158,5 +159,64 @@
     "subtitle": "Don't panic, even the best explorers get lost sometimes.",
     "backHome": "Back to home",
     "explore": "Explore our services"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome to your personal space",
+    "activeProfile": "Active profile",
+    "propertiesPending": "properties pending",
+    "tabs": {
+      "needs": "Needs",
+      "messages": "Messages",
+      "vendors": "Vendors",
+      "promoters": "Promoters",
+      "visits": "Visits"
+    },
+    "needs": {
+      "title": "Your needs in progress",
+      "searchPlaceholder": "Search for a property...",
+      "status": {
+        "inProgress": "In progress",
+        "new": "New"
+      },
+      "match": "Match",
+      "price": "Price",
+      "surface": "Surface",
+      "rooms": "Rooms",
+      "viewDetails": "View details",
+      "propertyType": {
+        "apartment": "Apartment"
+      }
+    },
+    "messages": {
+      "title": "Messaging",
+      "writePlaceholder": "Write a message...",
+      "roles": {
+        "expert": "Expert",
+        "notification": "Notification",
+        "system": "System"
+      }
+    },
+    "vendors": {
+      "title": "Seller Park",
+      "description": "Sellers matching your criteria",
+      "status": {
+        "available": "Available",
+        "visitScheduled": "Visit scheduled"
+      },
+      "contact": "Contact"
+    },
+    "promoters": {
+      "title": "Promoter Park",
+      "description": "New real estate projects",
+      "learnMore": "Learn more"
+    },
+    "visits": {
+      "title": "Visit schedule",
+      "description": "Your scheduled appointments",
+      "expert": "Expert",
+      "confirm": "Confirm",
+      "cancel": "Cancel"
+    }
   }
 }

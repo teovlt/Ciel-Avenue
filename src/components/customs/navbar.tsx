@@ -28,11 +28,11 @@ export function Navbar() {
             <Link to="/how-it-works" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               {t("navbar.howItWorks")}
             </Link>
-            <Link to="/journey" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              {t("navbar.journey")}
-            </Link>
             <Link to="/dashboard" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               {t("navbar.dashboard")}
+            </Link>
+            <Link to="/contact" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+              {t("navbar.contact")}
             </Link>
             <Link to="/about" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               {t("navbar.about")}
@@ -63,11 +63,11 @@ export function Navbar() {
               <Link to="/how-it-works" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
                 {t("navbar.howItWorks")}
               </Link>
-              <Link to="/journey" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-                {t("navbar.journey")}
-              </Link>
               <Link to="/dashboard" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
                 {t("navbar.dashboard")}
+              </Link>
+              <Link to="/contact" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+                {t("navbar.contact")}
               </Link>
               <Link to="/about" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
                 {t("navbar.about")}
