@@ -290,5 +290,107 @@
       "description": "Notre équipe est à votre disposition pour répondre à toutes vos questions.",
       "button": "Nous contacter"
     }
+  },
+  "howItWorks": {
+    "hero": {
+      "title": "Comment ça marche ?",
+      "description": "Un parcours en 3 modules conçu pour simplifier votre projet immobilier et vous connecter aux meilleures opportunités."
+    },
+    "overview": {
+      "module1": {
+        "title": "Définition",
+        "description": "Vos critères et besoins"
+      },
+      "module2": {
+        "title": "Juridique",
+        "description": "Situation et documents"
+      },
+      "module3": {
+        "title": "Solvabilité",
+        "description": "Score et capacité"
+      }
+    },
+    "module1": {
+      "badge": "Module 1",
+      "title": "Définition de vos critères",
+      "description": "Un arbre décisionnel intelligent qui vous guide étape par étape pour définir précisément vos besoins immobiliers.",
+      "feature1": {
+        "title": "Type de bien",
+        "description": "Appartement, maison, terrain - définissez votre projet idéal"
+      },
+      "feature2": {
+        "title": "Localisation",
+        "description": "Zones géographiques, proximité des services et transports"
+      },
+      "feature3": {
+        "title": "Budget et caractéristiques",
+        "description": "Surface, nombre de pièces, équipements souhaités"
+      },
+      "button": "Commencer le module 1",
+      "demo": {
+        "question1": "Quel type de bien recherchez-vous ?",
+        "option1": "Appartement",
+        "option2": "Maison",
+        "option3": "Terrain",
+        "question2": "Dans quelle région ?",
+        "placeholder2": "Ex: Île-de-France, Lyon, Bordeaux...",
+        "question3": "Votre budget ?",
+        "placeholder3": "À définir plus tard..."
+      }
+    },
+    "module2": {
+      "badge": "Module 2",
+      "title": "Situation juridique et documents",
+      "description": "Une collecte sécurisée de vos documents administratifs pour constituer un dossier complet et conforme.",
+      "feature1": {
+        "title": "Documents sécurisés",
+        "description": "Vos informations sont protégées et cryptées"
+      },
+      "feature2": {
+        "title": "Liste personnalisée",
+        "description": "Seuls les documents nécessaires vous sont demandés"
+      },
+      "feature3": {
+        "title": "Vérification automatique",
+        "description": "Validation instantanée de vos documents"
+      },
+      "button": "Accéder au module 2",
+      "doc1": "Pièce d'identité",
+      "doc2": "Justificatif de domicile",
+      "doc3": "Avis d'imposition",
+      "doc4": "Bulletins de salaire",
+      "progress": "2 sur 4 documents fournis"
+    },
+    "module3": {
+      "badge": "Module 3",
+      "title": "Score de solvabilité",
+      "description": "Une évaluation précise de votre capacité d'emprunt réalisée en partenariat avec nos partenaires bancaires.",
+      "feature1": {
+        "title": "Analyse financière",
+        "description": "Étude complète de votre situation patrimoniale"
+      },
+      "feature2": {
+        "title": "Partenaires bancaires",
+        "description": "Accès aux meilleures conditions de financement"
+      },
+      "feature3": {
+        "title": "Résultat instantané",
+        "description": "Votre profil préqualifié en quelques minutes"
+      },
+      "button": "Découvrir le module 3",
+      "demo": {
+        "profile": "Excellent profil",
+        "score": "Score de solvabilité",
+        "borrowing": "Capacité d'emprunt",
+        "rate": "Taux estimé",
+        "duration": "Durée max",
+        "validated": "Profil validé"
+      }
+    },
+    "cta": {
+      "title": "Commencez votre parcours dès maintenant",
+      "description": "Un processus simple et guidé pour concrétiser votre projet immobilier en toute sérénité.",
+      "button": "Démarrer le parcours"
+    }
   }
 }

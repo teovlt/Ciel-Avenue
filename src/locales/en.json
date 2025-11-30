@@ -290,5 +290,107 @@
       "description": "Our team is at your disposal to answer all your questions.",
       "button": "Contact us"
     }
+  },
+  "howItWorks": {
+    "hero": {
+      "title": "How does it work?",
+      "description": "A 3-module journey designed to simplify your real estate project and connect you to the best opportunities."
+    },
+    "overview": {
+      "module1": {
+        "title": "Definition",
+        "description": "Your criteria and needs"
+      },
+      "module2": {
+        "title": "Legal",
+        "description": "Situation and documents"
+      },
+      "module3": {
+        "title": "Solvency",
+        "description": "Score and capacity"
+      }
+    },
+    "module1": {
+      "badge": "Module 1",
+      "title": "Define your criteria",
+      "description": "An intelligent decision tree that guides you step by step to precisely define your real estate needs.",
+      "feature1": {
+        "title": "Property type",
+        "description": "Apartment, house, land - define your ideal project"
+      },
+      "feature2": {
+        "title": "Location",
+        "description": "Geographic areas, proximity to services and transport"
+      },
+      "feature3": {
+        "title": "Budget and characteristics",
+        "description": "Surface area, number of rooms, desired amenities"
+      },
+      "button": "Start module 1",
+      "demo": {
+        "question1": "What type of property are you looking for?",
+        "option1": "Apartment",
+        "option2": "House",
+        "option3": "Land",
+        "question2": "In which region?",
+        "placeholder2": "Ex: Île-de-France, Lyon, Bordeaux...",
+        "question3": "Your budget?",
+        "placeholder3": "To be defined later..."
+      }
+    },
+    "module2": {
+      "badge": "Module 2",
+      "title": "Legal situation and documents",
+      "description": "Secure collection of your administrative documents to create a complete and compliant file.",
+      "feature1": {
+        "title": "Secure documents",
+        "description": "Your information is protected and encrypted"
+      },
+      "feature2": {
+        "title": "Personalized list",
+        "description": "Only the necessary documents are requested"
+      },
+      "feature3": {
+        "title": "Automatic verification",
+        "description": "Instant validation of your documents"
+      },
+      "button": "Access module 2",
+      "doc1": "Identity document",
+      "doc2": "Proof of address",
+      "doc3": "Tax notice",
+      "doc4": "Pay slips",
+      "progress": "2 out of 4 documents provided"
+    },
+    "module3": {
+      "badge": "Module 3",
+      "title": "Solvency score",
+      "description": "An accurate assessment of your borrowing capacity carried out in partnership with our banking partners.",
+      "feature1": {
+        "title": "Financial analysis",
+        "description": "Complete study of your financial situation"
+      },
+      "feature2": {
+        "title": "Banking partners",
+        "description": "Access to the best financing conditions"
+      },
+      "feature3": {
+        "title": "Instant result",
+        "description": "Your pre-qualified profile in a few minutes"
+      },
+      "button": "Discover module 3",
+      "demo": {
+        "profile": "Excellent profile",
+        "score": "Solvency score",
+        "borrowing": "Borrowing capacity",
+        "rate": "Estimated rate",
+        "duration": "Max duration",
+        "validated": "Profile validated"
+      }
+    },
+    "cta": {
+      "title": "Start your journey now",
+      "description": "A simple and guided process to realize your real estate project with peace of mind.",
+      "button": "Start the journey"
+    }
   }
 }

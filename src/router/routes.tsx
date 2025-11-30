@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { LayoutWrapper } from "./layout-wrapper";
 import Dashboard from "@/pages/Dashboard";
 import AboutPage from "@/pages/About";
+import HowItWorks from "@/pages/How-it-works";
 
 export const Router = () => {
   return (
@@ -15,6 +16,7 @@ export const Router = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
