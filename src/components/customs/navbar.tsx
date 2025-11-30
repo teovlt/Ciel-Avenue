@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Crown, User, Moon, Sun, Globe, LogOut, UserCircle } from "lucide-react";
+import { Menu, X, Crown, User, Moon, Sun, LogOut, UserCircle } from "lucide-react";
 import { ThemeChanger } from "@/components/customs/theme-changer";
 import { LanguageChanger } from "@/components/customs/language-changer";
 import {
@@ -109,22 +109,18 @@ export function Navbar() {
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuLabel className="text-xs font-normal text-muted-foreground">
-                    {t("navbar.theme")}
-                  </DropdownMenuLabel>
+                  <DropdownMenuLabel className="text-xs font-normal text-muted-foreground">{t("navbar.theme")}</DropdownMenuLabel>
                   <DropdownMenuItem
                     onClick={() => {
-                      const currentTheme = theme === "system" 
-                        ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
-                        : theme;
+                      const currentTheme =
+                        theme === "system" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : theme;
                       setTheme(currentTheme === "light" ? "dark" : "light");
                     }}
                     className="cursor-pointer"
                   >
                     {(() => {
-                      const currentTheme = theme === "system" 
-                        ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
-                        : theme;
+                      const currentTheme =
+                        theme === "system" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : theme;
                       return currentTheme === "light" ? (
                         <>
                           <Moon className="mr-2 h-4 w-4" />
@@ -139,9 +135,7 @@ export function Navbar() {
                     })()}
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuLabel className="text-xs font-normal text-muted-foreground">
-                    {t("navbar.language")}
-                  </DropdownMenuLabel>
+                  <DropdownMenuLabel className="text-xs font-normal text-muted-foreground">{t("navbar.language")}</DropdownMenuLabel>
                   {listOfLocales.map((l) => (
                     <DropdownMenuItem
                       key={l}
@@ -175,44 +169,44 @@ export function Navbar() {
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">
-              <Link 
-                to="/" 
+              <Link
+                to="/"
                 className="text-sm font-medium text-foreground hover:text-primary transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t("navbar.home")}
               </Link>
-              <Link 
-                to="/how-it-works" 
+              <Link
+                to="/how-it-works"
                 className="text-sm font-medium text-foreground hover:text-primary transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t("navbar.howItWorks")}
               </Link>
-              <Link 
-                to="/dashboard" 
+              <Link
+                to="/dashboard"
                 className="text-sm font-medium text-foreground hover:text-primary transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t("navbar.dashboard")}
               </Link>
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 className="text-sm font-medium text-foreground hover:text-primary transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t("navbar.contact")}
               </Link>
-              <Link 
-                to="/about" 
+              <Link
+                to="/about"
                 className="text-sm font-medium text-foreground hover:text-primary transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t("navbar.about")}
               </Link>
               {isAuthenticated && (
-                <Link 
-                  to="/profile" 
+                <Link
+                  to="/profile"
                   className="text-sm font-medium text-foreground hover:text-primary transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -228,7 +222,7 @@ export function Navbar() {
                 <LanguageChanger />
               </div>
               {isAuthenticated ? (
-                <Button 
+                <Button
                   onClick={() => {
                     handleLogout();
                     setMobileMenuOpen(false);
@@ -241,7 +235,9 @@ export function Navbar() {
                 </Button>
               ) : (
                 <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 w-full">
-                  <Link to="/journey" onClick={() => setMobileMenuOpen(false)}>{t("navbar.start")}</Link>
+                  <Link to="/journey" onClick={() => setMobileMenuOpen(false)}>
+                    {t("navbar.start")}
+                  </Link>
                 </Button>
               )}
             </div>
