@@ -57,27 +57,51 @@ export function Navbar() {
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">
-              <Link to="/" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+              <Link 
+                to="/" 
+                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 {t("navbar.home")}
               </Link>
-              <Link to="/how-it-works" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+              <Link 
+                to="/how-it-works" 
+                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 {t("navbar.howItWorks")}
               </Link>
-              <Link to="/dashboard" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+              <Link 
+                to="/dashboard" 
+                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 {t("navbar.dashboard")}
               </Link>
-              <Link to="/contact" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+              <Link 
+                to="/contact" 
+                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 {t("navbar.contact")}
               </Link>
-              <Link to="/about" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+              <Link 
+                to="/about" 
+                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 {t("navbar.about")}
               </Link>
               <div className="flex items-center justify-between pt-2">
                 <span className="text-sm font-medium text-foreground">{t("navbar.theme")}</span>
                 <ThemeChanger />
               </div>
+              <div className="flex items-center justify-between pt-2">
+                <span className="text-sm font-medium text-foreground">{t("navbar.language")}</span>
+                <LanguageChanger />
+              </div>
               <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 w-full">
-                <Link to="/journey">{t("navbar.start")}</Link>
+                <Link to="/journey" onClick={() => setMobileMenuOpen(false)}>{t("navbar.start")}</Link>
               </Button>
             </div>
           </div>
