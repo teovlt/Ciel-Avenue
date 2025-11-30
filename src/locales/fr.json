@@ -9,7 +9,12 @@
     "start": "Commencer",
     "theme": "Thème",
     "language": "Langue",
-    "languageChanged": "Langue changée en français."
+    "languageChanged": "Langue changée en français.",
+    "profile": "Profil",
+    "darkMode": "Mode sombre",
+    "lightMode": "Mode clair",
+    "logout": "Déconnexion",
+    "loggedOut": "Vous avez été déconnecté"
   },
   "footer": {
     "tagline": "La révolution de la gestion immobilière digitale.",
@@ -216,7 +221,13 @@
       "description": "Vos rendez-vous programmés",
       "expert": "Expert",
       "confirm": "Confirmer",
-      "cancel": "Annuler"
+      "cancel": "Annuler",
+      "viewProfile": "Voir le profil"
+    },
+    "notConnected": {
+      "title": "Créez un compte pour accéder à votre dashboard",
+      "description": "Complétez votre profil pour accéder à votre dashboard personnalisé et découvrir les biens qui correspondent à vos critères.",
+      "cta": "Commencer le parcours"
     }
   },
   "about": {
@@ -391,6 +402,79 @@
       "title": "Commencez votre parcours dès maintenant",
       "description": "Un processus simple et guidé pour concrétiser votre projet immobilier en toute sérénité.",
       "button": "Démarrer le parcours"
+    }
+  },
+  "journey": {
+    "title": "Parcours client",
+    "description": "Complétez les 3 modules pour créer votre profil acheteur",
+    "moduleProgress": "Module {{current}} sur {{total}}",
+    "continue": "Continuer",
+    "back": "Retour",
+    "generateProfile": "Générer mon profil",
+    "completed": "Profil créé avec succès !",
+    "module1": {
+      "badge": "Module 1",
+      "title": "Définition de vos critères",
+      "description": "Parlez-nous de votre projet immobilier idéal",
+      "question1": "Quel type de bien recherchez-vous ?",
+      "question2": "Dans quelle région ?",
+      "propertyType": {
+        "apartment": "Appartement",
+        "house": "Maison",
+        "land": "Terrain"
+      },
+      "locationPlaceholder": "Ex: Paris, Lyon, Bordeaux...",
+      "budget": "Budget maximum",
+      "rooms": "Nombre de pièces",
+      "surface": "Surface minimale (m²)"
+    },
+    "module2": {
+      "badge": "Module 2",
+      "title": "Situation juridique et documents",
+      "description": "Transmettez vos documents de manière sécurisée",
+      "maritalStatus": "Situation familiale",
+      "maritalStatusOptions": {
+        "single": "Célibataire",
+        "married": "Marié(e) / Pacsé(e)",
+        "divorced": "Divorcé(e)"
+      },
+      "documentsTitle": "Documents requis",
+      "documentsDescription": "Sélectionnez les documents que vous pouvez fournir maintenant",
+      "documents": {
+        "id": "Pièce d'identité",
+        "address": "Justificatif de domicile",
+        "tax": "Avis d'imposition",
+        "payslips": "Bulletins de salaire (3 derniers)",
+        "bank": "Relevés bancaires",
+        "professional": "Justificatif de situation professionnelle"
+      },
+      "upload": "Télécharger"
+    },
+    "module3": {
+      "badge": "Module 3",
+      "title": "Score de solvabilité",
+      "description": "Évaluation de votre capacité d'emprunt",
+      "analysisTitle": "Analyse en cours",
+      "analysisDescription": "Nos partenaires bancaires évaluent votre profil",
+      "evaluationTitle": "Ce qui sera évalué :",
+      "evaluation1": {
+        "title": "Revenus et charges",
+        "description": "Analyse de votre situation financière"
+      },
+      "evaluation2": {
+        "title": "Apport personnel",
+        "description": "Montant disponible pour l'acquisition"
+      },
+      "evaluation3": {
+        "title": "Historique bancaire",
+        "description": "Gestion de vos comptes et crédits"
+      },
+      "evaluation4": {
+        "title": "Stabilité professionnelle",
+        "description": "Type de contrat et ancienneté"
+      },
+      "note": "Note",
+      "noteText": "Cette évaluation est réalisée en partenariat avec nos établissements bancaires partenaires. Vos données sont traitées de manière confidentielle et sécurisée."
     }
   }
 }

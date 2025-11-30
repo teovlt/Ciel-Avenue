@@ -9,7 +9,12 @@
     "start": "Get started",
     "theme": "Theme",
     "language": "Language",
-    "languageChanged": "Language changed to English."
+    "languageChanged": "Language changed to English.",
+    "profile": "Profile",
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode",
+    "logout": "Logout",
+    "loggedOut": "You have been logged out"
   },
   "footer": {
     "tagline": "The digital real estate management revolution.",
@@ -216,7 +221,13 @@
       "description": "Your scheduled appointments",
       "expert": "Expert",
       "confirm": "Confirm",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "viewProfile": "View Profile"
+    },
+    "notConnected": {
+      "title": "Create an account to access your dashboard",
+      "description": "Complete your profile to access your personalized dashboard and discover properties that match your criteria.",
+      "cta": "Start your journey"
     }
   },
   "about": {
@@ -391,6 +402,79 @@
       "title": "Start your journey now",
       "description": "A simple and guided process to realize your real estate project with peace of mind.",
       "button": "Start the journey"
+    }
+  },
+  "journey": {
+    "title": "Customer journey",
+    "description": "Complete the 3 modules to create your buyer profile",
+    "moduleProgress": "Module {{current}} of {{total}}",
+    "continue": "Continue",
+    "back": "Back",
+    "generateProfile": "Generate my profile",
+    "completed": "Profile created successfully!",
+    "module1": {
+      "badge": "Module 1",
+      "title": "Define your criteria",
+      "description": "Tell us about your ideal real estate project",
+      "question1": "What type of property are you looking for?",
+      "question2": "In which region?",
+      "propertyType": {
+        "apartment": "Apartment",
+        "house": "House",
+        "land": "Land"
+      },
+      "locationPlaceholder": "Ex: Paris, Lyon, Bordeaux...",
+      "budget": "Maximum budget",
+      "rooms": "Number of rooms",
+      "surface": "Minimum surface (m²)"
+    },
+    "module2": {
+      "badge": "Module 2",
+      "title": "Legal situation and documents",
+      "description": "Submit your documents securely",
+      "maritalStatus": "Marital status",
+      "maritalStatusOptions": {
+        "single": "Single",
+        "married": "Married / Civil partnership",
+        "divorced": "Divorced"
+      },
+      "documentsTitle": "Required documents",
+      "documentsDescription": "Select the documents you can provide now",
+      "documents": {
+        "id": "Identity document",
+        "address": "Proof of address",
+        "tax": "Tax notice",
+        "payslips": "Payslips (last 3)",
+        "bank": "Bank statements",
+        "professional": "Professional situation proof"
+      },
+      "upload": "Upload"
+    },
+    "module3": {
+      "badge": "Module 3",
+      "title": "Solvency score",
+      "description": "Assessment of your borrowing capacity",
+      "analysisTitle": "Analysis in progress",
+      "analysisDescription": "Our banking partners are evaluating your profile",
+      "evaluationTitle": "What will be evaluated:",
+      "evaluation1": {
+        "title": "Income and expenses",
+        "description": "Analysis of your financial situation"
+      },
+      "evaluation2": {
+        "title": "Personal contribution",
+        "description": "Amount available for acquisition"
+      },
+      "evaluation3": {
+        "title": "Banking history",
+        "description": "Management of your accounts and credits"
+      },
+      "evaluation4": {
+        "title": "Professional stability",
+        "description": "Type of contract and seniority"
+      },
+      "note": "Note",
+      "noteText": "This assessment is carried out in partnership with our partner banking institutions. Your data is processed confidentially and securely."
     }
   }
 }

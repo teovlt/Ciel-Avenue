@@ -1,16 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useAuth } from "@/providers/auth-provider";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
-import { Building2, MessageSquare, Users, Calendar, MapPin, Euro, Bed, Square, Send, Search } from "lucide-react";
+import { Building2, MessageSquare, Users, Calendar, MapPin, Euro, Bed, Square, Send, Search, UserCircle, Lock } from "lucide-react";
 
 export default function Dashboard() {
   const { t } = useTranslation();
+  const { isAuthenticated } = useAuth();
   const [messageInput, setMessageInput] = useState("");
 
   const mockNeeds = [
@@ -88,6 +91,30 @@ export default function Dashboard() {
     },
   ];
 
+  // If not authenticated, show message to create account
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-background pt-20">
+        <div className="container mx-auto px-4 lg:px-8 py-24">
+          <div className="max-w-2xl mx-auto text-center space-y-8">
+            <div className="flex justify-center">
+              <div className="h-24 w-24 rounded-full bg-primary/10 flex items-center justify-center">
+                <Lock className="h-12 w-12 text-primary" />
+              </div>
+            </div>
+            <div className="space-y-4">
+              <h1 className="text-3xl md:text-4xl font-bold text-foreground">{t("dashboard.notConnected.title")}</h1>
+              <p className="text-lg text-muted-foreground">{t("dashboard.notConnected.description")}</p>
+            </div>
+            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+              <Link to="/journey">{t("dashboard.notConnected.cta")}</Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background pt-20">
       {/* Header */}
@@ -99,6 +126,12 @@ export default function Dashboard() {
               <p className="text-muted-foreground mt-1">{t("dashboard.welcome")}</p>
             </div>
             <div className="flex items-center gap-3">
+              <Button asChild variant="outline" size="sm">
+                <Link to="/profile" className="flex items-center gap-2">
+                  <UserCircle className="h-4 w-4" />
+                  {t("dashboard.viewProfile")}
+                </Link>
+              </Button>
               <Badge className="bg-primary text-primary-foreground">{t("dashboard.activeProfile")}</Badge>
               <Badge variant="outline">3 {t("dashboard.propertiesPending")}</Badge>
             </div>

@@ -5,15 +5,18 @@ import { App } from "./App";
 import "./lib/i18n";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "./providers/theme-provider";
+import { AuthProvider } from "./providers/auth-provider";
 import { Toaster } from "./components/ui/sonner";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-      <BrowserRouter>
-        <App />
-        <Toaster />
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <App />
+          <Toaster />
+        </BrowserRouter>
+      </AuthProvider>
     </ThemeProvider>
   </StrictMode>,
 );

@@ -4,7 +4,7 @@ import { Target, Users, Lightbulb, Award, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-export default function AboutPage() {
+export default function About() {
   const { t } = useTranslation();
 
   const team = [
