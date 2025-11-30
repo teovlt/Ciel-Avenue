@@ -218,5 +218,77 @@
       "confirm": "Confirmer",
       "cancel": "Annuler"
     }
+  },
+  "about": {
+    "hero": {
+      "title": "À propos de",
+      "description": "Nous révolutionnons l'immobilier en France avec une plateforme digitale qui connecte tous les acteurs du marché."
+    },
+    "vision": {
+      "badge": "Notre vision",
+      "title": "Réinventer l'expérience immobilière",
+      "description1": "CIEL AVENUE est née d'un constat simple : l'immobilier traditionnel est trop complexe, trop long, et manque de transparence. Nous avons créé une plateforme qui simplifie chaque étape du parcours d'achat tout en garantissant un accompagnement expert et personnalisé.",
+      "description2": "Notre vision est de devenir la référence de l'immobilier digital en France, en alliant technologie de pointe et expertise humaine pour offrir la meilleure expérience possible à nos utilisateurs.",
+      "imageAlt": "Vision CIEL AVENUE"
+    },
+    "mission": {
+      "badge": "Notre mission",
+      "title": "Démocratiser l'accès à la propriété",
+      "description": "Notre mission est de rendre l'accès à la propriété plus simple, plus rapide et plus transparent pour tous. Nous croyons que chaque projet immobilier mérite une attention personnalisée et des outils digitaux performants.",
+      "imageAlt": "Mission CIEL AVENUE",
+      "step1": {
+        "title": "Simplifier le parcours acheteur",
+        "description": "Un processus guidé et optimisé à chaque étape"
+      },
+      "step2": {
+        "title": "Connecter les acteurs",
+        "description": "Acheteurs, vendeurs, promoteurs et experts sur une même plateforme"
+      },
+      "step3": {
+        "title": "Garantir la transparence",
+        "description": "Des informations claires et vérifiées tout au long du parcours"
+      }
+    },
+    "values": {
+      "title": "Nos valeurs",
+      "description": "Les principes qui guident chacune de nos actions et décisions.",
+      "human": {
+        "title": "Humain",
+        "description": "La technologie au service de l'humain, jamais l'inverse"
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "Nous visons l'excellence dans chaque détail"
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Nous innovons constamment pour mieux servir"
+      },
+      "integrity": {
+        "title": "Intégrité",
+        "description": "Transparence et honnêteté en toutes circonstances"
+      }
+    },
+    "team": {
+      "title": "Notre équipe",
+      "description": "Une équipe passionnée et expérimentée, dédiée à transformer l'immobilier.",
+      "member1": {
+        "role": "CEO & Co-fondatrice"
+      },
+      "member2": {
+        "role": "CTO & Co-fondateur"
+      },
+      "member3": {
+        "role": "Directrice Commerciale"
+      },
+      "member4": {
+        "role": "Directeur Technique"
+      }
+    },
+    "cta": {
+      "title": "Une question ? Contactez-nous",
+      "description": "Notre équipe est à votre disposition pour répondre à toutes vos questions.",
+      "button": "Nous contacter"
+    }
   }
 }

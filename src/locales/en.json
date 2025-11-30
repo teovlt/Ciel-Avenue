@@ -218,5 +218,77 @@
       "confirm": "Confirm",
       "cancel": "Cancel"
     }
+  },
+  "about": {
+    "hero": {
+      "title": "About",
+      "description": "We are revolutionizing real estate in France with a digital platform that connects all market players."
+    },
+    "vision": {
+      "badge": "Our vision",
+      "title": "Reinventing the real estate experience",
+      "description1": "CIEL AVENUE was born from a simple observation: traditional real estate is too complex, too slow, and lacks transparency. We have created a platform that simplifies every step of the buying journey while ensuring expert and personalized support.",
+      "description2": "Our vision is to become the reference for digital real estate in France, combining cutting-edge technology and human expertise to offer the best possible experience to our users.",
+      "imageAlt": "CIEL AVENUE Vision"
+    },
+    "mission": {
+      "badge": "Our mission",
+      "title": "Democratizing access to property",
+      "description": "Our mission is to make access to property simpler, faster and more transparent for everyone. We believe that every real estate project deserves personalized attention and high-performance digital tools.",
+      "imageAlt": "CIEL AVENUE Mission",
+      "step1": {
+        "title": "Simplify the buyer journey",
+        "description": "A guided and optimized process at every step"
+      },
+      "step2": {
+        "title": "Connect stakeholders",
+        "description": "Buyers, sellers, developers and experts on the same platform"
+      },
+      "step3": {
+        "title": "Ensure transparency",
+        "description": "Clear and verified information throughout the journey"
+      }
+    },
+    "values": {
+      "title": "Our values",
+      "description": "The principles that guide each of our actions and decisions.",
+      "human": {
+        "title": "Human",
+        "description": "Technology at the service of humans, never the other way around"
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "We strive for excellence in every detail"
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "We constantly innovate to better serve"
+      },
+      "integrity": {
+        "title": "Integrity",
+        "description": "Transparency and honesty in all circumstances"
+      }
+    },
+    "team": {
+      "title": "Our team",
+      "description": "A passionate and experienced team, dedicated to transforming real estate.",
+      "member1": {
+        "role": "CEO & Co-founder"
+      },
+      "member2": {
+        "role": "CTO & Co-founder"
+      },
+      "member3": {
+        "role": "Sales Director"
+      },
+      "member4": {
+        "role": "Technical Director"
+      }
+    },
+    "cta": {
+      "title": "Have a question? Contact us",
+      "description": "Our team is at your disposal to answer all your questions.",
+      "button": "Contact us"
+    }
   }
 }
