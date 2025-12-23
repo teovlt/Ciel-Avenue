@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Crown, User, Moon, Sun, LogOut, UserCircle } from "lucide-react";
@@ -23,21 +23,8 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const { setTheme, theme } = useTheme();
-  const { user, login, logout, isAuthenticated } = useAuth();
+  const { user, logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
-
-  // Check if journey is completed and create fake user
-  useEffect(() => {
-    const journeyCompleted = localStorage.getItem("journeyCompleted");
-    if (journeyCompleted === "true" && !isAuthenticated) {
-      const fakeUser = {
-        id: "1",
-        email: "user@example.com",
-        name: "John Doe",
-      };
-      login(fakeUser);
-    }
-  }, [isAuthenticated, login]);
 
   const handleChangeLanguage = (l: string) => {
     localStorage.setItem("i18nextLng", l);

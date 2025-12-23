@@ -165,71 +165,6 @@
     "backHome": "Retour à l'accueil",
     "explore": "Explorer nos services"
   },
-  "dashboard": {
-    "title": "Dashboard",
-    "welcome": "Bienvenue sur votre espace personnel",
-    "activeProfile": "Profil actif",
-    "propertiesPending": "biens en attente",
-    "tabs": {
-      "needs": "Besoins",
-      "messages": "Messages",
-      "vendors": "Vendeurs",
-      "promoters": "Promoteurs",
-      "visits": "Visites"
-    },
-    "needs": {
-      "title": "Vos besoins en cours",
-      "searchPlaceholder": "Rechercher un bien...",
-      "status": {
-        "inProgress": "En cours",
-        "new": "Nouveau"
-      },
-      "match": "Match",
-      "price": "Prix",
-      "surface": "Surface",
-      "rooms": "Pièces",
-      "viewDetails": "Voir les détails",
-      "propertyType": {
-        "apartment": "Appartement"
-      }
-    },
-    "messages": {
-      "title": "Messagerie",
-      "writePlaceholder": "Écrire un message...",
-      "roles": {
-        "expert": "Expert",
-        "notification": "Notification",
-        "system": "Système"
-      }
-    },
-    "vendors": {
-      "title": "Park Vendeur",
-      "description": "Vendeurs correspondant à vos critères",
-      "status": {
-        "available": "Disponible",
-        "visitScheduled": "Visite prévue"
-      },
-      "contact": "Contacter"
-    },
-    "promoters": {
-      "title": "Park Promoteur",
-      "description": "Projets immobiliers neufs",
-      "learnMore": "En savoir plus"
-    },
-    "visits": {
-      "title": "Agenda des visites",
-      "description": "Vos rendez-vous programmés",
-      "expert": "Expert",
-      "confirm": "Confirmer",
-      "cancel": "Annuler",
-      "viewProfile": "Voir le profil"
-    },
-    "notConnected": {
-      "title": "Créez un compte pour accéder à votre dashboard",
-      "description": "Complétez votre profil pour accéder à votre dashboard personnalisé et découvrir les biens qui correspondent à vos critères.",
-      "cta": "Commencer le parcours"
-    }
-  },
   "about": {
     "hero": {
       "title": "À propos de",
@@ -475,6 +410,248 @@
       },
       "note": "Note",
       "noteText": "Cette évaluation est réalisée en partenariat avec nos établissements bancaires partenaires. Vos données sont traitées de manière confidentielle et sécurisée."
+    },
+    "userType": {
+      "title": "Quel est votre profil ?",
+      "description": "Choisissez le parcours qui correspond à vos besoins",
+      "client": {
+        "title": "Acheteur",
+        "description": "Je cherche un bien à acheter",
+        "feature1": "Recherche personnalisée",
+        "feature2": "Accompagnement d'experts",
+        "feature3": "Évaluation de solvabilité",
+        "cta": "Je suis acheteur"
+      },
+      "expert": {
+        "title": "Expert immobilier",
+        "description": "Je suis un professionnel de l'immobilier",
+        "feature1": "Accès aux clients pré-qualifiés",
+        "feature2": "Gestion des leads",
+        "feature3": "Outils de performance",
+        "cta": "Je suis expert"
+      }
+    },
+    "expert": {
+      "module1": {
+        "badge": "Infos professionnelles",
+        "title": "Vos informations professionnelles",
+        "description": "Parlez-nous de votre activité immobilière",
+        "company": "Nom de l'entreprise",
+        "companyPlaceholder": "Votre agence ou société",
+        "siret": "Numéro SIRET",
+        "experience": "Années d'expérience"
+      },
+      "module2": {
+        "badge": "Expertise",
+        "title": "Votre expertise",
+        "description": "Définissez vos domaines d'expertise et certifications",
+        "expertiseTitle": "Domaines d'expertise",
+        "certTitle": "Certifications"
+      },
+      "module3": {
+        "badge": "Zones",
+        "title": "Zones d'intervention",
+        "description": "Sélectionnez les zones géographiques où vous intervenez",
+        "zonesTitle": "Choisissez vos zones",
+        "readyTitle": "Votre profil est presque prêt !",
+        "readyDescription": "Vous aurez bientôt accès aux clients pré-qualifiés de votre zone."
+      },
+      "expertise": {
+        "residential": "Résidentiel",
+        "commercial": "Commercial",
+        "investment": "Investissement",
+        "luxury": "Luxe"
+      },
+      "certifications": {
+        "agent": "Agent immobilier (carte T)",
+        "negotiator": "Négociateur immobilier",
+        "manager": "Gestionnaire de biens",
+        "evaluator": "Évaluateur immobilier"
+      },
+      "createProfile": "Créer mon profil expert"
+    }
+  },
+  "profile": {
+    "notConnected": {
+      "title": "Créez un compte pour accéder à votre profil",
+      "description": "Complétez votre parcours pour accéder à votre profil personnalisé.",
+      "cta": "Commencer le parcours"
+    },
+    "expert": {
+      "badge": "Profil Expert",
+      "title": "Votre Profil Expert",
+      "subtitle": "Professionnel de l'immobilier certifié",
+      "role": "Expert Immobilier",
+      "certified": "Certifié",
+      "yearsExp": "ans d'exp.",
+      "projects": "projets",
+      "stats": {
+        "projects": "Projets réalisés",
+        "rating": "Note moyenne",
+        "activeClients": "Clients actifs",
+        "satisfaction": "Satisfaction"
+      },
+      "expertise": {
+        "title": "Domaines d'expertise",
+        "residential": "Immobilier résidentiel",
+        "commercial": "Immobilier commercial",
+        "investment": "Investissement immobilier",
+        "luxury": "Immobilier de luxe"
+      },
+      "zones": {
+        "title": "Zones d'intervention"
+      },
+      "certifications": {
+        "title": "Certifications"
+      },
+      "cta": {
+        "title": "Prêt à trouver de nouveaux clients ?",
+        "description": "Accédez à votre dashboard pour voir les clients et missions disponibles.",
+        "button": "Accéder au dashboard"
+      }
+    },
+    "client": {
+      "badge": "Profil validé",
+      "title": "Votre Profil Acheteur",
+      "subtitle": "Profil complet et préqualifié - Prêt pour le matching",
+      "excellentProfile": "Excellent profil",
+      "solvabilityScore": "Score de solvabilité",
+      "solvable": "Solvable",
+      "documentsValidated": "Documents validés",
+      "profileComplete": "Profil complet",
+      "borrowingCapacity": "Capacité d'emprunt",
+      "estimatedRate": "Taux estimé",
+      "criteria": {
+        "title": "Vos critères de recherche",
+        "propertyType": "Type de bien",
+        "location": "Localisation",
+        "budget": "Budget maximum",
+        "surface": "Surface / Pièces"
+      },
+      "documents": {
+        "title": "Documents validés",
+        "id": "Pièce d'identité",
+        "address": "Justificatif de domicile",
+        "tax": "Avis d'imposition",
+        "payslips": "Bulletins de salaire",
+        "bank": "Relevés bancaires",
+        "professional": "Justificatif professionnel"
+      },
+      "info": {
+        "title": "Informations complémentaires",
+        "maritalStatus": "Situation familiale",
+        "createdAt": "Date de création",
+        "status": "Statut",
+        "active": "Actif"
+      },
+      "cta": {
+        "title": "Votre profil est prêt !",
+        "description": "Accédez à votre dashboard pour découvrir les biens qui correspondent à vos critères.",
+        "button": "Accéder au dashboard"
+      }
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Bienvenue sur votre espace personnel",
+    "viewProfile": "Voir le profil",
+    "activeProfile": "Profil actif",
+    "propertiesPending": "biens en attente",
+    "tabs": {
+      "needs": "Besoins",
+      "messages": "Messages",
+      "vendors": "Vendeurs",
+      "promoters": "Promoteurs",
+      "visits": "Visites"
+    },
+    "needs": {
+      "title": "Vos besoins en cours",
+      "searchPlaceholder": "Rechercher un bien...",
+      "status": {
+        "inProgress": "En cours",
+        "new": "Nouveau"
+      },
+      "match": "Match",
+      "price": "Prix",
+      "surface": "Surface",
+      "rooms": "Pièces",
+      "viewDetails": "Voir les détails",
+      "propertyType": {
+        "apartment": "Appartement"
+      }
+    },
+    "messages": {
+      "title": "Messagerie",
+      "writePlaceholder": "Écrire un message...",
+      "roles": {
+        "expert": "Expert",
+        "notification": "Notification",
+        "system": "Système"
+      }
+    },
+    "vendors": {
+      "title": "Park Vendeur",
+      "description": "Vendeurs correspondant à vos critères",
+      "status": {
+        "available": "Disponible",
+        "visitScheduled": "Visite prévue"
+      },
+      "contact": "Contacter"
+    },
+    "promoters": {
+      "title": "Park Promoteur",
+      "description": "Projets immobiliers neufs",
+      "learnMore": "En savoir plus"
+    },
+    "visits": {
+      "title": "Agenda des visites",
+      "description": "Vos rendez-vous programmés",
+      "expert": "Expert",
+      "confirm": "Confirmer",
+      "cancel": "Annuler",
+      "viewProfile": "Voir le profil"
+    },
+    "notConnected": {
+      "title": "Créez un compte pour accéder à votre dashboard",
+      "description": "Complétez votre profil pour accéder à votre dashboard personnalisé et découvrir les biens qui correspondent à vos critères.",
+      "cta": "Commencer le parcours"
+    },
+    "expert": {
+      "title": "Dashboard Expert",
+      "welcome": "Bienvenue",
+      "badge": "Expert",
+      "stats": {
+        "activeClients": "Clients actifs",
+        "activeMissions": "Missions actives",
+        "todayAppointments": "RDV du jour",
+        "monthlyGrowth": "Croissance mensuelle"
+      },
+      "tabs": {
+        "clients": "Clients",
+        "missions": "Missions",
+        "schedule": "Agenda",
+        "messages": "Messages"
+      },
+      "clients": {
+        "title": "Vos clients",
+        "search": "Rechercher un client...",
+        "score": "Score",
+        "active": "Actif",
+        "pending": "En attente",
+        "contact": "Contacter"
+      },
+      "missions": {
+        "title": "Vos missions",
+        "client": "Client",
+        "progress": "Progression",
+        "deadline": "Échéance",
+        "inProgress": "En cours",
+        "pending": "En attente"
+      },
+      "schedule": {
+        "title": "Agenda du jour",
+        "today": "Aujourd'hui"
+      }
     }
   }
 }

@@ -165,71 +165,6 @@
     "backHome": "Back to home",
     "explore": "Explore our services"
   },
-  "dashboard": {
-    "title": "Dashboard",
-    "welcome": "Welcome to your personal space",
-    "activeProfile": "Active profile",
-    "propertiesPending": "properties pending",
-    "tabs": {
-      "needs": "Needs",
-      "messages": "Messages",
-      "vendors": "Vendors",
-      "promoters": "Promoters",
-      "visits": "Visits"
-    },
-    "needs": {
-      "title": "Your needs in progress",
-      "searchPlaceholder": "Search for a property...",
-      "status": {
-        "inProgress": "In progress",
-        "new": "New"
-      },
-      "match": "Match",
-      "price": "Price",
-      "surface": "Surface",
-      "rooms": "Rooms",
-      "viewDetails": "View details",
-      "propertyType": {
-        "apartment": "Apartment"
-      }
-    },
-    "messages": {
-      "title": "Messaging",
-      "writePlaceholder": "Write a message...",
-      "roles": {
-        "expert": "Expert",
-        "notification": "Notification",
-        "system": "System"
-      }
-    },
-    "vendors": {
-      "title": "Seller Park",
-      "description": "Sellers matching your criteria",
-      "status": {
-        "available": "Available",
-        "visitScheduled": "Visit scheduled"
-      },
-      "contact": "Contact"
-    },
-    "promoters": {
-      "title": "Promoter Park",
-      "description": "New real estate projects",
-      "learnMore": "Learn more"
-    },
-    "visits": {
-      "title": "Visit schedule",
-      "description": "Your scheduled appointments",
-      "expert": "Expert",
-      "confirm": "Confirm",
-      "cancel": "Cancel",
-      "viewProfile": "View Profile"
-    },
-    "notConnected": {
-      "title": "Create an account to access your dashboard",
-      "description": "Complete your profile to access your personalized dashboard and discover properties that match your criteria.",
-      "cta": "Start your journey"
-    }
-  },
   "about": {
     "hero": {
       "title": "About",
@@ -475,6 +410,248 @@
       },
       "note": "Note",
       "noteText": "This assessment is carried out in partnership with our partner banking institutions. Your data is processed confidentially and securely."
+    },
+    "userType": {
+      "title": "What is your profile?",
+      "description": "Choose the path that best fits your needs",
+      "client": {
+        "title": "Buyer",
+        "description": "I'm looking for a property to buy",
+        "feature1": "Personalized search",
+        "feature2": "Expert support",
+        "feature3": "Solvency assessment",
+        "cta": "I'm a buyer"
+      },
+      "expert": {
+        "title": "Real Estate Expert",
+        "description": "I'm a real estate professional",
+        "feature1": "Access to pre-qualified clients",
+        "feature2": "Lead management",
+        "feature3": "Performance tools",
+        "cta": "I'm an expert"
+      }
+    },
+    "expert": {
+      "module1": {
+        "badge": "Professional Info",
+        "title": "Your professional information",
+        "description": "Tell us about your real estate activity",
+        "company": "Company name",
+        "companyPlaceholder": "Your agency or company",
+        "siret": "SIRET number",
+        "experience": "Years of experience"
+      },
+      "module2": {
+        "badge": "Expertise",
+        "title": "Your expertise",
+        "description": "Define your areas of expertise and certifications",
+        "expertiseTitle": "Areas of expertise",
+        "certTitle": "Certifications"
+      },
+      "module3": {
+        "badge": "Zones",
+        "title": "Areas of operation",
+        "description": "Select the geographical areas where you operate",
+        "zonesTitle": "Choose your areas",
+        "readyTitle": "Your profile is almost ready!",
+        "readyDescription": "You'll soon have access to pre-qualified clients in your area."
+      },
+      "expertise": {
+        "residential": "Residential",
+        "commercial": "Commercial",
+        "investment": "Investment",
+        "luxury": "Luxury"
+      },
+      "certifications": {
+        "agent": "Real estate agent (T card)",
+        "negotiator": "Real estate negotiator",
+        "manager": "Property manager",
+        "evaluator": "Property evaluator"
+      },
+      "createProfile": "Create my expert profile"
+    }
+  },
+  "profile": {
+    "notConnected": {
+      "title": "Create an account to access your profile",
+      "description": "Complete your journey to access your personalized profile.",
+      "cta": "Start the journey"
+    },
+    "expert": {
+      "badge": "Expert Profile",
+      "title": "Your Expert Profile",
+      "subtitle": "Certified real estate professional",
+      "role": "Real Estate Expert",
+      "certified": "Certified",
+      "yearsExp": "years exp.",
+      "projects": "projects",
+      "stats": {
+        "projects": "Completed projects",
+        "rating": "Average rating",
+        "activeClients": "Active clients",
+        "satisfaction": "Satisfaction"
+      },
+      "expertise": {
+        "title": "Areas of expertise",
+        "residential": "Residential Real Estate",
+        "commercial": "Commercial Real Estate",
+        "investment": "Real Estate Investment",
+        "luxury": "Luxury Real Estate"
+      },
+      "zones": {
+        "title": "Areas of operation"
+      },
+      "certifications": {
+        "title": "Certifications"
+      },
+      "cta": {
+        "title": "Ready to find new clients?",
+        "description": "Access your dashboard to see available clients and missions.",
+        "button": "Access dashboard"
+      }
+    },
+    "client": {
+      "badge": "Validated profile",
+      "title": "Your Buyer Profile",
+      "subtitle": "Complete and pre-qualified profile - Ready for matching",
+      "excellentProfile": "Excellent profile",
+      "solvabilityScore": "Solvency score",
+      "solvable": "Solvent",
+      "documentsValidated": "Documents validated",
+      "profileComplete": "Complete profile",
+      "borrowingCapacity": "Borrowing capacity",
+      "estimatedRate": "Estimated rate",
+      "criteria": {
+        "title": "Your search criteria",
+        "propertyType": "Property type",
+        "location": "Location",
+        "budget": "Maximum budget",
+        "surface": "Surface / Rooms"
+      },
+      "documents": {
+        "title": "Validated documents",
+        "id": "Identity document",
+        "address": "Proof of address",
+        "tax": "Tax notice",
+        "payslips": "Payslips",
+        "bank": "Bank statements",
+        "professional": "Professional proof"
+      },
+      "info": {
+        "title": "Additional information",
+        "maritalStatus": "Marital status",
+        "createdAt": "Creation date",
+        "status": "Status",
+        "active": "Active"
+      },
+      "cta": {
+        "title": "Your profile is ready!",
+        "description": "Access your dashboard to discover properties that match your criteria.",
+        "button": "Access dashboard"
+      }
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome to your personal space",
+    "viewProfile": "View profile",
+    "activeProfile": "Active profile",
+    "propertiesPending": "properties pending",
+    "tabs": {
+      "needs": "Needs",
+      "messages": "Messages",
+      "vendors": "Vendors",
+      "promoters": "Promoters",
+      "visits": "Visits"
+    },
+    "needs": {
+      "title": "Your needs in progress",
+      "searchPlaceholder": "Search for a property...",
+      "status": {
+        "inProgress": "In progress",
+        "new": "New"
+      },
+      "match": "Match",
+      "price": "Price",
+      "surface": "Surface",
+      "rooms": "Rooms",
+      "viewDetails": "View details",
+      "propertyType": {
+        "apartment": "Apartment"
+      }
+    },
+    "messages": {
+      "title": "Messaging",
+      "writePlaceholder": "Write a message...",
+      "roles": {
+        "expert": "Expert",
+        "notification": "Notification",
+        "system": "System"
+      }
+    },
+    "vendors": {
+      "title": "Seller Park",
+      "description": "Sellers matching your criteria",
+      "status": {
+        "available": "Available",
+        "visitScheduled": "Visit scheduled"
+      },
+      "contact": "Contact"
+    },
+    "promoters": {
+      "title": "Promoter Park",
+      "description": "New real estate projects",
+      "learnMore": "Learn more"
+    },
+    "visits": {
+      "title": "Visit schedule",
+      "description": "Your scheduled appointments",
+      "expert": "Expert",
+      "confirm": "Confirm",
+      "cancel": "Cancel",
+      "viewProfile": "View Profile"
+    },
+    "notConnected": {
+      "title": "Create an account to access your dashboard",
+      "description": "Complete your profile to access your personalized dashboard and discover properties that match your criteria.",
+      "cta": "Start your journey"
+    },
+    "expert": {
+      "title": "Expert Dashboard",
+      "welcome": "Welcome back",
+      "badge": "Expert",
+      "stats": {
+        "activeClients": "Active clients",
+        "activeMissions": "Active missions",
+        "todayAppointments": "Today's RDV",
+        "monthlyGrowth": "Monthly growth"
+      },
+      "tabs": {
+        "clients": "Clients",
+        "missions": "Missions",
+        "schedule": "Schedule",
+        "messages": "Messages"
+      },
+      "clients": {
+        "title": "Your clients",
+        "search": "Search a client...",
+        "score": "Score",
+        "active": "Active",
+        "pending": "Pending",
+        "contact": "Contact"
+      },
+      "missions": {
+        "title": "Your missions",
+        "client": "Client",
+        "progress": "Progress",
+        "deadline": "Deadline",
+        "inProgress": "In progress",
+        "pending": "Pending"
+      },
+      "schedule": {
+        "title": "Today's schedule",
+        "today": "Today"
+      }
     }
   }
 }

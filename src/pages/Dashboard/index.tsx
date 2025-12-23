@@ -9,13 +9,32 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
-import { Building2, MessageSquare, Users, Calendar, MapPin, Euro, Bed, Square, Send, Search, UserCircle, Lock } from "lucide-react";
+import {
+  Building2,
+  MessageSquare,
+  Users,
+  Calendar,
+  MapPin,
+  Euro,
+  Bed,
+  Square,
+  Send,
+  Search,
+  UserCircle,
+  Lock,
+  Briefcase,
+  TrendingUp,
+  Clock,
+  Phone,
+  ArrowRight,
+} from "lucide-react";
 
 export default function Dashboard() {
   const { t } = useTranslation();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isExpert, user, isLoading } = useAuth();
   const [messageInput, setMessageInput] = useState("");
 
+  // Client mock data
   const mockNeeds = [
     {
       id: 1,
@@ -91,12 +110,89 @@ export default function Dashboard() {
     },
   ];
 
+  // Expert mock data
+  const expertClients = [
+    {
+      id: 1,
+      name: "Jean Dupont",
+      budget: "350 000 €",
+      location: "Paris 15ème",
+      status: "active",
+      solvabilityScore: 8.5,
+      lastContact: "Aujourd'hui",
+    },
+    {
+      id: 2,
+      name: "Marie Martin",
+      budget: "420 000 €",
+      location: "Boulogne-Billancourt",
+      status: "pending",
+      solvabilityScore: 9.2,
+      lastContact: "Hier",
+    },
+    {
+      id: 3,
+      name: "Pierre Dubois",
+      budget: "280 000 €",
+      location: "Issy-les-Moulineaux",
+      status: "active",
+      solvabilityScore: 7.8,
+      lastContact: "Il y a 3j",
+    },
+  ];
+
+  const expertMissions = [
+    {
+      id: 1,
+      client: "Jean Dupont",
+      type: "Recherche appartement",
+      progress: 75,
+      status: "in_progress",
+      deadline: "30 Déc 2025",
+    },
+    {
+      id: 2,
+      client: "Marie Martin",
+      type: "Négociation",
+      progress: 40,
+      status: "in_progress",
+      deadline: "15 Jan 2026",
+    },
+    {
+      id: 3,
+      client: "Pierre Dubois",
+      type: "Visite programmée",
+      progress: 20,
+      status: "pending",
+      deadline: "10 Jan 2026",
+    },
+  ];
+
+  const expertSchedule = [
+    { id: 1, time: "09:00", client: "Jean Dupont", type: "Visite", property: "Appartement Paris 15ème" },
+    { id: 2, time: "11:30", client: "Marie Martin", type: "Appel", property: null },
+    { id: 3, time: "14:00", client: "Pierre Dubois", type: "Visite", property: "Appartement Issy" },
+    { id: 4, time: "16:30", client: "Sophie Laurent", type: "Rendez-vous", property: "Bureau" },
+  ];
+
+  // Show loading while auth state is being restored
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background pt-20 flex items-center justify-center">
+        <div className="animate-pulse text-center space-y-4">
+          <div className="h-24 w-24 rounded-full bg-primary/20 mx-auto" />
+          <p className="text-muted-foreground">{t("common.loading") || "Chargement..."}</p>
+        </div>
+      </div>
+    );
+  }
+
   // If not authenticated, show message to create account
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-background pt-20">
         <div className="container mx-auto px-4 lg:px-8 py-24">
-          <div className="max-w-2xl mx-auto text-center space-y-8">
+          <div className="max-w-2xl mx-auto text-center space-y-8 animate-fade-in-up">
             <div className="flex justify-center">
               <div className="h-24 w-24 rounded-full bg-primary/10 flex items-center justify-center">
                 <Lock className="h-12 w-12 text-primary" />
@@ -115,12 +211,310 @@ export default function Dashboard() {
     );
   }
 
+  // EXPERT DASHBOARD
+  if (isExpert) {
+    return (
+      <div className="min-h-screen bg-background pt-20">
+        {/* Decorative elements */}
+        <div className="fixed inset-0 pointer-events-none overflow-hidden">
+          <div className="decorative-blob decorative-blob-accent w-96 h-96 -top-48 -right-48 animate-float-slow" />
+          <div className="decorative-blob decorative-blob-primary w-64 h-64 bottom-32 -left-32 animate-float-delay" />
+        </div>
+
+        {/* Header */}
+        <div className="border-b border-border bg-card/80 backdrop-blur-sm relative z-10">
+          <div className="container mx-auto px-4 lg:px-8 py-8">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
+              <div>
+                <h1 className="text-3xl font-bold text-foreground">{t("dashboard.expert.title")}</h1>
+                <p className="text-muted-foreground mt-1">
+                  {t("dashboard.expert.welcome")}, {user?.name}
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Button asChild variant="outline" size="sm">
+                  <Link to="/profile" className="flex items-center gap-2">
+                    <UserCircle className="h-4 w-4" />
+                    {t("dashboard.viewProfile")}
+                  </Link>
+                </Button>
+                <Badge className="bg-accent text-accent-foreground">{t("dashboard.expert.badge")}</Badge>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8 stagger-animation">
+            <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-4">
+                  <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center">
+                    <Users className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-foreground">12</p>
+                    <p className="text-sm text-muted-foreground">{t("dashboard.expert.stats.activeClients")}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-4">
+                  <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center">
+                    <Briefcase className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-foreground">8</p>
+                    <p className="text-sm text-muted-foreground">{t("dashboard.expert.stats.activeMissions")}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-4">
+                  <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center">
+                    <Calendar className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-foreground">4</p>
+                    <p className="text-sm text-muted-foreground">{t("dashboard.expert.stats.todayAppointments")}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-4">
+                  <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center">
+                    <TrendingUp className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-foreground">+15%</p>
+                    <p className="text-sm text-muted-foreground">{t("dashboard.expert.stats.monthlyGrowth")}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Main Content */}
+          <Tabs defaultValue="clients" className="space-y-8">
+            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 h-auto">
+              <TabsTrigger value="clients" className="flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                <span className="hidden sm:inline">{t("dashboard.expert.tabs.clients")}</span>
+              </TabsTrigger>
+              <TabsTrigger value="missions" className="flex items-center gap-2">
+                <Briefcase className="h-4 w-4" />
+                <span className="hidden sm:inline">{t("dashboard.expert.tabs.missions")}</span>
+              </TabsTrigger>
+              <TabsTrigger value="schedule" className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                <span className="hidden sm:inline">{t("dashboard.expert.tabs.schedule")}</span>
+              </TabsTrigger>
+              <TabsTrigger value="messages" className="flex items-center gap-2">
+                <MessageSquare className="h-4 w-4" />
+                <span className="hidden sm:inline">{t("dashboard.expert.tabs.messages")}</span>
+              </TabsTrigger>
+            </TabsList>
+
+            {/* Clients Tab */}
+            <TabsContent value="clients" className="space-y-6 animate-fade-in-up">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <h2 className="text-2xl font-bold text-foreground">{t("dashboard.expert.clients.title")}</h2>
+                <div className="relative w-full sm:w-auto">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input placeholder={t("dashboard.expert.clients.search")} className="pl-10 w-full sm:w-[300px]" />
+                </div>
+              </div>
+
+              <div className="space-y-4 stagger-animation">
+                {expertClients.map((client) => (
+                  <Card key={client.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
+                    <CardContent className="p-6">
+                      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div className="flex items-center gap-4">
+                          <div className="h-12 w-12 rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center">
+                            <span className="text-lg font-bold text-white">{client.name.charAt(0)}</span>
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-semibold text-foreground">{client.name}</h3>
+                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                              <MapPin className="h-3 w-3" />
+                              {client.location}
+                              <span className="mx-1">•</span>
+                              <Euro className="h-3 w-3" />
+                              {client.budget}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <div className="text-center">
+                            <div className="text-lg font-bold text-accent">{client.solvabilityScore}</div>
+                            <div className="text-xs text-muted-foreground">{t("dashboard.expert.clients.score")}</div>
+                          </div>
+                          <Badge
+                            variant={client.status === "active" ? "default" : "secondary"}
+                            className={client.status === "active" ? "bg-accent text-accent-foreground" : ""}
+                          >
+                            {client.status === "active" ? t("dashboard.expert.clients.active") : t("dashboard.expert.clients.pending")}
+                          </Badge>
+                          <Button variant="outline" size="sm">
+                            <Phone className="h-4 w-4 mr-2" />
+                            {t("dashboard.expert.clients.contact")}
+                          </Button>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            {/* Missions Tab */}
+            <TabsContent value="missions" className="space-y-6 animate-fade-in-up">
+              <h2 className="text-2xl font-bold text-foreground">{t("dashboard.expert.missions.title")}</h2>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 stagger-animation">
+                {expertMissions.map((mission) => (
+                  <Card key={mission.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
+                    <CardContent className="p-6 space-y-4">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h3 className="font-semibold text-foreground">{mission.type}</h3>
+                          <p className="text-sm text-muted-foreground">
+                            {t("dashboard.expert.missions.client")}: {mission.client}
+                          </p>
+                        </div>
+                        <Badge
+                          variant={mission.status === "in_progress" ? "default" : "secondary"}
+                          className={mission.status === "in_progress" ? "bg-accent text-accent-foreground" : ""}
+                        >
+                          {mission.status === "in_progress"
+                            ? t("dashboard.expert.missions.inProgress")
+                            : t("dashboard.expert.missions.pending")}
+                        </Badge>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">{t("dashboard.expert.missions.progress")}</span>
+                          <span className="font-medium text-foreground">{mission.progress}%</span>
+                        </div>
+                        <div className="h-2 rounded-full bg-muted overflow-hidden">
+                          <div className="h-full bg-accent rounded-full transition-all" style={{ width: `${mission.progress}%` }} />
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <Clock className="h-4 w-4" />
+                        {t("dashboard.expert.missions.deadline")}: {mission.deadline}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            {/* Schedule Tab */}
+            <TabsContent value="schedule" className="space-y-6 animate-fade-in-up">
+              <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-bold text-foreground">{t("dashboard.expert.schedule.title")}</h2>
+                <Badge variant="outline">{t("dashboard.expert.schedule.today")}</Badge>
+              </div>
+
+              <Card className="border-border bg-card/80 backdrop-blur-sm">
+                <CardContent className="p-6">
+                  <div className="space-y-4 stagger-animation">
+                    {expertSchedule.map((item) => (
+                      <div key={item.id} className="flex items-center gap-4 p-4 rounded-lg bg-muted/50 hover:bg-muted/70 transition-colors">
+                        <div className="text-center min-w-[60px]">
+                          <p className="text-lg font-bold text-accent">{item.time}</p>
+                        </div>
+                        <div className="h-12 w-1 rounded-full bg-accent" />
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2">
+                            <p className="font-semibold text-foreground">{item.client}</p>
+                            <Badge variant="outline" className="text-xs">
+                              {item.type}
+                            </Badge>
+                          </div>
+                          {item.property && (
+                            <p className="text-sm text-muted-foreground flex items-center gap-1 mt-1">
+                              <Building2 className="h-3 w-3" />
+                              {item.property}
+                            </p>
+                          )}
+                        </div>
+                        <Button variant="ghost" size="sm">
+                          <ArrowRight className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Messages Tab */}
+            <TabsContent value="messages" className="space-y-6 animate-fade-in-up">
+              <Card className="border-border bg-card/80 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <MessageSquare className="h-5 w-5 text-accent" />
+                    {t("dashboard.messages.title")}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-3 max-h-[500px] overflow-y-auto">
+                    {mockMessages.map((msg) => (
+                      <div key={msg.id} className="p-4 rounded-lg bg-muted hover:bg-muted/70 transition-colors">
+                        <div className="flex justify-between items-start mb-2">
+                          <div>
+                            <p className="font-semibold text-foreground">{msg.from}</p>
+                            <p className="text-xs text-muted-foreground">{msg.role}</p>
+                          </div>
+                          <span className="text-xs text-muted-foreground">{msg.time}</span>
+                        </div>
+                        <p className="text-sm text-foreground">{msg.message}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex gap-2 pt-4 border-t border-border">
+                    <Input
+                      placeholder={t("dashboard.messages.writePlaceholder")}
+                      value={messageInput}
+                      onChange={(e) => setMessageInput(e.target.value)}
+                      className="flex-1"
+                    />
+                    <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
+                      <Send className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </div>
+    );
+  }
+
+  // CLIENT DASHBOARD
   return (
     <div className="min-h-screen bg-background pt-20">
+      {/* Decorative elements */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="decorative-blob decorative-blob-primary w-96 h-96 -top-48 -right-48 animate-float-slow" />
+        <div className="decorative-blob decorative-blob-accent w-64 h-64 bottom-32 -left-32 animate-float-delay" />
+      </div>
+
       {/* Header */}
-      <div className="border-b border-border bg-card">
+      <div className="border-b border-border bg-card/80 backdrop-blur-sm relative z-10">
         <div className="container mx-auto px-4 lg:px-8 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
               <h1 className="text-3xl font-bold text-foreground">{t("dashboard.title")}</h1>
               <p className="text-muted-foreground mt-1">{t("dashboard.welcome")}</p>
@@ -140,7 +534,7 @@ export default function Dashboard() {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 lg:px-8 py-8">
+      <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
         <Tabs defaultValue="needs" className="space-y-8">
           <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5 h-auto">
             <TabsTrigger value="needs" className="flex items-center gap-2">
@@ -166,7 +560,7 @@ export default function Dashboard() {
           </TabsList>
 
           {/* Besoins Tab */}
-          <TabsContent value="needs" className="space-y-6">
+          <TabsContent value="needs" className="space-y-6 animate-fade-in-up">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <h2 className="text-2xl font-bold text-foreground">{t("dashboard.needs.title")}</h2>
               <div className="relative w-full sm:w-auto">
@@ -175,9 +569,9 @@ export default function Dashboard() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 stagger-animation">
               {mockNeeds.map((need) => (
-                <Card key={need.id} className="border-border bg-card hover:shadow-lg transition-shadow">
+                <Card key={need.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift shine-effect">
                   <CardHeader className="pb-4">
                     <div className="flex justify-between items-start mb-2">
                       <Badge
@@ -225,8 +619,8 @@ export default function Dashboard() {
           </TabsContent>
 
           {/* Messages Tab */}
-          <TabsContent value="messages" className="space-y-6">
-            <Card className="border-border bg-card">
+          <TabsContent value="messages" className="space-y-6 animate-fade-in-up">
+            <Card className="border-border bg-card/80 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <MessageSquare className="h-5 w-5 text-primary" />
@@ -234,7 +628,7 @@ export default function Dashboard() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="space-y-3 max-h-[500px] overflow-y-auto">
+                <div className="space-y-3 max-h-[500px] overflow-y-auto stagger-animation">
                   {mockMessages.map((msg) => (
                     <div key={msg.id} className="p-4 rounded-lg bg-muted hover:bg-muted/70 transition-colors">
                       <div className="flex justify-between items-start mb-2">
@@ -264,15 +658,15 @@ export default function Dashboard() {
           </TabsContent>
 
           {/* Vendors Tab */}
-          <TabsContent value="vendors" className="space-y-6">
+          <TabsContent value="vendors" className="space-y-6 animate-fade-in-up">
             <div>
               <h2 className="text-2xl font-bold text-foreground mb-2">{t("dashboard.vendors.title")}</h2>
               <p className="text-muted-foreground">{t("dashboard.vendors.description")}</p>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-4 stagger-animation">
               {mockVendors.map((vendor) => (
-                <Card key={vendor.id} className="border-border bg-card">
+                <Card key={vendor.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
                   <CardContent className="p-6">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                       <div className="flex-1">
@@ -298,15 +692,15 @@ export default function Dashboard() {
           </TabsContent>
 
           {/* Promoters Tab */}
-          <TabsContent value="promoters" className="space-y-6">
+          <TabsContent value="promoters" className="space-y-6 animate-fade-in-up">
             <div>
               <h2 className="text-2xl font-bold text-foreground mb-2">{t("dashboard.promoters.title")}</h2>
               <p className="text-muted-foreground">{t("dashboard.promoters.description")}</p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 stagger-animation">
               {mockPromoters.map((promoter) => (
-                <Card key={promoter.id} className="border-border bg-card hover:shadow-lg transition-shadow">
+                <Card key={promoter.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift shine-effect">
                   <CardHeader>
                     <div className="flex items-start justify-between mb-2">
                       <Building2 className="h-8 w-8 text-primary" />
@@ -332,15 +726,15 @@ export default function Dashboard() {
           </TabsContent>
 
           {/* Visits Tab */}
-          <TabsContent value="visits" className="space-y-6">
+          <TabsContent value="visits" className="space-y-6 animate-fade-in-up">
             <div>
               <h2 className="text-2xl font-bold text-foreground mb-2">{t("dashboard.visits.title")}</h2>
               <p className="text-muted-foreground">{t("dashboard.visits.description")}</p>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-4 stagger-animation">
               {mockVisits.map((visit) => (
-                <Card key={visit.id} className="border-border bg-card">
+                <Card key={visit.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
                   <CardContent className="p-6">
                     <div className="flex flex-col md:flex-row gap-6">
                       <div className="flex-shrink-0 text-center p-4 rounded-lg bg-primary/10 border border-primary/20">
