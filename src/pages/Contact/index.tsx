@@ -32,22 +32,32 @@ export function Contact() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen page-transition">
+      {/* Decorative elements */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="decorative-blob decorative-blob-primary w-96 h-96 -top-48 -right-48 animate-float-slow" />
+        <div className="decorative-blob decorative-blob-accent w-64 h-64 bottom-32 -left-32 animate-float-delay" />
+      </div>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-primary/10 via-primary/5 to-background">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-secondary/20 rounded-full blur-3xl" />
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float-slow" />
+          <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-secondary/20 rounded-full blur-3xl animate-float-delay" />
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 py-24 lg:py-32 relative z-10">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 text-sm font-medium text-foreground">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 text-sm font-medium text-foreground animate-fade-in-up">
               <MessageSquare className="h-4 w-4 text-primary" />
               {t("contact.hero.badge")}
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight text-balance">{t("contact.hero.title")}</h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty">{t("contact.hero.description")}</p>
+            <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight text-balance animate-fade-in-up-delay-1">
+              {t("contact.hero.title")}
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty animate-fade-in-up-delay-2">
+              {t("contact.hero.description")}
+            </p>
           </div>
         </div>
       </section>
@@ -57,20 +67,20 @@ export function Contact() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
-            <div className="order-2 lg:order-1">
-              <Card className="border-border bg-card shadow-lg">
+            <div className="order-2 lg:order-1 animate-slide-in-left">
+              <Card className="border-border bg-card shadow-lg card-hover-lift">
                 <CardContent className="p-8">
                   {isSubmitted ? (
-                    <div className="flex flex-col items-center justify-center py-12 space-y-4 text-center">
-                      <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center">
+                    <div className="flex flex-col items-center justify-center py-12 space-y-4 text-center animate-scale-in">
+                      <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center animate-bounce-in">
                         <CheckCircle2 className="h-8 w-8 text-primary" />
                       </div>
                       <h3 className="text-2xl font-semibold text-foreground">{t("contact.form.successTitle")}</h3>
                       <p className="text-muted-foreground">{t("contact.form.successMessage")}</p>
                     </div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="space-y-2">
+                    <form onSubmit={handleSubmit} className="space-y-6 stagger-animation">
+                      <div className="space-y-2 animate-fade-in-up">
                         <label htmlFor="name" className="text-sm font-medium text-foreground">
                           {t("contact.form.name")}
                         </label>
@@ -86,7 +96,7 @@ export function Contact() {
                         />
                       </div>
 
-                      <div className="space-y-2">
+                      <div className="space-y-2 animate-fade-in-up">
                         <label htmlFor="email" className="text-sm font-medium text-foreground">
                           {t("contact.form.email")}
                         </label>
@@ -102,7 +112,7 @@ export function Contact() {
                         />
                       </div>
 
-                      <div className="space-y-2">
+                      <div className="space-y-2 animate-fade-in-up">
                         <label htmlFor="subject" className="text-sm font-medium text-foreground">
                           {t("contact.form.subject")}
                         </label>
@@ -124,7 +134,7 @@ export function Contact() {
                         </select>
                       </div>
 
-                      <div className="space-y-2">
+                      <div className="space-y-2 animate-fade-in-up">
                         <label htmlFor="message" className="text-sm font-medium text-foreground">
                           {t("contact.form.message")}
                         </label>
@@ -140,7 +150,11 @@ export function Contact() {
                         />
                       </div>
 
-                      <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                      <Button
+                        type="submit"
+                        size="lg"
+                        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 card-hover-lift animate-fade-in-up"
+                      >
                         <Send className="mr-2 h-5 w-5" />
                         {t("contact.form.submit")}
                       </Button>
@@ -151,15 +165,15 @@ export function Contact() {
             </div>
 
             {/* Contact Info */}
-            <div className="order-1 lg:order-2 space-y-8">
-              <div>
+            <div className="order-1 lg:order-2 space-y-8 animate-slide-in-right">
+              <div className="animate-fade-in-up">
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t("contact.info.title")}</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">{t("contact.info.description")}</p>
               </div>
 
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <div className="space-y-6 stagger-animation">
+                <div className="flex items-start gap-4 animate-fade-in-up">
+                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 animate-bounce-in">
                     <Mail className="h-6 w-6 text-primary" />
                   </div>
                   <div>
@@ -171,8 +185,8 @@ export function Contact() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <div className="flex items-start gap-4 animate-fade-in-up">
+                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 animate-bounce-in">
                     <Phone className="h-6 w-6 text-primary" />
                   </div>
                   <div>
@@ -184,8 +198,8 @@ export function Contact() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <div className="flex items-start gap-4 animate-fade-in-up">
+                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 animate-bounce-in">
                     <MapPin className="h-6 w-6 text-primary" />
                   </div>
                   <div>
@@ -195,8 +209,8 @@ export function Contact() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <div className="flex items-start gap-4 animate-fade-in-up">
+                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 animate-bounce-in">
                     <Clock className="h-6 w-6 text-primary" />
                   </div>
                   <div>
@@ -208,7 +222,7 @@ export function Contact() {
               </div>
 
               {/* FAQ Teaser */}
-              <Card className="border-border bg-muted/50">
+              <Card className="border-border bg-muted/50 card-hover-lift animate-fade-in-up-delay-3">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-foreground mb-2">{t("contact.faq.title")}</h3>
                   <p className="text-sm text-muted-foreground mb-4">{t("contact.faq.description")}</p>

@@ -8,15 +8,21 @@ export default function HowItWorks() {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 page-transition">
+      {/* Decorative elements */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="decorative-blob decorative-blob-primary w-96 h-96 -top-48 -right-48 animate-float-slow" />
+        <div className="decorative-blob decorative-blob-accent w-64 h-64 bottom-32 -left-32 animate-float-delay" />
+      </div>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-background">
-        <div className="container mx-auto px-4 lg:px-8 py-12 md:py-24">
+        <div className="container mx-auto px-4 lg:px-8 py-12 md:py-24 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-4 md:space-y-6">
-            <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-foreground tracking-tight text-balance">
+            <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-foreground tracking-tight text-balance animate-fade-in-up">
               {t("howItWorks.hero.title")}
             </h1>
-            <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed text-pretty px-2">
+            <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed text-pretty px-2 animate-fade-in-up-delay-1">
               {t("howItWorks.hero.description")}
             </p>
           </div>
@@ -28,16 +34,16 @@ export default function HowItWorks() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
-              <div className="space-y-4 md:space-y-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-primary/10 text-xs md:text-sm font-medium text-primary">
+              <div className="space-y-4 md:space-y-6 animate-slide-in-left">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-primary/10 text-xs md:text-sm font-medium text-primary animate-bounce-in">
                   <FileText className="h-3 w-3 md:h-4 md:w-4" />
                   {t("howItWorks.module1.badge")}
                 </div>
                 <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground text-balance">{t("howItWorks.module1.title")}</h2>
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{t("howItWorks.module1.description")}</p>
 
-                <div className="space-y-3 md:space-y-4 pt-2 md:pt-4">
-                  <div className="flex gap-3 md:gap-4">
+                <div className="space-y-3 md:space-y-4 pt-2 md:pt-4 stagger-animation">
+                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
                     <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <Building className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                     </div>
@@ -47,7 +53,7 @@ export default function HowItWorks() {
                     </div>
                   </div>
 
-                  <div className="flex gap-3 md:gap-4">
+                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
                     <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <Sparkles className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                     </div>
@@ -57,7 +63,7 @@ export default function HowItWorks() {
                     </div>
                   </div>
 
-                  <div className="flex gap-3 md:gap-4">
+                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
                     <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <Users className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                     </div>
@@ -68,18 +74,21 @@ export default function HowItWorks() {
                   </div>
                 </div>
 
-                <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 mt-4 md:mt-6 w-full md:w-auto">
+                <Button
+                  asChild
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 mt-4 md:mt-6 w-full md:w-auto card-hover-lift"
+                >
                   <Link to="/journey">
                     {t("howItWorks.module1.button")} <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                   </Link>
                 </Button>
               </div>
 
-              <div className="relative mt-8 lg:mt-0">
-                <Card className="border-border bg-card shadow-lg">
+              <div className="relative mt-8 lg:mt-0 animate-slide-in-right">
+                <Card className="border-border bg-card shadow-lg card-hover-lift shine-effect">
                   <CardContent className="p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
-                    <div className="space-y-3 md:space-y-4">
-                      <div className="p-3 md:p-4 rounded-lg bg-muted">
+                    <div className="space-y-3 md:space-y-4 stagger-animation">
+                      <div className="p-3 md:p-4 rounded-lg bg-muted animate-fade-in-up">
                         <p className="text-sm md:text-base font-medium text-foreground mb-2">{t("howItWorks.module1.demo.question1")}</p>
                         <div className="space-y-2">
                           <div className="p-2.5 md:p-3 rounded bg-background border-2 border-primary text-xs md:text-sm font-medium">
@@ -93,13 +102,13 @@ export default function HowItWorks() {
                           </div>
                         </div>
                       </div>
-                      <div className="p-3 md:p-4 rounded-lg bg-muted/50">
+                      <div className="p-3 md:p-4 rounded-lg bg-muted/50 animate-fade-in-up">
                         <p className="text-sm md:text-base font-medium text-foreground mb-2">{t("howItWorks.module1.demo.question2")}</p>
                         <div className="p-2.5 md:p-3 rounded bg-background text-xs md:text-sm text-muted-foreground">
                           {t("howItWorks.module1.demo.placeholder2")}
                         </div>
                       </div>
-                      <div className="p-3 md:p-4 rounded-lg bg-muted/30">
+                      <div className="p-3 md:p-4 rounded-lg bg-muted/30 animate-fade-in-up">
                         <p className="text-sm md:text-base font-medium text-muted-foreground mb-2">
                           {t("howItWorks.module1.demo.question3")}
                         </p>
@@ -121,32 +130,32 @@ export default function HowItWorks() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
-              <div className="order-2 lg:order-1 relative mt-8 lg:mt-0">
-                <Card className="border-border bg-card shadow-lg">
+              <div className="order-2 lg:order-1 relative mt-8 lg:mt-0 animate-slide-in-left">
+                <Card className="border-border bg-card shadow-lg card-hover-lift shine-effect">
                   <CardContent className="p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
-                    <div className="space-y-3 md:space-y-4">
-                      <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-muted">
+                    <div className="space-y-3 md:space-y-4 stagger-animation">
+                      <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-muted animate-fade-in-up">
                         <div className="flex items-center gap-2 md:gap-3">
                           <FileText className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                           <span className="text-xs md:text-sm font-medium text-foreground">{t("howItWorks.module2.doc1")}</span>
                         </div>
                         <BadgeCheck className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                       </div>
-                      <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-muted">
+                      <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-muted animate-fade-in-up">
                         <div className="flex items-center gap-2 md:gap-3">
                           <FileText className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                           <span className="text-xs md:text-sm font-medium text-foreground">{t("howItWorks.module2.doc2")}</span>
                         </div>
                         <BadgeCheck className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                       </div>
-                      <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-muted/50">
+                      <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-muted/50 animate-fade-in-up">
                         <div className="flex items-center gap-2 md:gap-3">
                           <FileText className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
                           <span className="text-xs md:text-sm font-medium text-muted-foreground">{t("howItWorks.module2.doc3")}</span>
                         </div>
                         <div className="h-4 w-4 md:h-5 md:w-5 rounded-full border-2 border-muted-foreground"></div>
                       </div>
-                      <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-muted/50">
+                      <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-muted/50 animate-fade-in-up">
                         <div className="flex items-center gap-2 md:gap-3">
                           <FileText className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
                           <span className="text-xs md:text-sm font-medium text-muted-foreground">{t("howItWorks.module2.doc4")}</span>
@@ -154,7 +163,7 @@ export default function HowItWorks() {
                         <div className="h-4 w-4 md:h-5 md:w-5 rounded-full border-2 border-muted-foreground"></div>
                       </div>
                     </div>
-                    <div className="pt-4">
+                    <div className="pt-4 animate-fade-in-up">
                       <div className="h-2 bg-muted rounded-full overflow-hidden">
                         <div className="h-full bg-primary w-1/2"></div>
                       </div>
@@ -164,16 +173,16 @@ export default function HowItWorks() {
                 </Card>
               </div>
 
-              <div className="order-1 lg:order-2 space-y-4 md:space-y-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-primary/10 text-xs md:text-sm font-medium text-primary">
+              <div className="order-1 lg:order-2 space-y-4 md:space-y-6 animate-slide-in-right">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-primary/10 text-xs md:text-sm font-medium text-primary animate-bounce-in">
                   <Scale className="h-3 w-3 md:h-4 md:w-4" />
                   {t("howItWorks.module2.badge")}
                 </div>
                 <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground text-balance">{t("howItWorks.module2.title")}</h2>
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{t("howItWorks.module2.description")}</p>
 
-                <div className="space-y-3 md:space-y-4 pt-2 md:pt-4">
-                  <div className="flex gap-3 md:gap-4">
+                <div className="space-y-3 md:space-y-4 pt-2 md:pt-4 stagger-animation">
+                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
                     <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <BadgeCheck className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                     </div>
@@ -183,7 +192,7 @@ export default function HowItWorks() {
                     </div>
                   </div>
 
-                  <div className="flex gap-3 md:gap-4">
+                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
                     <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <FileText className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                     </div>
@@ -193,7 +202,7 @@ export default function HowItWorks() {
                     </div>
                   </div>
 
-                  <div className="flex gap-3 md:gap-4">
+                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
                     <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <Sparkles className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                     </div>
@@ -204,7 +213,10 @@ export default function HowItWorks() {
                   </div>
                 </div>
 
-                <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 mt-4 md:mt-6 w-full md:w-auto">
+                <Button
+                  asChild
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 mt-4 md:mt-6 w-full md:w-auto card-hover-lift"
+                >
                   <Link to="/journey">
                     {t("howItWorks.module2.button")} <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                   </Link>
@@ -220,16 +232,16 @@ export default function HowItWorks() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
-              <div className="space-y-4 md:space-y-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-primary/10 text-xs md:text-sm font-medium text-primary">
+              <div className="space-y-4 md:space-y-6 animate-slide-in-left">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-primary/10 text-xs md:text-sm font-medium text-primary animate-bounce-in">
                   <BadgeCheck className="h-3 w-3 md:h-4 md:w-4" />
                   {t("howItWorks.module3.badge")}
                 </div>
                 <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground text-balance">{t("howItWorks.module3.title")}</h2>
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{t("howItWorks.module3.description")}</p>
 
-                <div className="space-y-3 md:space-y-4 pt-2 md:pt-4">
-                  <div className="flex gap-3 md:gap-4">
+                <div className="space-y-3 md:space-y-4 pt-2 md:pt-4 stagger-animation">
+                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
                     <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <BadgeCheck className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                     </div>
@@ -239,7 +251,7 @@ export default function HowItWorks() {
                     </div>
                   </div>
 
-                  <div className="flex gap-3 md:gap-4">
+                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
                     <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <Users className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                     </div>
@@ -249,7 +261,7 @@ export default function HowItWorks() {
                     </div>
                   </div>
 
-                  <div className="flex gap-3 md:gap-4">
+                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
                     <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <Sparkles className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                     </div>
@@ -260,18 +272,21 @@ export default function HowItWorks() {
                   </div>
                 </div>
 
-                <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 mt-4 md:mt-6 w-full md:w-auto">
+                <Button
+                  asChild
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 mt-4 md:mt-6 w-full md:w-auto card-hover-lift"
+                >
                   <Link to="/journey">
                     {t("howItWorks.module3.button")} <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                   </Link>
                 </Button>
               </div>
 
-              <div className="relative mt-8 lg:mt-0">
-                <Card className="border-border bg-card shadow-lg">
+              <div className="relative mt-8 lg:mt-0 animate-slide-in-right">
+                <Card className="border-border bg-card shadow-lg card-hover-lift shine-effect">
                   <CardContent className="p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
-                    <div className="text-center space-y-3 md:space-y-4">
-                      <div className="mx-auto h-24 w-24 md:h-32 md:w-32 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                    <div className="text-center space-y-3 md:space-y-4 animate-scale-in">
+                      <div className="mx-auto h-24 w-24 md:h-32 md:w-32 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center animate-pulse-glow">
                         <div className="text-3xl md:text-4xl font-bold text-primary-foreground">8.5</div>
                       </div>
                       <div>
@@ -280,22 +295,22 @@ export default function HowItWorks() {
                       </div>
                     </div>
 
-                    <div className="space-y-2 md:space-y-3 pt-2 md:pt-4">
-                      <div className="flex justify-between items-center">
+                    <div className="space-y-2 md:space-y-3 pt-2 md:pt-4 stagger-animation">
+                      <div className="flex justify-between items-center animate-fade-in-up">
                         <span className="text-xs md:text-sm text-muted-foreground">{t("howItWorks.module3.demo.borrowing")}</span>
                         <span className="text-sm md:text-base font-semibold text-foreground">350 000 €</span>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="flex justify-between items-center animate-fade-in-up">
                         <span className="text-xs md:text-sm text-muted-foreground">{t("howItWorks.module3.demo.rate")}</span>
                         <span className="text-sm md:text-base font-semibold text-foreground">3.2%</span>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="flex justify-between items-center animate-fade-in-up">
                         <span className="text-xs md:text-sm text-muted-foreground">{t("howItWorks.module3.demo.duration")}</span>
                         <span className="text-sm md:text-base font-semibold text-foreground">25 ans</span>
                       </div>
                     </div>
 
-                    <div className="pt-3 md:pt-4 text-center">
+                    <div className="pt-3 md:pt-4 text-center animate-bounce-in">
                       <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-primary/10 text-xs md:text-sm font-medium text-primary">
                         <BadgeCheck className="h-3 w-3 md:h-4 md:w-4" />
                         {t("howItWorks.module3.demo.validated")}
@@ -310,14 +325,19 @@ export default function HowItWorks() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 md:py-24 bg-primary text-primary-foreground">
+      <section className="py-12 md:py-24 bg-primary text-primary-foreground animate-fade-in">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-6 md:space-y-8">
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-balance px-2">{t("howItWorks.cta.title")}</h2>
-            <p className="text-base md:text-lg text-primary-foreground/90 leading-relaxed text-pretty px-2">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-balance px-2 animate-fade-in-up">{t("howItWorks.cta.title")}</h2>
+            <p className="text-base md:text-lg text-primary-foreground/90 leading-relaxed text-pretty px-2 animate-fade-in-up-delay-1">
               {t("howItWorks.cta.description")}
             </p>
-            <Button asChild size="lg" variant="secondary" className="text-sm md:text-base px-6 md:px-8 w-full md:w-auto">
+            <Button
+              asChild
+              size="lg"
+              variant="secondary"
+              className="text-sm md:text-base px-6 md:px-8 w-full md:w-auto card-hover-lift animate-fade-in-up-delay-2"
+            >
               <Link to="/journey">
                 {t("howItWorks.cta.button")} <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
               </Link>
