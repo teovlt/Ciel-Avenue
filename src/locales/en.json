@@ -41,7 +41,13 @@
       "titleEnd": "for you",
       "description": "CIEL AVENUE revolutionizes real estate management with a digital platform that connects buyers, sellers, developers and experts. Find your ideal property with ease.",
       "ctaPrimary": "Discover the journey",
-      "ctaSecondary": "How it works"
+      "ctaSecondary": "How it works",
+      "stats": {
+        "users": "Active users",
+        "properties": "Properties analyzed",
+        "experts": "Certified experts",
+        "satisfaction": "Client satisfaction"
+      }
     },
     "vision": {
       "title": "Our vision",

@@ -2,47 +2,159 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Building2, Users, TrendingUp, Shield, Zap, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Building2, Users, TrendingUp, Shield, Zap, CheckCircle2, Star, Award, ChevronDown } from "lucide-react";
 
 export function Home() {
   const { t } = useTranslation();
 
   return (
     <div className="min-h-screen page-transition">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-background">
-        {/* Decorative elements */}
-        <div className="fixed inset-0 pointer-events-none overflow-hidden">
-          <div className="decorative-blob decorative-blob-primary w-96 h-96 -top-48 -right-48 animate-float-slow" />
-          <div className="decorative-blob decorative-blob-accent w-64 h-64 bottom-32 -left-32 animate-float-delay" />
+      {/* Hero Section - Full Viewport */}
+      <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-gradient-to-br from-background via-primary/5 to-background">
+        {/* Animated Background Grid */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-30" />
+
+        {/* Decorative gradient orbs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-1/4 -right-20 w-[500px] h-[500px] bg-gradient-to-br from-primary/30 to-transparent rounded-full blur-3xl animate-float-slow" />
+          <div className="absolute bottom-1/4 -left-20 w-[400px] h-[400px] bg-gradient-to-tr from-accent/20 to-transparent rounded-full blur-3xl animate-float-delay" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-secondary/10 via-transparent to-primary/10 rounded-full blur-3xl animate-float" />
         </div>
 
-        <div className="container mx-auto px-4 lg:px-8 py-24 lg:py-32 relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
+        {/* Floating decorative elements */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-[15%] left-[10%] w-3 h-3 bg-primary/40 rounded-full animate-float" />
+          <div className="absolute top-[25%] right-[15%] w-2 h-2 bg-accent/50 rounded-full animate-float-slow" />
+          <div className="absolute bottom-[30%] left-[20%] w-4 h-4 bg-primary/30 rounded-full animate-float-delay" />
+          <div className="absolute bottom-[20%] right-[25%] w-2 h-2 bg-secondary/40 rounded-full animate-float" />
+          <div className="absolute top-[40%] left-[5%] w-2 h-2 bg-accent/30 rounded-full animate-float-slow" />
+          <div className="absolute top-[60%] right-[8%] w-3 h-3 bg-primary/25 rounded-full animate-float-delay" />
+        </div>
+
+        {/* Main Hero Content */}
+        <div className="container mx-auto px-4 lg:px-8 pt-32 pb-16 relative z-10">
+          <div className="max-w-5xl mx-auto text-center space-y-8">
+            {/* Badge */}
             <div className="inline-block animate-fade-in-up">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 text-sm font-medium text-foreground">
-                <span className="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+              <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 backdrop-blur-sm border border-primary/20 text-sm font-medium text-foreground shadow-lg">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+                </span>
                 {t("home.hero.badge")}
               </span>
             </div>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground tracking-tight text-balance animate-fade-in-up-delay-1">
-              {t("home.hero.titleStart")} <span className="text-gradient">{t("home.hero.titleHighlight")}</span> {t("home.hero.titleEnd")}
+
+            {/* Main Title */}
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground tracking-tight text-balance animate-fade-in-up-delay-1">
+              {t("home.hero.titleStart")}{" "}
+              <span className="relative">
+                <span className="text-gradient bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient-shift">
+                  {t("home.hero.titleHighlight")}
+                </span>
+              </span>{" "}
+              {t("home.hero.titleEnd")}
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed text-pretty animate-fade-in-up-delay-2">
+
+            {/* Subtitle */}
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed text-pretty animate-fade-in-up-delay-2">
               {t("home.hero.description")}
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 animate-fade-in-up-delay-3">
-              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-base px-8 card-hover-lift">
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6 animate-fade-in-up-delay-3">
+              <Button
+                asChild
+                size="lg"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-10 py-6 h-auto rounded-xl shadow-lg shadow-primary/25 card-hover-lift group"
+              >
                 <Link to="/journey">
-                  {t("home.hero.ctaPrimary")} <ArrowRight className="ml-2 h-5 w-5" />
+                  {t("home.hero.ctaPrimary")}
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-base px-8 card-hover-lift">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="text-lg px-10 py-6 h-auto rounded-xl backdrop-blur-sm border-border/50 hover:bg-muted/50 card-hover-lift"
+              >
                 <Link to="/how-it-works">{t("home.hero.ctaSecondary")}</Link>
               </Button>
             </div>
           </div>
         </div>
+
+        {/* Stats Section - Bottom of Hero */}
+        <div className="container mx-auto px-4 lg:px-8 pb-12 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+              {/* Stat 1 - Users */}
+              <div className="relative group animate-fade-in-up-delay-4">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative p-6 md:p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 text-center card-hover-lift">
+                  <div className="flex justify-center mb-3">
+                    <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Users className="h-6 w-6 text-accent" />
+                    </div>
+                  </div>
+                  <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">2 500+</div>
+                  <div className="text-sm text-muted-foreground">{t("home.hero.stats.users") || "Utilisateurs actifs"}</div>
+                </div>
+              </div>
+
+              {/* Stat 2 - Properties */}
+              <div className="relative group animate-fade-in-up-delay-5">
+                <div className="absolute inset-0 bg-gradient-to-r from-accent/10 to-secondary/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative p-6 md:p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 text-center card-hover-lift">
+                  <div className="flex justify-center mb-3">
+                    <div className="h-12 w-12 rounded-xl bg-accent/10 flex items-center justify-center">
+                      <Building2 className="h-6 w-6 text-accent" />
+                    </div>
+                  </div>
+                  <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">15 000+</div>
+                  <div className="text-sm text-muted-foreground">{t("home.hero.stats.properties") || "Biens analysés"}</div>
+                </div>
+              </div>
+
+              {/* Stat 3 - Experts */}
+              <div className="relative group animate-fade-in-up-delay-5">
+                <div className="absolute inset-0 bg-gradient-to-r from-secondary/10 to-primary/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative p-6 md:p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 text-center card-hover-lift">
+                  <div className="flex justify-center mb-3">
+                    <div className="h-12 w-12 rounded-xl bg-secondary/20 flex items-center justify-center">
+                      <Award className="h-6 w-6 text-accent" />
+                    </div>
+                  </div>
+                  <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">350+</div>
+                  <div className="text-sm text-muted-foreground">{t("home.hero.stats.experts") || "Experts certifiés"}</div>
+                </div>
+              </div>
+
+              {/* Stat 4 - Satisfaction */}
+              <div className="relative group animate-fade-in-up-delay-6">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative p-6 md:p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 text-center card-hover-lift">
+                  <div className="flex justify-center mb-3">
+                    <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Star className="h-6 w-6 text-accent" />
+                    </div>
+                  </div>
+                  <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">98%</div>
+                  <div className="text-sm text-muted-foreground">{t("home.hero.stats.satisfaction") || "Satisfaction client"}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <ChevronDown className="h-8 w-8 text-muted-foreground/50" />
+        </div>
+
+        {/* Bottom gradient fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
       </section>
 
       {/* Vision Section */}

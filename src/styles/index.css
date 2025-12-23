@@ -491,3 +491,18 @@
     background-position: 0% 50%;
   }
 }
+
+/* Hero gradient title animation */
+.animate-gradient-shift {
+  animation: gradientShiftText 3s ease infinite;
+}
+
+@keyframes gradientShiftText {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}

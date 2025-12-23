@@ -41,7 +41,13 @@
       "titleEnd": "pour vous",
       "description": "CIEL AVENUE révolutionne la gestion immobilière avec une plateforme digitale qui connecte acheteurs, vendeurs, promoteurs et experts. Trouvez votre bien idéal en toute simplicité.",
       "ctaPrimary": "Découvrir le parcours",
-      "ctaSecondary": "Comment ça marche"
+      "ctaSecondary": "Comment ça marche",
+      "stats": {
+        "users": "Utilisateurs actifs",
+        "properties": "Biens analysés",
+        "experts": "Experts certifiés",
+        "satisfaction": "Satisfaction client"
+      }
     },
     "vision": {
       "title": "Notre vision",
