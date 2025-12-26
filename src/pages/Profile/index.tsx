@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/providers/auth-provider";
+import { clientSubtypeLabels, expertSubtypeLabels, type ClientSubtype, type ExpertSubtype } from "@/providers/auth-provider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -22,11 +23,38 @@ import {
   Phone,
   Mail,
   Lock,
+  Plus,
+  FileText,
+  CheckCircle2,
 } from "lucide-react";
 
 export default function ProfilPage() {
   const { t } = useTranslation();
-  const { user, isAuthenticated, isExpert, isLoading } = useAuth();
+  const navigate = useNavigate();
+  const { user, isAuthenticated, isExpert, isLoading, activeRole, hasMultipleRoles } = useAuth();
+
+  // Get the display name for the user
+  const getUserDisplayName = () => {
+    if (user?.preferredName) return user.preferredName;
+    return user?.firstName ? `${user.firstName} ${user.lastName}` : user?.name || "Utilisateur";
+  };
+
+  // Get role subtype label
+  const getRoleSubtypeLabel = () => {
+    if (!activeRole) return "";
+    if (activeRole.type === "client") {
+      return clientSubtypeLabels[activeRole.subtype as ClientSubtype];
+    }
+    return expertSubtypeLabels[activeRole.subtype as ExpertSubtype];
+  };
+
+  // Check if user can add a role
+  const canAddRole = () => {
+    if (!user) return false;
+    const hasClientRole = user.roles.some((r) => r.type === "client");
+    const hasExpertRole = user.roles.some((r) => r.type === "expert");
+    return !(hasClientRole && hasExpertRole);
+  };
 
   // Show loading while auth state is being restored
   if (isLoading) {
@@ -82,7 +110,7 @@ export default function ProfilPage() {
             <div className="max-w-5xl mx-auto text-center space-y-4 animate-fade-in-up">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 text-sm font-medium text-accent">
                 <Briefcase className="h-4 w-4" />
-                {t("profile.expert.badge")}
+                {getRoleSubtypeLabel()}
               </div>
               <h1 className="text-4xl font-bold text-foreground">{t("profile.expert.title")}</h1>
               <p className="text-lg text-muted-foreground">{t("profile.expert.subtitle")}</p>
@@ -93,7 +121,7 @@ export default function ProfilPage() {
         {/* Content */}
         <div className="container mx-auto px-4 lg:px-8 py-12 relative z-10">
           <div className="max-w-5xl mx-auto space-y-8">
-            {/* Expert Card */}
+            {/* Personal Info Card */}
             <Card className="border-border bg-card card-hover-lift animate-fade-in-up">
               <CardContent className="p-8">
                 <div className="flex flex-col md:flex-row items-center gap-8">
@@ -104,8 +132,8 @@ export default function ProfilPage() {
                   </div>
                   <div className="flex-1 text-center md:text-left space-y-3">
                     <div>
-                      <h2 className="text-2xl font-bold text-foreground">{user.name}</h2>
-                      <p className="text-muted-foreground">{t("profile.expert.role")}</p>
+                      <h2 className="text-2xl font-bold text-foreground">{getUserDisplayName()}</h2>
+                      <p className="text-muted-foreground">{getRoleSubtypeLabel()}</p>
                     </div>
                     <div className="flex flex-wrap gap-2 justify-center md:justify-start">
                       <Badge variant="secondary" className="bg-accent/10 text-accent border-0">
@@ -118,8 +146,14 @@ export default function ProfilPage() {
                       </Badge>
                       <Badge variant="secondary" className="bg-accent/10 text-accent border-0">
                         <Users className="h-3 w-3 mr-1" />
-                        {expertProfile?.completedProjects || 127} {t("profile.expert.projects")}
+                        {expertProfile?.completedProjects || 0} {t("profile.expert.projects")}
                       </Badge>
+                      {hasMultipleRoles && (
+                        <Badge variant="outline" className="text-muted-foreground">
+                          <Users className="h-3 w-3 mr-1" />
+                          Multi-rôles
+                        </Badge>
+                      )}
                     </div>
                   </div>
                   <div className="flex flex-col gap-2">
@@ -136,11 +170,39 @@ export default function ProfilPage() {
               </CardContent>
             </Card>
 
+            {/* Documents Status */}
+            {activeRole && activeRole.documents && activeRole.documents.length > 0 && (
+              <Card className="border-border bg-card animate-fade-in-up">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <FileText className="h-5 w-5 text-accent" />
+                    Documents fournis
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {activeRole.documents.map((doc, index) => (
+                      <div key={index} className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+                        {doc.uploaded ? (
+                          <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0" />
+                        ) : (
+                          <div className="h-5 w-5 rounded-full border-2 border-muted-foreground flex-shrink-0" />
+                        )}
+                        <span className={`text-sm font-medium ${doc.uploaded ? "text-foreground" : "text-muted-foreground"}`}>
+                          {doc.name}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
             {/* Stats Grid */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 stagger-animation">
               <Card className="border-border bg-card card-hover-lift">
                 <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-accent mb-1">{expertProfile?.completedProjects || 127}</div>
+                  <div className="text-3xl font-bold text-accent mb-1">{expertProfile?.completedProjects || 0}</div>
                   <p className="text-sm text-muted-foreground">{t("profile.expert.stats.projects")}</p>
                 </CardContent>
               </Card>
@@ -164,7 +226,7 @@ export default function ProfilPage() {
               </Card>
             </div>
 
-            {/* Expertise & Certifications */}
+            {/* Expertise & Zones */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card className="border-border bg-card animate-fade-in-up-delay-1">
                 <CardHeader>
@@ -233,6 +295,26 @@ export default function ProfilPage() {
               </CardContent>
             </Card>
 
+            {/* Add Role Card */}
+            {canAddRole() && (
+              <Card
+                className="border-dashed border-2 border-border bg-muted/20 hover:bg-muted/40 transition-colors cursor-pointer"
+                onClick={() => navigate("/journey", { state: { addingRole: true } })}
+              >
+                <CardContent className="p-8 text-center space-y-4">
+                  <div className="h-16 w-16 rounded-full bg-muted mx-auto flex items-center justify-center">
+                    <Plus className="h-8 w-8 text-muted-foreground" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground">Ajouter un rôle Client</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Vous pouvez également utiliser CIEL AVENUE en tant que client (acheteur, vendeur, etc.)
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
             {/* CTA */}
             <Card className="border-accent/20 bg-gradient-to-r from-accent/5 to-primary/5">
               <CardContent className="p-8 text-center space-y-6">
@@ -270,7 +352,7 @@ export default function ProfilPage() {
           <div className="max-w-5xl mx-auto text-center space-y-4 animate-fade-in-up">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-sm font-medium text-primary">
               <BadgeCheck className="h-4 w-4" />
-              {t("profile.client.badge")}
+              {getRoleSubtypeLabel()}
             </div>
             <h1 className="text-4xl font-bold text-foreground">{t("profile.client.title")}</h1>
             <p className="text-lg text-muted-foreground">{t("profile.client.subtitle")}</p>
@@ -281,7 +363,7 @@ export default function ProfilPage() {
       {/* Content */}
       <div className="container mx-auto px-4 lg:px-8 py-12 relative z-10">
         <div className="max-w-5xl mx-auto space-y-8">
-          {/* Score de solvabilité */}
+          {/* Personal Info & Score */}
           <Card className="border-border bg-card card-hover-lift animate-fade-in-up">
             <CardContent className="p-8">
               <div className="flex flex-col md:flex-row items-center gap-8">
@@ -295,8 +377,10 @@ export default function ProfilPage() {
                 </div>
                 <div className="flex-1 text-center md:text-left space-y-3">
                   <div>
-                    <h2 className="text-2xl font-bold text-foreground">{t("profile.client.excellentProfile")}</h2>
-                    <p className="text-muted-foreground">{t("profile.client.solvabilityScore")}</p>
+                    <h2 className="text-2xl font-bold text-foreground">{getUserDisplayName()}</h2>
+                    <p className="text-muted-foreground">
+                      {getRoleSubtypeLabel()} • {t("profile.client.solvabilityScore")}
+                    </p>
                   </div>
                   <div className="flex flex-wrap gap-2 justify-center md:justify-start">
                     <Badge variant="secondary" className="bg-primary/10 text-primary border-0">
@@ -311,6 +395,12 @@ export default function ProfilPage() {
                       <User className="h-3 w-3 mr-1" />
                       {t("profile.client.profileComplete")}
                     </Badge>
+                    {hasMultipleRoles && (
+                      <Badge variant="outline" className="text-muted-foreground">
+                        <Briefcase className="h-3 w-3 mr-1" />
+                        Multi-rôles
+                      </Badge>
+                    )}
                   </div>
                 </div>
                 <div className="flex-shrink-0 space-y-2">
@@ -326,6 +416,34 @@ export default function ProfilPage() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Documents Status */}
+          {activeRole && activeRole.documents && activeRole.documents.length > 0 && (
+            <Card className="border-border bg-card animate-fade-in-up">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <FileText className="h-5 w-5 text-primary" />
+                  Documents fournis
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {activeRole.documents.map((doc, index) => (
+                    <div key={index} className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+                      {doc.uploaded ? (
+                        <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
+                      ) : (
+                        <div className="h-5 w-5 rounded-full border-2 border-muted-foreground flex-shrink-0" />
+                      )}
+                      <span className={`text-sm font-medium ${doc.uploaded ? "text-foreground" : "text-muted-foreground"}`}>
+                        {doc.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )}
 
           {/* Critères de recherche */}
           <Card className="border-border bg-card animate-fade-in-up-delay-1">
@@ -381,33 +499,6 @@ export default function ProfilPage() {
             </CardContent>
           </Card>
 
-          {/* Documents fournis */}
-          <Card className="border-border bg-card animate-fade-in-up-delay-2">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <BadgeCheck className="h-5 w-5 text-primary" />
-                {t("profile.client.documents.title")}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 stagger-animation">
-                {[
-                  t("profile.client.documents.id"),
-                  t("profile.client.documents.address"),
-                  t("profile.client.documents.tax"),
-                  t("profile.client.documents.payslips"),
-                  t("profile.client.documents.bank"),
-                  t("profile.client.documents.professional"),
-                ].map((doc) => (
-                  <div key={doc} className="flex items-center gap-3 p-3 rounded-lg bg-muted">
-                    <BadgeCheck className="h-5 w-5 text-primary flex-shrink-0" />
-                    <span className="text-sm font-medium text-foreground">{doc}</span>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
           {/* Informations complémentaires */}
           <Card className="border-border bg-card animate-fade-in-up-delay-3">
             <CardHeader>
@@ -419,7 +510,7 @@ export default function ProfilPage() {
             <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
                 <p className="text-sm text-muted-foreground mb-1">{t("profile.client.info.maritalStatus")}</p>
-                <p className="font-semibold text-foreground capitalize">{clientProfile?.maritalStatus || "Marié(e)"}</p>
+                <p className="font-semibold text-foreground capitalize">{clientProfile?.maritalStatus || "Non spécifié"}</p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground mb-1">{t("profile.client.info.createdAt")}</p>
@@ -434,6 +525,26 @@ export default function ProfilPage() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Add Role Card */}
+          {canAddRole() && (
+            <Card
+              className="border-dashed border-2 border-border bg-muted/20 hover:bg-muted/40 transition-colors cursor-pointer"
+              onClick={() => navigate("/journey", { state: { addingRole: true } })}
+            >
+              <CardContent className="p-8 text-center space-y-4">
+                <div className="h-16 w-16 rounded-full bg-muted mx-auto flex items-center justify-center">
+                  <Plus className="h-8 w-8 text-muted-foreground" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-foreground">Ajouter un rôle Expert</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Vous êtes professionnel de l'immobilier ? Ajoutez votre profil expert pour accéder aux clients pré-qualifiés.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          )}
 
           {/* CTA */}
           <Card className="border-primary/20 bg-gradient-to-r from-primary/5 to-secondary/5">

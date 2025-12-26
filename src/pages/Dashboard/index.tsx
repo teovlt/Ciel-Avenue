@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/providers/auth-provider";
+import { clientSubtypeLabels, expertSubtypeLabels, type ClientSubtype, type ExpertSubtype } from "@/providers/auth-provider";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -27,11 +28,97 @@ import {
   Clock,
   Phone,
   ArrowRight,
+  Plus,
+  ChevronDown,
+  Check,
 } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
+
+// Role Switcher Component
+function RoleSwitcher() {
+  const { user, activeRole, setActiveRoleIndex, hasMultipleRoles } = useAuth();
+  const navigate = useNavigate();
+
+  if (!user || !activeRole) return null;
+
+  const getActiveRoleLabel = () => {
+    if (activeRole.type === "client") {
+      return clientSubtypeLabels[activeRole.subtype as ClientSubtype];
+    }
+    return expertSubtypeLabels[activeRole.subtype as ExpertSubtype];
+  };
+
+  const canAddRole = () => {
+    // Can add a role if user doesn't have both client and expert roles
+    const hasClientRole = user.roles.some((r) => r.type === "client");
+    const hasExpertRole = user.roles.some((r) => r.type === "expert");
+    return !(hasClientRole && hasExpertRole);
+  };
+
+  const handleAddRole = () => {
+    // Navigate to journey with state indicating we're adding a role
+    navigate("/journey", { state: { addingRole: true } });
+  };
+
+  if (!hasMultipleRoles && !canAddRole()) {
+    return (
+      <Badge className={activeRole.type === "expert" ? "bg-accent text-accent-foreground" : "bg-primary text-primary-foreground"}>
+        {getActiveRoleLabel()}
+      </Badge>
+    );
+  }
+
+  return (
+    <div className="flex items-center gap-2">
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" size="sm" className="gap-2">
+            {activeRole.type === "expert" ? <Briefcase className="h-4 w-4" /> : <Users className="h-4 w-4" />}
+            {getActiveRoleLabel()}
+            <ChevronDown className="h-3 w-3" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className="w-56">
+          {user.roles.map((role, index) => {
+            const label =
+              role.type === "client"
+                ? clientSubtypeLabels[role.subtype as ClientSubtype]
+                : expertSubtypeLabels[role.subtype as ExpertSubtype];
+            const isActive = index === user.activeRoleIndex;
+
+            return (
+              <DropdownMenuItem key={index} onClick={() => setActiveRoleIndex(index)} className="flex items-center gap-2 cursor-pointer">
+                {role.type === "expert" ? <Briefcase className="h-4 w-4" /> : <Users className="h-4 w-4" />}
+                <span className="flex-1">{label}</span>
+                {isActive && <Check className="h-4 w-4 text-primary" />}
+              </DropdownMenuItem>
+            );
+          })}
+
+          {canAddRole() && (
+            <>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={handleAddRole} className="cursor-pointer text-primary">
+                <Plus className="h-4 w-4 mr-2" />
+                Ajouter un rôle
+              </DropdownMenuItem>
+            </>
+          )}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
+  );
+}
 
 export default function Dashboard() {
   const { t } = useTranslation();
-  const { isAuthenticated, isExpert, user, isLoading } = useAuth();
+  const { isAuthenticated, isExpert, user, isLoading, activeRole } = useAuth();
   const [messageInput, setMessageInput] = useState("");
 
   // Client mock data
@@ -211,6 +298,12 @@ export default function Dashboard() {
     );
   }
 
+  // Get the display name for the user
+  const getUserDisplayName = () => {
+    if (user?.preferredName) return user.preferredName;
+    return user?.firstName || user?.name || "Utilisateur";
+  };
+
   // EXPERT DASHBOARD
   if (isExpert) {
     return (
@@ -228,7 +321,7 @@ export default function Dashboard() {
               <div>
                 <h1 className="text-3xl font-bold text-foreground">{t("dashboard.expert.title")}</h1>
                 <p className="text-muted-foreground mt-1">
-                  {t("dashboard.expert.welcome")}, {user?.name}
+                  {t("dashboard.expert.welcome")}, {getUserDisplayName()}
                 </p>
               </div>
               <div className="flex items-center gap-3">
@@ -238,7 +331,7 @@ export default function Dashboard() {
                     {t("dashboard.viewProfile")}
                   </Link>
                 </Button>
-                <Badge className="bg-accent text-accent-foreground">{t("dashboard.expert.badge")}</Badge>
+                <RoleSwitcher />
               </div>
             </div>
           </div>
@@ -517,7 +610,7 @@ export default function Dashboard() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
               <h1 className="text-3xl font-bold text-foreground">{t("dashboard.title")}</h1>
-              <p className="text-muted-foreground mt-1">{t("dashboard.welcome")}</p>
+              <p className="text-muted-foreground mt-1">Bienvenue, {getUserDisplayName()}</p>
             </div>
             <div className="flex items-center gap-3">
               <Button asChild variant="outline" size="sm">
@@ -526,7 +619,7 @@ export default function Dashboard() {
                   {t("dashboard.viewProfile")}
                 </Link>
               </Button>
-              <Badge className="bg-primary text-primary-foreground">{t("dashboard.activeProfile")}</Badge>
+              <RoleSwitcher />
               <Badge variant="outline">3 {t("dashboard.propertiesPending")}</Badge>
             </div>
           </div>
