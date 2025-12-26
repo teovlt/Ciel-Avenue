@@ -178,25 +178,25 @@ export const expertDocuments: Record<ExpertSubtype, string[]> = {
   artisan: [...commonExpertDocuments, ...expertSpecificDocuments.artisan],
 };
 
-// Labels for client subtypes
-export const clientSubtypeLabels: Record<ClientSubtype, string> = {
-  acheteur: "Acheteur",
-  vendeur: "Vendeur",
-  bailleur: "Bailleur",
-  locataire: "Locataire",
-  renovateur: "Rénovateur",
+// Labels for client subtypes (i18n keys - translate with t() function)
+export const clientSubtypeLabelKeys: Record<ClientSubtype, string> = {
+  acheteur: "data.clientSubtypes.acheteur.label",
+  vendeur: "data.clientSubtypes.vendeur.label",
+  bailleur: "data.clientSubtypes.bailleur.label",
+  locataire: "data.clientSubtypes.locataire.label",
+  renovateur: "data.clientSubtypes.renovateur.label",
 };
 
-// Labels for expert subtypes
-export const expertSubtypeLabels: Record<ExpertSubtype, string> = {
-  notaire: "Notaire",
-  diagnostiqueur: "Diagnostiqueur Immobilier",
-  marchand: "Marchands de biens / Agences",
-  maitre_oeuvre: "Maître d'oeuvre",
-  promoteur: "Promoteur",
-  photographe: "Photographe immobilier",
-  courtier: "Courtier bancaire",
-  artisan: "Artisan second oeuvre",
+// Labels for expert subtypes (i18n keys - translate with t() function)
+export const expertSubtypeLabelKeys: Record<ExpertSubtype, string> = {
+  notaire: "data.expertSubtypes.notaire.label",
+  diagnostiqueur: "data.expertSubtypes.diagnostiqueur.label",
+  marchand: "data.expertSubtypes.marchand.label",
+  maitre_oeuvre: "data.expertSubtypes.maitre_oeuvre.label",
+  promoteur: "data.expertSubtypes.promoteur.label",
+  photographe: "data.expertSubtypes.photographe.label",
+  courtier: "data.expertSubtypes.courtier.label",
+  artisan: "data.expertSubtypes.artisan.label",
 };
 
 interface AuthContextType {
@@ -391,9 +391,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (!user) return [];
     return user.roles.map((role) => {
       if (role.type === "client") {
-        return clientSubtypeLabels[role.subtype as ClientSubtype];
+        return clientSubtypeLabelKeys[role.subtype as ClientSubtype];
       }
-      return expertSubtypeLabels[role.subtype as ExpertSubtype];
+      return expertSubtypeLabelKeys[role.subtype as ExpertSubtype];
     });
   }, [user]);
 

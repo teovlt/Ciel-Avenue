@@ -1,6 +1,7 @@
 "use client";
 
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -24,6 +25,8 @@ import {
 } from "lucide-react";
 
 export default function HowItWorks() {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen pt-20 page-transition">
       {/* Decorative elements */}
@@ -38,14 +41,13 @@ export default function HowItWorks() {
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-sm font-medium text-primary animate-bounce-in">
               <Sparkles className="h-4 w-4" />
-              Plateforme tout-en-un
+              {t("howItWorks.hero.badge")}
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight text-balance animate-fade-in-up">
-              Comment fonctionne <span className="text-primary">CIEL AVENUE</span> ?
+              {t("howItWorks.hero.title")} <span className="text-primary">{t("howItWorks.hero.titleHighlight")}</span> ?
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty max-w-3xl mx-auto animate-fade-in-up-delay-1">
-              Une plateforme qui connecte clients et experts immobiliers de manière sécurisée. Des documents vérifiés, des profils
-              qualifiés, et un accompagnement personnalisé.
+              {t("howItWorks.hero.description")}
             </p>
           </div>
         </div>
@@ -56,10 +58,8 @@ export default function HowItWorks() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Le processus en 4 étapes</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                De la création de votre profil à la concrétisation de votre projet immobilier
-              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t("howItWorks.process.title")}</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">{t("howItWorks.process.description")}</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -71,12 +71,10 @@ export default function HowItWorks() {
                     <UserCheck className="h-8 w-8 text-primary" />
                   </div>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-xs font-medium text-primary">
-                    Étape 1
+                    {t("howItWorks.process.step1.badge")}
                   </div>
-                  <h3 className="text-xl font-bold text-foreground">Créez votre profil</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Inscrivez-vous et choisissez votre rôle : Acheteur, Vendeur, Locataire, ou Expert immobilier.
-                  </p>
+                  <h3 className="text-xl font-bold text-foreground">{t("howItWorks.process.step1.title")}</h3>
+                  <p className="text-sm text-muted-foreground">{t("howItWorks.process.step1.description")}</p>
                 </CardContent>
               </Card>
 
@@ -88,12 +86,10 @@ export default function HowItWorks() {
                     <FileText className="h-8 w-8 text-primary" />
                   </div>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-xs font-medium text-primary">
-                    Étape 2
+                    {t("howItWorks.process.step2.badge")}
                   </div>
-                  <h3 className="text-xl font-bold text-foreground">Déposez vos documents</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Téléchargez les documents requis pour votre profil. Ils seront vérifiés par nos experts.
-                  </p>
+                  <h3 className="text-xl font-bold text-foreground">{t("howItWorks.process.step2.title")}</h3>
+                  <p className="text-sm text-muted-foreground">{t("howItWorks.process.step2.description")}</p>
                 </CardContent>
               </Card>
 
@@ -105,12 +101,10 @@ export default function HowItWorks() {
                     <BadgeCheck className="h-8 w-8 text-primary" />
                   </div>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-xs font-medium text-primary">
-                    Étape 3
+                    {t("howItWorks.process.step3.badge")}
                   </div>
-                  <h3 className="text-xl font-bold text-foreground">Profil vérifié</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Votre profil est validé et vous obtenez un score de solvabilité ou de confiance.
-                  </p>
+                  <h3 className="text-xl font-bold text-foreground">{t("howItWorks.process.step3.title")}</h3>
+                  <p className="text-sm text-muted-foreground">{t("howItWorks.process.step3.description")}</p>
                 </CardContent>
               </Card>
 
@@ -122,12 +116,10 @@ export default function HowItWorks() {
                     <Users className="h-8 w-8 text-primary" />
                   </div>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-xs font-medium text-primary">
-                    Étape 4
+                    {t("howItWorks.process.step4.badge")}
                   </div>
-                  <h3 className="text-xl font-bold text-foreground">Connectez-vous</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Échangez avec les experts ou clients qualifiés pour avancer sur votre projet.
-                  </p>
+                  <h3 className="text-xl font-bold text-foreground">{t("howItWorks.process.step4.title")}</h3>
+                  <p className="text-sm text-muted-foreground">{t("howItWorks.process.step4.description")}</p>
                 </CardContent>
               </Card>
             </div>
@@ -142,12 +134,10 @@ export default function HowItWorks() {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-sm font-medium text-accent mb-4">
                 <Building className="h-4 w-4" />
-                Cas concrets
+                {t("howItWorks.cases.badge")}
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Exemples de parcours utilisateurs</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Découvrez comment différents profils utilisent CIEL AVENUE pour leurs projets immobiliers
-              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t("howItWorks.cases.title")}</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">{t("howItWorks.cases.description")}</p>
             </div>
 
             <div className="space-y-8">
@@ -161,40 +151,39 @@ export default function HowItWorks() {
                           <ShoppingCart className="h-7 w-7 text-primary" />
                         </div>
                         <div>
-                          <h3 className="text-2xl font-bold text-foreground">Marie, 32 ans - Acheteuse</h3>
-                          <p className="text-muted-foreground">Première acquisition immobilière</p>
+                          <h3 className="text-2xl font-bold text-foreground">{t("howItWorks.cases.buyer.name")}</h3>
+                          <p className="text-muted-foreground">{t("howItWorks.cases.buyer.subtitle")}</p>
                         </div>
                       </div>
 
                       <div className="bg-muted/50 rounded-lg p-6 space-y-4">
                         <h4 className="font-semibold text-foreground flex items-center gap-2">
                           <Clock className="h-5 w-5 text-primary" />
-                          Son parcours sur CIEL AVENUE
+                          {t("howItWorks.cases.buyer.journeyTitle")}
                         </h4>
                         <div className="space-y-3 text-sm">
                           <div className="flex items-start gap-3">
                             <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                             <p>
-                              <strong>Jour 1 :</strong> Crée son profil "Acheteur" et renseigne son budget (350 000€), sa localisation
-                              souhaitée (Paris 15ème) et le type de bien (T3).
+                              <strong>Jour 1 :</strong> {t("howItWorks.cases.buyer.day1")}
                             </p>
                           </div>
                           <div className="flex items-start gap-3">
                             <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                             <p>
-                              <strong>Jour 2 :</strong> Dépose ses documents : bulletins de salaire, avis d'imposition, relevés bancaires.
+                              <strong>Jour 2 :</strong> {t("howItWorks.cases.buyer.day2")}
                             </p>
                           </div>
                           <div className="flex items-start gap-3">
                             <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                             <p>
-                              <strong>Jour 3 :</strong> Score de solvabilité calculé : 8.5/10. Capacité d'emprunt validée.
+                              <strong>Jour 3 :</strong> {t("howItWorks.cases.buyer.day3")}
                             </p>
                           </div>
                           <div className="flex items-start gap-3">
                             <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                             <p>
-                              <strong>Jour 5 :</strong> Un courtier certifié la contacte pour optimiser son financement.
+                              <strong>Jour 5 :</strong> {t("howItWorks.cases.buyer.day5")}
                             </p>
                           </div>
                         </div>
@@ -208,16 +197,16 @@ export default function HowItWorks() {
                             <span className="text-2xl font-bold text-white">8.5</span>
                           </div>
                           <div>
-                            <p className="font-semibold text-foreground">Score de solvabilité</p>
-                            <p className="text-xs text-muted-foreground">Profil vérifié et qualifié</p>
+                            <p className="font-semibold text-foreground">{t("howItWorks.cases.buyer.scoreTitle")}</p>
+                            <p className="text-xs text-muted-foreground">{t("howItWorks.cases.buyer.scoreSubtitle")}</p>
                           </div>
                           <div className="space-y-2 text-sm">
                             <div className="flex justify-between">
-                              <span className="text-muted-foreground">Capacité d'emprunt</span>
+                              <span className="text-muted-foreground">{t("howItWorks.cases.buyer.borrowingCapacity")}</span>
                               <span className="font-semibold">350 000 €</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-muted-foreground">Taux estimé</span>
+                              <span className="text-muted-foreground">{t("howItWorks.cases.buyer.estimatedRate")}</span>
                               <span className="font-semibold">3.2%</span>
                             </div>
                           </div>
@@ -238,40 +227,39 @@ export default function HowItWorks() {
                           <Hammer className="h-7 w-7 text-accent" />
                         </div>
                         <div>
-                          <h3 className="text-2xl font-bold text-foreground">Thomas, 45 ans - Rénovateur</h3>
-                          <p className="text-muted-foreground">Projet de rénovation maison ancienne</p>
+                          <h3 className="text-2xl font-bold text-foreground">{t("howItWorks.cases.renovator.name")}</h3>
+                          <p className="text-muted-foreground">{t("howItWorks.cases.renovator.subtitle")}</p>
                         </div>
                       </div>
 
                       <div className="bg-muted/50 rounded-lg p-6 space-y-4">
                         <h4 className="font-semibold text-foreground flex items-center gap-2">
                           <Clock className="h-5 w-5 text-accent" />
-                          Son parcours sur CIEL AVENUE
+                          {t("howItWorks.cases.renovator.journeyTitle")}
                         </h4>
                         <div className="space-y-3 text-sm">
                           <div className="flex items-start gap-3">
                             <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                             <p>
-                              <strong>Jour 1 :</strong> Crée son profil "Rénovateur" avec son projet : rénovation complète d'une maison de
-                              120m² à Villeurbanne.
+                              <strong>Jour 1 :</strong> {t("howItWorks.cases.renovator.day1")}
                             </p>
                           </div>
                           <div className="flex items-start gap-3">
                             <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                             <p>
-                              <strong>Jour 2 :</strong> Dépose les devis travaux et les plans du projet. Budget estimé : 80 000€.
+                              <strong>Jour 2 :</strong> {t("howItWorks.cases.renovator.day2")}
                             </p>
                           </div>
                           <div className="flex items-start gap-3">
                             <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                             <p>
-                              <strong>Jour 4 :</strong> Un maître d'œuvre certifié analyse son projet et propose un accompagnement.
+                              <strong>Jour 4 :</strong> {t("howItWorks.cases.renovator.day4")}
                             </p>
                           </div>
                           <div className="flex items-start gap-3">
                             <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                             <p>
-                              <strong>Jour 7 :</strong> Mise en relation avec des artisans qualifiés pour les différents lots.
+                              <strong>Jour 7 :</strong> {t("howItWorks.cases.renovator.day7")}
                             </p>
                           </div>
                         </div>
@@ -281,27 +269,27 @@ export default function HowItWorks() {
                     <div className="lg:w-80 space-y-4">
                       <Card className="bg-card border-accent/20">
                         <CardContent className="p-6 space-y-4">
-                          <h4 className="font-semibold text-foreground text-center">Experts contactés</h4>
+                          <h4 className="font-semibold text-foreground text-center">{t("howItWorks.cases.renovator.expertsTitle")}</h4>
                           <div className="space-y-3">
                             <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
                               <ClipboardCheck className="h-5 w-5 text-accent" />
                               <div>
-                                <p className="text-sm font-medium">Maître d'œuvre</p>
-                                <p className="text-xs text-muted-foreground">Coordination projet</p>
+                                <p className="text-sm font-medium">{t("howItWorks.cases.renovator.projectManager")}</p>
+                                <p className="text-xs text-muted-foreground">{t("howItWorks.cases.renovator.projectManagerDesc")}</p>
                               </div>
                             </div>
                             <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
                               <Hammer className="h-5 w-5 text-accent" />
                               <div>
-                                <p className="text-sm font-medium">Artisans</p>
-                                <p className="text-xs text-muted-foreground">Plomberie, électricité</p>
+                                <p className="text-sm font-medium">{t("howItWorks.cases.renovator.artisans")}</p>
+                                <p className="text-xs text-muted-foreground">{t("howItWorks.cases.renovator.artisansDesc")}</p>
                               </div>
                             </div>
                             <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
                               <Scale className="h-5 w-5 text-accent" />
                               <div>
-                                <p className="text-sm font-medium">Diagnostiqueur</p>
-                                <p className="text-xs text-muted-foreground">DPE, amiante</p>
+                                <p className="text-sm font-medium">{t("howItWorks.cases.renovator.surveyor")}</p>
+                                <p className="text-xs text-muted-foreground">{t("howItWorks.cases.renovator.surveyorDesc")}</p>
                               </div>
                             </div>
                           </div>
@@ -322,40 +310,39 @@ export default function HowItWorks() {
                           <Briefcase className="h-7 w-7 text-accent" />
                         </div>
                         <div>
-                          <h3 className="text-2xl font-bold text-foreground">Sophie, 38 ans - Diagnostiqueur Expert</h3>
-                          <p className="text-muted-foreground">Professionnelle certifiée DPE</p>
+                          <h3 className="text-2xl font-bold text-foreground">{t("howItWorks.cases.expert.name")}</h3>
+                          <p className="text-muted-foreground">{t("howItWorks.cases.expert.subtitle")}</p>
                         </div>
                       </div>
 
                       <div className="bg-muted/50 rounded-lg p-6 space-y-4">
                         <h4 className="font-semibold text-foreground flex items-center gap-2">
                           <TrendingUp className="h-5 w-5 text-accent" />
-                          Son expérience en tant qu'Expert
+                          {t("howItWorks.cases.expert.journeyTitle")}
                         </h4>
                         <div className="space-y-3 text-sm">
                           <div className="flex items-start gap-3">
                             <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                             <p>
-                              <strong>Inscription :</strong> Crée son profil "Expert Diagnostiqueur" et dépose ses certifications DPE,
-                              amiante, plomb.
+                              <strong>Inscription :</strong> {t("howItWorks.cases.expert.registration")}
                             </p>
                           </div>
                           <div className="flex items-start gap-3">
                             <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                             <p>
-                              <strong>Vérification :</strong> Documents validés par l'équipe CIEL AVENUE. Profil certifié en 48h.
+                              <strong>Vérification :</strong> {t("howItWorks.cases.expert.verification")}
                             </p>
                           </div>
                           <div className="flex items-start gap-3">
                             <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                             <p>
-                              <strong>Leads qualifiés :</strong> Reçoit des demandes de clients pré-vérifiés avec dossiers complets.
+                              <strong>Leads qualifiés :</strong> {t("howItWorks.cases.expert.leads")}
                             </p>
                           </div>
                           <div className="flex items-start gap-3">
                             <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                             <p>
-                              <strong>Résultat :</strong> 156 missions réalisées via la plateforme en 1 an.
+                              <strong>Résultat :</strong> {t("howItWorks.cases.expert.result")}
                             </p>
                           </div>
                         </div>
@@ -367,20 +354,20 @@ export default function HowItWorks() {
                         <CardContent className="p-6 text-center space-y-4">
                           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-xs font-medium text-accent">
                             <BadgeCheck className="h-4 w-4" />
-                            Expert Certifié
+                            {t("howItWorks.cases.expert.certifiedBadge")}
                           </div>
                           <h4 className="text-xl font-bold text-foreground">DiagImmo Pro</h4>
                           <div className="space-y-2 text-sm">
                             <div className="flex justify-between">
-                              <span className="text-muted-foreground">Missions réalisées</span>
+                              <span className="text-muted-foreground">{t("howItWorks.cases.expert.missionsCompleted")}</span>
                               <span className="font-semibold">156</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-muted-foreground">Zones couvertes</span>
+                              <span className="text-muted-foreground">{t("howItWorks.cases.expert.zonesCovered")}</span>
                               <span className="font-semibold">Paris, Lyon</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-muted-foreground">Note moyenne</span>
+                              <span className="text-muted-foreground">{t("howItWorks.cases.expert.averageRating")}</span>
                               <span className="font-semibold">4.9/5</span>
                             </div>
                           </div>
@@ -406,10 +393,8 @@ export default function HowItWorks() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Pourquoi choisir CIEL AVENUE ?</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Une plateforme pensée pour simplifier et sécuriser chaque étape de votre projet immobilier
-              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t("howItWorks.whyUs.title")}</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">{t("howItWorks.whyUs.description")}</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -418,10 +403,8 @@ export default function HowItWorks() {
                   <div className="h-16 w-16 rounded-full bg-primary/10 mx-auto flex items-center justify-center">
                     <Shield className="h-8 w-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground">Documents vérifiés</h3>
-                  <p className="text-muted-foreground">
-                    Tous les documents sont vérifiés par nos experts avant validation. Garantie d'authenticité.
-                  </p>
+                  <h3 className="text-xl font-bold text-foreground">{t("howItWorks.whyUs.verifiedDocs.title")}</h3>
+                  <p className="text-muted-foreground">{t("howItWorks.whyUs.verifiedDocs.description")}</p>
                 </CardContent>
               </Card>
 
@@ -430,10 +413,8 @@ export default function HowItWorks() {
                   <div className="h-16 w-16 rounded-full bg-primary/10 mx-auto flex items-center justify-center">
                     <UserCheck className="h-8 w-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground">Profils qualifiés</h3>
-                  <p className="text-muted-foreground">
-                    Clients pré-qualifiés avec score de solvabilité. Experts certifiés avec références vérifiées.
-                  </p>
+                  <h3 className="text-xl font-bold text-foreground">{t("howItWorks.whyUs.qualifiedProfiles.title")}</h3>
+                  <p className="text-muted-foreground">{t("howItWorks.whyUs.qualifiedProfiles.description")}</p>
                 </CardContent>
               </Card>
 
@@ -442,10 +423,8 @@ export default function HowItWorks() {
                   <div className="h-16 w-16 rounded-full bg-primary/10 mx-auto flex items-center justify-center">
                     <MessageSquare className="h-8 w-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground">Mise en relation directe</h3>
-                  <p className="text-muted-foreground">
-                    Échangez directement avec les experts ou clients. Messagerie intégrée et notifications.
-                  </p>
+                  <h3 className="text-xl font-bold text-foreground">{t("howItWorks.whyUs.directConnection.title")}</h3>
+                  <p className="text-muted-foreground">{t("howItWorks.whyUs.directConnection.description")}</p>
                 </CardContent>
               </Card>
             </div>
@@ -459,32 +438,29 @@ export default function HowItWorks() {
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-sm font-medium text-accent">
               <Users className="h-4 w-4" />
-              Fonctionnalité unique
+              {t("howItWorks.multiRole.badge")}
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Cumulez plusieurs rôles</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Vous êtes acheteur ET rénovateur ? Diagnostiqueur ET locataire ? Avec CIEL AVENUE, vous pouvez avoir plusieurs casquettes sur
-              un seul compte.
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">{t("howItWorks.multiRole.title")}</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">{t("howItWorks.multiRole.description")}</p>
 
             <div className="flex flex-wrap justify-center gap-4 pt-4">
               <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-sm font-medium text-primary">
                 <ShoppingCart className="h-4 w-4" />
-                Acheteur
+                {t("howItWorks.multiRole.buyer")}
               </div>
               <span className="text-muted-foreground self-center">+</span>
               <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-sm font-medium text-primary">
                 <Hammer className="h-4 w-4" />
-                Rénovateur
+                {t("howItWorks.multiRole.renovator")}
               </div>
               <span className="text-muted-foreground self-center">+</span>
               <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-sm font-medium text-accent">
                 <ClipboardCheck className="h-4 w-4" />
-                Expert Diagnostiqueur
+                {t("howItWorks.multiRole.expertSurveyor")}
               </div>
             </div>
 
-            <p className="text-sm text-muted-foreground">Basculez entre vos différents profils en un clic depuis votre tableau de bord.</p>
+            <p className="text-sm text-muted-foreground">{t("howItWorks.multiRole.switchInfo")}</p>
           </div>
         </div>
       </section>
@@ -493,14 +469,12 @@ export default function HowItWorks() {
       <section className="py-16 md:py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-8">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-balance">Prêt à démarrer votre projet ?</h2>
-            <p className="text-lg text-primary-foreground/90 leading-relaxed">
-              Créez votre compte gratuitement et rejoignez des milliers d'utilisateurs qui font confiance à CIEL AVENUE.
-            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-balance">{t("howItWorks.cta.title")}</h2>
+            <p className="text-lg text-primary-foreground/90 leading-relaxed">{t("howItWorks.cta.description")}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" variant="secondary" className="card-hover-lift">
                 <Link to="/journey">
-                  Créer mon compte <ArrowRight className="ml-2 h-5 w-5" />
+                  {t("howItWorks.cta.createAccount")} <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
               <Button
@@ -509,7 +483,7 @@ export default function HowItWorks() {
                 variant="outline"
                 className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10"
               >
-                <Link to="/contact">Nous contacter</Link>
+                <Link to="/contact">{t("howItWorks.cta.contactUs")}</Link>
               </Button>
             </div>
           </div>

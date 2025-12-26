@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useAuth } from "@/providers/auth-provider";
-import { clientSubtypeLabels, expertSubtypeLabels, type ClientSubtype, type ExpertSubtype } from "@/providers/auth-provider";
+import { clientSubtypeLabelKeys, expertSubtypeLabelKeys, useAuth } from "@/providers/auth-provider";
+import { type ClientSubtype, type ExpertSubtype } from "@/providers/auth-provider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -26,6 +26,7 @@ import {
   FileText,
   CheckCircle2,
 } from "lucide-react";
+import { t } from "i18next";
 
 export default function ProfilPage() {
   const { t } = useTranslation();
@@ -41,9 +42,9 @@ export default function ProfilPage() {
   const getRoleSubtypeLabel = () => {
     if (!activeRole) return "";
     if (activeRole.type === "client") {
-      return clientSubtypeLabels[activeRole.subtype as ClientSubtype];
+      return t(clientSubtypeLabelKeys[activeRole.subtype as ClientSubtype]);
     }
-    return expertSubtypeLabels[activeRole.subtype as ExpertSubtype];
+    return t(expertSubtypeLabelKeys[activeRole.subtype as ExpertSubtype]);
   };
 
   // Show loading while auth state is being restored

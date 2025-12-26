@@ -1,4 +1,14 @@
 {
+  "common": {
+    "back": "Back",
+    "continue": "Continue",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "loading": "Loading...",
+    "error": "Error"
+  },
   "navbar": {
     "home": "Home",
     "howItWorks": "How it works",
@@ -245,104 +255,112 @@
   },
   "howItWorks": {
     "hero": {
-      "title": "How does it work?",
-      "description": "A 3-module journey designed to simplify your real estate project and connect you to the best opportunities."
+      "badge": "All-in-one platform",
+      "title": "How does",
+      "titleHighlight": "CIEL AVENUE",
+      "description": "A platform that securely connects clients and real estate experts. Verified documents, qualified profiles, and personalized support."
     },
-    "overview": {
-      "module1": {
-        "title": "Definition",
-        "description": "Your criteria and needs"
+    "process": {
+      "title": "The 4-step process",
+      "description": "From creating your profile to achieving your real estate project",
+      "step1": {
+        "badge": "Step 1",
+        "title": "Create your profile",
+        "description": "Sign up and choose your role: Buyer, Seller, Tenant, or Real Estate Expert."
       },
-      "module2": {
-        "title": "Legal",
-        "description": "Situation and documents"
+      "step2": {
+        "badge": "Step 2",
+        "title": "Upload your documents",
+        "description": "Upload the required documents for your profile. They will be verified by our experts."
       },
-      "module3": {
-        "title": "Solvency",
-        "description": "Score and capacity"
+      "step3": {
+        "badge": "Step 3",
+        "title": "Verified profile",
+        "description": "Your profile is validated and you receive a solvency or trust score."
+      },
+      "step4": {
+        "badge": "Step 4",
+        "title": "Get connected",
+        "description": "Connect with qualified experts or clients to advance your project."
       }
     },
-    "module1": {
-      "badge": "Module 1",
-      "title": "Define your criteria",
-      "description": "An intelligent decision tree that guides you step by step to precisely define your real estate needs.",
-      "feature1": {
-        "title": "Property type",
-        "description": "Apartment, house, land - define your ideal project"
+    "cases": {
+      "badge": "Real examples",
+      "title": "User journey examples",
+      "description": "Discover how different profiles use CIEL AVENUE for their real estate projects",
+      "buyer": {
+        "name": "Marie, 32 years old - Buyer",
+        "subtitle": "First property purchase",
+        "journeyTitle": "Her journey on CIEL AVENUE",
+        "day1": "Creates her \"Buyer\" profile and enters her budget (€350,000), desired location (Paris 15th) and property type (3-room).",
+        "day2": "Uploads her documents: payslips, tax notice, bank statements.",
+        "day3": "Solvency score calculated: 8.5/10. Borrowing capacity validated.",
+        "day5": "A certified broker contacts her to optimize her financing.",
+        "scoreTitle": "Solvency score",
+        "scoreSubtitle": "Verified and qualified profile",
+        "borrowingCapacity": "Borrowing capacity",
+        "estimatedRate": "Estimated rate"
       },
-      "feature2": {
-        "title": "Location",
-        "description": "Geographic areas, proximity to services and transport"
+      "renovator": {
+        "name": "Thomas, 45 years old - Renovator",
+        "subtitle": "Old house renovation project",
+        "journeyTitle": "His journey on CIEL AVENUE",
+        "day1": "Creates his \"Renovator\" profile with his project: complete renovation of a 120m² house in Villeurbanne.",
+        "day2": "Uploads work quotes and project plans. Estimated budget: €80,000.",
+        "day4": "A certified project manager analyzes his project and offers support.",
+        "day7": "Connected with qualified artisans for different trades.",
+        "expertsTitle": "Experts contacted",
+        "projectManager": "Project Manager",
+        "projectManagerDesc": "Project coordination",
+        "artisans": "Artisans",
+        "artisansDesc": "Plumbing, electricity",
+        "surveyor": "Surveyor",
+        "surveyorDesc": "EPC, asbestos"
       },
-      "feature3": {
-        "title": "Budget and characteristics",
-        "description": "Surface area, number of rooms, desired amenities"
-      },
-      "button": "Start module 1",
-      "demo": {
-        "question1": "What type of property are you looking for?",
-        "option1": "Apartment",
-        "option2": "House",
-        "option3": "Land",
-        "question2": "In which region?",
-        "placeholder2": "Ex: Île-de-France, Lyon, Bordeaux...",
-        "question3": "Your budget?",
-        "placeholder3": "To be defined later..."
+      "expert": {
+        "name": "Sophie, 38 years old - Expert Surveyor",
+        "subtitle": "EPC certified professional",
+        "journeyTitle": "Her experience as an Expert",
+        "registration": "Creates her \"Expert Surveyor\" profile and uploads her EPC, asbestos, lead certifications.",
+        "verification": "Documents validated by the CIEL AVENUE team. Profile certified within 48h.",
+        "leads": "Receives requests from pre-verified clients with complete files.",
+        "result": "156 missions completed via the platform in 1 year.",
+        "certifiedBadge": "Certified Expert",
+        "missionsCompleted": "Missions completed",
+        "zonesCovered": "Areas covered",
+        "averageRating": "Average rating"
       }
     },
-    "module2": {
-      "badge": "Module 2",
-      "title": "Legal situation and documents",
-      "description": "Secure collection of your administrative documents to create a complete and compliant file.",
-      "feature1": {
-        "title": "Secure documents",
-        "description": "Your information is protected and encrypted"
+    "whyUs": {
+      "title": "Why choose CIEL AVENUE?",
+      "description": "A platform designed to simplify and secure every step of your real estate project",
+      "verifiedDocs": {
+        "title": "Verified documents",
+        "description": "All documents are verified by our experts before validation. Authenticity guaranteed."
       },
-      "feature2": {
-        "title": "Personalized list",
-        "description": "Only the necessary documents are requested"
+      "qualifiedProfiles": {
+        "title": "Qualified profiles",
+        "description": "Pre-qualified clients with solvency score. Certified experts with verified references."
       },
-      "feature3": {
-        "title": "Automatic verification",
-        "description": "Instant validation of your documents"
-      },
-      "button": "Access module 2",
-      "doc1": "Identity document",
-      "doc2": "Proof of address",
-      "doc3": "Tax notice",
-      "doc4": "Pay slips",
-      "progress": "2 out of 4 documents provided"
-    },
-    "module3": {
-      "badge": "Module 3",
-      "title": "Solvency score",
-      "description": "An accurate assessment of your borrowing capacity carried out in partnership with our banking partners.",
-      "feature1": {
-        "title": "Financial analysis",
-        "description": "Complete study of your financial situation"
-      },
-      "feature2": {
-        "title": "Banking partners",
-        "description": "Access to the best financing conditions"
-      },
-      "feature3": {
-        "title": "Instant result",
-        "description": "Your pre-qualified profile in a few minutes"
-      },
-      "button": "Discover module 3",
-      "demo": {
-        "profile": "Excellent profile",
-        "score": "Solvency score",
-        "borrowing": "Borrowing capacity",
-        "rate": "Estimated rate",
-        "duration": "Max duration",
-        "validated": "Profile validated"
+      "directConnection": {
+        "title": "Direct connection",
+        "description": "Exchange directly with experts or clients. Integrated messaging and notifications."
       }
+    },
+    "multiRole": {
+      "badge": "Unique feature",
+      "title": "Combine multiple roles",
+      "description": "Are you a buyer AND a renovator? A surveyor AND a tenant? With CIEL AVENUE, you can wear multiple hats on a single account.",
+      "buyer": "Buyer",
+      "renovator": "Renovator",
+      "expertSurveyor": "Expert Surveyor",
+      "switchInfo": "Switch between your different profiles with one click from your dashboard."
     },
     "cta": {
-      "title": "Start your journey now",
-      "description": "A simple and guided process to realize your real estate project with peace of mind.",
-      "button": "Start the journey"
+      "title": "Ready to start your project?",
+      "description": "Create your free account and join thousands of users who trust CIEL AVENUE.",
+      "createAccount": "Create my account",
+      "contactUs": "Contact us"
     }
   },
   "journey": {
@@ -353,6 +371,130 @@
     "back": "Back",
     "generateProfile": "Generate my profile",
     "completed": "Profile created successfully!",
+    "modeToggle": {
+      "createAccount": "Create an account",
+      "login": "Log in"
+    },
+    "addRole": {
+      "title": "Add a role",
+      "description": "Choose a new role to add to your account",
+      "step": "Step {{current}} of {{total}}",
+      "profileType": "Profile type",
+      "finalization": "Finalization"
+    },
+    "register": {
+      "title": "Create your account",
+      "description": "Complete the steps to access the CIEL AVENUE platform",
+      "step": "Step {{current}} of {{total}}",
+      "information": "Information",
+      "profileType": "Profile type",
+      "finalization": "Finalization"
+    },
+    "login": {
+      "title": "Login",
+      "description": "Log in to access your space",
+      "demoBadge": "Demo Profile",
+      "demoRoles": "3 active roles",
+      "testFeatures": "This profile allows you to test",
+      "testFeature1": "Switching between different roles in the Dashboard",
+      "testFeature2": "The documents required for each role",
+      "testFeature3": "The specific information for each profile",
+      "testFeature4": "Adding new roles (Buyer, Seller, etc.)",
+      "loginAs": "Log in as Sophie Martin",
+      "noAccount": "Don't have an account yet?",
+      "successMessage": "Login successful! Welcome Sophie 👋",
+      "demoRole": {
+        "expert": "Real estate expert",
+        "client": "Client",
+        "projects": "{{count}} projects",
+        "perMonth": "month",
+        "works": "works"
+      }
+    },
+    "step1": {
+      "badge": "General information",
+      "title": "Your personal information",
+      "description": "This information allows us to verify your identity",
+      "firstName": "First name on ID",
+      "lastName": "Last name on ID",
+      "lastNameHint": "Make sure the name matches the one on your ID.",
+      "preferredName": "Preferred name (optional)",
+      "preferredNameHint": "If you use another first name, you can add it here.",
+      "dateOfBirth": "Date of birth",
+      "dateOfBirthHint": "You must be at least 18 years old to register. We will not show your birthday to other CIEL AVENUE users.",
+      "ageError": "You must be at least 18 years old to register.",
+      "email": "Email address",
+      "emailHint": "We will send you confirmations, receipts and newsletters by email.",
+      "terms": {
+        "title": "Terms of use",
+        "hint": "Please read and accept the terms",
+        "intro": "By creating an account, I accept:",
+        "generalTerms": "General terms of use",
+        "paymentTerms": "Payment service terms",
+        "nonDiscrimination": "Non-discrimination policy",
+        "privacy": "Privacy policy",
+        "accept": "I have read and accept all of these terms"
+      }
+    },
+    "step2": {
+      "title": "What is your profile?",
+      "description": "Choose the account type that suits your needs",
+      "client": {
+        "title": "Client",
+        "description": "Buyer, seller, landlord, tenant or renovator",
+        "feature1": "Personalized search",
+        "feature2": "Expert support",
+        "feature3": "Secure documents",
+        "cta": "I'm a client"
+      },
+      "expert": {
+        "title": "Expert",
+        "description": "Real estate professional certified by our platform",
+        "feature1": "Access to pre-qualified clients",
+        "feature2": "Lead management",
+        "feature3": "Performance tools",
+        "cta": "I'm an expert"
+      }
+    },
+    "step3": {
+      "clientTitle": "Client Profile",
+      "expertTitle": "Expert Profile",
+      "clientQuestion": "What type of client are you?",
+      "expertQuestion": "What type of expert are you?",
+      "selectProfile": "Select your profile to see the required documents",
+      "alreadyAdded": "Already added",
+      "documents": {
+        "badge": "Required documents",
+        "title": "Documents for",
+        "description": "Select the documents you can provide now. You can upload them later.",
+        "upload": "Upload",
+        "tipTitle": "Tip",
+        "tipText": "You can continue without uploading all documents now. You can add them later from your profile."
+      },
+      "notaryHelp": {
+        "title": "Need help with your documents?",
+        "description": "A partner notary can help you prepare and verify your documents.",
+        "cta": "Contact a notary",
+        "successMessage": "Request sent! A notary will contact you within 24 hours."
+      },
+      "summary": {
+        "badge": "Summary",
+        "title": "Review your account",
+        "description": "Here is a summary of your account information before creation.",
+        "personalInfo": "Personal information",
+        "name": "Name",
+        "notProvided": "Not provided",
+        "dateOfBirth": "Date of birth",
+        "accountType": "Account type",
+        "type": "Type",
+        "profile": "Profile",
+        "documents": "Documents",
+        "selected": "selected",
+        "addRole": "Add this role",
+        "createAccount": "Create my account",
+        "roleAddedSuccess": "Role \"{{role}}\" added successfully!"
+      }
+    },
     "module1": {
       "badge": "Module 1",
       "title": "Define your criteria",
@@ -562,6 +704,9 @@
     "welcome": "Welcome to your personal space",
     "viewProfile": "View profile",
     "activeProfile": "Active profile",
+    "roleSwitcher": {
+      "addRole": "Add a role"
+    },
     "propertiesPending": "properties pending",
     "tabs": {
       "needs": "Needs",
@@ -658,6 +803,148 @@
         "title": "Today's schedule",
         "today": "Today"
       }
+    }
+  },
+  "data": {
+    "clientSubtypes": {
+      "acheteur": {
+        "label": "Buyer",
+        "description": "I'm looking for a property to buy"
+      },
+      "vendeur": {
+        "label": "Seller",
+        "description": "I want to sell my property"
+      },
+      "bailleur": {
+        "label": "Landlord",
+        "description": "I rent out a property"
+      },
+      "locataire": {
+        "label": "Tenant",
+        "description": "I'm looking for a property to rent"
+      },
+      "renovateur": {
+        "label": "Renovator",
+        "description": "I'm renovating a property"
+      }
+    },
+    "expertSubtypes": {
+      "notaire": {
+        "label": "Notary",
+        "description": "Public officer specializing in authentic deeds"
+      },
+      "diagnostiqueur": {
+        "label": "Property Surveyor",
+        "description": "Expert in technical property diagnostics"
+      },
+      "marchand": {
+        "label": "Property Dealers / Agencies",
+        "description": "Real estate transaction professional"
+      },
+      "maitre_oeuvre": {
+        "label": "Project Manager",
+        "description": "Construction project coordinator"
+      },
+      "promoteur": {
+        "label": "Developer",
+        "description": "Real estate program developer"
+      },
+      "photographe": {
+        "label": "Real Estate Photographer",
+        "description": "Property imaging specialist"
+      },
+      "courtier": {
+        "label": "Mortgage Broker",
+        "description": "Real estate financing expert"
+      },
+      "artisan": {
+        "label": "Tradesperson",
+        "description": "Building trades professional"
+      }
+    },
+    "commonExpertDocuments": {
+      "kbis": "K-BIS extract (or INSEE certificate) less than 3 months old",
+      "idLegalRep": "Legal representative's identity document",
+      "powerOfAttorney": "Power of attorney if signatory ≠ legal representative",
+      "professionalRIB": "Professional bank account details (RIB)",
+      "headOfficeAddress": "Proof of head office address (invoice, lease, certificate)"
+    },
+    "expertSpecificDocuments": {
+      "notaire": {
+        "professionalCard": "Professional card",
+        "chamberRegistration": "Certificate of registration with the Chamber of Notaries",
+        "rcProInsurance": "Copy of mandatory professional liability insurance for notary",
+        "insuranceDetails": "Insurance company number and name",
+        "rcsOrSiret": "RCS / SIRET of the notary office",
+        "officeAddress": "Professional address of the office"
+      },
+      "diagnostiqueur": {
+        "rcProDecennial": "Valid professional/decennial liability certificate covering diagnostics",
+        "insuranceCompany": "Name of insurance company",
+        "certificationsList": "List of certifications (EPC, termites, asbestos, etc.)"
+      },
+      "marchand": {
+        "professionalCard": "Professional card (T Card)",
+        "rcProAttestation": "Valid professional liability certificate",
+        "companyPurpose": "Company purpose compliant with activity (purchase/resale/development)",
+        "activitiesDescription": "Description of real estate activities practiced"
+      },
+      "maitre_oeuvre": {
+        "rcProDecennial": "Professional/decennial liability insurance specific to project management",
+        "insurerDetails": "Insurer contact details",
+        "technicalQualifications": "Proof of technical qualifications (if required)"
+      },
+      "promoteur": {
+        "rcProAttestation": "Professional liability certificate covering development/construction activity",
+        "companyPurpose": "Compliant company purpose (promotion/real estate construction)",
+        "programsDescription": "Description of current or planned real estate programs"
+      },
+      "photographe": {
+        "droneAuthorization": "Drone operating authorization (if using drone)",
+        "rcProInsurance": "Professional Liability Insurance",
+        "certificates": "Certificates or diplomas (optional)"
+      },
+      "courtier": {
+        "rcProAttestation": "Professional liability certificate specific to financing/mortgage brokerage",
+        "oriasNumber": "ORIAS number (mandatory for financial intermediaries)",
+        "insuranceCompany": "Name of insurance company",
+        "acprCompliance": "Compliance with ACPR/ORIAS regulations"
+      },
+      "artisan": {
+        "decennialInsurance": "Decennial insurance",
+        "specialty": "Trade specialty (to be selected)",
+        "professionalQualifications": "Professional qualifications specific to trade"
+      }
+    },
+    "artisanSpecialties": {
+      "plumber": "Plumber / Heating Engineer",
+      "electrician": "Electrician",
+      "plasterer": "Plasterer / Drywaller",
+      "kitchenDesigner": "Kitchen Designer / Fitter",
+      "locksmith": "Locksmith / Metalworker",
+      "floorLayer": "Floor Layer",
+      "homeAutomation": "Home Automation Specialist",
+      "interiorDesigner": "Interior Designer / Decorator",
+      "carpenter": "Carpenter",
+      "painter": "Painter / Floor Specialist",
+      "glazier": "Glazier / Mirror Fitter",
+      "hvacTechnician": "HVAC Technician",
+      "plastererDecorator": "Decorative Plasterer",
+      "interiorWaterproofer": "Interior Waterproofer"
+    },
+    "clientDocuments": {
+      "id": "Identity document",
+      "addressProof": "Proof of address",
+      "taxNotice": "Tax notice",
+      "payslips": "Payslips (last 3)",
+      "bankStatements": "Bank statements",
+      "propertyTitle": "Property title",
+      "propertyDiagnostics": "Property diagnostics",
+      "rib": "Bank details (RIB)",
+      "employmentContract": "Employment contract",
+      "projectDocuments": "Project documents",
+      "workQuotes": "Work quotes",
+      "fundingProof": "Proof of funding"
     }
   }
 }

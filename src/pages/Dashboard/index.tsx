@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/providers/auth-provider";
-import { clientSubtypeLabels, expertSubtypeLabels, type ClientSubtype, type ExpertSubtype } from "@/providers/auth-provider";
+import { clientSubtypeLabelKeys, expertSubtypeLabelKeys, type ClientSubtype, type ExpertSubtype } from "@/providers/auth-provider";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -41,7 +41,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 // Role Switcher Component
-function RoleSwitcher() {
+function RoleSwitcher({ t }: { t: (key: string) => string }) {
   const { user, activeRole, setActiveRoleIndex, hasMultipleRoles } = useAuth();
   const navigate = useNavigate();
 
@@ -49,9 +49,9 @@ function RoleSwitcher() {
 
   const getActiveRoleLabel = () => {
     if (activeRole.type === "client") {
-      return clientSubtypeLabels[activeRole.subtype as ClientSubtype];
+      return t(clientSubtypeLabelKeys[activeRole.subtype as ClientSubtype]);
     }
-    return expertSubtypeLabels[activeRole.subtype as ExpertSubtype];
+    return t(expertSubtypeLabelKeys[activeRole.subtype as ExpertSubtype]);
   };
 
   const canAddRole = () => {
@@ -86,8 +86,8 @@ function RoleSwitcher() {
           {user.roles.map((role, index) => {
             const label =
               role.type === "client"
-                ? clientSubtypeLabels[role.subtype as ClientSubtype]
-                : expertSubtypeLabels[role.subtype as ExpertSubtype];
+                ? t(clientSubtypeLabelKeys[role.subtype as ClientSubtype])
+                : t(expertSubtypeLabelKeys[role.subtype as ExpertSubtype]);
             const isActive = index === user.activeRoleIndex;
 
             return (
@@ -104,7 +104,7 @@ function RoleSwitcher() {
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={handleAddRole} className="cursor-pointer text-primary">
                 <Plus className="h-4 w-4 mr-2" />
-                Ajouter un rôle
+                {t("dashboard.roleSwitcher.addRole")}
               </DropdownMenuItem>
             </>
           )}
@@ -329,7 +329,7 @@ export default function Dashboard() {
                     {t("dashboard.viewProfile")}
                   </Link>
                 </Button>
-                <RoleSwitcher />
+                <RoleSwitcher t={t} />
               </div>
             </div>
           </div>
@@ -617,7 +617,7 @@ export default function Dashboard() {
                   {t("dashboard.viewProfile")}
                 </Link>
               </Button>
-              <RoleSwitcher />
+              <RoleSwitcher t={t} />
               <Badge variant="outline">3 {t("dashboard.propertiesPending")}</Badge>
             </div>
           </div>

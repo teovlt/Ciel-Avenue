@@ -1,4 +1,14 @@
 {
+  "common": {
+    "back": "Retour",
+    "continue": "Continuer",
+    "close": "Fermer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "loading": "Chargement...",
+    "error": "Erreur"
+  },
   "navbar": {
     "home": "Accueil",
     "howItWorks": "Comment ça marche",
@@ -105,6 +115,116 @@
       "description": "Rejoignez des milliers d'utilisateurs qui ont déjà fait confiance à CIEL AVENUE pour concrétiser leurs projets immobiliers.",
       "ctaPrimary": "Découvrir le parcours",
       "ctaSecondary": "Rejoindre la plateforme"
+    }
+  },
+  "howItWorks": {
+    "hero": {
+      "badge": "Plateforme tout-en-un",
+      "title": "Comment fonctionne",
+      "titleHighlight": "CIEL AVENUE",
+      "description": "Une plateforme qui connecte clients et experts immobiliers de manière sécurisée. Des documents vérifiés, des profils qualifiés, et un accompagnement personnalisé."
+    },
+    "process": {
+      "title": "Le processus en 4 étapes",
+      "description": "De la création de votre profil à la concrétisation de votre projet immobilier",
+      "step1": {
+        "badge": "Étape 1",
+        "title": "Créez votre profil",
+        "description": "Inscrivez-vous et choisissez votre rôle : Acheteur, Vendeur, Locataire, ou Expert immobilier."
+      },
+      "step2": {
+        "badge": "Étape 2",
+        "title": "Déposez vos documents",
+        "description": "Téléchargez les documents requis pour votre profil. Ils seront vérifiés par nos experts."
+      },
+      "step3": {
+        "badge": "Étape 3",
+        "title": "Profil vérifié",
+        "description": "Votre profil est validé et vous obtenez un score de solvabilité ou de confiance."
+      },
+      "step4": {
+        "badge": "Étape 4",
+        "title": "Connectez-vous",
+        "description": "Échangez avec les experts ou clients qualifiés pour avancer sur votre projet."
+      }
+    },
+    "cases": {
+      "badge": "Cas concrets",
+      "title": "Exemples de parcours utilisateurs",
+      "description": "Découvrez comment différents profils utilisent CIEL AVENUE pour leurs projets immobiliers",
+      "buyer": {
+        "name": "Marie, 32 ans - Acheteuse",
+        "subtitle": "Première acquisition immobilière",
+        "journeyTitle": "Son parcours sur CIEL AVENUE",
+        "day1": "Crée son profil \"Acheteur\" et renseigne son budget (350 000€), sa localisation souhaitée (Paris 15ème) et le type de bien (T3).",
+        "day2": "Dépose ses documents : bulletins de salaire, avis d'imposition, relevés bancaires.",
+        "day3": "Score de solvabilité calculé : 8.5/10. Capacité d'emprunt validée.",
+        "day5": "Un courtier certifié la contacte pour optimiser son financement.",
+        "scoreTitle": "Score de solvabilité",
+        "scoreSubtitle": "Profil vérifié et qualifié",
+        "borrowingCapacity": "Capacité d'emprunt",
+        "estimatedRate": "Taux estimé"
+      },
+      "renovator": {
+        "name": "Thomas, 45 ans - Rénovateur",
+        "subtitle": "Projet de rénovation maison ancienne",
+        "journeyTitle": "Son parcours sur CIEL AVENUE",
+        "day1": "Crée son profil \"Rénovateur\" avec son projet : rénovation complète d'une maison de 120m² à Villeurbanne.",
+        "day2": "Dépose les devis travaux et les plans du projet. Budget estimé : 80 000€.",
+        "day4": "Un maître d'œuvre certifié analyse son projet et propose un accompagnement.",
+        "day7": "Mise en relation avec des artisans qualifiés pour les différents lots.",
+        "expertsTitle": "Experts contactés",
+        "projectManager": "Maître d'œuvre",
+        "projectManagerDesc": "Coordination projet",
+        "artisans": "Artisans",
+        "artisansDesc": "Plomberie, électricité",
+        "surveyor": "Diagnostiqueur",
+        "surveyorDesc": "DPE, amiante"
+      },
+      "expert": {
+        "name": "Sophie, 38 ans - Diagnostiqueur Expert",
+        "subtitle": "Professionnelle certifiée DPE",
+        "journeyTitle": "Son expérience en tant qu'Expert",
+        "registration": "Crée son profil \"Expert Diagnostiqueur\" et dépose ses certifications DPE, amiante, plomb.",
+        "verification": "Documents validés par l'équipe CIEL AVENUE. Profil certifié en 48h.",
+        "leads": "Reçoit des demandes de clients pré-vérifiés avec dossiers complets.",
+        "result": "156 missions réalisées via la plateforme en 1 an.",
+        "certifiedBadge": "Expert Certifié",
+        "missionsCompleted": "Missions réalisées",
+        "zonesCovered": "Zones couvertes",
+        "averageRating": "Note moyenne"
+      }
+    },
+    "whyUs": {
+      "title": "Pourquoi choisir CIEL AVENUE ?",
+      "description": "Une plateforme pensée pour simplifier et sécuriser chaque étape de votre projet immobilier",
+      "verifiedDocs": {
+        "title": "Documents vérifiés",
+        "description": "Tous les documents sont vérifiés par nos experts avant validation. Garantie d'authenticité."
+      },
+      "qualifiedProfiles": {
+        "title": "Profils qualifiés",
+        "description": "Clients pré-qualifiés avec score de solvabilité. Experts certifiés avec références vérifiées."
+      },
+      "directConnection": {
+        "title": "Mise en relation directe",
+        "description": "Échangez directement avec les experts ou clients. Messagerie intégrée et notifications."
+      }
+    },
+    "multiRole": {
+      "badge": "Fonctionnalité unique",
+      "title": "Cumulez plusieurs rôles",
+      "description": "Vous êtes acheteur ET rénovateur ? Diagnostiqueur ET locataire ? Avec CIEL AVENUE, vous pouvez avoir plusieurs casquettes sur un seul compte.",
+      "buyer": "Acheteur",
+      "renovator": "Rénovateur",
+      "expertSurveyor": "Expert Diagnostiqueur",
+      "switchInfo": "Basculez entre vos différents profils en un clic depuis votre tableau de bord."
+    },
+    "cta": {
+      "title": "Prêt à démarrer votre projet ?",
+      "description": "Créez votre compte gratuitement et rejoignez des milliers d'utilisateurs qui font confiance à CIEL AVENUE.",
+      "createAccount": "Créer mon compte",
+      "contactUs": "Nous contacter"
     }
   },
   "contact": {
@@ -243,108 +363,6 @@
       "button": "Nous contacter"
     }
   },
-  "howItWorks": {
-    "hero": {
-      "title": "Comment ça marche ?",
-      "description": "Un parcours en 3 modules conçu pour simplifier votre projet immobilier et vous connecter aux meilleures opportunités."
-    },
-    "overview": {
-      "module1": {
-        "title": "Définition",
-        "description": "Vos critères et besoins"
-      },
-      "module2": {
-        "title": "Juridique",
-        "description": "Situation et documents"
-      },
-      "module3": {
-        "title": "Solvabilité",
-        "description": "Score et capacité"
-      }
-    },
-    "module1": {
-      "badge": "Module 1",
-      "title": "Définition de vos critères",
-      "description": "Un arbre décisionnel intelligent qui vous guide étape par étape pour définir précisément vos besoins immobiliers.",
-      "feature1": {
-        "title": "Type de bien",
-        "description": "Appartement, maison, terrain - définissez votre projet idéal"
-      },
-      "feature2": {
-        "title": "Localisation",
-        "description": "Zones géographiques, proximité des services et transports"
-      },
-      "feature3": {
-        "title": "Budget et caractéristiques",
-        "description": "Surface, nombre de pièces, équipements souhaités"
-      },
-      "button": "Commencer le module 1",
-      "demo": {
-        "question1": "Quel type de bien recherchez-vous ?",
-        "option1": "Appartement",
-        "option2": "Maison",
-        "option3": "Terrain",
-        "question2": "Dans quelle région ?",
-        "placeholder2": "Ex: Île-de-France, Lyon, Bordeaux...",
-        "question3": "Votre budget ?",
-        "placeholder3": "À définir plus tard..."
-      }
-    },
-    "module2": {
-      "badge": "Module 2",
-      "title": "Situation juridique et documents",
-      "description": "Une collecte sécurisée de vos documents administratifs pour constituer un dossier complet et conforme.",
-      "feature1": {
-        "title": "Documents sécurisés",
-        "description": "Vos informations sont protégées et cryptées"
-      },
-      "feature2": {
-        "title": "Liste personnalisée",
-        "description": "Seuls les documents nécessaires vous sont demandés"
-      },
-      "feature3": {
-        "title": "Vérification automatique",
-        "description": "Validation instantanée de vos documents"
-      },
-      "button": "Accéder au module 2",
-      "doc1": "Pièce d'identité",
-      "doc2": "Justificatif de domicile",
-      "doc3": "Avis d'imposition",
-      "doc4": "Bulletins de salaire",
-      "progress": "2 sur 4 documents fournis"
-    },
-    "module3": {
-      "badge": "Module 3",
-      "title": "Score de solvabilité",
-      "description": "Une évaluation précise de votre capacité d'emprunt réalisée en partenariat avec nos partenaires bancaires.",
-      "feature1": {
-        "title": "Analyse financière",
-        "description": "Étude complète de votre situation patrimoniale"
-      },
-      "feature2": {
-        "title": "Partenaires bancaires",
-        "description": "Accès aux meilleures conditions de financement"
-      },
-      "feature3": {
-        "title": "Résultat instantané",
-        "description": "Votre profil préqualifié en quelques minutes"
-      },
-      "button": "Découvrir le module 3",
-      "demo": {
-        "profile": "Excellent profil",
-        "score": "Score de solvabilité",
-        "borrowing": "Capacité d'emprunt",
-        "rate": "Taux estimé",
-        "duration": "Durée max",
-        "validated": "Profil validé"
-      }
-    },
-    "cta": {
-      "title": "Commencez votre parcours dès maintenant",
-      "description": "Un processus simple et guidé pour concrétiser votre projet immobilier en toute sérénité.",
-      "button": "Démarrer le parcours"
-    }
-  },
   "journey": {
     "title": "Parcours client",
     "description": "Complétez les 3 modules pour créer votre profil acheteur",
@@ -353,6 +371,130 @@
     "back": "Retour",
     "generateProfile": "Générer mon profil",
     "completed": "Profil créé avec succès !",
+    "modeToggle": {
+      "createAccount": "Créer un compte",
+      "login": "Se connecter"
+    },
+    "addRole": {
+      "title": "Ajouter un rôle",
+      "description": "Choisissez un nouveau rôle à ajouter à votre compte",
+      "step": "Étape {{current}} sur {{total}}",
+      "profileType": "Type de profil",
+      "finalization": "Finalisation"
+    },
+    "register": {
+      "title": "Créer votre compte",
+      "description": "Complétez les étapes pour accéder à la plateforme CIEL AVENUE",
+      "step": "Étape {{current}} sur {{total}}",
+      "information": "Informations",
+      "profileType": "Type de profil",
+      "finalization": "Finalisation"
+    },
+    "login": {
+      "title": "Connexion",
+      "description": "Connectez-vous pour accéder à votre espace",
+      "demoBadge": "Profil Démo",
+      "demoRoles": "3 rôles actifs",
+      "testFeatures": "Ce profil vous permet de tester",
+      "testFeature1": "Le switch entre les différents rôles dans le Dashboard",
+      "testFeature2": "Les documents à fournir pour chaque rôle",
+      "testFeature3": "Les informations spécifiques à chaque profil",
+      "testFeature4": "L'ajout de nouveaux rôles (Acheteur, Vendeur, etc.)",
+      "loginAs": "Se connecter en tant que Sophie Martin",
+      "noAccount": "Vous n'avez pas encore de compte ?",
+      "successMessage": "Connexion réussie ! Bienvenue Sophie 👋",
+      "demoRole": {
+        "expert": "Expert immobilier",
+        "client": "Client",
+        "projects": "{{count}} projets",
+        "perMonth": "mois",
+        "works": "travaux"
+      }
+    },
+    "step1": {
+      "badge": "Informations générales",
+      "title": "Vos informations personnelles",
+      "description": "Ces informations nous permettent de vérifier votre identité",
+      "firstName": "Prénom sur la pièce d'identité",
+      "lastName": "Nom sur la pièce d'identité",
+      "lastNameHint": "Assurez-vous que le nom correspond à celui qui figure sur votre pièce d'identité.",
+      "preferredName": "Prénom d'usage (optionnel)",
+      "preferredNameHint": "Si vous utilisez un autre prénom, vous pouvez l'ajouter ici.",
+      "dateOfBirth": "Date de naissance",
+      "dateOfBirthHint": "Vous devez avoir au moins 18 ans pour vous inscrire. Nous n'indiquerons pas la date de votre anniversaire aux autres utilisateurs CIEL AVENUE.",
+      "ageError": "Vous devez avoir au moins 18 ans pour vous inscrire.",
+      "email": "Adresse email",
+      "emailHint": "Nous vous enverrons les confirmations, les reçus et les newsletters par e-mail.",
+      "terms": {
+        "title": "Conditions d'utilisation",
+        "hint": "Veuillez lire et accepter les conditions",
+        "intro": "En créant un compte, j'accepte :",
+        "generalTerms": "Les conditions générales d'utilisation",
+        "paymentTerms": "Les conditions de service relatives aux paiements",
+        "nonDiscrimination": "La politique de non-discrimination",
+        "privacy": "La politique de confidentialité",
+        "accept": "J'ai lu et j'accepte l'ensemble de ces conditions"
+      }
+    },
+    "step2": {
+      "title": "Quel est votre profil ?",
+      "description": "Choisissez le type de compte qui correspond à vos besoins",
+      "client": {
+        "title": "Client",
+        "description": "Acheteur, vendeur, bailleur, locataire ou rénovateur",
+        "feature1": "Recherche personnalisée",
+        "feature2": "Accompagnement d'experts",
+        "feature3": "Documents sécurisés",
+        "cta": "Je suis client"
+      },
+      "expert": {
+        "title": "Expert",
+        "description": "Professionnel de l'immobilier certifié par notre plateforme",
+        "feature1": "Accès aux clients pré-qualifiés",
+        "feature2": "Gestion des leads",
+        "feature3": "Outils de performance",
+        "cta": "Je suis expert"
+      }
+    },
+    "step3": {
+      "clientTitle": "Profil Client",
+      "expertTitle": "Profil Expert",
+      "clientQuestion": "Quel type de client êtes-vous ?",
+      "expertQuestion": "Quel type d'expert êtes-vous ?",
+      "selectProfile": "Sélectionnez votre profil pour voir les documents requis",
+      "alreadyAdded": "Déjà ajouté",
+      "documents": {
+        "badge": "Documents requis",
+        "title": "Documents pour",
+        "description": "Sélectionnez les documents que vous pouvez fournir maintenant. Vous pourrez les télécharger plus tard.",
+        "upload": "Télécharger",
+        "tipTitle": "Conseil",
+        "tipText": "Vous pouvez continuer sans télécharger tous les documents maintenant. Vous pourrez les ajouter plus tard depuis votre profil."
+      },
+      "notaryHelp": {
+        "title": "Besoin d'aide avec vos documents ?",
+        "description": "Un notaire partenaire peut vous accompagner dans la préparation et la vérification de vos documents.",
+        "cta": "Contacter un notaire",
+        "successMessage": "Demande envoyée ! Un notaire vous contactera sous 24h."
+      },
+      "summary": {
+        "badge": "Récapitulatif",
+        "title": "Vérifiez votre compte",
+        "description": "Voici un résumé des informations de votre compte avant création.",
+        "personalInfo": "Informations personnelles",
+        "name": "Nom",
+        "notProvided": "Non renseigné",
+        "dateOfBirth": "Date de naissance",
+        "accountType": "Type de compte",
+        "type": "Type",
+        "profile": "Profil",
+        "documents": "Documents",
+        "selected": "sélectionnés",
+        "addRole": "Ajouter ce rôle",
+        "createAccount": "Créer mon compte",
+        "roleAddedSuccess": "Rôle \"{{role}}\" ajouté avec succès !"
+      }
+    },
     "module1": {
       "badge": "Module 1",
       "title": "Définition de vos critères",
@@ -562,6 +704,9 @@
     "welcome": "Bienvenue sur votre espace personnel",
     "viewProfile": "Voir le profil",
     "activeProfile": "Profil actif",
+    "roleSwitcher": {
+      "addRole": "Ajouter un rôle"
+    },
     "propertiesPending": "biens en attente",
     "tabs": {
       "needs": "Besoins",
@@ -658,6 +803,148 @@
         "title": "Agenda du jour",
         "today": "Aujourd'hui"
       }
+    }
+  },
+  "data": {
+    "clientSubtypes": {
+      "acheteur": {
+        "label": "Acheteur",
+        "description": "Je cherche un bien à acheter"
+      },
+      "vendeur": {
+        "label": "Vendeur",
+        "description": "Je souhaite vendre mon bien"
+      },
+      "bailleur": {
+        "label": "Bailleur",
+        "description": "Je loue un bien immobilier"
+      },
+      "locataire": {
+        "label": "Locataire",
+        "description": "Je cherche un bien à louer"
+      },
+      "renovateur": {
+        "label": "Rénovateur",
+        "description": "Je rénove un bien immobilier"
+      }
+    },
+    "expertSubtypes": {
+      "notaire": {
+        "label": "Notaire",
+        "description": "Officier public spécialisé en actes authentiques"
+      },
+      "diagnostiqueur": {
+        "label": "Diagnostiqueur Immobilier",
+        "description": "Expert en diagnostics techniques immobiliers"
+      },
+      "marchand": {
+        "label": "Marchands de biens / Agences",
+        "description": "Professionnel de la transaction immobilière"
+      },
+      "maitre_oeuvre": {
+        "label": "Maître d'œuvre",
+        "description": "Coordinateur de projets de construction"
+      },
+      "promoteur": {
+        "label": "Promoteur",
+        "description": "Développeur de programmes immobiliers"
+      },
+      "photographe": {
+        "label": "Photographe immobilier",
+        "description": "Spécialiste de l'image immobilière"
+      },
+      "courtier": {
+        "label": "Courtier bancaire",
+        "description": "Expert en financement immobilier"
+      },
+      "artisan": {
+        "label": "Artisan second œuvre",
+        "description": "Professionnel des travaux du bâtiment"
+      }
+    },
+    "commonExpertDocuments": {
+      "kbis": "Extrait K-BIS (ou attestation INSEE) de moins de 3 mois",
+      "idLegalRep": "Pièce d'identité du représentant légal",
+      "powerOfAttorney": "Justificatif de pouvoir si le signataire ≠ représentant légal",
+      "professionalRIB": "RIB professionnel",
+      "headOfficeAddress": "Justificatif d'adresse du siège social (facture, bail, attestation)"
+    },
+    "expertSpecificDocuments": {
+      "notaire": {
+        "professionalCard": "Carte professionnelle",
+        "chamberRegistration": "Attestation d'inscription à la Chambre des Notaires",
+        "rcProInsurance": "Copie de l'assurance RC professionnelle obligatoire du notaire",
+        "insuranceDetails": "Numéro et nom de la compagnie d'assurance",
+        "rcsOrSiret": "RCS / SIRET de l'étude notariale",
+        "officeAddress": "Adresse professionnelle de l'étude"
+      },
+      "diagnostiqueur": {
+        "rcProDecennial": "Attestation RC Pro et/ou décennale valide couvrant les diagnostics",
+        "insuranceCompany": "Nom de la compagnie d'assurance",
+        "certificationsList": "Liste des certifications (DPE, termites, amiante, etc.)"
+      },
+      "marchand": {
+        "professionalCard": "Carte professionnelle (Carte T)",
+        "rcProAttestation": "Attestation RC Pro valide",
+        "companyPurpose": "Objet social conforme à l'activité (achat/revente/promotion immobilière)",
+        "activitiesDescription": "Description des activités immobilières pratiquées"
+      },
+      "maitre_oeuvre": {
+        "rcProDecennial": "Assurance RC Pro / décennale spécifique à la maîtrise d'œuvre",
+        "insurerDetails": "Coordonnées de l'assureur",
+        "technicalQualifications": "Justificatif de qualifications techniques (si requis)"
+      },
+      "promoteur": {
+        "rcProAttestation": "Attestation RC Pro couvrant l'activité de promotion / construction",
+        "companyPurpose": "Objet social conforme (promotion / construction immobilière)",
+        "programsDescription": "Description du ou des programmes immobiliers en cours ou prévus"
+      },
+      "photographe": {
+        "droneAuthorization": "Autorisation d'exploitation de drones (si utilisation de drone)",
+        "rcProInsurance": "Assurance Responsabilité Civile Professionnelle (RC Pro)",
+        "certificates": "Certificats ou diplômes (optionnels)"
+      },
+      "courtier": {
+        "rcProAttestation": "Attestation RC Pro spécifique au courtage en financement / crédit immobilier",
+        "oriasNumber": "N° ORIAS (obligatoire pour les intermédiaires financiers)",
+        "insuranceCompany": "Nom de la compagnie d'assurance",
+        "acprCompliance": "Conformité avec la réglementation ACPR / ORIAS"
+      },
+      "artisan": {
+        "decennialInsurance": "Assurance décennale",
+        "specialty": "Spécialité métier (à sélectionner)",
+        "professionalQualifications": "Qualifications professionnelles spécifiques au métier"
+      }
+    },
+    "artisanSpecialties": {
+      "plumber": "Plombier / Chauffagiste",
+      "electrician": "Électricien",
+      "plasterer": "Plâtrier / Plaquiste",
+      "kitchenDesigner": "Cuisiniste / Agenceur",
+      "locksmith": "Serrurier / Métallier",
+      "floorLayer": "Parqueteur",
+      "homeAutomation": "Domoticien",
+      "interiorDesigner": "Décorateur / Architecte d'intérieur",
+      "carpenter": "Menuisier",
+      "painter": "Peintre / Solier",
+      "glazier": "Vitrier / Miroitier",
+      "hvacTechnician": "Climaticien / Frigoriste",
+      "plastererDecorator": "Staffeur / Stucateur",
+      "interiorWaterproofer": "Étancheur d'intérieur"
+    },
+    "clientDocuments": {
+      "id": "Pièce d'identité",
+      "addressProof": "Justificatif de domicile",
+      "taxNotice": "Avis d'imposition",
+      "payslips": "Bulletins de salaire (3 derniers)",
+      "bankStatements": "Relevés bancaires",
+      "propertyTitle": "Titre de propriété",
+      "propertyDiagnostics": "Diagnostics immobiliers",
+      "rib": "RIB",
+      "employmentContract": "Contrat de travail",
+      "projectDocuments": "Documents du projet",
+      "workQuotes": "Devis travaux",
+      "fundingProof": "Justificatif de financement"
     }
   }
 }

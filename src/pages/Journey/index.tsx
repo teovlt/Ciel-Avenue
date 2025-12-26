@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "@/providers/auth-provider";
 import type {
   UserType,
@@ -13,7 +14,7 @@ import type {
   DocumentStatus,
   User,
 } from "@/providers/auth-provider";
-import { clientDocuments, expertDocuments, clientSubtypeLabels, expertSubtypeLabels } from "@/providers/auth-provider";
+import { clientDocuments, expertDocuments, clientSubtypeLabelKeys, expertSubtypeLabelKeys } from "@/providers/auth-provider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -69,28 +70,29 @@ const expertSubtypeIcons: Record<ExpertSubtype, React.ElementType> = {
   artisan: Wrench,
 };
 
-// Client subtype descriptions
-const clientSubtypeDescriptions: Record<ClientSubtype, string> = {
-  acheteur: "Je cherche un bien à acheter",
-  vendeur: "Je souhaite vendre mon bien",
-  bailleur: "Je loue un bien immobilier",
-  locataire: "Je cherche un bien à louer",
-  renovateur: "Je rénove un bien immobilier",
+// Client subtype description keys for i18n
+const clientSubtypeDescriptionKeys: Record<ClientSubtype, string> = {
+  acheteur: "data.clientSubtypes.acheteur.description",
+  vendeur: "data.clientSubtypes.vendeur.description",
+  bailleur: "data.clientSubtypes.bailleur.description",
+  locataire: "data.clientSubtypes.locataire.description",
+  renovateur: "data.clientSubtypes.renovateur.description",
 };
 
-// Expert subtype descriptions
-const expertSubtypeDescriptions: Record<ExpertSubtype, string> = {
-  notaire: "Officier public spécialisé en actes authentiques",
-  diagnostiqueur: "Expert en diagnostics techniques immobiliers",
-  marchand: "Professionnel de la transaction immobilière",
-  maitre_oeuvre: "Coordinateur de projets de construction",
-  promoteur: "Développeur de programmes immobiliers",
-  photographe: "Spécialiste de l'image immobilière",
-  courtier: "Expert en financement immobilier",
-  artisan: "Professionnel des travaux du bâtiment",
+// Expert subtype description keys for i18n
+const expertSubtypeDescriptionKeys: Record<ExpertSubtype, string> = {
+  notaire: "data.expertSubtypes.notaire.description",
+  diagnostiqueur: "data.expertSubtypes.diagnostiqueur.description",
+  marchand: "data.expertSubtypes.marchand.description",
+  maitre_oeuvre: "data.expertSubtypes.maitre_oeuvre.description",
+  promoteur: "data.expertSubtypes.promoteur.description",
+  photographe: "data.expertSubtypes.photographe.description",
+  courtier: "data.expertSubtypes.courtier.description",
+  artisan: "data.expertSubtypes.artisan.description",
 };
 
 export default function Journey() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const { login, loginDemo, addRole, user, isAuthenticated } = useAuth();
@@ -247,7 +249,11 @@ export default function Journey() {
     if (isAddingRole && user) {
       addRole(role);
       toast.success(
-        `Rôle "${userType === "client" ? clientSubtypeLabels[subtype as ClientSubtype] : expertSubtypeLabels[subtype as ExpertSubtype]}" ajouté avec succès !`,
+        t("journey.step3.summary.roleAddedSuccess", {
+          role: t(
+            userType === "client" ? clientSubtypeLabelKeys[subtype as ClientSubtype] : expertSubtypeLabelKeys[subtype as ExpertSubtype],
+          ),
+        }),
       );
       navigate("/dashboard");
       return;
@@ -298,7 +304,7 @@ export default function Journey() {
                       mode === "register" ? "bg-primary text-primary-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
-                    Créer un compte
+                    {t("journey.modeToggle.createAccount")}
                   </button>
                   <button
                     onClick={() => setMode("login")}
@@ -306,7 +312,7 @@ export default function Journey() {
                       mode === "login" ? "bg-accent text-accent-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
-                    Se connecter
+                    {t("journey.modeToggle.login")}
                   </button>
                 </div>
               </div>
@@ -319,17 +325,19 @@ export default function Journey() {
                   <Users className="h-4 w-4" />
                   {user.firstName} {user.lastName}
                 </div>
-                <h1 className="text-3xl font-bold text-foreground mb-2 animate-fade-in-up">Ajouter un rôle</h1>
-                <p className="text-muted-foreground animate-fade-in-up-delay-1">Choisissez un nouveau rôle à ajouter à votre compte</p>
+                <h1 className="text-3xl font-bold text-foreground mb-2 animate-fade-in-up">{t("journey.addRole.title")}</h1>
+                <p className="text-muted-foreground animate-fade-in-up-delay-1">{t("journey.addRole.description")}</p>
                 <div className="mt-6 animate-fade-in-up-delay-2">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-foreground">Étape {step - 1} sur 2</span>
+                    <span className="text-sm font-medium text-foreground">
+                      {t("journey.addRole.step", { current: step - 1, total: 2 })}
+                    </span>
                     <span className="text-sm text-muted-foreground">{Math.round(((step - 1) / 2) * 100)}%</span>
                   </div>
                   <Progress value={((step - 1) / 2) * 100} className="h-2" />
                   <div className="flex justify-between mt-2 text-xs text-muted-foreground">
-                    <span className={step >= 2 ? "text-accent font-medium" : ""}>Type de profil</span>
-                    <span className={step >= 3 ? "text-accent font-medium" : ""}>Finalisation</span>
+                    <span className={step >= 2 ? "text-accent font-medium" : ""}>{t("journey.addRole.profileType")}</span>
+                    <span className={step >= 3 ? "text-accent font-medium" : ""}>{t("journey.addRole.finalization")}</span>
                   </div>
                 </div>
               </>
@@ -338,22 +346,20 @@ export default function Journey() {
             {/* Register Mode */}
             {mode === "register" && (
               <>
-                <h1 className="text-3xl font-bold text-foreground mb-2 animate-fade-in-up">Créer votre compte</h1>
-                <p className="text-muted-foreground animate-fade-in-up-delay-1">
-                  Complétez les étapes pour accéder à la plateforme CIEL AVENUE
-                </p>
+                <h1 className="text-3xl font-bold text-foreground mb-2 animate-fade-in-up">{t("journey.register.title")}</h1>
+                <p className="text-muted-foreground animate-fade-in-up-delay-1">{t("journey.register.description")}</p>
                 <div className="mt-6 animate-fade-in-up-delay-2">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-medium text-foreground">
-                      Étape {step} sur {getTotalSteps()}
+                      {t("journey.register.step", { current: step, total: getTotalSteps() })}
                     </span>
                     <span className="text-sm text-muted-foreground">{Math.round(progress)}%</span>
                   </div>
                   <Progress value={progress} className="h-2" />
                   <div className="flex justify-between mt-2 text-xs text-muted-foreground">
-                    <span className={step >= 1 ? "text-primary font-medium" : ""}>Informations</span>
-                    <span className={step >= 2 ? "text-primary font-medium" : ""}>Type de profil</span>
-                    <span className={step >= 3 ? "text-primary font-medium" : ""}>Finalisation</span>
+                    <span className={step >= 1 ? "text-primary font-medium" : ""}>{t("journey.register.information")}</span>
+                    <span className={step >= 2 ? "text-primary font-medium" : ""}>{t("journey.register.profileType")}</span>
+                    <span className={step >= 3 ? "text-primary font-medium" : ""}>{t("journey.register.finalization")}</span>
                   </div>
                 </div>
               </>
@@ -362,8 +368,8 @@ export default function Journey() {
             {/* Login Mode */}
             {mode === "login" && (
               <>
-                <h1 className="text-3xl font-bold text-foreground mb-2 animate-fade-in-up">Connexion</h1>
-                <p className="text-muted-foreground animate-fade-in-up-delay-1">Connectez-vous pour accéder à votre espace</p>
+                <h1 className="text-3xl font-bold text-foreground mb-2 animate-fade-in-up">{t("journey.login.title")}</h1>
+                <p className="text-muted-foreground animate-fade-in-up-delay-1">{t("journey.login.description")}</p>
               </>
             )}
           </div>
@@ -382,7 +388,7 @@ export default function Journey() {
                   <div className="text-center space-y-2">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-sm font-medium text-accent">
                       <Briefcase className="h-4 w-4" />
-                      Profil Démo
+                      {t("journey.login.demoBadge")}
                     </div>
                     <h2 className="text-2xl font-bold text-foreground">Sophie Martin</h2>
                     <p className="text-muted-foreground">sophie.martin@demo.fr</p>
@@ -390,49 +396,49 @@ export default function Journey() {
 
                   {/* Demo Profile Roles */}
                   <div className="space-y-3">
-                    <p className="text-sm font-semibold text-foreground text-center">3 rôles actifs :</p>
+                    <p className="text-sm font-semibold text-foreground text-center">{t("journey.login.demoRoles")} :</p>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                       <div className="p-4 rounded-lg bg-accent/10 border border-accent/20 text-center">
                         <ClipboardCheck className="h-8 w-8 text-accent mx-auto mb-2" />
-                        <p className="font-semibold text-foreground">Diagnostiqueur</p>
-                        <p className="text-xs text-muted-foreground">Expert immobilier</p>
-                        <p className="text-xs text-accent mt-1">156 projets</p>
+                        <p className="font-semibold text-foreground">{t("data.expertSubtypes.diagnostiqueur.label")}</p>
+                        <p className="text-xs text-muted-foreground">{t("journey.login.demoRole.expert")}</p>
+                        <p className="text-xs text-accent mt-1">{t("journey.login.demoRole.projects", { count: 156 })}</p>
                       </div>
                       <div className="p-4 rounded-lg bg-primary/10 border border-primary/20 text-center">
                         <Key className="h-8 w-8 text-primary mx-auto mb-2" />
-                        <p className="font-semibold text-foreground">Locataire</p>
-                        <p className="text-xs text-muted-foreground">Client - Lyon 6ème</p>
-                        <p className="text-xs text-primary mt-1">1 200 €/mois</p>
+                        <p className="font-semibold text-foreground">{t("data.clientSubtypes.locataire.label")}</p>
+                        <p className="text-xs text-muted-foreground">{t("journey.login.demoRole.client")} - Lyon 6ème</p>
+                        <p className="text-xs text-primary mt-1">1 200 €/{t("journey.login.demoRole.perMonth")}</p>
                       </div>
                       <div className="p-4 rounded-lg bg-primary/10 border border-primary/20 text-center">
                         <Hammer className="h-8 w-8 text-primary mx-auto mb-2" />
-                        <p className="font-semibold text-foreground">Rénovateur</p>
-                        <p className="text-xs text-muted-foreground">Client - Villeurbanne</p>
-                        <p className="text-xs text-primary mt-1">80 000 € travaux</p>
+                        <p className="font-semibold text-foreground">{t("data.clientSubtypes.renovateur.label")}</p>
+                        <p className="text-xs text-muted-foreground">{t("journey.login.demoRole.client")} - Villeurbanne</p>
+                        <p className="text-xs text-primary mt-1">80 000 € {t("journey.login.demoRole.works")}</p>
                       </div>
                     </div>
                   </div>
 
                   {/* What you can test */}
                   <div className="p-4 rounded-lg bg-muted/50 space-y-2">
-                    <p className="text-sm font-semibold text-foreground">Ce profil vous permet de tester :</p>
+                    <p className="text-sm font-semibold text-foreground">{t("journey.login.testFeatures")} :</p>
                     <ul className="text-sm text-muted-foreground space-y-1">
-                      <li>• Le switch entre les différents rôles dans le Dashboard</li>
-                      <li>• Les documents à fournir pour chaque rôle</li>
-                      <li>• Les informations spécifiques à chaque profil</li>
-                      <li>• L'ajout de nouveaux rôles (Acheteur, Vendeur, etc.)</li>
+                      <li>• {t("journey.login.testFeature1")}</li>
+                      <li>• {t("journey.login.testFeature2")}</li>
+                      <li>• {t("journey.login.testFeature3")}</li>
+                      <li>• {t("journey.login.testFeature4")}</li>
                     </ul>
                   </div>
 
                   <Button
                     onClick={() => {
                       loginDemo();
-                      toast.success("Connexion réussie ! Bienvenue Sophie 👋");
+                      toast.success(t("journey.login.successMessage"));
                       navigate("/dashboard");
                     }}
                     className="w-full bg-accent text-accent-foreground hover:bg-accent/90 h-12 text-lg"
                   >
-                    Se connecter en tant que Sophie Martin
+                    {t("journey.login.loginAs")}
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </CardContent>
@@ -441,9 +447,9 @@ export default function Journey() {
               {/* Alternative: create account */}
               <div className="text-center">
                 <p className="text-sm text-muted-foreground">
-                  Vous n'avez pas encore de compte ?{" "}
+                  {t("journey.login.noAccount")}{" "}
                   <button onClick={() => setMode("register")} className="text-primary font-medium hover:underline">
-                    Créer un compte
+                    {t("journey.modeToggle.createAccount")}
                   </button>
                 </p>
               </div>
@@ -457,17 +463,17 @@ export default function Journey() {
                 <div className="space-y-2">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
                     <UserIcon className="h-4 w-4" />
-                    Informations générales
+                    {t("journey.step1.badge")}
                   </div>
-                  <h2 className="text-2xl font-bold text-foreground">Vos informations personnelles</h2>
-                  <p className="text-muted-foreground">Ces informations nous permettent de vérifier votre identité</p>
+                  <h2 className="text-2xl font-bold text-foreground">{t("journey.step1.title")}</h2>
+                  <p className="text-muted-foreground">{t("journey.step1.description")}</p>
                 </div>
 
                 <div className="space-y-6 stagger-animation">
                   {/* First Name */}
                   <div className="space-y-3">
                     <Label htmlFor="firstName" className="text-base font-semibold">
-                      Prénom sur la pièce d'identité *
+                      {t("journey.step1.firstName")} *
                     </Label>
                     <Input
                       id="firstName"
@@ -481,11 +487,9 @@ export default function Journey() {
                   {/* Last Name */}
                   <div className="space-y-3">
                     <Label htmlFor="lastName" className="text-base font-semibold">
-                      Nom sur la pièce d'identité *
+                      {t("journey.step1.lastName")} *
                     </Label>
-                    <p className="text-sm text-muted-foreground">
-                      Assurez-vous que le nom correspond à celui qui figure sur votre pièce d'identité.
-                    </p>
+                    <p className="text-sm text-muted-foreground">{t("journey.step1.lastNameHint")}</p>
                     <Input
                       id="lastName"
                       placeholder="Dupont"
@@ -498,9 +502,9 @@ export default function Journey() {
                   {/* Preferred Name (Optional) */}
                   <div className="space-y-3">
                     <Label htmlFor="preferredName" className="text-base font-semibold">
-                      Prénom d'usage (optionnel)
+                      {t("journey.step1.preferredName")}
                     </Label>
-                    <p className="text-sm text-muted-foreground">Si vous utilisez un autre prénom, vous pouvez l'ajouter ici.</p>
+                    <p className="text-sm text-muted-foreground">{t("journey.step1.preferredNameHint")}</p>
                     <Input
                       id="preferredName"
                       placeholder="Johnny"
@@ -514,12 +518,9 @@ export default function Journey() {
                   <div className="space-y-3">
                     <Label htmlFor="dateOfBirth" className="text-base font-semibold flex items-center gap-2">
                       <Calendar className="h-4 w-4" />
-                      Date de naissance *
+                      {t("journey.step1.dateOfBirth")} *
                     </Label>
-                    <p className="text-sm text-muted-foreground">
-                      Vous devez avoir au moins 18 ans pour vous inscrire. Nous n'indiquerons pas la date de votre anniversaire aux autres
-                      utilisateurs CIEL AVENUE.
-                    </p>
+                    <p className="text-sm text-muted-foreground">{t("journey.step1.dateOfBirthHint")}</p>
                     <Input
                       id="dateOfBirth"
                       type="date"
@@ -529,7 +530,7 @@ export default function Journey() {
                       max={new Date(new Date().setFullYear(new Date().getFullYear() - 18)).toISOString().split("T")[0]}
                     />
                     {personalData.dateOfBirth && !validateAge(personalData.dateOfBirth) && (
-                      <p className="text-sm text-destructive">Vous devez avoir au moins 18 ans pour vous inscrire.</p>
+                      <p className="text-sm text-destructive">{t("journey.step1.ageError")}</p>
                     )}
                   </div>
 
@@ -537,11 +538,9 @@ export default function Journey() {
                   <div className="space-y-3">
                     <Label htmlFor="email" className="text-base font-semibold flex items-center gap-2">
                       <Mail className="h-4 w-4" />
-                      Adresse email *
+                      {t("journey.step1.email")} *
                     </Label>
-                    <p className="text-sm text-muted-foreground">
-                      Nous vous enverrons les confirmations, les reçus et les newsletters par e-mail.
-                    </p>
+                    <p className="text-sm text-muted-foreground">{t("journey.step1.emailHint")}</p>
                     <Input
                       id="email"
                       type="email"
@@ -559,32 +558,32 @@ export default function Journey() {
                         <Shield className="h-5 w-5 text-primary" />
                       </div>
                       <div>
-                        <span className="font-semibold text-foreground">Conditions d'utilisation</span>
-                        <p className="text-xs text-muted-foreground">Veuillez lire et accepter les conditions</p>
+                        <span className="font-semibold text-foreground">{t("journey.step1.terms.title")}</span>
+                        <p className="text-xs text-muted-foreground">{t("journey.step1.terms.hint")}</p>
                       </div>
                     </div>
 
                     <div className="space-y-2 pl-2">
-                      <p className="text-sm text-muted-foreground">En créant un compte, j'accepte :</p>
+                      <p className="text-sm text-muted-foreground">{t("journey.step1.terms.intro")}</p>
                       <ul className="space-y-1.5 text-sm">
                         <li>
                           <a href="#" className="text-primary hover:underline inline-flex items-center gap-1">
-                            • Les conditions générales d'utilisation
+                            • {t("journey.step1.terms.generalTerms")}
                           </a>
                         </li>
                         <li>
                           <a href="#" className="text-primary hover:underline inline-flex items-center gap-1">
-                            • Les conditions de service relatives aux paiements
+                            • {t("journey.step1.terms.paymentTerms")}
                           </a>
                         </li>
                         <li>
                           <a href="#" className="text-primary hover:underline inline-flex items-center gap-1">
-                            • La politique de non-discrimination
+                            • {t("journey.step1.terms.nonDiscrimination")}
                           </a>
                         </li>
                         <li>
                           <a href="#" className="text-primary hover:underline inline-flex items-center gap-1">
-                            • La politique de confidentialité
+                            • {t("journey.step1.terms.privacy")}
                           </a>
                         </li>
                       </ul>
@@ -597,7 +596,7 @@ export default function Journey() {
                         onCheckedChange={(checked: boolean) => setPersonalData({ ...personalData, termsAccepted: checked })}
                       />
                       <Label htmlFor="terms" className="text-sm font-medium text-foreground cursor-pointer">
-                        J'ai lu et j'accepte l'ensemble de ces conditions
+                        {t("journey.step1.terms.accept")}
                       </Label>
                     </div>
                   </div>
@@ -609,7 +608,7 @@ export default function Journey() {
                     className="bg-primary text-primary-foreground hover:bg-primary/90"
                     disabled={!isStep1Valid()}
                   >
-                    Continuer <ArrowRight className="ml-2 h-5 w-5" />
+                    {t("common.continue")} <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </div>
               </CardContent>
@@ -620,8 +619,8 @@ export default function Journey() {
           {(mode === "register" || mode === "addRole") && step === 2 && (
             <div className="space-y-8 animate-fade-in-up">
               <div className="text-center space-y-4">
-                <h2 className="text-2xl font-bold text-foreground">Quel est votre profil ?</h2>
-                <p className="text-muted-foreground">Choisissez le type de compte qui correspond à vos besoins</p>
+                <h2 className="text-2xl font-bold text-foreground">{t("journey.step2.title")}</h2>
+                <p className="text-muted-foreground">{t("journey.step2.description")}</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -635,19 +634,21 @@ export default function Journey() {
                       <Users className="h-10 w-10 text-primary-foreground" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-xl font-bold text-foreground">Client</h3>
-                      <p className="text-sm text-muted-foreground">Acheteur, vendeur, bailleur, locataire ou rénovateur</p>
+                      <h3 className="text-xl font-bold text-foreground">{t("journey.step2.client.title")}</h3>
+                      <p className="text-sm text-muted-foreground">{t("journey.step2.client.description")}</p>
                     </div>
                     <ul className="text-left space-y-2">
-                      {["Recherche personnalisée", "Accompagnement d'experts", "Documents sécurisés"].map((feature, idx) => (
-                        <li key={idx} className="flex gap-2 text-sm text-muted-foreground">
-                          <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
+                      {[t("journey.step2.client.feature1"), t("journey.step2.client.feature2"), t("journey.step2.client.feature3")].map(
+                        (feature, idx) => (
+                          <li key={idx} className="flex gap-2 text-sm text-muted-foreground">
+                            <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                            <span>{feature}</span>
+                          </li>
+                        ),
+                      )}
                     </ul>
                     <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                      Je suis client <ArrowRight className="ml-2 h-4 w-4" />
+                      {t("journey.step2.client.cta")} <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </CardContent>
                 </Card>
@@ -662,19 +663,21 @@ export default function Journey() {
                       <Briefcase className="h-10 w-10 text-accent-foreground" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-xl font-bold text-foreground">Expert</h3>
-                      <p className="text-sm text-muted-foreground">Professionnel de l'immobilier certifié par notre plateforme</p>
+                      <h3 className="text-xl font-bold text-foreground">{t("journey.step2.expert.title")}</h3>
+                      <p className="text-sm text-muted-foreground">{t("journey.step2.expert.description")}</p>
                     </div>
                     <ul className="text-left space-y-2">
-                      {["Accès aux clients pré-qualifiés", "Gestion des leads", "Outils de performance"].map((feature, idx) => (
-                        <li key={idx} className="flex gap-2 text-sm text-muted-foreground">
-                          <CheckCircle2 className="h-4 w-4 text-accent flex-shrink-0 mt-0.5" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
+                      {[t("journey.step2.expert.feature1"), t("journey.step2.expert.feature2"), t("journey.step2.expert.feature3")].map(
+                        (feature, idx) => (
+                          <li key={idx} className="flex gap-2 text-sm text-muted-foreground">
+                            <CheckCircle2 className="h-4 w-4 text-accent flex-shrink-0 mt-0.5" />
+                            <span>{feature}</span>
+                          </li>
+                        ),
+                      )}
                     </ul>
                     <Button variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-                      Je suis expert <ArrowRight className="ml-2 h-4 w-4" />
+                      {t("journey.step2.expert.cta")} <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </CardContent>
                 </Card>
@@ -682,7 +685,7 @@ export default function Journey() {
 
               <div className="flex justify-start pt-4">
                 <Button onClick={handleBack} variant="outline">
-                  <ArrowLeft className="mr-2 h-5 w-5" /> Retour
+                  <ArrowLeft className="mr-2 h-5 w-5" /> {t("common.back")}
                 </Button>
               </div>
             </div>
@@ -697,18 +700,18 @@ export default function Journey() {
                   <div className="text-center space-y-4">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary mb-2">
                       {userType === "client" ? <Users className="h-4 w-4" /> : <Briefcase className="h-4 w-4" />}
-                      {userType === "client" ? "Profil Client" : "Profil Expert"}
+                      {userType === "client" ? t("journey.step3.clientTitle") : t("journey.step3.expertTitle")}
                     </div>
                     <h2 className="text-2xl font-bold text-foreground">
-                      {userType === "client" ? "Quel type de client êtes-vous ?" : "Quel type d'expert êtes-vous ?"}
+                      {userType === "client" ? t("journey.step3.clientQuestion") : t("journey.step3.expertQuestion")}
                     </h2>
-                    <p className="text-muted-foreground">Sélectionnez votre profil pour voir les documents requis</p>
+                    <p className="text-muted-foreground">{t("journey.step3.selectProfile")}</p>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {userType === "client"
                       ? // Client subtypes
-                        (Object.keys(clientSubtypeLabels) as ClientSubtype[]).map((key) => {
+                        (Object.keys(clientSubtypeLabelKeys) as ClientSubtype[]).map((key) => {
                           const Icon = clientSubtypeIcons[key];
                           const alreadyHasRole = user?.roles.some((r) => r.subtype === key) ?? false;
                           return (
@@ -729,21 +732,21 @@ export default function Journey() {
                                 </div>
                                 <div>
                                   <h3 className="font-semibold text-foreground flex items-center justify-center gap-2">
-                                    {clientSubtypeLabels[key]}
+                                    {t(clientSubtypeLabelKeys[key])}
                                     {alreadyHasRole && (
                                       <span className="text-xs px-2 py-0.5 rounded-full bg-muted-foreground/20 text-muted-foreground">
-                                        Déjà ajouté
+                                        {t("journey.step3.alreadyAdded")}
                                       </span>
                                     )}
                                   </h3>
-                                  <p className="text-xs text-muted-foreground mt-1">{clientSubtypeDescriptions[key]}</p>
+                                  <p className="text-xs text-muted-foreground mt-1">{t(clientSubtypeDescriptionKeys[key])}</p>
                                 </div>
                               </CardContent>
                             </Card>
                           );
                         })
                       : // Expert subtypes
-                        (Object.keys(expertSubtypeLabels) as ExpertSubtype[]).map((key) => {
+                        (Object.keys(expertSubtypeLabelKeys) as ExpertSubtype[]).map((key) => {
                           const Icon = expertSubtypeIcons[key];
                           const alreadyHasRole = user?.roles.some((r) => r.subtype === key) ?? false;
                           return (
@@ -764,14 +767,14 @@ export default function Journey() {
                                 </div>
                                 <div>
                                   <h3 className="font-semibold text-foreground flex items-center justify-center gap-2">
-                                    {expertSubtypeLabels[key]}
+                                    {t(expertSubtypeLabelKeys[key])}
                                     {alreadyHasRole && (
                                       <span className="text-xs px-2 py-0.5 rounded-full bg-muted-foreground/20 text-muted-foreground">
-                                        Déjà ajouté
+                                        {t("journey.step3.alreadyAdded")}
                                       </span>
                                     )}
                                   </h3>
-                                  <p className="text-xs text-muted-foreground mt-1">{expertSubtypeDescriptions[key]}</p>
+                                  <p className="text-xs text-muted-foreground mt-1">{t(expertSubtypeDescriptionKeys[key])}</p>
                                 </div>
                               </CardContent>
                             </Card>
@@ -781,7 +784,7 @@ export default function Journey() {
 
                   <div className="flex justify-start pt-4">
                     <Button onClick={handleBack} variant="outline">
-                      <ArrowLeft className="mr-2 h-5 w-5" /> Retour
+                      <ArrowLeft className="mr-2 h-5 w-5" /> {t("common.back")}
                     </Button>
                   </div>
                 </>
@@ -795,17 +798,15 @@ export default function Journey() {
                       <div className="space-y-2">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
                           <FileText className="h-4 w-4" />
-                          Documents requis
+                          {t("journey.step3.documents.badge")}
                         </div>
                         <h2 className="text-2xl font-bold text-foreground">
-                          Documents pour{" "}
+                          {t("journey.step3.documents.title")}{" "}
                           {userType === "client"
-                            ? clientSubtypeLabels[subtype as ClientSubtype]
-                            : expertSubtypeLabels[subtype as ExpertSubtype]}
+                            ? t(clientSubtypeLabelKeys[subtype as ClientSubtype])
+                            : t(expertSubtypeLabelKeys[subtype as ExpertSubtype])}
                         </h2>
-                        <p className="text-muted-foreground">
-                          Sélectionnez les documents que vous pouvez fournir maintenant. Vous pourrez les télécharger plus tard.
-                        </p>
+                        <p className="text-muted-foreground">{t("journey.step3.documents.description")}</p>
                       </div>
 
                       <div className="space-y-3 stagger-animation">
@@ -822,7 +823,7 @@ export default function Journey() {
                             </div>
                             <Button variant="ghost" size="sm" className="text-primary">
                               <Upload className="h-4 w-4 mr-2" />
-                              Télécharger
+                              {t("journey.step3.documents.upload")}
                             </Button>
                           </div>
                         ))}
@@ -830,14 +831,13 @@ export default function Journey() {
 
                       <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
                         <p className="text-sm text-muted-foreground">
-                          <span className="font-semibold text-foreground">💡 Conseil :</span> Vous pouvez continuer sans télécharger tous
-                          les documents maintenant. Vous pourrez les ajouter plus tard depuis votre profil.
+                          <span className="font-semibold text-foreground">💡 {t("journey.step3.documents.tipTitle")} :</span>{" "}
+                          {t("journey.step3.documents.tipText")}
                         </p>
                       </div>
                     </CardContent>
                   </Card>
 
-                  {/* Contact Notaire Card */}
                   <Card className="border-accent/30 bg-gradient-to-r from-accent/5 to-primary/5">
                     <CardContent className="p-6">
                       <div className="flex flex-col md:flex-row items-center gap-6">
@@ -845,18 +845,16 @@ export default function Journey() {
                           <Scale className="h-8 w-8 text-accent" />
                         </div>
                         <div className="flex-1 text-center md:text-left">
-                          <h3 className="text-lg font-semibold text-foreground mb-1">Besoin d'aide avec vos documents ?</h3>
-                          <p className="text-sm text-muted-foreground">
-                            Un notaire partenaire peut vous accompagner dans la préparation et la vérification de vos documents.
-                          </p>
+                          <h3 className="text-lg font-semibold text-foreground mb-1">{t("journey.step3.notaryHelp.title")}</h3>
+                          <p className="text-sm text-muted-foreground">{t("journey.step3.notaryHelp.description")}</p>
                         </div>
                         <Button
                           variant="outline"
                           className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
-                          onClick={() => toast.success("Demande envoyée ! Un notaire vous contactera sous 24h.")}
+                          onClick={() => toast.success(t("journey.step3.notaryHelp.successMessage"))}
                         >
                           <MessageSquare className="h-4 w-4 mr-2" />
-                          Contacter un notaire
+                          {t("journey.step3.notaryHelp.cta")}
                         </Button>
                       </div>
                     </CardContent>
@@ -868,10 +866,10 @@ export default function Journey() {
                       <div className="space-y-2">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-sm font-medium text-accent">
                           <CheckCircle2 className="h-4 w-4" />
-                          Récapitulatif
+                          {t("journey.step3.summary.badge")}
                         </div>
-                        <h2 className="text-2xl font-bold text-foreground">Vérifiez votre compte</h2>
-                        <p className="text-muted-foreground">Voici un résumé des informations de votre compte avant création.</p>
+                        <h2 className="text-2xl font-bold text-foreground">{t("journey.step3.summary.title")}</h2>
+                        <p className="text-muted-foreground">{t("journey.step3.summary.description")}</p>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -879,27 +877,26 @@ export default function Journey() {
                         <div className="p-4 rounded-lg bg-muted/50 space-y-3">
                           <h4 className="font-semibold text-foreground flex items-center gap-2">
                             <UserIcon className="h-4 w-4 text-primary" />
-                            Informations personnelles
+                            {t("journey.step3.summary.personalInfo")}
                           </h4>
                           <div className="space-y-1 text-sm">
                             <p>
-                              <span className="text-muted-foreground">Nom :</span>{" "}
+                              <span className="text-muted-foreground">{t("journey.step3.summary.name")} :</span>{" "}
                               <span className="font-medium">
-                                {personalData.firstName || "Non renseigné"} {personalData.lastName || ""}
+                                {personalData.firstName || t("journey.step3.summary.notProvided")} {personalData.lastName || ""}
                               </span>
                             </p>
                             <p>
                               <span className="text-muted-foreground">Email :</span>{" "}
-                              <span className="font-medium">{personalData.email || "Non renseigné"}</span>
+                              <span className="font-medium">{personalData.email || t("journey.step3.summary.notProvided")}</span>
                             </p>
                             <p>
-                              <span className="text-muted-foreground">Date de naissance :</span>{" "}
-                              <span className="font-medium">{personalData.dateOfBirth || "Non renseignée"}</span>
+                              <span className="text-muted-foreground">{t("journey.step3.summary.dateOfBirth")} :</span>{" "}
+                              <span className="font-medium">{personalData.dateOfBirth || t("journey.step3.summary.notProvided")}</span>
                             </p>
                           </div>
                         </div>
 
-                        {/* Account Type */}
                         <div className="p-4 rounded-lg bg-muted/50 space-y-3">
                           <h4 className="font-semibold text-foreground flex items-center gap-2">
                             {userType === "expert" ? (
@@ -907,19 +904,19 @@ export default function Journey() {
                             ) : (
                               <Users className="h-4 w-4 text-primary" />
                             )}
-                            Type de compte
+                            {t("journey.step3.summary.accountType")}
                           </h4>
                           <div className="space-y-1 text-sm">
                             <p>
-                              <span className="text-muted-foreground">Type :</span>{" "}
+                              <span className="text-muted-foreground">{t("journey.step3.summary.type")} :</span>{" "}
                               <span className="font-medium capitalize">{userType}</span>
                             </p>
                             <p>
-                              <span className="text-muted-foreground">Profil :</span>{" "}
+                              <span className="text-muted-foreground">{t("journey.step3.summary.profile")} :</span>{" "}
                               <span className="font-medium">
                                 {userType === "client"
-                                  ? clientSubtypeLabels[subtype as ClientSubtype]
-                                  : expertSubtypeLabels[subtype as ExpertSubtype]}
+                                  ? t(clientSubtypeLabelKeys[subtype as ClientSubtype])
+                                  : t(expertSubtypeLabelKeys[subtype as ExpertSubtype])}
                               </span>
                             </p>
                           </div>
@@ -929,7 +926,8 @@ export default function Journey() {
                         <div className="p-4 rounded-lg bg-muted/50 space-y-3 md:col-span-2">
                           <h4 className="font-semibold text-foreground flex items-center gap-2">
                             <FileText className="h-4 w-4 text-primary" />
-                            Documents ({uploadedDocuments.length}/{getRequiredDocuments().length} sélectionnés)
+                            {t("journey.step3.summary.documents")} ({uploadedDocuments.length}/{getRequiredDocuments().length}{" "}
+                            {t("journey.step3.summary.selected")})
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {getRequiredDocuments().map((doc) => (
@@ -949,13 +947,14 @@ export default function Journey() {
 
                       <div className="flex justify-between pt-4 border-t border-border">
                         <Button onClick={() => setSubtype(null)} variant="outline">
-                          <ArrowLeft className="mr-2 h-5 w-5" /> Retour
+                          <ArrowLeft className="mr-2 h-5 w-5" /> {t("common.back")}
                         </Button>
                         <Button
                           onClick={handleComplete}
                           className={`${userType === "expert" ? "bg-accent text-accent-foreground hover:bg-accent/90" : "bg-primary text-primary-foreground hover:bg-primary/90"}`}
                         >
-                          {isAddingRole ? "Ajouter ce rôle" : "Créer mon compte"} <ArrowRight className="ml-2 h-5 w-5" />
+                          {isAddingRole ? t("journey.step3.summary.addRole") : t("journey.step3.summary.createAccount")}{" "}
+                          <ArrowRight className="ml-2 h-5 w-5" />
                         </Button>
                       </div>
                     </CardContent>
