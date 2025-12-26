@@ -45,6 +45,7 @@ import {
   User as UserIcon,
   FileText,
   Shield,
+  MessageSquare,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -610,64 +611,178 @@ export default function Journey() {
 
               {/* Documents Upload */}
               {subtype && (
-                <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
-                  <CardContent className="p-8 space-y-8">
-                    <div className="space-y-2">
-                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
-                        <FileText className="h-4 w-4" />
-                        Documents requis
-                      </div>
-                      <h2 className="text-2xl font-bold text-foreground">
-                        Documents pour{" "}
-                        {userType === "client"
-                          ? clientSubtypeLabels[subtype as ClientSubtype]
-                          : expertSubtypeLabels[subtype as ExpertSubtype]}
-                      </h2>
-                      <p className="text-muted-foreground">
-                        Sélectionnez les documents que vous pouvez fournir maintenant. Vous pourrez les télécharger plus tard.
-                      </p>
-                    </div>
-
-                    <div className="space-y-3 stagger-animation">
-                      {getRequiredDocuments().map((doc) => (
-                        <div
-                          key={doc}
-                          className="flex items-center justify-between p-4 rounded-lg border border-border bg-muted/30 hover:bg-muted/50 transition-colors"
-                        >
-                          <div className="flex items-center gap-3">
-                            <Checkbox id={doc} checked={uploadedDocuments.includes(doc)} onCheckedChange={() => toggleDocument(doc)} />
-                            <Label htmlFor={doc} className="cursor-pointer font-normal">
-                              {doc}
-                            </Label>
-                          </div>
-                          <Button variant="ghost" size="sm" className="text-primary">
-                            <Upload className="h-4 w-4 mr-2" />
-                            Télécharger
-                          </Button>
+                <div className="space-y-6">
+                  <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
+                    <CardContent className="p-8 space-y-8">
+                      <div className="space-y-2">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
+                          <FileText className="h-4 w-4" />
+                          Documents requis
                         </div>
-                      ))}
-                    </div>
+                        <h2 className="text-2xl font-bold text-foreground">
+                          Documents pour{" "}
+                          {userType === "client"
+                            ? clientSubtypeLabels[subtype as ClientSubtype]
+                            : expertSubtypeLabels[subtype as ExpertSubtype]}
+                        </h2>
+                        <p className="text-muted-foreground">
+                          Sélectionnez les documents que vous pouvez fournir maintenant. Vous pourrez les télécharger plus tard.
+                        </p>
+                      </div>
 
-                    <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
-                      <p className="text-sm text-muted-foreground">
-                        <span className="font-semibold text-foreground">💡 Conseil :</span> Vous pouvez continuer sans télécharger tous les
-                        documents maintenant. Vous pourrez les ajouter plus tard depuis votre profil.
-                      </p>
-                    </div>
+                      <div className="space-y-3 stagger-animation">
+                        {getRequiredDocuments().map((doc) => (
+                          <div
+                            key={doc}
+                            className="flex items-center justify-between p-4 rounded-lg border border-border bg-muted/30 hover:bg-muted/50 transition-colors"
+                          >
+                            <div className="flex items-center gap-3">
+                              <Checkbox id={doc} checked={uploadedDocuments.includes(doc)} onCheckedChange={() => toggleDocument(doc)} />
+                              <Label htmlFor={doc} className="cursor-pointer font-normal">
+                                {doc}
+                              </Label>
+                            </div>
+                            <Button variant="ghost" size="sm" className="text-primary">
+                              <Upload className="h-4 w-4 mr-2" />
+                              Télécharger
+                            </Button>
+                          </div>
+                        ))}
+                      </div>
 
-                    <div className="flex justify-between pt-4">
-                      <Button onClick={() => setSubtype(null)} variant="outline">
-                        <ArrowLeft className="mr-2 h-5 w-5" /> Retour
-                      </Button>
-                      <Button
-                        onClick={handleComplete}
-                        className={`${userType === "expert" ? "bg-accent text-accent-foreground hover:bg-accent/90" : "bg-primary text-primary-foreground hover:bg-primary/90"}`}
-                      >
-                        Créer mon compte <ArrowRight className="ml-2 h-5 w-5" />
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                      <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
+                        <p className="text-sm text-muted-foreground">
+                          <span className="font-semibold text-foreground">💡 Conseil :</span> Vous pouvez continuer sans télécharger tous
+                          les documents maintenant. Vous pourrez les ajouter plus tard depuis votre profil.
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Contact Notaire Card */}
+                  <Card className="border-accent/30 bg-gradient-to-r from-accent/5 to-primary/5">
+                    <CardContent className="p-6">
+                      <div className="flex flex-col md:flex-row items-center gap-6">
+                        <div className="h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                          <Scale className="h-8 w-8 text-accent" />
+                        </div>
+                        <div className="flex-1 text-center md:text-left">
+                          <h3 className="text-lg font-semibold text-foreground mb-1">Besoin d'aide avec vos documents ?</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Un notaire partenaire peut vous accompagner dans la préparation et la vérification de vos documents.
+                          </p>
+                        </div>
+                        <Button
+                          variant="outline"
+                          className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
+                          onClick={() => toast.success("Demande envoyée ! Un notaire vous contactera sous 24h.")}
+                        >
+                          <MessageSquare className="h-4 w-4 mr-2" />
+                          Contacter un notaire
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Account Review Summary */}
+                  <Card className="border-border bg-card/80 backdrop-blur-sm">
+                    <CardContent className="p-8 space-y-6">
+                      <div className="space-y-2">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-sm font-medium text-accent">
+                          <CheckCircle2 className="h-4 w-4" />
+                          Récapitulatif
+                        </div>
+                        <h2 className="text-2xl font-bold text-foreground">Vérifiez votre compte</h2>
+                        <p className="text-muted-foreground">Voici un résumé des informations de votre compte avant création.</p>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {/* Personal Info */}
+                        <div className="p-4 rounded-lg bg-muted/50 space-y-3">
+                          <h4 className="font-semibold text-foreground flex items-center gap-2">
+                            <UserIcon className="h-4 w-4 text-primary" />
+                            Informations personnelles
+                          </h4>
+                          <div className="space-y-1 text-sm">
+                            <p>
+                              <span className="text-muted-foreground">Nom :</span>{" "}
+                              <span className="font-medium">
+                                {personalData.firstName || "Non renseigné"} {personalData.lastName || ""}
+                              </span>
+                            </p>
+                            <p>
+                              <span className="text-muted-foreground">Email :</span>{" "}
+                              <span className="font-medium">{personalData.email || "Non renseigné"}</span>
+                            </p>
+                            <p>
+                              <span className="text-muted-foreground">Date de naissance :</span>{" "}
+                              <span className="font-medium">{personalData.dateOfBirth || "Non renseignée"}</span>
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Account Type */}
+                        <div className="p-4 rounded-lg bg-muted/50 space-y-3">
+                          <h4 className="font-semibold text-foreground flex items-center gap-2">
+                            {userType === "expert" ? (
+                              <Briefcase className="h-4 w-4 text-accent" />
+                            ) : (
+                              <Users className="h-4 w-4 text-primary" />
+                            )}
+                            Type de compte
+                          </h4>
+                          <div className="space-y-1 text-sm">
+                            <p>
+                              <span className="text-muted-foreground">Type :</span>{" "}
+                              <span className="font-medium capitalize">{userType}</span>
+                            </p>
+                            <p>
+                              <span className="text-muted-foreground">Profil :</span>{" "}
+                              <span className="font-medium">
+                                {userType === "client"
+                                  ? clientSubtypeLabels[subtype as ClientSubtype]
+                                  : expertSubtypeLabels[subtype as ExpertSubtype]}
+                              </span>
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Documents */}
+                        <div className="p-4 rounded-lg bg-muted/50 space-y-3 md:col-span-2">
+                          <h4 className="font-semibold text-foreground flex items-center gap-2">
+                            <FileText className="h-4 w-4 text-primary" />
+                            Documents ({uploadedDocuments.length}/{getRequiredDocuments().length} sélectionnés)
+                          </h4>
+                          <div className="flex flex-wrap gap-2">
+                            {getRequiredDocuments().map((doc) => (
+                              <span
+                                key={doc}
+                                className={`text-xs px-2 py-1 rounded-full ${
+                                  uploadedDocuments.includes(doc) ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
+                                }`}
+                              >
+                                {uploadedDocuments.includes(doc) ? "✓ " : ""}
+                                {doc}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex justify-between pt-4 border-t border-border">
+                        <Button onClick={() => setSubtype(null)} variant="outline">
+                          <ArrowLeft className="mr-2 h-5 w-5" /> Retour
+                        </Button>
+                        <Button
+                          onClick={handleComplete}
+                          className={`${userType === "expert" ? "bg-accent text-accent-foreground hover:bg-accent/90" : "bg-primary text-primary-foreground hover:bg-primary/90"}`}
+                        >
+                          Créer mon compte <ArrowRight className="ml-2 h-5 w-5" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               )}
             </div>
           )}
