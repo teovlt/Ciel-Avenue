@@ -121,7 +121,7 @@ export default function Journey() {
   const [uploadedDocuments, setUploadedDocuments] = useState<string[]>([]);
 
   // Client-specific data (for acheteur)
-  const [clientData, setClientData] = useState({
+  const [clientData] = useState({
     propertyType: "",
     location: "",
     budget: "",
@@ -131,7 +131,7 @@ export default function Journey() {
   });
 
   // Expert-specific data
-  const [expertData, setExpertData] = useState({
+  const [expertData] = useState({
     company: "",
     siret: "",
     yearsExperience: "",
@@ -185,10 +185,6 @@ export default function Journey() {
 
   const handleSubtypeSelect = (selectedSubtype: ClientSubtype | ExpertSubtype) => {
     setSubtype(selectedSubtype);
-    // Initialize documents for this subtype
-    const docs =
-      userType === "client" ? clientDocuments[selectedSubtype as ClientSubtype] : expertDocuments[selectedSubtype as ExpertSubtype];
-    setUploadedDocuments([]);
   };
 
   const toggleDocument = (doc: string) => {
