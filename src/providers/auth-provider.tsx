@@ -94,16 +94,88 @@ export const clientDocuments: Record<ClientSubtype, string[]> = {
   renovateur: ["Pièce d'identité", "Documents du projet", "Devis travaux", "Justificatif de financement"],
 };
 
-// Required documents by expert subtype
+// Common documents for ALL experts
+export const commonExpertDocuments: string[] = [
+  "Extrait K-BIS (ou attestation INSEE) de moins de 3 mois",
+  "Pièce d'identité du représentant légal",
+  "Justificatif de pouvoir si le signataire ≠ représentant légal",
+  "RIB professionnel",
+  "Justificatif d'adresse du siège social (facture, bail, attestation)",
+];
+
+// Specific documents by expert subtype (in addition to common documents)
+export const expertSpecificDocuments: Record<ExpertSubtype, string[]> = {
+  notaire: [
+    "Carte professionnelle",
+    "Attestation d'inscription à la Chambre des Notaires",
+    "Copie de l'assurance RC professionnelle obligatoire du notaire",
+    "Numéro et nom de la compagnie d'assurance",
+    "RCS / SIRET de l'étude notariale",
+    "Adresse professionnelle de l'étude",
+  ],
+  diagnostiqueur: [
+    "Attestation RC Pro et/ou décennale valide couvrant les diagnostics",
+    "Nom de la compagnie d'assurance",
+    "Liste des certifications (DPE, termites, amiante, etc.)",
+  ],
+  marchand: [
+    "Carte professionnelle (Carte T)",
+    "Attestation RC Pro valide",
+    "Objet social conforme à l'activité (achat/revente/promotion immobilière)",
+    "Description des activités immobilières pratiquées",
+  ],
+  maitre_oeuvre: [
+    "Assurance RC Pro / décennale spécifique à la maîtrise d'œuvre",
+    "Coordonnées de l'assureur",
+    "Justificatif de qualifications techniques (si requis)",
+  ],
+  promoteur: [
+    "Attestation RC Pro couvrant l'activité de promotion / construction",
+    "Objet social conforme (promotion / construction immobilière)",
+    "Description du ou des programmes immobiliers en cours ou prévus",
+  ],
+  photographe: [
+    "Autorisation d'exploitation de drones (si utilisation de drone)",
+    "Assurance Responsabilité Civile Professionnelle (RC Pro)",
+    "Certificats ou diplômes (optionnels)",
+  ],
+  courtier: [
+    "Attestation RC Pro spécifique au courtage en financement / crédit immobilier",
+    "N° ORIAS (obligatoire pour les intermédiaires financiers)",
+    "Nom de la compagnie d'assurance",
+    "Conformité avec la réglementation ACPR / ORIAS",
+  ],
+  artisan: ["Assurance décennale", "Spécialité métier (à sélectionner)", "Qualifications professionnelles spécifiques au métier"],
+};
+
+// Artisan specialties list
+export const artisanSpecialties: string[] = [
+  "Plombier / Chauffagiste",
+  "Électricien",
+  "Plâtrier / Plaquiste",
+  "Cuisiniste / Agenceur",
+  "Serrurier / Métallier",
+  "Parqueteur",
+  "Domoticien",
+  "Décorateur / Architecte d'intérieur",
+  "Menuisier",
+  "Peintre / Solier",
+  "Vitrier / Miroitier",
+  "Climaticien / Frigoriste",
+  "Staffeur / Stucateur",
+  "Étancheur d'intérieur",
+];
+
+// Required documents by expert subtype (common + specific)
 export const expertDocuments: Record<ExpertSubtype, string[]> = {
-  notaire: ["Pièce d'identité", "Carte professionnelle", "Attestation d'inscription à la Chambre des Notaires"],
-  diagnostiqueur: ["Pièce d'identité", "Certifications DPE", "Assurance RC Professionnelle"],
-  marchand: ["Pièce d'identité", "Carte professionnelle (Carte T)", "Numéro SIRET", "Assurance RC Professionnelle"],
-  maitre_oeuvre: ["Pièce d'identité", "Diplômes / Certifications", "Assurance décennale"],
-  promoteur: ["Pièce d'identité", "Numéro SIRET", "Garantie financière d'achèvement", "Références de projets"],
-  photographe: ["Pièce d'identité", "Portfolio", "Numéro SIRET"],
-  courtier: ["Pièce d'identité", "Numéro ORIAS", "Assurance RC Professionnelle"],
-  artisan: ["Pièce d'identité", "Numéro SIRET", "Assurance décennale", "Qualifications professionnelles"],
+  notaire: [...commonExpertDocuments, ...expertSpecificDocuments.notaire],
+  diagnostiqueur: [...commonExpertDocuments, ...expertSpecificDocuments.diagnostiqueur],
+  marchand: [...commonExpertDocuments, ...expertSpecificDocuments.marchand],
+  maitre_oeuvre: [...commonExpertDocuments, ...expertSpecificDocuments.maitre_oeuvre],
+  promoteur: [...commonExpertDocuments, ...expertSpecificDocuments.promoteur],
+  photographe: [...commonExpertDocuments, ...expertSpecificDocuments.photographe],
+  courtier: [...commonExpertDocuments, ...expertSpecificDocuments.courtier],
+  artisan: [...commonExpertDocuments, ...expertSpecificDocuments.artisan],
 };
 
 // Labels for client subtypes
@@ -153,9 +225,14 @@ function createDemoUser(): User {
     type: "expert",
     subtype: "diagnostiqueur",
     documents: [
-      { name: "Pièce d'identité", uploaded: true, verified: true },
-      { name: "Certifications DPE", uploaded: true, verified: true },
-      { name: "Assurance RC Professionnelle", uploaded: true, verified: false },
+      { name: "Extrait K-BIS (ou attestation INSEE) de moins de 3 mois", uploaded: true, verified: true },
+      { name: "Pièce d'identité du représentant légal", uploaded: true, verified: true },
+      { name: "Justificatif de pouvoir si le signataire ≠ représentant légal", uploaded: false, verified: false },
+      { name: "RIB professionnel", uploaded: true, verified: true },
+      { name: "Justificatif d'adresse du siège social (facture, bail, attestation)", uploaded: true, verified: false },
+      { name: "Attestation RC Pro et/ou décennale valide couvrant les diagnostics", uploaded: true, verified: true },
+      { name: "Nom de la compagnie d'assurance", uploaded: true, verified: true },
+      { name: "Liste des certifications (DPE, termites, amiante, etc.)", uploaded: true, verified: false },
     ],
     profile: {
       certifications: ["DPE", "Amiante", "Plomb", "Termites"],
