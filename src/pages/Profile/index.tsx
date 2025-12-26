@@ -295,26 +295,6 @@ export default function ProfilPage() {
               </CardContent>
             </Card>
 
-            {/* Add Role Card */}
-            {canAddRole() && (
-              <Card
-                className="border-dashed border-2 border-border bg-muted/20 hover:bg-muted/40 transition-colors cursor-pointer"
-                onClick={() => navigate("/journey", { state: { addingRole: true } })}
-              >
-                <CardContent className="p-8 text-center space-y-4">
-                  <div className="h-16 w-16 rounded-full bg-muted mx-auto flex items-center justify-center">
-                    <Plus className="h-8 w-8 text-muted-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-foreground">Ajouter un rôle Client</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Vous pouvez également utiliser CIEL AVENUE en tant que client (acheteur, vendeur, etc.)
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
             {/* CTA */}
             <Card className="border-accent/20 bg-gradient-to-r from-accent/5 to-primary/5">
               <CardContent className="p-8 text-center space-y-6">
@@ -525,26 +505,6 @@ export default function ProfilPage() {
               </div>
             </CardContent>
           </Card>
-
-          {/* Add Role Card */}
-          {canAddRole() && (
-            <Card
-              className="border-dashed border-2 border-border bg-muted/20 hover:bg-muted/40 transition-colors cursor-pointer"
-              onClick={() => navigate("/journey", { state: { addingRole: true } })}
-            >
-              <CardContent className="p-8 text-center space-y-4">
-                <div className="h-16 w-16 rounded-full bg-muted mx-auto flex items-center justify-center">
-                  <Plus className="h-8 w-8 text-muted-foreground" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-foreground">Ajouter un rôle Expert</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Vous êtes professionnel de l'immobilier ? Ajoutez votre profil expert pour accéder aux clients pré-qualifiés.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          )}
 
           {/* CTA */}
           <Card className="border-primary/20 bg-gradient-to-r from-primary/5 to-secondary/5">

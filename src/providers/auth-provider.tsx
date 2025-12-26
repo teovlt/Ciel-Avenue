@@ -130,6 +130,7 @@ export const expertSubtypeLabels: Record<ExpertSubtype, string> = {
 interface AuthContextType {
   user: User | null;
   login: (user: User) => void;
+  loginDemo: () => void;
   logout: () => void;
   isAuthenticated: boolean;
   isExpert: boolean;
@@ -139,9 +140,97 @@ interface AuthContextType {
   setActiveRoleIndex: (index: number) => void;
   addRole: (role: UserRole) => void;
   hasMultipleRoles: boolean;
+  getAllRoleLabels: () => string[];
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+// Demo user with multiple roles
+function createDemoUser(): User {
+  const now = new Date().toISOString();
+
+  const expertRole: UserRole = {
+    type: "expert",
+    subtype: "diagnostiqueur",
+    documents: [
+      { name: "Pièce d'identité", uploaded: true, verified: true },
+      { name: "Certifications DPE", uploaded: true, verified: true },
+      { name: "Assurance RC Professionnelle", uploaded: true, verified: false },
+    ],
+    profile: {
+      certifications: ["DPE", "Amiante", "Plomb", "Termites"],
+      expertise: ["residential", "commercial"],
+      zones: ["paris", "lyon"],
+      yearsExperience: 8,
+      completedProjects: 156,
+      company: "DiagImmo Pro",
+      siret: "123 456 789 00012",
+    } as ExpertProfile,
+    createdAt: now,
+  };
+
+  const locataireRole: UserRole = {
+    type: "client",
+    subtype: "locataire",
+    documents: [
+      { name: "Pièce d'identité", uploaded: true, verified: true },
+      { name: "Justificatif de domicile", uploaded: true, verified: true },
+      { name: "Bulletins de salaire (3 derniers)", uploaded: true, verified: false },
+      { name: "Avis d'imposition", uploaded: false, verified: false },
+      { name: "Contrat de travail", uploaded: true, verified: true },
+    ],
+    profile: {
+      propertyType: "Appartement T3",
+      location: "Lyon 6ème",
+      budget: "1 200 €/mois",
+      rooms: "3",
+      surface: "65",
+      maritalStatus: "Célibataire",
+      solvabilityScore: 7.8,
+      borrowingCapacity: "N/A",
+      estimatedRate: "N/A",
+    } as ClientProfile,
+    createdAt: now,
+  };
+
+  const renovateurRole: UserRole = {
+    type: "client",
+    subtype: "renovateur",
+    documents: [
+      { name: "Pièce d'identité", uploaded: true, verified: true },
+      { name: "Documents du projet", uploaded: true, verified: false },
+      { name: "Devis travaux", uploaded: false, verified: false },
+      { name: "Justificatif de financement", uploaded: false, verified: false },
+    ],
+    profile: {
+      propertyType: "Maison ancienne",
+      location: "Villeurbanne",
+      budget: "80 000 € travaux",
+      rooms: "5",
+      surface: "120",
+      maritalStatus: "Célibataire",
+      solvabilityScore: 8.2,
+      borrowingCapacity: "120 000 €",
+      estimatedRate: "3.5%",
+    } as ClientProfile,
+    createdAt: now,
+  };
+
+  return {
+    id: "demo-user-123",
+    firstName: "Sophie",
+    lastName: "Martin",
+    preferredName: "Sophie",
+    dateOfBirth: "1988-05-15",
+    email: "sophie.martin@demo.fr",
+    termsAccepted: true,
+    roles: [expertRole, locataireRole, renovateurRole],
+    activeRoleIndex: 0,
+    name: "Sophie Martin",
+    userType: "expert",
+    expertProfile: expertRole.profile as ExpertProfile,
+  };
+}
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
@@ -165,6 +254,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = (userData: User) => {
     setUser(userData);
     localStorage.setItem("user", JSON.stringify(userData));
+  };
+
+  const loginDemo = () => {
+    const demoUser = createDemoUser();
+    setUser(demoUser);
+    localStorage.setItem("user", JSON.stringify(demoUser));
+    localStorage.setItem("journeyCompleted", "true");
   };
 
   const logout = () => {
@@ -214,6 +310,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     [user],
   );
 
+  const getAllRoleLabels = useCallback(() => {
+    if (!user) return [];
+    return user.roles.map((role) => {
+      if (role.type === "client") {
+        return clientSubtypeLabels[role.subtype as ClientSubtype];
+      }
+      return expertSubtypeLabels[role.subtype as ExpertSubtype];
+    });
+  }, [user]);
+
   const activeRole = user && user.roles.length > 0 ? user.roles[user.activeRoleIndex] : null;
   const isExpert = activeRole?.type === "expert";
   const isClient = activeRole?.type === "client";
@@ -224,6 +330,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       value={{
         user,
         login,
+        loginDemo,
         logout,
         isAuthenticated: !!user,
         isExpert,
@@ -233,6 +340,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setActiveRoleIndex,
         addRole,
         hasMultipleRoles,
+        getAllRoleLabels,
       }}
     >
       {children}

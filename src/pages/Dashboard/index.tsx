@@ -55,10 +55,8 @@ function RoleSwitcher() {
   };
 
   const canAddRole = () => {
-    // Can add a role if user doesn't have both client and expert roles
-    const hasClientRole = user.roles.some((r) => r.type === "client");
-    const hasExpertRole = user.roles.some((r) => r.type === "expert");
-    return !(hasClientRole && hasExpertRole);
+    // Users can always add more roles (multiple subtypes allowed)
+    return true;
   };
 
   const handleAddRole = () => {

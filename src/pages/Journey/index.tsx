@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/providers/auth-provider";
 import type {
@@ -94,21 +94,29 @@ const expertSubtypeDescriptions: Record<ExpertSubtype, string> = {
 export default function Journey() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { login, user } = useAuth();
+  const location = useLocation();
+  const { login, loginDemo, addRole, user, isAuthenticated } = useAuth();
+
+  // Check if we're adding a role to an existing account
+  const isAddingRole = isAuthenticated && location.state?.addingRole === true;
+
+  // Mode: "register" or "login" or "addRole"
+  const [mode, setMode] = useState<"register" | "login" | "addRole">(isAddingRole ? "addRole" : "register");
 
   // Current step: 1 = Personal Info, 2 = Type Selection, 3 = Subtype & Documents
-  const [step, setStep] = useState(1);
+  // If adding role, start at step 2
+  const [step, setStep] = useState(isAddingRole ? 2 : 1);
   const [userType, setUserType] = useState<UserType | null>(null);
   const [subtype, setSubtype] = useState<ClientSubtype | ExpertSubtype | null>(null);
 
-  // Step 1 - Personal information
+  // Step 1 - Personal information (pre-filled if adding role)
   const [personalData, setPersonalData] = useState({
-    firstName: "",
-    lastName: "",
-    preferredName: "",
-    dateOfBirth: "",
-    email: "",
-    termsAccepted: false,
+    firstName: user?.firstName || "",
+    lastName: user?.lastName || "",
+    preferredName: user?.preferredName || "",
+    dateOfBirth: user?.dateOfBirth || "",
+    email: user?.email || "",
+    termsAccepted: user?.termsAccepted || false,
   });
 
   // Step 3 - Documents
@@ -241,6 +249,17 @@ export default function Journey() {
       createdAt: new Date().toISOString(),
     };
 
+    // If adding role to existing user, use addRole
+    if (isAddingRole && user) {
+      addRole(role);
+      toast.success(
+        `Rôle "${userType === "client" ? clientSubtypeLabels[subtype as ClientSubtype] : expertSubtypeLabels[subtype as ExpertSubtype]}" ajouté avec succès !`,
+      );
+      navigate("/dashboard");
+      return;
+    }
+
+    // Otherwise create new user
     const newUser: User = {
       id: Date.now().toString(),
       firstName: personalData.firstName,
@@ -275,24 +294,84 @@ export default function Journey() {
       <div className="border-b border-border bg-card/80 backdrop-blur-sm relative z-10">
         <div className="container mx-auto px-4 lg:px-8 py-8">
           <div className="max-w-3xl mx-auto">
-            <h1 className="text-3xl font-bold text-foreground mb-2 animate-fade-in-up">Créer votre compte</h1>
-            <p className="text-muted-foreground animate-fade-in-up-delay-1">
-              Complétez les étapes pour accéder à la plateforme CIEL AVENUE
-            </p>
-            <div className="mt-6 animate-fade-in-up-delay-2">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-foreground">
-                  Étape {step} sur {getTotalSteps()}
-                </span>
-                <span className="text-sm text-muted-foreground">{Math.round(progress)}%</span>
+            {/* Mode Toggle - Hide if adding role */}
+            {!isAddingRole && (
+              <div className="flex justify-center mb-6 animate-fade-in-up">
+                <div className="inline-flex rounded-lg border border-border p-1 bg-muted/50">
+                  <button
+                    onClick={() => setMode("register")}
+                    className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
+                      mode === "register" ? "bg-primary text-primary-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    Créer un compte
+                  </button>
+                  <button
+                    onClick={() => setMode("login")}
+                    className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
+                      mode === "login" ? "bg-accent text-accent-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    Se connecter
+                  </button>
+                </div>
               </div>
-              <Progress value={progress} className="h-2" />
-              <div className="flex justify-between mt-2 text-xs text-muted-foreground">
-                <span className={step >= 1 ? "text-primary font-medium" : ""}>Informations</span>
-                <span className={step >= 2 ? "text-primary font-medium" : ""}>Type de profil</span>
-                <span className={step >= 3 ? "text-primary font-medium" : ""}>Finalisation</span>
-              </div>
-            </div>
+            )}
+
+            {/* Add Role Mode */}
+            {mode === "addRole" && user && (
+              <>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-sm font-medium text-accent mb-4">
+                  <Users className="h-4 w-4" />
+                  {user.firstName} {user.lastName}
+                </div>
+                <h1 className="text-3xl font-bold text-foreground mb-2 animate-fade-in-up">Ajouter un rôle</h1>
+                <p className="text-muted-foreground animate-fade-in-up-delay-1">Choisissez un nouveau rôle à ajouter à votre compte</p>
+                <div className="mt-6 animate-fade-in-up-delay-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-foreground">Étape {step - 1} sur 2</span>
+                    <span className="text-sm text-muted-foreground">{Math.round(((step - 1) / 2) * 100)}%</span>
+                  </div>
+                  <Progress value={((step - 1) / 2) * 100} className="h-2" />
+                  <div className="flex justify-between mt-2 text-xs text-muted-foreground">
+                    <span className={step >= 2 ? "text-accent font-medium" : ""}>Type de profil</span>
+                    <span className={step >= 3 ? "text-accent font-medium" : ""}>Finalisation</span>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {/* Register Mode */}
+            {mode === "register" && (
+              <>
+                <h1 className="text-3xl font-bold text-foreground mb-2 animate-fade-in-up">Créer votre compte</h1>
+                <p className="text-muted-foreground animate-fade-in-up-delay-1">
+                  Complétez les étapes pour accéder à la plateforme CIEL AVENUE
+                </p>
+                <div className="mt-6 animate-fade-in-up-delay-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-foreground">
+                      Étape {step} sur {getTotalSteps()}
+                    </span>
+                    <span className="text-sm text-muted-foreground">{Math.round(progress)}%</span>
+                  </div>
+                  <Progress value={progress} className="h-2" />
+                  <div className="flex justify-between mt-2 text-xs text-muted-foreground">
+                    <span className={step >= 1 ? "text-primary font-medium" : ""}>Informations</span>
+                    <span className={step >= 2 ? "text-primary font-medium" : ""}>Type de profil</span>
+                    <span className={step >= 3 ? "text-primary font-medium" : ""}>Finalisation</span>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {/* Login Mode */}
+            {mode === "login" && (
+              <>
+                <h1 className="text-3xl font-bold text-foreground mb-2 animate-fade-in-up">Connexion</h1>
+                <p className="text-muted-foreground animate-fade-in-up-delay-1">Connectez-vous pour accéder à votre espace</p>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -300,8 +379,85 @@ export default function Journey() {
       {/* Content */}
       <div className="container mx-auto px-4 lg:px-8 py-12 relative z-10">
         <div className="max-w-3xl mx-auto">
-          {/* Step 1 - Personal Information */}
-          {step === 1 && (
+          {/* LOGIN MODE */}
+          {mode === "login" && (
+            <div className="space-y-6 animate-fade-in-up">
+              {/* Demo Login Card */}
+              <Card className="border-accent/30 bg-gradient-to-br from-accent/5 to-primary/5">
+                <CardContent className="p-8 space-y-6">
+                  <div className="text-center space-y-2">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-sm font-medium text-accent">
+                      <Briefcase className="h-4 w-4" />
+                      Profil Démo
+                    </div>
+                    <h2 className="text-2xl font-bold text-foreground">Sophie Martin</h2>
+                    <p className="text-muted-foreground">sophie.martin@demo.fr</p>
+                  </div>
+
+                  {/* Demo Profile Roles */}
+                  <div className="space-y-3">
+                    <p className="text-sm font-semibold text-foreground text-center">3 rôles actifs :</p>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                      <div className="p-4 rounded-lg bg-accent/10 border border-accent/20 text-center">
+                        <ClipboardCheck className="h-8 w-8 text-accent mx-auto mb-2" />
+                        <p className="font-semibold text-foreground">Diagnostiqueur</p>
+                        <p className="text-xs text-muted-foreground">Expert immobilier</p>
+                        <p className="text-xs text-accent mt-1">156 projets</p>
+                      </div>
+                      <div className="p-4 rounded-lg bg-primary/10 border border-primary/20 text-center">
+                        <Key className="h-8 w-8 text-primary mx-auto mb-2" />
+                        <p className="font-semibold text-foreground">Locataire</p>
+                        <p className="text-xs text-muted-foreground">Client - Lyon 6ème</p>
+                        <p className="text-xs text-primary mt-1">1 200 €/mois</p>
+                      </div>
+                      <div className="p-4 rounded-lg bg-primary/10 border border-primary/20 text-center">
+                        <Hammer className="h-8 w-8 text-primary mx-auto mb-2" />
+                        <p className="font-semibold text-foreground">Rénovateur</p>
+                        <p className="text-xs text-muted-foreground">Client - Villeurbanne</p>
+                        <p className="text-xs text-primary mt-1">80 000 € travaux</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* What you can test */}
+                  <div className="p-4 rounded-lg bg-muted/50 space-y-2">
+                    <p className="text-sm font-semibold text-foreground">Ce profil vous permet de tester :</p>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• Le switch entre les différents rôles dans le Dashboard</li>
+                      <li>• Les documents à fournir pour chaque rôle</li>
+                      <li>• Les informations spécifiques à chaque profil</li>
+                      <li>• L'ajout de nouveaux rôles (Acheteur, Vendeur, etc.)</li>
+                    </ul>
+                  </div>
+
+                  <Button
+                    onClick={() => {
+                      loginDemo();
+                      toast.success("Connexion réussie ! Bienvenue Sophie 👋");
+                      navigate("/dashboard");
+                    }}
+                    className="w-full bg-accent text-accent-foreground hover:bg-accent/90 h-12 text-lg"
+                  >
+                    Se connecter en tant que Sophie Martin
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </CardContent>
+              </Card>
+
+              {/* Alternative: create account */}
+              <div className="text-center">
+                <p className="text-sm text-muted-foreground">
+                  Vous n'avez pas encore de compte ?{" "}
+                  <button onClick={() => setMode("register")} className="text-primary font-medium hover:underline">
+                    Créer un compte
+                  </button>
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* REGISTER MODE - Step 1 - Personal Information */}
+          {mode === "register" && step === 1 && (
             <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift animate-fade-in-up">
               <CardContent className="p-8 space-y-8">
                 <div className="space-y-2">
@@ -467,7 +623,7 @@ export default function Journey() {
           )}
 
           {/* Step 2 - User Type Selection */}
-          {step === 2 && (
+          {(mode === "register" || mode === "addRole") && step === 2 && (
             <div className="space-y-8 animate-fade-in-up">
               <div className="text-center space-y-4">
                 <h2 className="text-2xl font-bold text-foreground">Quel est votre profil ?</h2>
@@ -513,7 +669,7 @@ export default function Journey() {
                     </div>
                     <div className="space-y-2">
                       <h3 className="text-xl font-bold text-foreground">Expert</h3>
-                      <p className="text-sm text-muted-foreground">Professionnel de l'immobilier certifié</p>
+                      <p className="text-sm text-muted-foreground">Professionnel de l'immobilier certifié par notre plateforme</p>
                     </div>
                     <ul className="text-left space-y-2">
                       {["Accès aux clients pré-qualifiés", "Gestion des leads", "Outils de performance"].map((feature, idx) => (
@@ -539,7 +695,7 @@ export default function Journey() {
           )}
 
           {/* Step 3 - Subtype Selection & Documents */}
-          {step === 3 && (
+          {(mode === "register" || mode === "addRole") && step === 3 && (
             <div className="space-y-8 animate-fade-in-up">
               {/* Subtype Selection */}
               {!subtype && (
@@ -560,18 +716,32 @@ export default function Journey() {
                       ? // Client subtypes
                         (Object.keys(clientSubtypeLabels) as ClientSubtype[]).map((key) => {
                           const Icon = clientSubtypeIcons[key];
+                          const alreadyHasRole = user?.roles.some((r) => r.subtype === key) ?? false;
                           return (
                             <Card
                               key={key}
-                              className="border-2 border-border hover:border-primary cursor-pointer transition-all card-hover-lift"
-                              onClick={() => handleSubtypeSelect(key)}
+                              className={`border-2 transition-all ${
+                                alreadyHasRole
+                                  ? "border-muted bg-muted/30 opacity-60 cursor-not-allowed"
+                                  : "border-border hover:border-primary cursor-pointer card-hover-lift"
+                              }`}
+                              onClick={() => !alreadyHasRole && handleSubtypeSelect(key)}
                             >
                               <CardContent className="p-6 text-center space-y-4">
-                                <div className="h-14 w-14 rounded-full bg-primary/10 mx-auto flex items-center justify-center">
-                                  <Icon className="h-7 w-7 text-primary" />
+                                <div
+                                  className={`h-14 w-14 rounded-full mx-auto flex items-center justify-center ${alreadyHasRole ? "bg-muted" : "bg-primary/10"}`}
+                                >
+                                  <Icon className={`h-7 w-7 ${alreadyHasRole ? "text-muted-foreground" : "text-primary"}`} />
                                 </div>
                                 <div>
-                                  <h3 className="font-semibold text-foreground">{clientSubtypeLabels[key]}</h3>
+                                  <h3 className="font-semibold text-foreground flex items-center justify-center gap-2">
+                                    {clientSubtypeLabels[key]}
+                                    {alreadyHasRole && (
+                                      <span className="text-xs px-2 py-0.5 rounded-full bg-muted-foreground/20 text-muted-foreground">
+                                        Déjà ajouté
+                                      </span>
+                                    )}
+                                  </h3>
                                   <p className="text-xs text-muted-foreground mt-1">{clientSubtypeDescriptions[key]}</p>
                                 </div>
                               </CardContent>
@@ -581,18 +751,32 @@ export default function Journey() {
                       : // Expert subtypes
                         (Object.keys(expertSubtypeLabels) as ExpertSubtype[]).map((key) => {
                           const Icon = expertSubtypeIcons[key];
+                          const alreadyHasRole = user?.roles.some((r) => r.subtype === key) ?? false;
                           return (
                             <Card
                               key={key}
-                              className="border-2 border-border hover:border-accent cursor-pointer transition-all card-hover-lift"
-                              onClick={() => handleSubtypeSelect(key)}
+                              className={`border-2 transition-all ${
+                                alreadyHasRole
+                                  ? "border-muted bg-muted/30 opacity-60 cursor-not-allowed"
+                                  : "border-border hover:border-accent cursor-pointer card-hover-lift"
+                              }`}
+                              onClick={() => !alreadyHasRole && handleSubtypeSelect(key)}
                             >
                               <CardContent className="p-6 text-center space-y-4">
-                                <div className="h-14 w-14 rounded-full bg-accent/10 mx-auto flex items-center justify-center">
-                                  <Icon className="h-7 w-7 text-accent" />
+                                <div
+                                  className={`h-14 w-14 rounded-full mx-auto flex items-center justify-center ${alreadyHasRole ? "bg-muted" : "bg-accent/10"}`}
+                                >
+                                  <Icon className={`h-7 w-7 ${alreadyHasRole ? "text-muted-foreground" : "text-accent"}`} />
                                 </div>
                                 <div>
-                                  <h3 className="font-semibold text-foreground">{expertSubtypeLabels[key]}</h3>
+                                  <h3 className="font-semibold text-foreground flex items-center justify-center gap-2">
+                                    {expertSubtypeLabels[key]}
+                                    {alreadyHasRole && (
+                                      <span className="text-xs px-2 py-0.5 rounded-full bg-muted-foreground/20 text-muted-foreground">
+                                        Déjà ajouté
+                                      </span>
+                                    )}
+                                  </h3>
                                   <p className="text-xs text-muted-foreground mt-1">{expertSubtypeDescriptions[key]}</p>
                                 </div>
                               </CardContent>
@@ -777,7 +961,7 @@ export default function Journey() {
                           onClick={handleComplete}
                           className={`${userType === "expert" ? "bg-accent text-accent-foreground hover:bg-accent/90" : "bg-primary text-primary-foreground hover:bg-primary/90"}`}
                         >
-                          Créer mon compte <ArrowRight className="ml-2 h-5 w-5" />
+                          {isAddingRole ? "Ajouter ce rôle" : "Créer mon compte"} <ArrowRight className="ml-2 h-5 w-5" />
                         </Button>
                       </div>
                     </CardContent>
