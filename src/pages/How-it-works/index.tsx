@@ -1,12 +1,32 @@
+"use client";
+
 import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, FileText, Scale, BadgeCheck, Users, Building, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  FileText,
+  Scale,
+  BadgeCheck,
+  Users,
+  Building,
+  Sparkles,
+  ShoppingCart,
+  Key,
+  Hammer,
+  ClipboardCheck,
+  MessageSquare,
+  CheckCircle2,
+  Clock,
+  Shield,
+  TrendingUp,
+  Home,
+  Euro,
+  UserCheck,
+  Briefcase,
+} from "lucide-react";
 
 export default function HowItWorks() {
-  const { t } = useTranslation();
-
   return (
     <div className="min-h-screen pt-20 page-transition">
       {/* Decorative elements */}
@@ -17,331 +37,484 @@ export default function HowItWorks() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-background">
-        <div className="container mx-auto px-4 lg:px-8 py-12 md:py-24 relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-4 md:space-y-6">
-            <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-foreground tracking-tight text-balance animate-fade-in-up">
-              {t("howItWorks.hero.title")}
+        <div className="container mx-auto px-4 lg:px-8 py-16 md:py-24 relative z-10">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-sm font-medium text-primary animate-bounce-in">
+              <Sparkles className="h-4 w-4" />
+              Plateforme tout-en-un
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight text-balance animate-fade-in-up">
+              Comment fonctionne <span className="text-primary">CIEL AVENUE</span> ?
             </h1>
-            <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed text-pretty px-2 animate-fade-in-up-delay-1">
-              {t("howItWorks.hero.description")}
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty max-w-3xl mx-auto animate-fade-in-up-delay-1">
+              Une plateforme qui connecte clients et experts immobiliers de manière sécurisée. Des documents vérifiés, des profils
+              qualifiés, et un accompagnement personnalisé.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Module 1 - Définition des critères */}
-      <section className="py-12 md:py-24 bg-muted/30">
+      {/* Process Overview */}
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
-              <div className="space-y-4 md:space-y-6 animate-slide-in-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-primary/10 text-xs md:text-sm font-medium text-primary animate-bounce-in">
-                  <FileText className="h-3 w-3 md:h-4 md:w-4" />
-                  {t("howItWorks.module1.badge")}
-                </div>
-                <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground text-balance">{t("howItWorks.module1.title")}</h2>
-                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{t("howItWorks.module1.description")}</p>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Le processus en 4 étapes</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                De la création de votre profil à la concrétisation de votre projet immobilier
+              </p>
+            </div>
 
-                <div className="space-y-3 md:space-y-4 pt-2 md:pt-4 stagger-animation">
-                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
-                    <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Building className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm md:text-base font-semibold text-foreground mb-1">{t("howItWorks.module1.feature1.title")}</h4>
-                      <p className="text-xs md:text-sm text-muted-foreground">{t("howItWorks.module1.feature1.description")}</p>
-                    </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Step 1 */}
+              <Card className="border-primary/20 bg-card relative overflow-hidden card-hover-lift">
+                <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
+                <CardContent className="p-6 text-center space-y-4">
+                  <div className="h-16 w-16 rounded-full bg-primary/10 mx-auto flex items-center justify-center">
+                    <UserCheck className="h-8 w-8 text-primary" />
                   </div>
-
-                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
-                    <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Sparkles className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm md:text-base font-semibold text-foreground mb-1">{t("howItWorks.module1.feature2.title")}</h4>
-                      <p className="text-xs md:text-sm text-muted-foreground">{t("howItWorks.module1.feature2.description")}</p>
-                    </div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-xs font-medium text-primary">
+                    Étape 1
                   </div>
+                  <h3 className="text-xl font-bold text-foreground">Créez votre profil</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Inscrivez-vous et choisissez votre rôle : Acheteur, Vendeur, Locataire, ou Expert immobilier.
+                  </p>
+                </CardContent>
+              </Card>
 
-                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
-                    <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Users className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm md:text-base font-semibold text-foreground mb-1">{t("howItWorks.module1.feature3.title")}</h4>
-                      <p className="text-xs md:text-sm text-muted-foreground">{t("howItWorks.module1.feature3.description")}</p>
-                    </div>
+              {/* Step 2 */}
+              <Card className="border-primary/20 bg-card relative overflow-hidden card-hover-lift">
+                <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
+                <CardContent className="p-6 text-center space-y-4">
+                  <div className="h-16 w-16 rounded-full bg-primary/10 mx-auto flex items-center justify-center">
+                    <FileText className="h-8 w-8 text-primary" />
                   </div>
-                </div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-xs font-medium text-primary">
+                    Étape 2
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground">Déposez vos documents</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Téléchargez les documents requis pour votre profil. Ils seront vérifiés par nos experts.
+                  </p>
+                </CardContent>
+              </Card>
 
-                <Button
-                  asChild
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 mt-4 md:mt-6 w-full md:w-auto card-hover-lift"
-                >
-                  <Link to="/journey">
-                    {t("howItWorks.module1.button")} <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
-                  </Link>
-                </Button>
-              </div>
+              {/* Step 3 */}
+              <Card className="border-primary/20 bg-card relative overflow-hidden card-hover-lift">
+                <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
+                <CardContent className="p-6 text-center space-y-4">
+                  <div className="h-16 w-16 rounded-full bg-primary/10 mx-auto flex items-center justify-center">
+                    <BadgeCheck className="h-8 w-8 text-primary" />
+                  </div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-xs font-medium text-primary">
+                    Étape 3
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground">Profil vérifié</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Votre profil est validé et vous obtenez un score de solvabilité ou de confiance.
+                  </p>
+                </CardContent>
+              </Card>
 
-              <div className="relative mt-8 lg:mt-0 animate-slide-in-right">
-                <Card className="border-border bg-card shadow-lg card-hover-lift shine-effect">
-                  <CardContent className="p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
-                    <div className="space-y-3 md:space-y-4 stagger-animation">
-                      <div className="p-3 md:p-4 rounded-lg bg-muted animate-fade-in-up">
-                        <p className="text-sm md:text-base font-medium text-foreground mb-2">{t("howItWorks.module1.demo.question1")}</p>
-                        <div className="space-y-2">
-                          <div className="p-2.5 md:p-3 rounded bg-background border-2 border-primary text-xs md:text-sm font-medium">
-                            {t("howItWorks.module1.demo.option1")}
-                          </div>
-                          <div className="p-2.5 md:p-3 rounded bg-background text-xs md:text-sm">
-                            {t("howItWorks.module1.demo.option2")}
-                          </div>
-                          <div className="p-2.5 md:p-3 rounded bg-background text-xs md:text-sm">
-                            {t("howItWorks.module1.demo.option3")}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="p-3 md:p-4 rounded-lg bg-muted/50 animate-fade-in-up">
-                        <p className="text-sm md:text-base font-medium text-foreground mb-2">{t("howItWorks.module1.demo.question2")}</p>
-                        <div className="p-2.5 md:p-3 rounded bg-background text-xs md:text-sm text-muted-foreground">
-                          {t("howItWorks.module1.demo.placeholder2")}
-                        </div>
-                      </div>
-                      <div className="p-3 md:p-4 rounded-lg bg-muted/30 animate-fade-in-up">
-                        <p className="text-sm md:text-base font-medium text-muted-foreground mb-2">
-                          {t("howItWorks.module1.demo.question3")}
-                        </p>
-                        <div className="p-2.5 md:p-3 rounded bg-muted text-xs md:text-sm text-muted-foreground">
-                          {t("howItWorks.module1.demo.placeholder3")}
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
+              {/* Step 4 */}
+              <Card className="border-primary/20 bg-card relative overflow-hidden card-hover-lift">
+                <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
+                <CardContent className="p-6 text-center space-y-4">
+                  <div className="h-16 w-16 rounded-full bg-primary/10 mx-auto flex items-center justify-center">
+                    <Users className="h-8 w-8 text-primary" />
+                  </div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-xs font-medium text-primary">
+                    Étape 4
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground">Connectez-vous</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Échangez avec les experts ou clients qualifiés pour avancer sur votre projet.
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Module 2 - Situation juridique */}
-      <section className="py-12 md:py-24 bg-background">
+      {/* Case Examples Section */}
+      <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
-              <div className="order-2 lg:order-1 relative mt-8 lg:mt-0 animate-slide-in-left">
-                <Card className="border-border bg-card shadow-lg card-hover-lift shine-effect">
-                  <CardContent className="p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
-                    <div className="space-y-3 md:space-y-4 stagger-animation">
-                      <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-muted animate-fade-in-up">
-                        <div className="flex items-center gap-2 md:gap-3">
-                          <FileText className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                          <span className="text-xs md:text-sm font-medium text-foreground">{t("howItWorks.module2.doc1")}</span>
-                        </div>
-                        <BadgeCheck className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                      </div>
-                      <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-muted animate-fade-in-up">
-                        <div className="flex items-center gap-2 md:gap-3">
-                          <FileText className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                          <span className="text-xs md:text-sm font-medium text-foreground">{t("howItWorks.module2.doc2")}</span>
-                        </div>
-                        <BadgeCheck className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                      </div>
-                      <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-muted/50 animate-fade-in-up">
-                        <div className="flex items-center gap-2 md:gap-3">
-                          <FileText className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
-                          <span className="text-xs md:text-sm font-medium text-muted-foreground">{t("howItWorks.module2.doc3")}</span>
-                        </div>
-                        <div className="h-4 w-4 md:h-5 md:w-5 rounded-full border-2 border-muted-foreground"></div>
-                      </div>
-                      <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-muted/50 animate-fade-in-up">
-                        <div className="flex items-center gap-2 md:gap-3">
-                          <FileText className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
-                          <span className="text-xs md:text-sm font-medium text-muted-foreground">{t("howItWorks.module2.doc4")}</span>
-                        </div>
-                        <div className="h-4 w-4 md:h-5 md:w-5 rounded-full border-2 border-muted-foreground"></div>
-                      </div>
-                    </div>
-                    <div className="pt-4 animate-fade-in-up">
-                      <div className="h-2 bg-muted rounded-full overflow-hidden">
-                        <div className="h-full bg-primary w-1/2"></div>
-                      </div>
-                      <p className="text-sm text-muted-foreground mt-2">{t("howItWorks.module2.progress")}</p>
-                    </div>
-                  </CardContent>
-                </Card>
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-sm font-medium text-accent mb-4">
+                <Building className="h-4 w-4" />
+                Cas concrets
               </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Exemples de parcours utilisateurs</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Découvrez comment différents profils utilisent CIEL AVENUE pour leurs projets immobiliers
+              </p>
+            </div>
 
-              <div className="order-1 lg:order-2 space-y-4 md:space-y-6 animate-slide-in-right">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-primary/10 text-xs md:text-sm font-medium text-primary animate-bounce-in">
-                  <Scale className="h-3 w-3 md:h-4 md:w-4" />
-                  {t("howItWorks.module2.badge")}
-                </div>
-                <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground text-balance">{t("howItWorks.module2.title")}</h2>
-                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{t("howItWorks.module2.description")}</p>
+            <div className="space-y-8">
+              {/* Case 1: Acheteur */}
+              <Card className="border-primary/20 bg-gradient-to-r from-primary/5 to-background overflow-hidden">
+                <CardContent className="p-8">
+                  <div className="flex flex-col lg:flex-row gap-8">
+                    <div className="flex-1 space-y-6">
+                      <div className="flex items-center gap-4">
+                        <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center">
+                          <ShoppingCart className="h-7 w-7 text-primary" />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-foreground">Marie, 32 ans - Acheteuse</h3>
+                          <p className="text-muted-foreground">Première acquisition immobilière</p>
+                        </div>
+                      </div>
 
-                <div className="space-y-3 md:space-y-4 pt-2 md:pt-4 stagger-animation">
-                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
-                    <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <BadgeCheck className="h-4 w-4 md:h-5 md:w-5 text-primary" />
+                      <div className="bg-muted/50 rounded-lg p-6 space-y-4">
+                        <h4 className="font-semibold text-foreground flex items-center gap-2">
+                          <Clock className="h-5 w-5 text-primary" />
+                          Son parcours sur CIEL AVENUE
+                        </h4>
+                        <div className="space-y-3 text-sm">
+                          <div className="flex items-start gap-3">
+                            <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                            <p>
+                              <strong>Jour 1 :</strong> Crée son profil "Acheteur" et renseigne son budget (350 000€), sa localisation
+                              souhaitée (Paris 15ème) et le type de bien (T3).
+                            </p>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                            <p>
+                              <strong>Jour 2 :</strong> Dépose ses documents : bulletins de salaire, avis d'imposition, relevés bancaires.
+                            </p>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                            <p>
+                              <strong>Jour 3 :</strong> Score de solvabilité calculé : 8.5/10. Capacité d'emprunt validée.
+                            </p>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                            <p>
+                              <strong>Jour 5 :</strong> Un courtier certifié la contacte pour optimiser son financement.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="text-sm md:text-base font-semibold text-foreground mb-1">{t("howItWorks.module2.feature1.title")}</h4>
-                      <p className="text-xs md:text-sm text-muted-foreground">{t("howItWorks.module2.feature1.description")}</p>
+
+                    <div className="lg:w-80 space-y-4">
+                      <Card className="bg-card border-primary/20">
+                        <CardContent className="p-6 text-center space-y-4">
+                          <div className="h-20 w-20 rounded-full bg-gradient-to-br from-primary to-secondary mx-auto flex items-center justify-center">
+                            <span className="text-2xl font-bold text-white">8.5</span>
+                          </div>
+                          <div>
+                            <p className="font-semibold text-foreground">Score de solvabilité</p>
+                            <p className="text-xs text-muted-foreground">Profil vérifié et qualifié</p>
+                          </div>
+                          <div className="space-y-2 text-sm">
+                            <div className="flex justify-between">
+                              <span className="text-muted-foreground">Capacité d'emprunt</span>
+                              <span className="font-semibold">350 000 €</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-muted-foreground">Taux estimé</span>
+                              <span className="font-semibold">3.2%</span>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
                     </div>
                   </div>
+                </CardContent>
+              </Card>
 
-                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
-                    <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <FileText className="h-4 w-4 md:h-5 md:w-5 text-primary" />
+              {/* Case 2: Rénovateur */}
+              <Card className="border-accent/20 bg-gradient-to-r from-accent/5 to-background overflow-hidden">
+                <CardContent className="p-8">
+                  <div className="flex flex-col lg:flex-row gap-8">
+                    <div className="flex-1 space-y-6">
+                      <div className="flex items-center gap-4">
+                        <div className="h-14 w-14 rounded-full bg-accent/10 flex items-center justify-center">
+                          <Hammer className="h-7 w-7 text-accent" />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-foreground">Thomas, 45 ans - Rénovateur</h3>
+                          <p className="text-muted-foreground">Projet de rénovation maison ancienne</p>
+                        </div>
+                      </div>
+
+                      <div className="bg-muted/50 rounded-lg p-6 space-y-4">
+                        <h4 className="font-semibold text-foreground flex items-center gap-2">
+                          <Clock className="h-5 w-5 text-accent" />
+                          Son parcours sur CIEL AVENUE
+                        </h4>
+                        <div className="space-y-3 text-sm">
+                          <div className="flex items-start gap-3">
+                            <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                            <p>
+                              <strong>Jour 1 :</strong> Crée son profil "Rénovateur" avec son projet : rénovation complète d'une maison de
+                              120m² à Villeurbanne.
+                            </p>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                            <p>
+                              <strong>Jour 2 :</strong> Dépose les devis travaux et les plans du projet. Budget estimé : 80 000€.
+                            </p>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                            <p>
+                              <strong>Jour 4 :</strong> Un maître d'œuvre certifié analyse son projet et propose un accompagnement.
+                            </p>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                            <p>
+                              <strong>Jour 7 :</strong> Mise en relation avec des artisans qualifiés pour les différents lots.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="text-sm md:text-base font-semibold text-foreground mb-1">{t("howItWorks.module2.feature2.title")}</h4>
-                      <p className="text-xs md:text-sm text-muted-foreground">{t("howItWorks.module2.feature2.description")}</p>
+
+                    <div className="lg:w-80 space-y-4">
+                      <Card className="bg-card border-accent/20">
+                        <CardContent className="p-6 space-y-4">
+                          <h4 className="font-semibold text-foreground text-center">Experts contactés</h4>
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+                              <ClipboardCheck className="h-5 w-5 text-accent" />
+                              <div>
+                                <p className="text-sm font-medium">Maître d'œuvre</p>
+                                <p className="text-xs text-muted-foreground">Coordination projet</p>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+                              <Hammer className="h-5 w-5 text-accent" />
+                              <div>
+                                <p className="text-sm font-medium">Artisans</p>
+                                <p className="text-xs text-muted-foreground">Plomberie, électricité</p>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+                              <Scale className="h-5 w-5 text-accent" />
+                              <div>
+                                <p className="text-sm font-medium">Diagnostiqueur</p>
+                                <p className="text-xs text-muted-foreground">DPE, amiante</p>
+                              </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
                     </div>
                   </div>
+                </CardContent>
+              </Card>
 
-                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
-                    <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Sparkles className="h-4 w-4 md:h-5 md:w-5 text-primary" />
+              {/* Case 3: Expert Diagnostiqueur */}
+              <Card className="border-accent/20 bg-gradient-to-r from-accent/5 to-primary/5 overflow-hidden">
+                <CardContent className="p-8">
+                  <div className="flex flex-col lg:flex-row gap-8">
+                    <div className="flex-1 space-y-6">
+                      <div className="flex items-center gap-4">
+                        <div className="h-14 w-14 rounded-full bg-accent/10 flex items-center justify-center">
+                          <Briefcase className="h-7 w-7 text-accent" />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-foreground">Sophie, 38 ans - Diagnostiqueur Expert</h3>
+                          <p className="text-muted-foreground">Professionnelle certifiée DPE</p>
+                        </div>
+                      </div>
+
+                      <div className="bg-muted/50 rounded-lg p-6 space-y-4">
+                        <h4 className="font-semibold text-foreground flex items-center gap-2">
+                          <TrendingUp className="h-5 w-5 text-accent" />
+                          Son expérience en tant qu'Expert
+                        </h4>
+                        <div className="space-y-3 text-sm">
+                          <div className="flex items-start gap-3">
+                            <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                            <p>
+                              <strong>Inscription :</strong> Crée son profil "Expert Diagnostiqueur" et dépose ses certifications DPE,
+                              amiante, plomb.
+                            </p>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                            <p>
+                              <strong>Vérification :</strong> Documents validés par l'équipe CIEL AVENUE. Profil certifié en 48h.
+                            </p>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                            <p>
+                              <strong>Leads qualifiés :</strong> Reçoit des demandes de clients pré-vérifiés avec dossiers complets.
+                            </p>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                            <p>
+                              <strong>Résultat :</strong> 156 missions réalisées via la plateforme en 1 an.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="text-sm md:text-base font-semibold text-foreground mb-1">{t("howItWorks.module2.feature3.title")}</h4>
-                      <p className="text-xs md:text-sm text-muted-foreground">{t("howItWorks.module2.feature3.description")}</p>
+
+                    <div className="lg:w-80 space-y-4">
+                      <Card className="bg-card border-accent/20">
+                        <CardContent className="p-6 text-center space-y-4">
+                          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-xs font-medium text-accent">
+                            <BadgeCheck className="h-4 w-4" />
+                            Expert Certifié
+                          </div>
+                          <h4 className="text-xl font-bold text-foreground">DiagImmo Pro</h4>
+                          <div className="space-y-2 text-sm">
+                            <div className="flex justify-between">
+                              <span className="text-muted-foreground">Missions réalisées</span>
+                              <span className="font-semibold">156</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-muted-foreground">Zones couvertes</span>
+                              <span className="font-semibold">Paris, Lyon</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-muted-foreground">Note moyenne</span>
+                              <span className="font-semibold">4.9/5</span>
+                            </div>
+                          </div>
+                          <div className="flex flex-wrap gap-2 justify-center">
+                            <span className="text-xs px-2 py-1 rounded-full bg-accent/10 text-accent">DPE</span>
+                            <span className="text-xs px-2 py-1 rounded-full bg-accent/10 text-accent">Amiante</span>
+                            <span className="text-xs px-2 py-1 rounded-full bg-accent/10 text-accent">Plomb</span>
+                            <span className="text-xs px-2 py-1 rounded-full bg-accent/10 text-accent">Termites</span>
+                          </div>
+                        </CardContent>
+                      </Card>
                     </div>
                   </div>
-                </div>
-
-                <Button
-                  asChild
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 mt-4 md:mt-6 w-full md:w-auto card-hover-lift"
-                >
-                  <Link to="/journey">
-                    {t("howItWorks.module2.button")} <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
-                  </Link>
-                </Button>
-              </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Module 3 - Solvabilité */}
-      <section className="py-12 md:py-24 bg-muted/30">
+      {/* Why CIEL AVENUE Section */}
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
-              <div className="space-y-4 md:space-y-6 animate-slide-in-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-primary/10 text-xs md:text-sm font-medium text-primary animate-bounce-in">
-                  <BadgeCheck className="h-3 w-3 md:h-4 md:w-4" />
-                  {t("howItWorks.module3.badge")}
-                </div>
-                <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-foreground text-balance">{t("howItWorks.module3.title")}</h2>
-                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{t("howItWorks.module3.description")}</p>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Pourquoi choisir CIEL AVENUE ?</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Une plateforme pensée pour simplifier et sécuriser chaque étape de votre projet immobilier
+              </p>
+            </div>
 
-                <div className="space-y-3 md:space-y-4 pt-2 md:pt-4 stagger-animation">
-                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
-                    <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <BadgeCheck className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm md:text-base font-semibold text-foreground mb-1">{t("howItWorks.module3.feature1.title")}</h4>
-                      <p className="text-xs md:text-sm text-muted-foreground">{t("howItWorks.module3.feature1.description")}</p>
-                    </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <Card className="bg-card border-border card-hover-lift">
+                <CardContent className="p-8 text-center space-y-4">
+                  <div className="h-16 w-16 rounded-full bg-primary/10 mx-auto flex items-center justify-center">
+                    <Shield className="h-8 w-8 text-primary" />
                   </div>
+                  <h3 className="text-xl font-bold text-foreground">Documents vérifiés</h3>
+                  <p className="text-muted-foreground">
+                    Tous les documents sont vérifiés par nos experts avant validation. Garantie d'authenticité.
+                  </p>
+                </CardContent>
+              </Card>
 
-                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
-                    <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Users className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm md:text-base font-semibold text-foreground mb-1">{t("howItWorks.module3.feature2.title")}</h4>
-                      <p className="text-xs md:text-sm text-muted-foreground">{t("howItWorks.module3.feature2.description")}</p>
-                    </div>
+              <Card className="bg-card border-border card-hover-lift">
+                <CardContent className="p-8 text-center space-y-4">
+                  <div className="h-16 w-16 rounded-full bg-primary/10 mx-auto flex items-center justify-center">
+                    <UserCheck className="h-8 w-8 text-primary" />
                   </div>
+                  <h3 className="text-xl font-bold text-foreground">Profils qualifiés</h3>
+                  <p className="text-muted-foreground">
+                    Clients pré-qualifiés avec score de solvabilité. Experts certifiés avec références vérifiées.
+                  </p>
+                </CardContent>
+              </Card>
 
-                  <div className="flex gap-3 md:gap-4 animate-fade-in-up">
-                    <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Sparkles className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm md:text-base font-semibold text-foreground mb-1">{t("howItWorks.module3.feature3.title")}</h4>
-                      <p className="text-xs md:text-sm text-muted-foreground">{t("howItWorks.module3.feature3.description")}</p>
-                    </div>
+              <Card className="bg-card border-border card-hover-lift">
+                <CardContent className="p-8 text-center space-y-4">
+                  <div className="h-16 w-16 rounded-full bg-primary/10 mx-auto flex items-center justify-center">
+                    <MessageSquare className="h-8 w-8 text-primary" />
                   </div>
-                </div>
+                  <h3 className="text-xl font-bold text-foreground">Mise en relation directe</h3>
+                  <p className="text-muted-foreground">
+                    Échangez directement avec les experts ou clients. Messagerie intégrée et notifications.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                <Button
-                  asChild
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 mt-4 md:mt-6 w-full md:w-auto card-hover-lift"
-                >
-                  <Link to="/journey">
-                    {t("howItWorks.module3.button")} <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
-                  </Link>
-                </Button>
+      {/* Multi-Role Section */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-sm font-medium text-accent">
+              <Users className="h-4 w-4" />
+              Fonctionnalité unique
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Cumulez plusieurs rôles</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Vous êtes acheteur ET rénovateur ? Diagnostiqueur ET locataire ? Avec CIEL AVENUE, vous pouvez avoir plusieurs casquettes sur
+              un seul compte.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4 pt-4">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-sm font-medium text-primary">
+                <ShoppingCart className="h-4 w-4" />
+                Acheteur
               </div>
-
-              <div className="relative mt-8 lg:mt-0 animate-slide-in-right">
-                <Card className="border-border bg-card shadow-lg card-hover-lift shine-effect">
-                  <CardContent className="p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
-                    <div className="text-center space-y-3 md:space-y-4 animate-scale-in">
-                      <div className="mx-auto h-24 w-24 md:h-32 md:w-32 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center animate-pulse-glow">
-                        <div className="text-3xl md:text-4xl font-bold text-primary-foreground">8.5</div>
-                      </div>
-                      <div>
-                        <h3 className="text-xl md:text-2xl font-bold text-foreground">{t("howItWorks.module3.demo.profile")}</h3>
-                        <p className="text-sm md:text-base text-muted-foreground">{t("howItWorks.module3.demo.score")}</p>
-                      </div>
-                    </div>
-
-                    <div className="space-y-2 md:space-y-3 pt-2 md:pt-4 stagger-animation">
-                      <div className="flex justify-between items-center animate-fade-in-up">
-                        <span className="text-xs md:text-sm text-muted-foreground">{t("howItWorks.module3.demo.borrowing")}</span>
-                        <span className="text-sm md:text-base font-semibold text-foreground">350 000 €</span>
-                      </div>
-                      <div className="flex justify-between items-center animate-fade-in-up">
-                        <span className="text-xs md:text-sm text-muted-foreground">{t("howItWorks.module3.demo.rate")}</span>
-                        <span className="text-sm md:text-base font-semibold text-foreground">3.2%</span>
-                      </div>
-                      <div className="flex justify-between items-center animate-fade-in-up">
-                        <span className="text-xs md:text-sm text-muted-foreground">{t("howItWorks.module3.demo.duration")}</span>
-                        <span className="text-sm md:text-base font-semibold text-foreground">25 ans</span>
-                      </div>
-                    </div>
-
-                    <div className="pt-3 md:pt-4 text-center animate-bounce-in">
-                      <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-primary/10 text-xs md:text-sm font-medium text-primary">
-                        <BadgeCheck className="h-3 w-3 md:h-4 md:w-4" />
-                        {t("howItWorks.module3.demo.validated")}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+              <span className="text-muted-foreground self-center">+</span>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-sm font-medium text-primary">
+                <Hammer className="h-4 w-4" />
+                Rénovateur
+              </div>
+              <span className="text-muted-foreground self-center">+</span>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-sm font-medium text-accent">
+                <ClipboardCheck className="h-4 w-4" />
+                Expert Diagnostiqueur
               </div>
             </div>
+
+            <p className="text-sm text-muted-foreground">Basculez entre vos différents profils en un clic depuis votre tableau de bord.</p>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 md:py-24 bg-primary text-primary-foreground animate-fade-in">
+      <section className="py-16 md:py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center space-y-6 md:space-y-8">
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-balance px-2 animate-fade-in-up">{t("howItWorks.cta.title")}</h2>
-            <p className="text-base md:text-lg text-primary-foreground/90 leading-relaxed text-pretty px-2 animate-fade-in-up-delay-1">
-              {t("howItWorks.cta.description")}
+          <div className="max-w-3xl mx-auto text-center space-y-8">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-balance">Prêt à démarrer votre projet ?</h2>
+            <p className="text-lg text-primary-foreground/90 leading-relaxed">
+              Créez votre compte gratuitement et rejoignez des milliers d'utilisateurs qui font confiance à CIEL AVENUE.
             </p>
-            <Button
-              asChild
-              size="lg"
-              variant="secondary"
-              className="text-sm md:text-base px-6 md:px-8 w-full md:w-auto card-hover-lift animate-fade-in-up-delay-2"
-            >
-              <Link to="/journey">
-                {t("howItWorks.cta.button")} <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
-              </Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" variant="secondary" className="card-hover-lift">
+                <Link to="/journey">
+                  Créer mon compte <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10"
+              >
+                <Link to="/contact">Nous contacter</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
