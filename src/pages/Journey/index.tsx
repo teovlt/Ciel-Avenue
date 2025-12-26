@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import { useAuth } from "@/providers/auth-provider";
 import type {
   UserType,
@@ -92,7 +91,6 @@ const expertSubtypeDescriptions: Record<ExpertSubtype, string> = {
 };
 
 export default function Journey() {
-  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const { login, loginDemo, addRole, user, isAuthenticated } = useAuth();

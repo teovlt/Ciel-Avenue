@@ -116,7 +116,7 @@ function RoleSwitcher() {
 
 export default function Dashboard() {
   const { t } = useTranslation();
-  const { isAuthenticated, isExpert, user, isLoading, activeRole } = useAuth();
+  const { isAuthenticated, isExpert, user, isLoading } = useAuth();
   const [messageInput, setMessageInput] = useState("");
 
   // Client mock data

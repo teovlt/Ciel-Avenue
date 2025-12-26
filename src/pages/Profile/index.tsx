@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/providers/auth-provider";
 import { clientSubtypeLabels, expertSubtypeLabels, type ClientSubtype, type ExpertSubtype } from "@/providers/auth-provider";
@@ -23,14 +23,12 @@ import {
   Phone,
   Mail,
   Lock,
-  Plus,
   FileText,
   CheckCircle2,
 } from "lucide-react";
 
 export default function ProfilPage() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const { user, isAuthenticated, isExpert, isLoading, activeRole, hasMultipleRoles } = useAuth();
 
   // Get the display name for the user
@@ -46,14 +44,6 @@ export default function ProfilPage() {
       return clientSubtypeLabels[activeRole.subtype as ClientSubtype];
     }
     return expertSubtypeLabels[activeRole.subtype as ExpertSubtype];
-  };
-
-  // Check if user can add a role
-  const canAddRole = () => {
-    if (!user) return false;
-    const hasClientRole = user.roles.some((r) => r.type === "client");
-    const hasExpertRole = user.roles.some((r) => r.type === "expert");
-    return !(hasClientRole && hasExpertRole);
   };
 
   // Show loading while auth state is being restored

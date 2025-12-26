@@ -12,7 +12,6 @@ import {
   Building,
   Sparkles,
   ShoppingCart,
-  Key,
   Hammer,
   ClipboardCheck,
   MessageSquare,
@@ -20,8 +19,6 @@ import {
   Clock,
   Shield,
   TrendingUp,
-  Home,
-  Euro,
   UserCheck,
   Briefcase,
 } from "lucide-react";
