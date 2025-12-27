@@ -26,7 +26,6 @@ import {
   FileText,
   CheckCircle2,
 } from "lucide-react";
-import { t } from "i18next";
 
 export default function ProfilPage() {
   const { t } = useTranslation();
