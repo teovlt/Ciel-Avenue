@@ -8,6 +8,7 @@ import { BuyerDashboard } from "./views/BuyerDashboard";
 import { BailleurDashboard } from "./views/BailleurDashboard";
 import { LocataireDashboard } from "./views/LocataireDashboard";
 import { RenovateurDashboard } from "./views/RenovateurDashboard";
+import { NotaryDashboard } from "./views/NotaryDashboard";
 import { NotConnectedView } from "./views/NotConnectedView";
 
 export default function Dashboard() {
@@ -31,7 +32,12 @@ export default function Dashboard() {
     return <NotConnectedView />;
   }
 
-  // EXPERT / NOTAIRE DASHBOARD
+  // NOTAIRE DASHBOARD (Specific Expert Subtype)
+  if (activeRole?.subtype === "notaire") {
+    return <NotaryDashboard />;
+  }
+
+  // GENERIC EXPERT DASHBOARD
   if (activeRole?.type === "expert") {
     return <ExpertDashboard />;
   }

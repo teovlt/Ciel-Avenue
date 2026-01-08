@@ -1,4 +1,4 @@
-import { FileText, Calendar, Scale, Sparkles } from "lucide-react";
+import { FileText, Calendar, Scale, Sparkles, CheckCircle2, Star } from "lucide-react";
 
 export const mockNeeds = [
   {
@@ -518,4 +518,145 @@ export const mockPostRenovation = [
   { id: 2, title: "Levée de réserves", description: "Valider les finitions avec les artisans", date: "Important", completed: false },
   { id: 3, title: "Assurance Dommage-Ouvrage", description: "Vérifier les garanties", date: "Fait", completed: true },
   { id: 4, title: "DPE après travaux", description: "Actualiser la performance énergétique", date: "Recommandé", completed: false },
+];
+
+// Notaire Mock Data Extended
+
+export const mockNotaryMissionsOverview = [
+  {
+    id: 1,
+    title: "Documents Manquants",
+    description: "Remise de documents obligatoires",
+    icon: FileText,
+    color: "text-red-500",
+    bg: "bg-red-500/10",
+  },
+  {
+    id: 2,
+    title: "Promesse d'Achat",
+    description: "Création de la promesse pour l'acheteur",
+    icon: FileText,
+    color: "text-blue-500",
+    bg: "bg-blue-500/10",
+  },
+  {
+    id: 3,
+    title: "Compromis de Vente",
+    description: "Création du compromis pour le vendeur",
+    icon: FileText,
+    color: "text-indigo-500",
+    bg: "bg-indigo-500/10",
+  },
+  {
+    id: 4,
+    title: "Vérif. Dossier Acheteur",
+    description: "Suivi conformité jusqu'à Acte",
+    icon: CheckCircle2,
+    color: "text-green-500",
+    bg: "bg-green-500/10",
+  },
+  {
+    id: 5,
+    title: "Vérif. Dossier Vendeur",
+    description: "Suivi conformité jusqu'à Acte",
+    icon: CheckCircle2,
+    color: "text-emerald-500",
+    bg: "bg-emerald-500/10",
+  },
+  {
+    id: 6,
+    title: "Accompagnement Complet",
+    description: "Suivi total du besoin utilisateur",
+    icon: Star,
+    color: "text-yellow-500",
+    bg: "bg-yellow-500/10",
+  },
+];
+
+export const mockNotaryMissionsExtended = [
+  {
+    id: 1,
+    client: "Jean Dupont",
+    type: "Promesse d'Achat",
+    status: "available",
+    date: "Aujourd'hui",
+    location: "Paris 15",
+    description: "Besoin d'une promesse pour un T3",
+    price: "150 €",
+  },
+  {
+    id: 2,
+    client: "Marie Martin",
+    type: "Compromis de Vente",
+    status: "in_progress",
+    date: "Hier",
+    location: "Lyon 6",
+    description: "Rédaction en cours, attente docs",
+    progress: 45,
+  },
+  {
+    id: 3,
+    client: "Pierre Durand",
+    type: "Vérif. Dossier",
+    status: "finished",
+    date: "12 Oct 2024",
+    location: "Bordeaux",
+    rating: 5,
+    feedback: "Très efficace, merci !",
+  },
+  {
+    id: 4,
+    client: "Sophie Lefebvre",
+    type: "Accompagnement",
+    status: "refused",
+    date: "10 Oct 2024",
+    reason: "Planning complet",
+  },
+  {
+    id: 5,
+    client: "Julie R.",
+    type: "Documents Manquants",
+    status: "available",
+    date: "Aujourd'hui",
+    location: "Paris 12",
+    description: "Remise documents pour mise en relation",
+    price: "80 €",
+  },
+  {
+    id: 6,
+    client: "Paul V.",
+    type: "Vérif. Dossier Vendeur",
+    status: "in_progress",
+    date: "14 Oct 2024",
+    location: "Lyon 2",
+    description: "Vérification conformité dossier vente",
+    progress: 20,
+  },
+  {
+    id: 7,
+    client: "Alice M.",
+    type: "Accompagnement Complet",
+    status: "available",
+    date: "Hier",
+    location: "Lille",
+    description: "Recherche + Achat T2",
+    price: "Sur devis",
+  },
+];
+
+export const mockNotaryPayments = [
+  { id: 1, date: "15 Oct 2024", client: "Jean Dupont", description: "Promesse d'Achat", amount: "150,00 €", status: "Paid" },
+  { id: 2, date: "14 Oct 2024", client: "Marie Martin", description: "Acompte Compromis", amount: "300,00 €", status: "Pending" },
+  { id: 3, date: "10 Oct 2024", client: "Pierre Durand", description: "Solde Dossier", amount: "450,00 €", status: "Paid" },
+];
+
+export const mockNotaryDocuments = [
+  { id: 1, name: "Attestation RC Pro", status: "Validé", date: "01 Jan 2024" },
+  { id: 2, name: "Kbis à jour", status: "À renouveler", date: "15 Nov 2024" },
+  { id: 3, name: "Carte Pro", status: "Validé", date: "2023-2026" },
+];
+
+export const mockNotaryQuotes = [
+  { id: 1, client: "Lucas M.", type: "Promesse d'Achat", date: "15 Oct 2024", status: "Envoyé", amount: "150 €" },
+  { id: 2, client: "Claire B.", type: "Accompagnement", date: "12 Oct 2024", status: "Signé", amount: "1 200 €" },
 ];

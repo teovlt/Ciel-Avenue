@@ -67,7 +67,7 @@ export function BuyerDashboard() {
               Mon agenda
             </TabsTrigger>
             <TabsTrigger value="post_purchase" className="text-xs sm:text-sm">
-              Quoi faire après...
+              Conseils après achat
             </TabsTrigger>
             <TabsTrigger value="patrimony" className="text-xs sm:text-sm">
               {t("dashboard.tabs.patrimony")}
