@@ -145,6 +145,18 @@ export default function Journey() {
   });
 
   const [buyerStep, setBuyerStep] = useState(1); // 1 = Criteria, 2 = Legal, 3 = Solvency
+  const [sellerStep, setSellerStep] = useState(1); // 1 = Criteria/Questions, 2 = Documents
+
+  const [sellerData, setSellerData] = useState({
+    location: "",
+    price: "",
+    type: "",
+    details: "", // surface/rooms
+    exterior: "", // jardin/balcon
+    comfort: "", // ascenseur/dpe
+    environment: "", // transport/ecole
+    situation: "", // pourquoi vente
+  });
 
   // Expert-specific data
   const [expertData] = useState({
@@ -1005,6 +1017,179 @@ export default function Journey() {
                                 disabled={!clientData.solvencyStatus}
                                 className="bg-primary text-primary-foreground hover:bg-primary/90"
                               >
+                                {t("journey.generateProfile")} <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      )}
+                    </div>
+                  ) : userType === "client" && subtype === "vendeur" ? (
+                    // SELLER SPECIAL JOURNEY
+                    <div className="space-y-6">
+                      {/* Module 1: Seller Criteria */}
+                      {sellerStep === 1 && (
+                        <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift animate-fade-in-up">
+                          <CardContent className="p-8 space-y-6">
+                            <div className="space-y-2">
+                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
+                                <Tag className="h-4 w-4" />
+                                Module 1/2
+                              </div>
+                              <h2 className="text-2xl font-bold text-foreground">Critères de vente</h2>
+                              <p className="text-muted-foreground">
+                                Définissez votre bien pour une estimation précise et un accompagnement sur mesure.
+                              </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              {/* Q1 */}
+                              <div className="space-y-2">
+                                <Label>1. Adresse et Zone (Localisation)</Label>
+                                <Input
+                                  placeholder="Ex: 12 Rue de la Paix, Paris 75002 - Quartier Opéra"
+                                  value={sellerData.location}
+                                  onChange={(e) => setSellerData({ ...sellerData, location: e.target.value })}
+                                />
+                              </div>
+                              {/* Q2 */}
+                              <div className="space-y-2">
+                                <Label>2. Prix souhaité & Négociation</Label>
+                                <Input
+                                  placeholder="Ex: 550 000 €, Ouvert à la négo"
+                                  value={sellerData.price}
+                                  onChange={(e) => setSellerData({ ...sellerData, price: e.target.value })}
+                                />
+                              </div>
+                              {/* Q3 */}
+                              <div className="space-y-2">
+                                <Label>3. Type de bien & Ancienneté</Label>
+                                <Input
+                                  placeholder="Ex: Appartement, Ancien (1990)"
+                                  value={sellerData.type}
+                                  onChange={(e) => setSellerData({ ...sellerData, type: e.target.value })}
+                                />
+                              </div>
+                              {/* Q4 */}
+                              <div className="space-y-2">
+                                <Label>4. Surface & Pièces</Label>
+                                <Input
+                                  placeholder="Ex: 85m², 4 pièces"
+                                  value={sellerData.details}
+                                  onChange={(e) => setSellerData({ ...sellerData, details: e.target.value })}
+                                />
+                              </div>
+                              {/* Q5 */}
+                              <div className="space-y-2">
+                                <Label>5. Extérieur & Stationnement</Label>
+                                <Input
+                                  placeholder="Ex: Balcon 5m², Parking sous-sol"
+                                  value={sellerData.exterior}
+                                  onChange={(e) => setSellerData({ ...sellerData, exterior: e.target.value })}
+                                />
+                              </div>
+                              {/* Q6 */}
+                              <div className="space-y-2">
+                                <Label>6. Confort & Prestations</Label>
+                                <Input
+                                  placeholder="Ex: Ascenseur, DPE D, Chauffage gaz"
+                                  value={sellerData.comfort}
+                                  onChange={(e) => setSellerData({ ...sellerData, comfort: e.target.value })}
+                                />
+                              </div>
+                              {/* Q7 */}
+                              <div className="space-y-2">
+                                <Label>7. Environnement</Label>
+                                <Input
+                                  placeholder="Ex: Calme, Métro à 5min"
+                                  value={sellerData.environment}
+                                  onChange={(e) => setSellerData({ ...sellerData, environment: e.target.value })}
+                                />
+                              </div>
+                              {/* Q8 */}
+                              <div className="space-y-2">
+                                <Label>8. Situation Vendeur</Label>
+                                <Input
+                                  placeholder="Ex: Mutation, Vente urgente avant Juillet"
+                                  value={sellerData.situation}
+                                  onChange={(e) => setSellerData({ ...sellerData, situation: e.target.value })}
+                                />
+                              </div>
+                            </div>
+
+                            <div className="flex justify-end pt-4">
+                              <Button onClick={() => setSellerStep(2)}>
+                                {t("common.continue")} <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      )}
+
+                      {/* Module 2: Seller Documents */}
+                      {sellerStep === 2 && (
+                        <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift animate-fade-in-up">
+                          <CardContent className="p-8 space-y-6">
+                            <div className="space-y-2">
+                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
+                                <FileText className="h-4 w-4" />
+                                Module 2/2
+                              </div>
+                              <h2 className="text-2xl font-bold text-foreground">Remise de documents</h2>
+                              <p className="text-muted-foreground">Documents obligatoires pour la visibilité des experts.</p>
+                            </div>
+
+                            <div className="space-y-4">
+                              {[
+                                "Titre de propriété ou acte notarié",
+                                "Evaluation récente du bien / Montant crédit restant",
+                                "Plan cadastral ou plan du bien",
+                                "Plan cadastral extérieur",
+                                "DPE / Certificat de conformité",
+                                "Documents légaux (Succession/Indivision)",
+                              ].map((doc, idx) => (
+                                <div
+                                  key={idx}
+                                  className="flex items-center justify-between p-4 rounded-lg border border-border bg-muted/30 hover:bg-muted/50 transition-colors"
+                                >
+                                  <div className="flex items-center gap-3">
+                                    <Checkbox
+                                      id={`seller-doc-${idx}`}
+                                      checked={uploadedDocuments.includes(doc)}
+                                      onCheckedChange={() => toggleDocument(doc)}
+                                    />
+                                    <Label htmlFor={`seller-doc-${idx}`} className="cursor-pointer font-normal">
+                                      {doc}
+                                    </Label>
+                                  </div>
+                                  <Button variant="ghost" size="sm" className="text-primary">
+                                    <Upload className="h-4 w-4 mr-2" />
+                                    Importer
+                                  </Button>
+                                </div>
+                              ))}
+                            </div>
+
+                            <div className="p-4 rounded-lg bg-orange-500/10 border border-orange-500/20 flex gap-4 items-start">
+                              <div className="h-10 w-10 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0 text-orange-600">
+                                <Wrench className="h-5 w-5" />
+                              </div>
+                              <div>
+                                <h4 className="font-semibold text-orange-800 dark:text-orange-200">Documents manquants ?</h4>
+                                <p className="text-sm text-orange-700 dark:text-orange-300 mb-2">
+                                  Nos experts (Notaires, Diagnostiqueurs) peuvent vous aider à constituer votre dossier rapidement.
+                                </p>
+                                <Button size="sm" variant="outline" className="border-orange-500 text-orange-600 hover:bg-orange-100">
+                                  Demander de l'aide
+                                </Button>
+                              </div>
+                            </div>
+
+                            <div className="flex justify-between pt-4">
+                              <Button variant="outline" onClick={() => setSellerStep(1)}>
+                                {t("common.back")}
+                              </Button>
+                              <Button onClick={handleComplete}>
                                 {t("journey.generateProfile")} <ArrowRight className="ml-2 h-4 w-4" />
                               </Button>
                             </div>

@@ -762,7 +762,8 @@
       "messages": "Messages",
       "vendors": "Vendeurs",
       "promoters": "Promoteurs",
-      "visits": "Visites"
+      "visits": "Visites",
+      "patrimony": "Patrimoine"
     },
     "needs": {
       "title": "Vos besoins en cours",
@@ -810,6 +811,11 @@
       "confirm": "Confirmer",
       "cancel": "Annuler",
       "viewProfile": "Voir le profil"
+    },
+    "patrimony": {
+      "title": "Votre Patrimoine",
+      "value": "Valeur estimée",
+      "performance": "Performance"
     },
     "notConnected": {
       "title": "Créez un compte pour accéder à votre dashboard",

@@ -44,6 +44,7 @@ import {
   LineChart,
   ArrowUpRight,
   Target,
+  Star,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -235,6 +236,8 @@ export default function Dashboard() {
       contact: "01 23 45 67 89",
       email: "etude.renaud@notaires.fr",
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80",
+      rating: 4.5,
+      reviews: 120,
     },
     {
       id: 2,
@@ -243,6 +246,8 @@ export default function Dashboard() {
       contact: "01 98 76 54 32",
       email: "contact@fisc.com",
       image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80",
+      rating: 4.5,
+      reviews: 120,
     },
     {
       id: 3,
@@ -251,6 +256,8 @@ export default function Dashboard() {
       contact: "06 12 34 56 78",
       email: "archi@design.com",
       image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80",
+      rating: 4.5,
+      reviews: 120,
     },
     {
       id: 4,
@@ -259,6 +266,8 @@ export default function Dashboard() {
       contact: "01 55 55 55 55",
       email: "pret@banque.com",
       image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&q=80",
+      rating: 4.5,
+      reviews: 120,
     },
   ];
 
@@ -320,7 +329,75 @@ export default function Dashboard() {
     },
   ];
 
-  // Expert mock data
+  // Seller mock data
+  const sellerListings = [
+    {
+      id: 1,
+      title: "Appartement Charmant Paris 15",
+      location: "Paris 15ème",
+      price: "550 000 €",
+      surface: "85m²",
+      rooms: "4 pièces",
+      views: 124,
+      contacts: 5,
+      status: "En ligne",
+      image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80",
+    },
+  ];
+
+  const sellerBuyerPool = [
+    {
+      id: 1,
+      name: "Famille Martin",
+      details: "Couple avec 1 enfant, recherche T4",
+      budget: "560 000 €",
+      match: 98,
+      solvency: "Vérifiée",
+      image: "https://images.unsplash.com/photo-1542596594-649edbc13630?w=200&q=80",
+    },
+    {
+      id: 2,
+      name: "Lucas D.",
+      details: "Primo-accédant, recherche T4",
+      budget: "540 000 €",
+      match: 92,
+      solvency: "En cours",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80",
+    },
+    {
+      id: 3,
+      name: "Sophie & Marc",
+      details: "Investisseurs",
+      budget: "530 000 €",
+      match: 85,
+      solvency: "Vérifiée",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80",
+    },
+  ];
+
+  const sellerTips = [
+    {
+      title: "Diagnostiques obligatoires",
+      description: "DPE, Amiante, Plomb... Vérifiez la validité de vos documents.",
+      icon: FileText,
+      color: "text-blue-500",
+      bg: "bg-blue-500/10",
+    },
+    {
+      title: "Préparer les visites",
+      description: "Dépersonnalisez, rangez et aérez pour séduire au premier coup d'œil.",
+      icon: Sparkles,
+      color: "text-amber-500",
+      bg: "bg-amber-500/10",
+    },
+    {
+      title: "Offre d'achat",
+      description: "Comment analyser une offre et vérifier la solidité du financement.",
+      icon: Scale,
+      color: "text-purple-500",
+      bg: "bg-purple-500/10",
+    },
+  ];
   const expertClients = [
     {
       id: 1,
@@ -1026,7 +1103,307 @@ export default function Dashboard() {
     );
   }
 
-  // CLIENT DASHBOARD
+  // VENDEUR DASHBOARD
+  if (activeRole?.subtype === "vendeur") {
+    return (
+      <div className="min-h-screen bg-background pt-20">
+        <div className="fixed inset-0 pointer-events-none overflow-hidden">
+          <div className="decorative-blob decorative-blob-primary w-96 h-96 -top-48 -right-48 animate-float-slow" />
+          <div className="decorative-blob decorative-blob-accent w-64 h-64 bottom-32 -left-32 animate-float-delay" />
+        </div>
+
+        {/* Header */}
+        <div className="border-b border-border bg-card/80 backdrop-blur-sm relative z-10">
+          <div className="container mx-auto px-4 lg:px-8 py-8">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
+              <div>
+                <h1 className="text-3xl font-bold text-foreground">Tableau de bord Vendeur</h1>
+                <p className="text-muted-foreground mt-1">Gérez la vente de vos biens et suivez les acquéreurs potentiels.</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Button asChild variant="outline" size="sm">
+                  <Link to="/profile" className="flex items-center gap-2">
+                    <UserCircle className="h-4 w-4" />
+                    {t("dashboard.viewProfile")}
+                  </Link>
+                </Button>
+                <RoleSwitcher t={t} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
+          <Tabs defaultValue="listings" className="space-y-8">
+            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-7 h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
+              <TabsTrigger value="needs" className="text-xs sm:text-sm">
+                {t("dashboard.tabs.needs")}
+              </TabsTrigger>
+              <TabsTrigger value="messages" className="text-xs sm:text-sm">
+                {t("dashboard.tabs.messages")}
+              </TabsTrigger>
+              <TabsTrigger value="buyers" className="text-xs sm:text-sm">
+                Parc acheteur
+              </TabsTrigger>
+              <TabsTrigger value="experts" className="text-xs sm:text-sm">
+                Experts
+              </TabsTrigger>
+              <TabsTrigger value="listings" className="text-xs sm:text-sm">
+                Mes annonces
+              </TabsTrigger>
+              <TabsTrigger value="tips" className="text-xs sm:text-sm">
+                Conseils
+              </TabsTrigger>
+              <TabsTrigger value="patrimony" className="text-xs sm:text-sm">
+                {t("dashboard.tabs.patrimony")}
+              </TabsTrigger>
+            </TabsList>
+
+            {/* Mes Annonces */}
+            <TabsContent value="listings" className="space-y-6 animate-fade-in-up">
+              <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-bold text-foreground">Vos ventes en cours</h2>
+                <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+                  <Plus className="mr-2 h-4 w-4" /> Ajouter un bien
+                </Button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {sellerListings.map((listing) => (
+                  <Card key={listing.id} className="border-border bg-card/80 backdrop-blur-sm overflow-hidden group">
+                    <div className="h-48 relative overflow-hidden">
+                      <img
+                        src={listing.image}
+                        alt={listing.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <Badge className="absolute top-2 right-2 bg-green-500 hover:bg-green-600">{listing.status}</Badge>
+                    </div>
+                    <CardContent className="p-6 space-y-4">
+                      <div>
+                        <h3 className="text-lg font-bold mb-1">{listing.title}</h3>
+                        <p className="text-muted-foreground flex items-center gap-2 text-sm">
+                          <MapPin className="h-3 w-3" /> {listing.location}
+                        </p>
+                      </div>
+                      <div className="grid grid-cols-2 gap-4 text-sm">
+                        <div className="bg-muted/50 p-2 rounded text-center">
+                          <p className="text-muted-foreground text-xs">Prix</p>
+                          <p className="font-semibold">{listing.price}</p>
+                        </div>
+                        <div className="bg-muted/50 p-2 rounded text-center">
+                          <p className="text-muted-foreground text-xs">Surface</p>
+                          <p className="font-semibold">{listing.surface}</p>
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center pt-2 border-t border-border mt-2">
+                        <div className="text-sm text-muted-foreground">
+                          <span className="font-bold text-foreground">{listing.views}</span> vues
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          <span className="font-bold text-foreground">{listing.contacts}</span> contacts
+                        </div>
+                      </div>
+                      <Button className="w-full" variant="outline">
+                        Gérer l'annonce
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            {/* Parc Acheteur */}
+            <TabsContent value="buyers" className="space-y-6 animate-fade-in-up">
+              <div className="mb-6">
+                <h2 className="text-2xl font-bold text-foreground">Acquéreurs potentiels</h2>
+                <p className="text-muted-foreground">Ces profils matchent avec vos biens en vente.</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {sellerBuyerPool.map((buyer) => (
+                  <Card key={buyer.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
+                    <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
+                      <div className="h-20 w-20 rounded-full overflow-hidden border-2 border-primary/20">
+                        <img src={buyer.image} alt={buyer.name} className="h-full w-full object-cover" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-bold">{buyer.name}</h3>
+                        <p className="text-sm text-muted-foreground">{buyer.details}</p>
+                      </div>
+                      <div className="w-full bg-muted/50 rounded-lg p-3 grid grid-cols-2 gap-2 text-sm">
+                        <div>
+                          <p className="text-muted-foreground text-xs">Budget</p>
+                          <p className="font-semibold">{buyer.budget}</p>
+                        </div>
+                        <div>
+                          <p className="text-muted-foreground text-xs">Match</p>
+                          <p className="font-bold text-green-600">{buyer.match}%</p>
+                        </div>
+                      </div>
+
+                      <Button className="w-full">Proposer une visite</Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            {/* Conseils */}
+            <TabsContent value="tips" className="space-y-6 animate-fade-in-up">
+              <div className="mb-6">
+                <h2 className="text-2xl font-bold text-foreground">Guide du vendeur</h2>
+                <p className="text-muted-foreground">Les étapes clés pour réussir votre vente.</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {sellerTips.map((tip, idx) => (
+                  <Card key={idx} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
+                    <CardContent className="p-6 space-y-4">
+                      <div className={`h-12 w-12 rounded-xl ${tip.bg} flex items-center justify-center`}>
+                        <tip.icon className={`h-6 w-6 ${tip.color}`} />
+                      </div>
+                      <h3 className="text-xl font-bold">{tip.title}</h3>
+                      <p className="text-muted-foreground text-sm">{tip.description}</p>
+                      <Button variant="link" className={`p-0 h-auto ${tip.color}`}>
+                        En savoir plus <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            {/* Needs */}
+            <TabsContent value="needs" className="space-y-6 animate-fade-in-up">
+              <h2 className="text-2xl font-bold text-foreground mb-4">{t("dashboard.needs.title")}</h2>
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {mockNeeds.map((need) => (
+                  <Card key={need.id} className="border-border bg-card/80 backdrop-blur-sm">
+                    <div className="h-40 relative overflow-hidden rounded-t-xl">
+                      <img src={need.image} className="w-full h-full object-cover" />
+                    </div>
+                    <CardContent className="p-4 space-y-2">
+                      <div className="flex justify-between">
+                        <Badge>{need.status}</Badge>
+                        <span className="font-bold text-primary">{need.match}% Match</span>
+                      </div>
+                      <h3 className="font-bold">{need.type}</h3>
+                      <p className="text-sm text-muted-foreground">{need.location}</p>
+                      <Button className="w-full mt-2" variant="secondary">
+                        Voir détails
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            {/* Experts */}
+            <TabsContent value="experts" className="space-y-6 animate-fade-in-up">
+              <h2 className="text-2xl font-bold text-foreground mb-4">Vos experts partenaires</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {mockExperts.map((expert) => (
+                  <Card key={expert.id} className="border-border bg-card/80 backdrop-blur-sm">
+                    <CardContent className="p-6 flex items-start gap-4">
+                      <div className="h-16 w-16 rounded-full overflow-hidden">
+                        <img src={expert.image} className="w-full h-full object-cover" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-bold text-lg">{expert.name}</h3>
+                        <Badge variant="outline" className="mb-2">
+                          {expert.role}
+                        </Badge>
+                        <div className="flex items-center gap-1 text-yellow-500 text-sm mb-2">
+                          <Star className="h-4 w-4 fill-current" />
+                          <span className="font-medium">{expert.rating}</span>
+                          <span className="text-muted-foreground ml-1">({expert.reviews} avis)</span>
+                        </div>
+                        <Button size="sm" className="w-full">
+                          Contacter
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            {/* Messages */}
+            <TabsContent value="messages" className="space-y-6 animate-fade-in-up">
+              <Card className="border-border bg-card/80 backdrop-blur-sm h-[600px] flex flex-col">
+                <CardHeader className="border-b border-border">
+                  <CardTitle className="flex items-center gap-2">
+                    <MessageSquare className="h-5 w-5 text-primary" />
+                    {t("dashboard.messages.title")}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="flex-1 overflow-hidden flex flex-col p-0">
+                  <div className="flex-1 overflow-y-auto p-4 space-y-4">
+                    {mockMessages.map((msg) => (
+                      <div key={msg.id} className="flex gap-4 p-4 rounded-xl bg-muted/50 max-w-[80%]">
+                        <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                          <UserCircle className="h-6 w-6 text-primary" />
+                        </div>
+                        <div>
+                          <div className="flex items-baseline gap-2 mb-1">
+                            <span className="font-semibold">{msg.from}</span>
+                            <span className="text-xs text-muted-foreground">{msg.time}</span>
+                          </div>
+                          <p className="text-sm">{msg.message}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="p-4 border-t border-border bg-background/50 backdrop-blur-sm">
+                    <div className="flex gap-2">
+                      <Input placeholder="Écrivez votre message..." />
+                      <Button size="icon">
+                        <Send className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Patrimony */}
+            <TabsContent value="patrimony" className="space-y-6 animate-fade-in-up">
+              <h2 className="text-2xl font-bold text-foreground mb-4">{t("dashboard.patrimony.title")}</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {mockPatrimony.map((item) => (
+                  <Card key={item.id} className="border-border bg-card/80 backdrop-blur-sm overflow-hidden">
+                    <div className="h-32 relative">
+                      <img src={item.image} className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <h3 className="text-white font-bold text-xl">{item.type}</h3>
+                      </div>
+                    </div>
+                    <CardContent className="p-6">
+                      <div className="flex justify-between mb-2">
+                        <span className="text-muted-foreground">{t("dashboard.patrimony.value")}</span>
+                        <span className="font-bold">{item.value.toLocaleString("fr-FR")} €</span>
+                      </div>
+                      <div className="w-full bg-muted rounded-full h-2 mb-4 overflow-hidden">
+                        <div
+                          className="bg-green-500 h-full rounded-full"
+                          style={{ width: item.growth.replace("+", "").replace("%", "").trim() + "%" }}
+                        ></div>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span>{t("dashboard.patrimony.performance") || "Performance"}</span>
+                        <span className="text-green-600 font-medium">{item.growth}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </div>
+    );
+  }
+
+  // CLIENT DASHBOARD (Fallback)
   if (activeRole?.type === "client" && activeRole?.subtype !== "acheteur") {
     return (
       <div className="min-h-screen bg-background pt-20">
