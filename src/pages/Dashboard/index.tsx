@@ -41,9 +41,7 @@ import {
   PenTool,
   CheckCircle2,
   PiggyBank,
-  Wallet,
   LineChart,
-  PieChart,
   ArrowUpRight,
   Target,
 } from "lucide-react";
@@ -332,6 +330,7 @@ export default function Dashboard() {
       status: "active",
       solvabilityScore: 8.5,
       lastContact: "Aujourd'hui",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
     },
     {
       id: 2,
@@ -341,6 +340,7 @@ export default function Dashboard() {
       status: "pending",
       solvabilityScore: 9.2,
       lastContact: "Hier",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80",
     },
     {
       id: 3,
@@ -350,6 +350,7 @@ export default function Dashboard() {
       status: "active",
       solvabilityScore: 7.8,
       lastContact: "Il y a 3j",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80",
     },
   ];
 
@@ -361,6 +362,7 @@ export default function Dashboard() {
       progress: 75,
       status: "in_progress",
       deadline: "30 Déc 2025",
+      clientImage: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
     },
     {
       id: 2,
@@ -369,6 +371,7 @@ export default function Dashboard() {
       progress: 40,
       status: "in_progress",
       deadline: "15 Jan 2026",
+      clientImage: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80",
     },
     {
       id: 3,
@@ -377,14 +380,43 @@ export default function Dashboard() {
       progress: 20,
       status: "pending",
       deadline: "10 Jan 2026",
+      clientImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80",
     },
   ];
 
   const expertSchedule = [
-    { id: 1, time: "09:00", client: "Jean Dupont", type: "Visite", property: "Appartement Paris 15ème" },
-    { id: 2, time: "11:30", client: "Marie Martin", type: "Appel", property: null },
-    { id: 3, time: "14:00", client: "Pierre Dubois", type: "Visite", property: "Appartement Issy" },
-    { id: 4, time: "16:30", client: "Sophie Laurent", type: "Rendez-vous", property: "Bureau" },
+    {
+      id: 1,
+      time: "09:00",
+      client: "Jean Dupont",
+      type: "Visite",
+      property: "Appartement Paris 15ème",
+      clientImage: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+    },
+    {
+      id: 2,
+      time: "11:30",
+      client: "Marie Martin",
+      type: "Appel",
+      property: null,
+      clientImage: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80",
+    },
+    {
+      id: 3,
+      time: "14:00",
+      client: "Pierre Dubois",
+      type: "Visite",
+      property: "Appartement Issy",
+      clientImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80",
+    },
+    {
+      id: 4,
+      time: "16:30",
+      client: "Sophie Laurent",
+      type: "Rendez-vous",
+      property: "Bureau",
+      clientImage: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80",
+    },
   ];
 
   // Show loading while auth state is being restored
@@ -443,6 +475,7 @@ export default function Dashboard() {
           bgColor: "bg-orange-500/10",
           count: 3,
           action: "Voir les dossiers",
+          image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&q=80",
         },
         {
           id: "purchase-promise",
@@ -453,6 +486,7 @@ export default function Dashboard() {
           bgColor: "bg-blue-500/10",
           count: 2,
           action: "Créer une promesse",
+          image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&q=80",
         },
         {
           id: "sales-agreement",
@@ -463,6 +497,7 @@ export default function Dashboard() {
           bgColor: "bg-purple-500/10",
           count: 1,
           action: "Rédiger l'acte",
+          image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&q=80",
         },
         {
           id: "buyer-check",
@@ -473,6 +508,7 @@ export default function Dashboard() {
           bgColor: "bg-green-500/10",
           count: 5,
           action: "Vérifier",
+          image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80",
         },
         {
           id: "seller-check",
@@ -483,6 +519,7 @@ export default function Dashboard() {
           bgColor: "bg-teal-500/10",
           count: 4,
           action: "Vérifier",
+          image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&q=80",
         },
         {
           id: "full-support",
@@ -493,6 +530,7 @@ export default function Dashboard() {
           bgColor: "bg-amber-500/10",
           count: 2,
           action: "Gérer",
+          image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80",
         },
       ];
 
@@ -597,22 +635,28 @@ export default function Dashboard() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 stagger-animation">
                   {notaryMissions.map((mission) => (
                     <Card key={mission.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift overflow-hidden group">
-                      <div className={`h-1 w-full ${mission.bgColor.replace("/10", "")}`} />
+                      <div className="h-28 w-full relative overflow-hidden">
+                        <img
+                          src={mission.image}
+                          alt={mission.title}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className={`absolute inset-0 opacity-90 ${mission.bgColor.replace("/10", "/80")} mix-blend-multiply`} />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
+                          <div className="flex items-center gap-2 text-white">
+                            <mission.icon className="h-5 w-5" />
+                            <span className="font-bold text-sm tracking-wide">{mission.title}</span>
+                          </div>
+                        </div>
+                      </div>
                       <CardContent className="p-6">
                         <div className="flex justify-between items-start mb-4">
-                          <div
-                            className={`h-12 w-12 rounded-xl ${mission.bgColor} flex items-center justify-center transition-transform group-hover:scale-110`}
-                          >
-                            <mission.icon className={`h-6 w-6 ${mission.color}`} />
-                          </div>
                           <Badge variant="outline" className="bg-background/50 backdrop-blur-sm">
                             {mission.count} dossiers
                           </Badge>
                         </div>
 
-                        <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                          {mission.title}
-                        </h3>
+                        {/* Note: Title moved to header image */}
                         <p className="text-sm text-muted-foreground mb-6 line-clamp-2">{mission.description}</p>
 
                         <Button
@@ -810,9 +854,11 @@ export default function Dashboard() {
                     <CardContent className="p-6">
                       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                         <div className="flex items-center gap-4">
-                          <div className="h-12 w-12 rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center">
-                            <span className="text-lg font-bold text-white">{client.name.charAt(0)}</span>
-                          </div>
+                          <img
+                            src={client.image}
+                            alt={client.name}
+                            className="h-12 w-12 rounded-full object-cover border-2 border-accent/20"
+                          />
                           <div>
                             <h3 className="text-lg font-semibold text-foreground">{client.name}</h3>
                             <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -858,9 +904,10 @@ export default function Dashboard() {
                       <div className="flex justify-between items-start">
                         <div>
                           <h3 className="font-semibold text-foreground">{mission.type}</h3>
-                          <p className="text-sm text-muted-foreground">
-                            {t("dashboard.expert.missions.client")}: {mission.client}
-                          </p>
+                          <div className="flex items-center gap-2 mt-1">
+                            <img src={mission.clientImage} alt={mission.client} className="h-6 w-6 rounded-full object-cover" />
+                            <p className="text-sm text-muted-foreground">{mission.client}</p>
+                          </div>
                         </div>
                         <Badge
                           variant={mission.status === "in_progress" ? "default" : "secondary"}
@@ -907,11 +954,16 @@ export default function Dashboard() {
                         </div>
                         <div className="h-12 w-1 rounded-full bg-accent" />
                         <div className="flex-1">
-                          <div className="flex items-center gap-2">
-                            <p className="font-semibold text-foreground">{item.client}</p>
-                            <Badge variant="outline" className="text-xs">
-                              {item.type}
-                            </Badge>
+                          <div className="flex items-center gap-3">
+                            <img src={item.clientImage} alt={item.client} className="h-8 w-8 rounded-full object-cover" />
+                            <div>
+                              <div className="flex items-center gap-2">
+                                <p className="font-semibold text-foreground leading-none">{item.client}</p>
+                                <Badge variant="outline" className="text-[10px] h-5 px-1.5">
+                                  {item.type}
+                                </Badge>
+                              </div>
+                            </div>
                           </div>
                           {item.property && (
                             <p className="text-sm text-muted-foreground flex items-center gap-1 mt-1">
@@ -1008,6 +1060,43 @@ export default function Dashboard() {
 
         {/* Main Content */}
         <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
+          {/* Welcome Cards with Images */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 animate-fade-in-up">
+            <Card className="overflow-hidden border-border bg-card/80 backdrop-blur-sm relative min-h-[200px] flex items-center p-8 group">
+              <div className="absolute inset-0 z-0">
+                <img
+                  src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80"
+                  alt="Interior"
+                  className="w-full h-full object-cover opacity-20 transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-background/90 to-background/50"></div>
+              </div>
+              <div className="relative z-10 max-w-md">
+                <h2 className="text-2xl font-bold mb-2 text-foreground">Suivi de vos projets</h2>
+                <p className="text-muted-foreground mb-4">Suivez l'avancement de vos ventes et recherches en temps réel.</p>
+                <Button variant="secondary" className="shadow-sm">
+                  Voir mes alertes
+                </Button>
+              </div>
+            </Card>
+
+            <Card className="overflow-hidden border-border bg-card/80 backdrop-blur-sm relative min-h-[200px] flex items-center p-8 group">
+              <div className="absolute inset-0 z-0">
+                <img
+                  src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=1200&q=80"
+                  alt="Office"
+                  className="w-full h-full object-cover opacity-20 transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-background/90 to-background/50"></div>
+              </div>
+              <div className="relative z-10 max-w-md">
+                <h2 className="text-2xl font-bold mb-2 text-foreground">Contacter mon expert</h2>
+                <p className="text-muted-foreground mb-4">Une question sur votre contrat ? Votre notaire est disponible.</p>
+                <Button className="shadow-sm">Messagerie</Button>
+              </div>
+            </Card>
+          </div>
+
           <Tabs defaultValue="needs" className="space-y-8">
             <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5 h-auto">
               <TabsTrigger value="needs" className="flex items-center gap-2">
@@ -1044,16 +1133,32 @@ export default function Dashboard() {
 
               <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 stagger-animation">
                 {mockNeeds.map((need) => (
-                  <Card key={need.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift shine-effect">
-                    <CardHeader className="pb-4">
-                      <div className="flex justify-between items-start mb-2">
+                  <Card
+                    key={need.id}
+                    className="border-border bg-card/80 backdrop-blur-sm card-hover-lift shine-effect overflow-hidden group"
+                  >
+                    <div className="h-48 w-full overflow-hidden relative">
+                      <img
+                        src={need.image}
+                        alt={need.type}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute top-2 right-2">
                         <Badge
                           variant={need.status === t("dashboard.needs.status.new") ? "default" : "secondary"}
-                          className={need.status === t("dashboard.needs.status.new") ? "bg-primary text-primary-foreground" : ""}
+                          className={
+                            need.status === t("dashboard.needs.status.new")
+                              ? "bg-primary text-primary-foreground shadow-sm"
+                              : "bg-background/80 backdrop-blur-md shadow-sm"
+                          }
                         >
                           {need.status}
                         </Badge>
-                        <div className="text-right">
+                      </div>
+                    </div>
+                    <CardHeader className="pb-4 pt-4">
+                      <div className="flex justify-between items-start mb-2">
+                        <div className="text-right ml-auto">
                           <div className="text-xs text-muted-foreground">{t("dashboard.needs.match")}</div>
                           <div className="text-lg font-bold text-primary">{need.match}%</div>
                         </div>
@@ -1139,9 +1244,12 @@ export default function Dashboard() {
 
               <div className="space-y-4 stagger-animation">
                 {mockVendors.map((vendor) => (
-                  <Card key={vendor.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
-                    <CardContent className="p-6">
-                      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                  <Card key={vendor.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift overflow-hidden">
+                    <CardContent className="p-0 flex flex-col md:flex-row">
+                      <div className="md:w-32 h-32 md:h-auto relative flex-shrink-0">
+                        <img src={vendor.image} alt={vendor.name} className="w-full h-full object-cover" />
+                      </div>
+                      <div className="p-6 flex-1 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                         <div className="flex-1">
                           <h3 className="text-lg font-semibold text-foreground mb-1">{vendor.name}</h3>
                           <p className="text-muted-foreground">{vendor.property}</p>
@@ -1173,10 +1281,25 @@ export default function Dashboard() {
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 stagger-animation">
                 {mockPromoters.map((promoter) => (
-                  <Card key={promoter.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift shine-effect">
+                  <Card
+                    key={promoter.id}
+                    className="border-border bg-card/80 backdrop-blur-sm card-hover-lift shine-effect overflow-hidden group"
+                  >
+                    <div className="h-48 relative overflow-hidden">
+                      <img
+                        src={promoter.image}
+                        alt={promoter.name}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                        <div className="flex items-center gap-2 text-white">
+                          <MapPin className="h-4 w-4" />
+                          <span className="text-sm font-medium">{promoter.location}</span>
+                        </div>
+                      </div>
+                    </div>
                     <CardHeader>
                       <div className="flex items-start justify-between mb-2">
-                        <Building2 className="h-8 w-8 text-primary" />
                         <Badge variant="outline">{promoter.units}</Badge>
                       </div>
                       <CardTitle className="text-xl">{promoter.name}</CardTitle>
@@ -1788,6 +1911,43 @@ export default function Dashboard() {
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
+        {/* Welcome Cards with Images */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 animate-fade-in-up">
+          <Card className="overflow-hidden border-border bg-card/80 backdrop-blur-sm relative min-h-[220px] flex items-center p-8 group">
+            <div className="absolute inset-0 z-0">
+              <img
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80"
+                alt="Interior"
+                className="w-full h-full object-cover opacity-20 transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-background/90 to-background/50"></div>
+            </div>
+            <div className="relative z-10 max-w-md">
+              <h2 className="text-2xl font-bold mb-2 text-foreground">Bienvenue sur votre espace</h2>
+              <p className="text-muted-foreground mb-4">Retrouvez l'ensemble de vos documents et échanges en un seul endroit sécurisé.</p>
+              <Button variant="secondary" className="shadow-sm">
+                Compléter mon profil
+              </Button>
+            </div>
+          </Card>
+
+          <Card className="overflow-hidden border-border bg-card/80 backdrop-blur-sm relative min-h-[220px] flex items-center p-8 group">
+            <div className="absolute inset-0 z-0">
+              <img
+                src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=1200&q=80"
+                alt="Office"
+                className="w-full h-full object-cover opacity-20 transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-background/90 to-background/50"></div>
+            </div>
+            <div className="relative z-10 max-w-md">
+              <h2 className="text-2xl font-bold mb-2 text-foreground">Besoin d'accompagnement ?</h2>
+              <p className="text-muted-foreground mb-4">Nos experts partenaires sont à votre disposition pour vos projets immobiliers.</p>
+              <Button className="shadow-sm">Trouver un expert</Button>
+            </div>
+          </Card>
+        </div>
+
         <Tabs defaultValue="messages" className="space-y-8">
           <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 h-auto">
             <TabsTrigger value="messages" className="flex items-center gap-2">
