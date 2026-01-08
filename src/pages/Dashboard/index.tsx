@@ -31,6 +31,15 @@ import {
   Plus,
   ChevronDown,
   Check,
+  FileText,
+  FileCheck,
+  Handshake,
+  ShieldCheck,
+  FileSearch,
+  Sparkles,
+  Scale,
+  PenTool,
+  CheckCircle2,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -116,7 +125,7 @@ function RoleSwitcher({ t }: { t: (key: string) => string }) {
 
 export default function Dashboard() {
   const { t } = useTranslation();
-  const { isAuthenticated, isExpert, user, isLoading } = useAuth();
+  const { isAuthenticated, isExpert, user, isLoading, activeRole } = useAuth();
   const [messageInput, setMessageInput] = useState("");
 
   // Client mock data
@@ -304,6 +313,260 @@ export default function Dashboard() {
 
   // EXPERT DASHBOARD
   if (isExpert) {
+    // NOTAIRE SPECIFIC DASHBOARD
+    if (activeRole?.subtype === "notaire") {
+      const notaryMissions = [
+        {
+          id: "missing-docs",
+          title: "Documents Manquants",
+          description: "Remise de documents obligatoires (juridiques/administratifs)",
+          icon: FileText,
+          color: "text-orange-500",
+          bgColor: "bg-orange-500/10",
+          count: 3,
+          action: "Voir les dossiers",
+        },
+        {
+          id: "purchase-promise",
+          title: "Promesse d'Achat",
+          description: "Création de la promesse d'achat pour l'acheteur",
+          icon: FileCheck,
+          color: "text-blue-500",
+          bgColor: "bg-blue-500/10",
+          count: 2,
+          action: "Créer une promesse",
+        },
+        {
+          id: "sales-agreement",
+          title: "Compromis de Vente",
+          description: "Création du compromis de vente pour le vendeur",
+          icon: Handshake,
+          color: "text-purple-500",
+          bgColor: "bg-purple-500/10",
+          count: 1,
+          action: "Rédiger l'acte",
+        },
+        {
+          id: "buyer-check",
+          title: "Vérification Dossier Acheteur + Acte",
+          description: "Suivi conformité dossier jusqu'à signature Acte Authentique",
+          icon: ShieldCheck,
+          color: "text-green-500",
+          bgColor: "bg-green-500/10",
+          count: 5,
+          action: "Vérifier",
+        },
+        {
+          id: "seller-check",
+          title: "Vérification Dossier Vendeur",
+          description: "Suivi conformité dossier jusqu'à signature Acte Authentique",
+          icon: FileSearch,
+          color: "text-teal-500",
+          bgColor: "bg-teal-500/10",
+          count: 4,
+          action: "Vérifier",
+        },
+        {
+          id: "full-support",
+          title: "Accompagnement Complet",
+          description: "Accompagnement total du besoin utilisateur jusqu'à obtention",
+          icon: Sparkles,
+          color: "text-amber-500",
+          bgColor: "bg-amber-500/10",
+          count: 2,
+          action: "Gérer",
+        },
+      ];
+
+      return (
+        <div className="min-h-screen bg-background pt-20">
+          {/* Decorative elements */}
+          <div className="fixed inset-0 pointer-events-none overflow-hidden">
+            <div className="decorative-blob decorative-blob-accent w-96 h-96 -top-48 -right-48 animate-float-slow" />
+            <div className="decorative-blob decorative-blob-primary w-64 h-64 bottom-32 -left-32 animate-float-delay" />
+          </div>
+
+          {/* Header */}
+          <div className="border-b border-border bg-card/80 backdrop-blur-sm relative z-10">
+            <div className="container mx-auto px-4 lg:px-8 py-8">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-sm font-medium text-accent mb-2">
+                    <Scale className="h-4 w-4" />
+                    Office Notarial
+                  </div>
+                  <h1 className="text-3xl font-bold text-foreground">Tableau de bord Notaire</h1>
+                  <p className="text-muted-foreground mt-1">Bienvenue Maître {user?.lastName}, voici vos dossiers en cours.</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Button asChild variant="outline" size="sm">
+                    <Link to="/profile" className="flex items-center gap-2">
+                      <UserCircle className="h-4 w-4" />
+                      {t("dashboard.viewProfile")}
+                    </Link>
+                  </Button>
+                  <RoleSwitcher t={t} />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Stats Overview */}
+          <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12 stagger-animation">
+              <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <FileText className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold text-foreground">17</p>
+                      <p className="text-sm text-muted-foreground">Dossiers actifs</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center">
+                      <PenTool className="h-6 w-6 text-accent" />
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold text-foreground">3</p>
+                      <p className="text-sm text-muted-foreground">Signatures semaine</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-lg bg-green-500/10 flex items-center justify-center">
+                      <CheckCircle2 className="h-6 w-6 text-green-500" />
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold text-foreground">8</p>
+                      <p className="text-sm text-muted-foreground">Actes finalisés</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-lg bg-purple-500/10 flex items-center justify-center">
+                      <Clock className="h-6 w-6 text-purple-500" />
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold text-foreground">12h</p>
+                      <p className="text-sm text-muted-foreground">Temps moyen/dossier</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Main Missions Grid */}
+              <div className="lg:col-span-2 space-y-6">
+                <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
+                  <Briefcase className="h-6 w-6 text-accent" />
+                  Vos missions prioritaires
+                </h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 stagger-animation">
+                  {notaryMissions.map((mission) => (
+                    <Card key={mission.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift overflow-hidden group">
+                      <div className={`h-1 w-full ${mission.bgColor.replace("/10", "")}`} />
+                      <CardContent className="p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div
+                            className={`h-12 w-12 rounded-xl ${mission.bgColor} flex items-center justify-center transition-transform group-hover:scale-110`}
+                          >
+                            <mission.icon className={`h-6 w-6 ${mission.color}`} />
+                          </div>
+                          <Badge variant="outline" className="bg-background/50 backdrop-blur-sm">
+                            {mission.count} dossiers
+                          </Badge>
+                        </div>
+
+                        <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                          {mission.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground mb-6 line-clamp-2">{mission.description}</p>
+
+                        <Button
+                          className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all"
+                          variant="outline"
+                        >
+                          {mission.action} <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+
+              {/* Sidebar / Agenda */}
+              <div className="space-y-6">
+                <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
+                  <Calendar className="h-6 w-6 text-accent" />
+                  Agenda du jour
+                </h2>
+
+                <Card className="border-border bg-card/80 backdrop-blur-sm h-fit">
+                  <CardHeader>
+                    <CardTitle className="text-lg">Prochains rendez-vous</CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <div className="divide-y divide-border">
+                      {[
+                        { time: "09:30", title: "Signature Compromis - Mr Dupont", type: "Signature" },
+                        { time: "11:00", title: "Vérification dossier - Mme Martin", type: "Vérification" },
+                        { time: "14:30", title: "Appel client - Projet SCI", type: "Tel" },
+                        { time: "16:00", title: "Signature Acte de Vente - Famille Leroy", type: "Signature" },
+                      ].map((evt, i) => (
+                        <div key={i} className="p-4 hover:bg-muted/50 transition-colors flex gap-4 items-center">
+                          <div className="flex-shrink-0 w-14 text-center">
+                            <span className="block font-bold text-lg text-foreground">{evt.time}</span>
+                          </div>
+                          <div className="w-1 h-10 bg-accent/20 rounded-full" />
+                          <div className="flex-1">
+                            <p className="font-medium text-foreground text-sm">{evt.title}</p>
+                            <Badge variant="secondary" className="mt-1 text-xs scale-90 origin-left">
+                              {evt.type}
+                            </Badge>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="p-4 border-t border-border">
+                      <Button variant="ghost" className="w-full text-sm text-muted-foreground hover:text-foreground">
+                        Voir tout l'agenda <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Quick Actions */}
+                <Card className="border-accent/20 bg-gradient-to-br from-accent/5 to-primary/5">
+                  <CardContent className="p-6 space-y-4">
+                    <h3 className="font-semibold text-foreground">Besoin d'aide ?</h3>
+                    <p className="text-sm text-muted-foreground">Contacter le support technique dédié aux notaires.</p>
+                    <Button variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+                      <Phone className="mr-2 h-4 w-4" /> Support Pro
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className="min-h-screen bg-background pt-20">
         {/* Decorative elements */}
