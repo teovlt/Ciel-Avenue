@@ -15,6 +15,7 @@ import {
   Store,
   Key,
   HardHat,
+  Building2,
 } from "lucide-react";
 
 export const mockNeeds = [
@@ -911,4 +912,62 @@ export const mockContractorDocuments = [
 
 export const mockContractorPayments = [
   { id: 1, date: "10 Oct 2024", client: "Rénovation Totale", description: "Situation n°2", amount: "4 000,00 €", status: "Paid" },
+];
+
+// Promoteur Mock Data
+
+export const mockPromoterOverview = [
+  {
+    id: 1,
+    title: "Accompagnement Achat Neuf",
+    description: "Accompagnement total du besoin utilisateur (achat d'un bien neuf) jusqu'à obtention",
+    icon: Building2,
+    color: "text-blue-600",
+    bg: "bg-blue-600/10",
+  },
+];
+
+export const mockPromoterMissions = [
+  {
+    id: 1,
+    client: "Acquéreur Lot A12",
+    type: "Achat Neuf",
+    status: "in_progress",
+    date: "Signé le 15 Sep",
+    location: "Résidence Ciel",
+    description: "Suivi financement",
+    progress: 40,
+  },
+];
+
+export const mockPromoterPrograms = [
+  {
+    id: 1,
+    title: "Résidence L'Envolée",
+    location: "Marseille 8ème",
+    description: "Programme de 45 logements de standing avec terrasses et vues dégagées.",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&auto=format&fit=crop&q=60",
+    keyPoints: ["Vue Mer", "Parking Souterrain", "RT 2020"],
+    status: "Commercialisation",
+    lotsAvailable: 12,
+  },
+  {
+    id: 2,
+    title: "Les Jardins de Provence",
+    location: "Aix-en-Provence",
+    description: "Villas jumelées au coeur d'un parc arboré.",
+    image: "https://images.unsplash.com/photo-1600596542815-50e840bd00cf?w=800&auto=format&fit=crop&q=60",
+    keyPoints: ["Jardin Privatif", "Piscine", "Calme"],
+    status: "Travaux en cours",
+    lotsAvailable: 5,
+  },
+];
+
+export const mockPromoterDocuments = [
+  { id: 1, name: "Garantie Financière Achèvement", status: "Validé", date: "2024-2026" },
+  { id: 2, name: "Décennale Constructeur", status: "Validé", date: "2024" },
+];
+
+export const mockPromoterPayments = [
+  { id: 1, date: "02 Oct 2024", client: "Résidence L'Envolée", description: "Appel de fonds n°3", amount: "150 000 €", status: "Paid" },
 ];
