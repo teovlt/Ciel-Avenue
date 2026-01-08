@@ -16,6 +16,12 @@ import {
   Key,
   HardHat,
   Building2,
+  Camera,
+  Aperture,
+  Cuboid,
+  Video,
+  MonitorPlay,
+  Image,
 } from "lucide-react";
 
 export const mockNeeds = [
@@ -970,4 +976,93 @@ export const mockPromoterDocuments = [
 
 export const mockPromoterPayments = [
   { id: 1, date: "02 Oct 2024", client: "Résidence L'Envolée", description: "Appel de fonds n°3", amount: "150 000 €", status: "Paid" },
+];
+
+// Photographe Mock Data
+
+export const mockPhotographerOverview = [
+  {
+    id: 1,
+    title: "Photos pour Acheteur",
+    description: "Prise de photos de bien immobilier pour utilisateurs souhaitant acheter",
+    icon: Camera, // Import Camera
+    color: "text-blue-500",
+    bg: "bg-blue-500/10",
+  },
+  {
+    id: 2,
+    title: "Photos pour Vendeur",
+    description: "Prise de photos de bien immobilier pour utilisateurs souhaitant vendre",
+    icon: Aperture, // Import Aperture
+    color: "text-green-500",
+    bg: "bg-green-500/10",
+  },
+  {
+    id: 3,
+    title: "Photos pour Location",
+    description: "Prise de photos de bien immobilier pour utilisateurs souhaitant louer",
+    icon: Image, // Import Image
+    color: "text-purple-500",
+    bg: "bg-purple-500/10",
+  },
+  {
+    id: 4,
+    title: "Visite Virtuelle Acheteur",
+    description: "Visite virtuelle de bien immobilier pour utilisateurs souhaitant acheter",
+    icon: Video, // Import Video
+    color: "text-orange-500",
+    bg: "bg-orange-500/10",
+  },
+  {
+    id: 5,
+    title: "Visite Virtuelle Vendeur",
+    description: "Visite virtuelle de bien immobilier pour utilisateurs souhaitant vendre",
+    icon: Cuboid, // Import Cuboid (for 3D/Volume)
+    color: "text-red-500",
+    bg: "bg-red-500/10",
+  },
+  {
+    id: 6,
+    title: "Visite Virtuelle Location",
+    description: "Visite virtuelle de bien immobilier pour utilisateurs souhaitant louer",
+    icon: MonitorPlay, // Import MonitorPlay
+    color: "text-yellow-500",
+    bg: "bg-yellow-500/10",
+  },
+];
+
+export const mockPhotographerMissions = [
+  {
+    id: 1,
+    client: "Agence Immo Plus",
+    type: "Photos Vente T4",
+    status: "available",
+    date: "Pour Lundi",
+    location: "Lyon 6",
+    description: "Pack 15 photos HDR",
+    price: "150 €",
+  },
+  {
+    id: 2,
+    client: "M. Durant",
+    type: "Visite Virtuelle",
+    status: "in_progress",
+    date: "RDV ce matin",
+    location: "Villeurbanne",
+    description: "Maison 140m2",
+    progress: 80,
+  },
+];
+
+export const mockPhotographerQuotes = [
+  { id: 1, client: "Agence Immo Plus", type: "Forfait Mensuel", date: "01 Sep 2024", status: "Signé", amount: "1 500 €" },
+];
+
+export const mockPhotographerDocuments = [
+  { id: 1, name: "RC Pro Photographe", status: "Validé", date: "2024" },
+  { id: 2, name: "Licence Drone", status: "Validé", date: "2024-2026" },
+];
+
+export const mockPhotographerPayments = [
+  { id: 1, date: "12 Oct 2024", client: "M. Durant", description: "Acompte Visite Virtuelle", amount: "150,00 €", status: "Paid" },
 ];
