@@ -5,7 +5,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RoleSwitcher } from "../components/RoleSwitcher";
 import { useTranslation } from "react-i18next";
 
-import { NotaryAccountTab } from "../tabs/NotaryAccountTab";
 import { ArtisanOverviewTab } from "../tabs/ArtisanOverviewTab";
 import { ArtisanMissionsTab } from "../tabs/ArtisanMissionsTab";
 import { ArtisanQuotesTab } from "../tabs/ArtisanQuotesTab";
@@ -46,7 +45,7 @@ export function ArtisanDashboard() {
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
         <Tabs defaultValue="overview" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
             <TabsTrigger value="overview" className="text-xs sm:text-sm">
               Accueil
             </TabsTrigger>
@@ -61,9 +60,6 @@ export function ArtisanDashboard() {
             </TabsTrigger>
             <TabsTrigger value="payments" className="text-xs sm:text-sm">
               Paiements
-            </TabsTrigger>
-            <TabsTrigger value="account" className="text-xs sm:text-sm">
-              Compte
             </TabsTrigger>
           </TabsList>
 
@@ -81,10 +77,6 @@ export function ArtisanDashboard() {
           </TabsContent>
           <TabsContent value="payments">
             <ArtisanPaymentsTab />
-          </TabsContent>
-          <TabsContent value="account">
-            {/* Using generic account tab for now */}
-            <NotaryAccountTab />
           </TabsContent>
         </Tabs>
       </div>

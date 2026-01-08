@@ -10,8 +10,8 @@ import { BrokerMissionsTab } from "../tabs/BrokerMissionsTab";
 import { BrokerQuotesTab } from "../tabs/BrokerQuotesTab";
 import { BrokerDocumentsTab } from "../tabs/BrokerDocumentsTab";
 import { BrokerPaymentsTab } from "../tabs/BrokerPaymentsTab";
-import { BrokerAccountTab } from "../tabs/BrokerAccountTab";
-import { FileText, Briefcase, FileCheck, Euro, User, LayoutDashboard } from "lucide-react";
+
+import { FileText, Briefcase, FileCheck, Euro, LayoutDashboard } from "lucide-react";
 
 export function BrokerDashboard() {
   const { user } = useAuth();
@@ -48,7 +48,7 @@ export function BrokerDashboard() {
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
         <Tabs defaultValue="overview" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-2 h-auto md:grid-cols-6 p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
+          <TabsList className="grid w-full grid-cols-2 h-auto md:grid-cols-5 p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
             <TabsTrigger value="overview">
               <LayoutDashboard className="h-4 w-4 mr-2" />
               <span className="hidden md:inline">Vue d'ensemble</span>
@@ -70,10 +70,6 @@ export function BrokerDashboard() {
               <Euro className="h-4 w-4 mr-2" />
               Paiements
             </TabsTrigger>
-            <TabsTrigger value="account">
-              <User className="h-4 w-4 mr-2" />
-              Compte
-            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview">
@@ -94,10 +90,6 @@ export function BrokerDashboard() {
 
           <TabsContent value="payments">
             <BrokerPaymentsTab />
-          </TabsContent>
-
-          <TabsContent value="account">
-            <BrokerAccountTab />
           </TabsContent>
         </Tabs>
       </div>

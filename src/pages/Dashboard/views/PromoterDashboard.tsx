@@ -9,7 +9,6 @@ import { PromoterMissionsTab } from "../tabs/PromoterMissionsTab";
 import { PromoterProgramsTab } from "../tabs/PromoterProgramsTab";
 import { PromoterDocumentsTab } from "../tabs/PromoterDocumentsTab";
 import { PromoterPaymentsTab } from "../tabs/PromoterPaymentsTab";
-import { NotaryAccountTab } from "../tabs/NotaryAccountTab";
 
 export function PromoterDashboard() {
   const { t } = useTranslation();
@@ -45,7 +44,7 @@ export function PromoterDashboard() {
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
         <Tabs defaultValue="overview" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
             <TabsTrigger value="overview" className="text-xs sm:text-sm">
               Accueil
             </TabsTrigger>
@@ -80,10 +79,6 @@ export function PromoterDashboard() {
           </TabsContent>
           <TabsContent value="payments">
             <PromoterPaymentsTab />
-          </TabsContent>
-          <TabsContent value="account">
-            {/* Reusing NotaryAccountTab */}
-            <NotaryAccountTab />
           </TabsContent>
         </Tabs>
       </div>

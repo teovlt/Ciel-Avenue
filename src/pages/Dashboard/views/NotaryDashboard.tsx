@@ -9,7 +9,6 @@ import { NotaryMissionsTab } from "../tabs/NotaryMissionsTab";
 import { NotaryQuotesTab } from "../tabs/NotaryQuotesTab";
 import { NotaryDocumentsTab } from "../tabs/NotaryDocumentsTab";
 import { NotaryPaymentsTab } from "../tabs/NotaryPaymentsTab";
-import { NotaryAccountTab } from "../tabs/NotaryAccountTab";
 
 export function NotaryDashboard() {
   const { t } = useTranslation();
@@ -45,7 +44,7 @@ export function NotaryDashboard() {
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
         <Tabs defaultValue="overview" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
             <TabsTrigger value="overview" className="text-xs sm:text-sm">
               Accueil
             </TabsTrigger>
@@ -60,9 +59,6 @@ export function NotaryDashboard() {
             </TabsTrigger>
             <TabsTrigger value="payments" className="text-xs sm:text-sm">
               Paiements
-            </TabsTrigger>
-            <TabsTrigger value="account" className="text-xs sm:text-sm">
-              Compte
             </TabsTrigger>
           </TabsList>
 
@@ -80,9 +76,6 @@ export function NotaryDashboard() {
           </TabsContent>
           <TabsContent value="payments">
             <NotaryPaymentsTab />
-          </TabsContent>
-          <TabsContent value="account">
-            <NotaryAccountTab />
           </TabsContent>
         </Tabs>
       </div>
