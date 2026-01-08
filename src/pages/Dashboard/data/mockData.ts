@@ -1066,3 +1066,86 @@ export const mockPhotographerDocuments = [
 export const mockPhotographerPayments = [
   { id: 1, date: "12 Oct 2024", client: "M. Durant", description: "Acompte Visite Virtuelle", amount: "150,00 €", status: "Paid" },
 ];
+// Broker (Courtier) Mock Data
+
+export const mockBrokerOverview = [
+  {
+    id: 1,
+    title: "Bilan / Audit bancaire",
+    description: "Analyse solvabilité & solutions",
+    icon: Search,
+    color: "text-blue-500",
+    bg: "bg-blue-500/10",
+  },
+  {
+    id: 2,
+    title: "Suivi financement bancaire",
+    description: "Recherche offres & négociation",
+    icon: FileText,
+    color: "text-green-500",
+    bg: "bg-green-500/10",
+  },
+];
+
+export const mockBrokerMissions = [
+  {
+    id: 1,
+    client: "Jean Dupont",
+    type: "Suivi financement",
+    status: "in_progress",
+    date: "15 Oct 2024",
+    location: "Paris 15",
+    description: "Financement résidence principale",
+    progress: 60,
+  },
+  {
+    id: 2,
+    client: "Marie Curie",
+    type: "Bilan / Audit",
+    status: "available",
+    date: "Aujourd'hui",
+    location: "Boulogne",
+    description: "Analyse capacité d'emprunt",
+    price: "150 €",
+  },
+  {
+    id: 3,
+    client: "Pierre Martin",
+    type: "Suivi financement",
+    status: "pending",
+    date: "Hier",
+    location: "Lyon",
+    description: "Négociation taux",
+    progress: 30,
+  },
+];
+
+export const mockBrokerQuotes = [
+  {
+    id: 1,
+    client: "Jean Dupont",
+    type: "Honoraires Courtage",
+    date: "10 Oct 2024",
+    status: "Signé",
+    amount: "1 500 €",
+  },
+  {
+    id: 2,
+    client: "Marie Curie",
+    type: "Audit Bancaire",
+    date: "16 Oct 2024",
+    status: "Envoyé",
+    amount: "150 €",
+  },
+];
+
+export const mockBrokerDocuments = [
+  { id: 1, name: "Attestation MCOB", status: "Validé", date: "2024-2025" },
+  { id: 2, name: "RC Pro Courtage", status: "À renouveler", date: "01 Jan 2025" },
+  { id: 3, name: "Partenariats Banques", status: "Validé", date: "En cours" },
+];
+
+export const mockBrokerPayments = [
+  { id: 1, date: "05 Oct 2024", client: "Paul V.", description: "Acompte Courtage", amount: "500,00 €", status: "Paid" },
+  { id: 2, date: "12 Oct 2024", client: "Sophie L.", description: "Audit Financier", amount: "150,00 €", status: "Pending" },
+];
