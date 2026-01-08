@@ -1,4 +1,4 @@
-import { FileText, Calendar, Scale, Sparkles, CheckCircle2, Star } from "lucide-react";
+import { FileText, Calendar, Scale, Sparkles, CheckCircle2, Star, Search, Bug, Flame, Zap, BarChart3, AlertTriangle } from "lucide-react";
 
 export const mockNeeds = [
   {
@@ -659,4 +659,116 @@ export const mockNotaryDocuments = [
 export const mockNotaryQuotes = [
   { id: 1, client: "Lucas M.", type: "Promesse d'Achat", date: "15 Oct 2024", status: "Envoyé", amount: "150 €" },
   { id: 2, client: "Claire B.", type: "Accompagnement", date: "12 Oct 2024", status: "Signé", amount: "1 200 €" },
+];
+
+// Diagnostician Mock Data
+
+export const mockDiagnosticianOverview = [
+  {
+    id: 1,
+    title: "Diagnostic Amiante",
+    description: "Recherche matériaux amiante",
+    validity: "Illimitée si négatif, 3 ans si positif",
+    mandatory: "Avant 1er juillet 1997",
+    icon: Search,
+    color: "text-red-500",
+    bg: "bg-red-500/10",
+  },
+  {
+    id: 2,
+    title: "Diagnostic Plomb (CREP)",
+    description: "Risque Exposition Plomb",
+    validity: "1 an vente, 6 ans location",
+    mandatory: "Avant 1er janvier 1949",
+    icon: Search, // Using Search as generic, import specific later
+    color: "text-orange-500",
+    bg: "bg-orange-500/10",
+  },
+  {
+    id: 3,
+    title: "Diagnostic Termites",
+    description: "Détection parasites bois",
+    validity: "6 mois",
+    mandatory: "Zones à risque",
+    icon: Bug,
+    color: "text-amber-700",
+    bg: "bg-amber-700/10",
+  },
+  {
+    id: 4,
+    title: "Diagnostic Gaz",
+    description: "Installation intérieure gaz",
+    validity: "3 ans",
+    mandatory: "Installations > 15 ans",
+    icon: Flame,
+    color: "text-yellow-500",
+    bg: "bg-yellow-500/10",
+  },
+  {
+    id: 5,
+    title: "Diagnostic Électricité",
+    description: "Installation intérieure élec",
+    validity: "3 ans",
+    mandatory: "Installations > 15 ans",
+    icon: Zap,
+    color: "text-yellow-400",
+    bg: "bg-yellow-400/10",
+  },
+  {
+    id: 6,
+    title: "Diagnostic DPE",
+    description: "Performance Énergétique",
+    validity: "10 ans",
+    mandatory: "Toute vente/location",
+    icon: BarChart3,
+    color: "text-green-500",
+    bg: "bg-green-500/10",
+  },
+  {
+    id: 7,
+    title: "État Risques (ERP)",
+    description: "Risques naturels/pollutions",
+    validity: "6 mois",
+    mandatory: "Zones à risques",
+    icon: AlertTriangle,
+    color: "text-blue-500",
+    bg: "bg-blue-500/10",
+  },
+];
+
+export const mockDiagnosticianMissions = [
+  {
+    id: 1,
+    client: "Agence Immobilière Sud",
+    type: "Pack Vente Maison",
+    status: "available",
+    date: "Pour le 20 Oct",
+    location: "Marseille 8",
+    description: "DPE, Amiante, Elec, ERP",
+    price: "450 €",
+  },
+  {
+    id: 2,
+    client: "M. Martin",
+    type: "DPE Seul",
+    status: "in_progress",
+    date: "Rdv demain 10h",
+    location: "Aubagne",
+    description: "Appartement T2",
+    progress: 10,
+  },
+];
+
+export const mockDiagnosticianQuotes = [
+  { id: 1, client: "Agence Sud", type: "Pack Complet", date: "15 Oct 2024", status: "Envoyé", amount: "450 €" },
+];
+
+export const mockDiagnosticianDocuments = [
+  { id: 1, name: "Certification DPE", status: "Validé", date: "2024-2029" },
+  { id: 2, name: "Certification Amiante", status: "Validé", date: "2024-2029" },
+  { id: 3, name: "Assurance RC Pro", status: "À renouveler", date: "01 Jan 2025" },
+];
+
+export const mockDiagnosticianPayments = [
+  { id: 1, date: "10 Oct 2024", client: "Mme Dubois", description: "DPE + Elec", amount: "250,00 €", status: "Paid" },
 ];
