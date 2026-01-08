@@ -838,27 +838,29 @@ export default function Journey() {
                     </CardContent>
                   </Card>
 
-                  <Card className="border-accent/30 bg-gradient-to-r from-accent/5 to-primary/5">
-                    <CardContent className="p-6">
-                      <div className="flex flex-col md:flex-row items-center gap-6">
-                        <div className="h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
-                          <Scale className="h-8 w-8 text-accent" />
+                  {subtype !== "notaire" && (
+                    <Card className="border-accent/30 bg-gradient-to-r from-accent/5 to-primary/5">
+                      <CardContent className="p-6">
+                        <div className="flex flex-col md:flex-row items-center gap-6">
+                          <div className="h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                            <Scale className="h-8 w-8 text-accent" />
+                          </div>
+                          <div className="flex-1 text-center md:text-left">
+                            <h3 className="text-lg font-semibold text-foreground mb-1">{t("journey.step3.notaryHelp.title")}</h3>
+                            <p className="text-sm text-muted-foreground">{t("journey.step3.notaryHelp.description")}</p>
+                          </div>
+                          <Button
+                            variant="outline"
+                            className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
+                            onClick={() => toast.success(t("journey.step3.notaryHelp.successMessage"))}
+                          >
+                            <MessageSquare className="h-4 w-4 mr-2" />
+                            {t("journey.step3.notaryHelp.cta")}
+                          </Button>
                         </div>
-                        <div className="flex-1 text-center md:text-left">
-                          <h3 className="text-lg font-semibold text-foreground mb-1">{t("journey.step3.notaryHelp.title")}</h3>
-                          <p className="text-sm text-muted-foreground">{t("journey.step3.notaryHelp.description")}</p>
-                        </div>
-                        <Button
-                          variant="outline"
-                          className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
-                          onClick={() => toast.success(t("journey.step3.notaryHelp.successMessage"))}
-                        >
-                          <MessageSquare className="h-4 w-4 mr-2" />
-                          {t("journey.step3.notaryHelp.cta")}
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
+                      </CardContent>
+                    </Card>
+                  )}
 
                   {/* Account Review Summary */}
                   <Card className="border-border bg-card/80 backdrop-blur-sm">
