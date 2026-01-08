@@ -16,6 +16,7 @@ import { PromoterDashboard } from "./views/PromoterDashboard";
 import { PhotographerDashboard } from "./views/PhotographerDashboard";
 import { BrokerDashboard } from "./views/BrokerDashboard";
 import { NotConnectedView } from "./views/NotConnectedView";
+import { ArtisanDashboard } from "./views/ArtisanDashboard";
 
 export default function Dashboard() {
   const { t } = useTranslation();
@@ -66,6 +67,11 @@ export default function Dashboard() {
   // PHOTOGRAPHE DASHBOARD (Specific Expert Subtype)
   if (activeRole?.subtype === "photographe") {
     return <PhotographerDashboard />;
+  }
+
+  // ARTISAN DASHBOARD (Specific Expert Subtype)
+  if (activeRole?.subtype === "artisan") {
+    return <ArtisanDashboard />;
   }
 
   // COURTIER DASHBOARD (Specific Expert Subtype)

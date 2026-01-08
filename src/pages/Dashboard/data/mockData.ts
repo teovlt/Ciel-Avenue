@@ -1149,3 +1149,94 @@ export const mockBrokerPayments = [
   { id: 1, date: "05 Oct 2024", client: "Paul V.", description: "Acompte Courtage", amount: "500,00 €", status: "Paid" },
   { id: 2, date: "12 Oct 2024", client: "Sophie L.", description: "Audit Financier", amount: "150,00 €", status: "Pending" },
 ];
+
+// Artisan (Renovator/Craftsman) Mock Data
+export const mockArtisanOverview = [
+  {
+    id: 1,
+    title: "Mes Chantiers",
+    description: "Suivi des travaux en cours",
+    icon: HardHat,
+    color: "text-orange-500",
+    bg: "bg-orange-500/10",
+  },
+  {
+    id: 2,
+    title: "Demandes de Devis",
+    description: "Répondre aux nouvelles opportunités",
+    icon: FileText,
+    color: "text-blue-500",
+    bg: "bg-blue-500/10",
+  },
+  {
+    id: 3,
+    title: "Planning",
+    description: "Gérer mes interventions",
+    icon: Calendar,
+    color: "text-green-500",
+    bg: "bg-green-500/10",
+  },
+];
+
+export const mockArtisanMissions = [
+  {
+    id: 1,
+    client: "Mme. Dubois",
+    type: "Rénovation Peinture",
+    status: "in_progress",
+    date: "Débuté le 01 Oct",
+    location: "Paris 15",
+    description: "Peinture complète T3",
+    progress: 45,
+  },
+  {
+    id: 2,
+    client: "M. Martin",
+    type: "Devis Électricité",
+    status: "available",
+    date: "Aujourd'hui",
+    location: "Boulogne",
+    description: "Mise aux normes tableau électrique",
+    price: "A chiffrer",
+  },
+  {
+    id: 3,
+    client: "SCI Immob",
+    type: "Plomberie Cuisine",
+    status: "pending",
+    date: "10 Oct 2024",
+    location: "Levallois",
+    description: "Remplacement arrivées d'eau",
+    progress: 0,
+  },
+];
+
+export const mockArtisanQuotes = [
+  {
+    id: 1,
+    client: "Mme. Dubois",
+    type: "Peinture T3",
+    date: "20 Sept 2024",
+    status: "Signé",
+    amount: "3 200 €",
+  },
+  {
+    id: 2,
+    client: "M. Martin",
+    type: "Électricité",
+    date: "15 Oct 2024",
+    status: "Envoyé",
+    amount: "1 850 €",
+  },
+];
+
+export const mockArtisanDocuments = [
+  { id: 1, name: "Assurance Décennale", status: "Validé", date: "2024-2025" },
+  { id: 2, name: "Kbis (-3 mois)", status: "À renouveler", date: "01 Nov 2024" },
+  { id: 3, name: "Qualibat RGE", status: "Validé", date: "2023-2026" },
+];
+
+export const mockArtisanPayments = [
+  { id: 1, date: "01 Oct 2024", client: "Mme. Dubois", description: "Acompte Peinture", amount: "1 000,00 €", status: "Paid" },
+  { id: 2, date: "12 Oct 2024", client: "Jean P.", description: "Petits travaux", amount: "450,00 €", status: "Pending" },
+];
