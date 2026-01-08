@@ -1,0 +1,521 @@
+import { FileText, Calendar, Scale, Sparkles } from "lucide-react";
+
+export const mockNeeds = [
+  {
+    id: 1,
+    type: "Appartement T3",
+    location: "Paris 15ème",
+    budget: "450k€ - 500k€",
+    status: "Nouveau",
+    match: 95,
+    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80",
+  },
+  {
+    id: 2,
+    type: "Maison de ville",
+    location: "Boulogne-Billancourt",
+    budget: "850k€ - 950k€",
+    price: "920 000 €",
+    surface: "110 m²",
+    rooms: "5 pièces",
+    status: "Offre en cours",
+    match: 88,
+    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80",
+  },
+  {
+    id: 3,
+    type: "Appartement T2",
+    location: "Levallois-Perret",
+    budget: "350k€ - 400k€",
+    price: "395 000 €",
+    surface: "45 m²",
+    rooms: "2 pièces",
+    status: "En attente",
+    match: 82,
+    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80",
+  },
+];
+
+export const mockVendors = [
+  {
+    id: 1,
+    name: "Sophie Martin",
+    property: "Appartement 65m² paris 15",
+    status: "Visite programmée",
+    rating: 4.8,
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80",
+  },
+  {
+    id: 2,
+    name: "Marc Dubois",
+    property: "Maison 110m² Boulogne",
+    status: "Offre reçue",
+    rating: 4.5,
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+  },
+  {
+    id: 3,
+    name: "SCI Les Oliviers",
+    property: "T2 Levallois",
+    status: "En discussion",
+    rating: 4.2,
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80",
+  },
+];
+
+export const mockPromoters = [
+  {
+    id: 1,
+    name: "Nexity",
+    project: "Résidence Ciel",
+    location: "Asnières-sur-Seine",
+    units: "12 lots disp.",
+    delivery: "4T 2024",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+  },
+  {
+    id: 2,
+    name: "Kaufman & Broad",
+    project: "Les Jardins de la Seine",
+    location: "Puteaux",
+    units: "8 lots disp.",
+    delivery: "1T 2025",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80",
+  },
+];
+
+export const mockVisits = [
+  { id: 1, date: "12 Oct", time: "14:30", property: "Appartement Paris 15", expert: "Jean Dupont (Agent)", status: "confirmed" },
+  { id: 2, date: "14 Oct", time: "10:00", property: "Maison Boulogne", expert: "Marie Curie (Chasseur)", status: "pending" },
+  { id: 3, date: "18 Oct", time: "11:00", property: "Chantier Résidence Ciel", expert: "Paul Nexity (Promoteur)", status: "confirmed" },
+];
+
+export const mockExperts = [
+  {
+    id: 1,
+    name: "Maître Renaud",
+    role: "Notaire",
+    contact: "01 23 45 67 89",
+    email: "etude.renaud@notaires.fr",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80",
+    rating: 4.5,
+    reviews: 120,
+  },
+  {
+    id: 2,
+    name: "Cabinet Fisc",
+    role: "Fiscaliste",
+    contact: "01 98 76 54 32",
+    email: "contact@fisc.com",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80",
+    rating: 4.5,
+    reviews: 120,
+  },
+  {
+    id: 3,
+    name: "Mme Architecte",
+    role: "Architecte",
+    contact: "06 12 34 56 78",
+    email: "archi@design.com",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80",
+    rating: 4.5,
+    reviews: 120,
+  },
+  {
+    id: 4,
+    name: "Banque Privee",
+    role: "Courtier",
+    contact: "01 55 55 55 55",
+    email: "pret@banque.com",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&q=80",
+    rating: 4.5,
+    reviews: 120,
+  },
+];
+
+export const mockPostPurchase = [
+  { id: 1, title: "Déménagement", description: "Réserver votre déménageur", date: "Avant le 15 Nov", completed: false },
+  { id: 2, title: "Assurance Habitation", description: "Souscrire avant la remise des clés", date: "Urgent", completed: false },
+  { id: 3, title: "Énergie & Internet", description: "Ouvrir les compteurs", date: "Fait", completed: true },
+  { id: 4, title: "Travaux", description: "Valider les devis peinture", date: "En cours", completed: false },
+];
+
+export const mockPatrimony = [
+  {
+    id: 1,
+    type: "Résidence Principale",
+    name: "Appartement Paris 15",
+    value: 485000,
+    growth: "+2.5%",
+    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80",
+  },
+  {
+    id: 2,
+    type: "Investissement Locatif",
+    name: "Studio Lyon",
+    value: 150000,
+    growth: "+4.1%",
+    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80",
+  },
+  {
+    id: 3,
+    type: "SCPI",
+    name: "Pierre Rendement",
+    value: 50000,
+    growth: "+5.2%",
+    image: "https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=800&q=80",
+  },
+];
+
+export const mockMessages = [
+  {
+    id: 1,
+    from: "Sophie Durand",
+    role: "expert",
+    message: "J'ai trouvé 3 biens qui correspondent parfaitement à vos critères.",
+    time: "Il y a 2h",
+  },
+  {
+    id: 2,
+    from: "Marc Leblanc",
+    role: "expert",
+    message: "La visite de demain est confirmée. Rendez-vous à 14h.",
+    time: "Il y a 5h",
+  },
+  {
+    id: 3,
+    from: "Système",
+    role: "notification",
+    message: "Nouveau bien ajouté à votre sélection",
+    time: "Il y a 1j",
+  },
+];
+
+// Seller mock data
+export const sellerListings = [
+  {
+    id: 1,
+    title: "Appartement Charmant Paris 15",
+    location: "Paris 15ème",
+    price: "550 000 €",
+    surface: "85m²",
+    rooms: "4 pièces",
+    views: 124,
+    contacts: 5,
+    status: "En ligne",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80",
+  },
+];
+
+export const sellerBuyerPool = [
+  {
+    id: 1,
+    name: "Famille Martin",
+    details: "Couple avec 1 enfant, recherche T4",
+    budget: "560 000 €",
+    match: 98,
+    solvency: "Vérifiée",
+    image: "https://images.unsplash.com/photo-1542596594-649edbc13630?w=200&q=80",
+  },
+  {
+    id: 2,
+    name: "Lucas D.",
+    details: "Primo-accédant, recherche T4",
+    budget: "540 000 €",
+    match: 92,
+    solvency: "En cours",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80",
+  },
+  {
+    id: 3,
+    name: "Sophie & Marc",
+    details: "Investisseurs",
+    budget: "530 000 €",
+    match: 85,
+    solvency: "Vérifiée",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80",
+  },
+];
+
+export const sellerTips = [
+  {
+    title: "Diagnostiques obligatoires",
+    description: "DPE, Amiante, Plomb... Vérifiez la validité de vos documents.",
+    icon: FileText,
+    color: "text-blue-500",
+    bg: "bg-blue-500/10",
+  },
+  {
+    title: "Préparer les visites",
+    description: "Dépersonnalisez, rangez et aérez pour séduire au premier coup d'œil.",
+    icon: Sparkles,
+    color: "text-amber-500",
+    bg: "bg-amber-500/10",
+  },
+  {
+    title: "Offre d'achat",
+    description: "Comment analyser une offre et vérifier la solidité du financement.",
+    icon: Scale,
+    color: "text-purple-500",
+    bg: "bg-purple-500/10",
+  },
+];
+
+export const expertClients = [
+  {
+    id: 1,
+    name: "Jean Dupont",
+    budget: "350 000 €",
+    location: "Paris 15ème",
+    status: "active",
+    solvabilityScore: 8.5,
+    lastContact: "Aujourd'hui",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+  },
+  {
+    id: 2,
+    name: "Marie Martin",
+    budget: "420 000 €",
+    location: "Boulogne-Billancourt",
+    status: "pending",
+    solvabilityScore: 9.2,
+    lastContact: "Hier",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80",
+  },
+  {
+    id: 3,
+    name: "Pierre Dubois",
+    budget: "280 000 €",
+    location: "Issy-les-Moulineaux",
+    status: "active",
+    solvabilityScore: 7.8,
+    lastContact: "Il y a 3j",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80",
+  },
+];
+
+export const expertMissions = [
+  {
+    id: 1,
+    client: "Jean Dupont",
+    type: "Recherche appartement",
+    progress: 75,
+    status: "in_progress",
+    deadline: "30 Déc 2025",
+    clientImage: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+  },
+  {
+    id: 2,
+    client: "Marie Martin",
+    type: "Négociation",
+    progress: 40,
+    status: "in_progress",
+    deadline: "15 Jan 2026",
+    clientImage: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80",
+  },
+  {
+    id: 3,
+    client: "Pierre Dubois",
+    type: "Visite programmée",
+    progress: 20,
+    status: "pending",
+    deadline: "10 Jan 2026",
+    clientImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80",
+  },
+];
+
+export const expertSchedule = [
+  {
+    id: 1,
+    time: "09:00",
+    client: "Jean Dupont",
+    type: "Visite",
+    property: "Appartement Paris 15ème",
+    clientImage: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+  },
+  {
+    id: 2,
+    time: "11:30",
+    client: "Marie Martin",
+    type: "Appel",
+    property: "Point avancement",
+    clientImage: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80",
+  },
+  {
+    id: 3,
+    time: "14:00",
+    client: "Pierre Dubois",
+    type: "Signature",
+    property: "Compromis de vente",
+    clientImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80",
+  },
+];
+
+export const notaryMissions = [
+  {
+    id: "missing-docs",
+    title: "Documents Manquants",
+    description: "Remise de documents obligatoires (juridiques/administratifs)",
+    icon: FileText,
+    color: "text-orange-500",
+    bgColor: "bg-orange-500/10",
+    count: 3,
+    action: "Voir les dossiers",
+    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&q=80",
+  },
+  {
+    id: "compromis",
+    title: "Compromis à rédiger",
+    description: "Préparation des avants-contrats pour signature",
+    icon: FileText,
+    color: "text-blue-500",
+    bgColor: "bg-blue-500/10",
+    count: 2,
+    action: "Rédiger",
+    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&q=80",
+  },
+  {
+    id: "signature",
+    title: "Signatures à venir",
+    description: "Actes authentiques programmés cette semaine",
+    icon: Calendar,
+    color: "text-green-500",
+    bgColor: "bg-green-500/10",
+    count: 4,
+    action: "Consulter l'agenda",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&q=80",
+  },
+];
+
+// Bailleur mock data
+export const bailleurListings = [
+  {
+    id: 1,
+    title: "Appartement T3 Paris 15",
+    location: "Paris 15ème",
+    price: "1 850 €/mois",
+    surface: "65m²",
+    rooms: "3 pièces",
+    views: 250,
+    contacts: 12,
+    status: "En ligne",
+    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&q=80",
+  },
+  {
+    id: 2,
+    title: "Studio Meublé Lyon 6",
+    location: "Lyon 6ème",
+    price: "850 €/mois",
+    surface: "28m²",
+    rooms: "1 pièce",
+    views: 45,
+    contacts: 3,
+    status: "Brouillon",
+    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400&q=80",
+  },
+];
+
+export const mockTenantPool = [
+  {
+    id: 1,
+    name: "Thomas B.",
+    details: "CDI, Confirmé, Revenus 3x loyer",
+    budget: "1 900 €/mois",
+    match: 95,
+    solvency: "Vérifiée",
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80",
+  },
+  {
+    id: 2,
+    name: "Léa & Paul",
+    details: "Couple jeunes actifs, Garants solides",
+    budget: "1 800 €/mois",
+    match: 88,
+    solvency: "Vérifiée",
+    image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=200&q=80",
+  },
+];
+
+export const mockPostRental = [
+  { id: 1, title: "État des lieux", description: "Réaliser l'état des lieux d'entrée", date: "À faire", completed: false },
+  { id: 2, title: "Contrat de bail", description: "Signer le bail électronique", date: "En attente", completed: false },
+  { id: 3, title: "Assurance Loyer Impayé", description: "Souscrire à la GLI", date: "Recommandé", completed: false },
+  { id: 4, title: "Diagnostics", description: "Vérifier validité des diagnostics", date: "Fait", completed: true },
+];
+
+// Locataire mock data
+export const mockLandlordPool = [
+  {
+    id: 1,
+    name: "M. Richard",
+    details: "Propriétaire T3 Paris 15",
+    budget: "1 850 €/mois",
+    match: 95,
+    status: "Dossier reçu",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80",
+  },
+  {
+    id: 2,
+    name: "Agence Immo",
+    details: "Gestionnaire T3 Boulogne",
+    budget: "1 900 €/mois",
+    match: 88,
+    status: "Visite programmée",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=200&q=80",
+  },
+];
+
+export const mockPostMoveIn = [
+  { id: 1, title: "État des lieux complet", description: "Vérifiez chaque détail à l'entrée", date: "Urgent", completed: false },
+  { id: 2, title: "Assurance Habitation", description: "Obligatoire dès la remise des clés", date: "Fait", completed: true },
+  { id: 3, title: "CAF / APL", description: "Faire la demande d'aide au logement", date: "À faire", completed: false },
+  { id: 4, title: "Compteurs", description: "Relever les compteurs d'eau et d'électricité", date: "À faire", completed: false },
+];
+
+// Renovateur mock data
+export const mockArtisanPool = [
+  {
+    id: 1,
+    name: "Elec & Co",
+    details: "Électricien - Mise aux normes",
+    location: "Paris 15",
+    rating: 4.8,
+    reviews: 42,
+    image: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=200&q=80",
+  },
+  {
+    id: 2,
+    name: "Peinture Pro",
+    details: "Peintre - Finitions soignées",
+    location: "Paris 14",
+    rating: 4.6,
+    reviews: 28,
+    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=200&q=80",
+  },
+];
+
+export const mockQuotes = [
+  {
+    id: 1,
+    artisan: "Elec & Co",
+    title: "Rénovation électrique complète",
+    amount: "4 500 €",
+    status: "Reçu",
+    date: "12 Oct 2024",
+  },
+  {
+    id: 2,
+    artisan: "Peinture Pro",
+    title: "Peinture Salon +Chambre",
+    amount: "2 200 €",
+    status: "En attente",
+    date: "-",
+  },
+];
+
+export const mockPostRenovation = [
+  { id: 1, title: "Nettoyage fin de chantier", description: "Organiser le ménage complet", date: "À faire", completed: false },
+  { id: 2, title: "Levée de réserves", description: "Valider les finitions avec les artisans", date: "Important", completed: false },
+  { id: 3, title: "Assurance Dommage-Ouvrage", description: "Vérifier les garanties", date: "Fait", completed: true },
+  { id: 4, title: "DPE après travaux", description: "Actualiser la performance énergétique", date: "Recommandé", completed: false },
+];

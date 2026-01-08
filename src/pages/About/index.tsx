@@ -40,7 +40,11 @@ export default function About() {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="relative h-[400px] lg:h-[500px] rounded-xl overflow-hidden animate-slide-in-left card-hover-lift">
-                <img src="/images/placeholder.svg" alt={t("about.vision.imageAlt")} className="object-cover w-full h-full" />
+                <img
+                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80"
+                  alt={t("about.vision.imageAlt")}
+                  className="object-cover w-full h-full"
+                />
               </div>
 
               <div className="space-y-6 animate-slide-in-right">
@@ -101,7 +105,11 @@ export default function About() {
               </div>
 
               <div className="relative h-[400px] lg:h-[500px] rounded-xl overflow-hidden order-1 lg:order-2 animate-slide-in-right card-hover-lift">
-                <img src="/images/placeholder.svg" alt={t("about.mission.imageAlt")} className="object-cover w-full h-full" />
+                <img
+                  src="https://images.unsplash.com/photo-1542596594-649edbc13630?w=1200&q=80"
+                  alt={t("about.mission.imageAlt")}
+                  className="object-cover w-full h-full"
+                />
               </div>
             </div>
           </div>

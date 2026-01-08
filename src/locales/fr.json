@@ -762,8 +762,11 @@
       "messages": "Messages",
       "vendors": "Vendeurs",
       "promoters": "Promoteurs",
-      "visits": "Visites",
-      "patrimony": "Patrimoine"
+      "visits": "Mon agenda",
+      "patrimony": "Patrimoine",
+      "experts": "Accompagnements",
+      "documents": "Mes Documents",
+      "postPurchase": "Après l'achat"
     },
     "needs": {
       "title": "Vos besoins en cours",
