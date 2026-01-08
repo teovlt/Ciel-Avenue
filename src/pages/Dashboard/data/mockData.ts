@@ -14,6 +14,7 @@ import {
   ShoppingBag,
   Store,
   Key,
+  HardHat,
 } from "lucide-react";
 
 export const mockNeeds = [
@@ -861,4 +862,53 @@ export const mockMarchandDocuments = [
 
 export const mockMarchandPayments = [
   { id: 1, date: "05 Oct 2024", client: "SCI Familiale", description: "Honoraires Achat", amount: "8 500,00 €", status: "Paid" },
+];
+
+// Maitre d'Oeuvre Mock Data
+
+export const mockContractorOverview = [
+  {
+    id: 1,
+    title: "Suivi de Chantiers",
+    description: "Coordonnez vos projets de rénovation et tenez vos clients informés en temps réel",
+    icon: HardHat,
+    color: "text-orange-600",
+    bg: "bg-orange-600/10",
+  },
+];
+
+export const mockContractorMissions = [
+  {
+    id: 1,
+    client: "Rénovation Totale",
+    type: "Suivi de Chantiers",
+    status: "in_progress",
+    date: "Livraison 30 Nov",
+    location: "Paris 16",
+    description: "Appartement 120m2",
+    progress: 75,
+  },
+  {
+    id: 2,
+    client: "Extension Maison",
+    type: "Suivi de Chantiers",
+    status: "available",
+    date: "Mars 2025",
+    location: "Bordeaux",
+    description: "Surélévation 40m2",
+    price: "Honoraires 8%",
+  },
+];
+
+export const mockContractorQuotes = [
+  { id: 1, client: "Rénovation Totale", type: "Maitrise d'oeuvre", date: "01 Sep 2024", status: "Signé", amount: "12 000 €" },
+];
+
+export const mockContractorDocuments = [
+  { id: 1, name: "Assurance Décennale", status: "Validé", date: "2024" },
+  { id: 2, name: "RC Pro", status: "Validé", date: "2024" },
+];
+
+export const mockContractorPayments = [
+  { id: 1, date: "10 Oct 2024", client: "Rénovation Totale", description: "Situation n°2", amount: "4 000,00 €", status: "Paid" },
 ];
