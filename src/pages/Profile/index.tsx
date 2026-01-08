@@ -324,7 +324,7 @@ export default function ProfilPage() {
               <BadgeCheck className="h-4 w-4" />
               {getRoleSubtypeLabel()}
             </div>
-            <h1 className="text-4xl font-bold text-foreground">{t("profile.client.title")}</h1>
+            <h1 className="text-4xl font-bold text-foreground">{t("profile.client.title", { type: getRoleSubtypeLabel() })}</h1>
             <p className="text-lg text-muted-foreground">{t("profile.client.subtitle")}</p>
           </div>
         </div>

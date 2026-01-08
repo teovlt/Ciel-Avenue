@@ -709,7 +709,7 @@
     },
     "client": {
       "badge": "Profil validé",
-      "title": "Votre Profil Acheteur",
+      "title": "Votre Profil {{type}}",
       "subtitle": "Profil complet et préqualifié - Prêt pour le matching",
       "excellentProfile": "Excellent profil",
       "solvabilityScore": "Score de solvabilité",
