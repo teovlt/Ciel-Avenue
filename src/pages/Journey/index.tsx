@@ -46,6 +46,8 @@ import {
   FileText,
   Shield,
   MessageSquare,
+  Search,
+  Link as LinkIcon,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -123,14 +125,26 @@ export default function Journey() {
   const [uploadedDocuments, setUploadedDocuments] = useState<string[]>([]);
 
   // Client-specific data (for acheteur)
-  const [clientData] = useState({
+  const [clientData, setClientData] = useState({
     propertyType: "",
     location: "",
     budget: "",
     rooms: "",
     surface: "",
+    exterior: "",
+    comfort: "",
+    environment: "",
+    projectType: "",
+    buyerProfile: "",
     maritalStatus: "",
+    usage: "",
+    strategy: "",
+    fiscal: "",
+    legalStructure: "",
+    solvencyStatus: null as "success" | "failure" | null,
   });
+
+  const [buyerStep, setBuyerStep] = useState(1); // 1 = Criteria, 2 = Legal, 3 = Solvency
 
   // Expert-specific data
   const [expertData] = useState({
@@ -790,177 +804,391 @@ export default function Journey() {
                 </>
               )}
 
-              {/* Documents Upload */}
+              {/* Documents Upload (Standard) OR Buyer Modules (Special) */}
               {subtype && (
                 <div className="space-y-6">
-                  <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
-                    <CardContent className="p-8 space-y-8">
-                      <div className="space-y-2">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
-                          <FileText className="h-4 w-4" />
-                          {t("journey.step3.documents.badge")}
-                        </div>
-                        <h2 className="text-2xl font-bold text-foreground">
-                          {t("journey.step3.documents.title")}{" "}
-                          {userType === "client"
-                            ? t(clientSubtypeLabelKeys[subtype as ClientSubtype])
-                            : t(expertSubtypeLabelKeys[subtype as ExpertSubtype])}
-                        </h2>
-                        <p className="text-muted-foreground">{t("journey.step3.documents.description")}</p>
-                      </div>
-
-                      <div className="space-y-3 stagger-animation">
-                        {getRequiredDocuments().map((doc) => (
-                          <div
-                            key={doc}
-                            className="flex items-center justify-between p-4 rounded-lg border border-border bg-muted/30 hover:bg-muted/50 transition-colors"
-                          >
-                            <div className="flex items-center gap-3">
-                              <Checkbox id={doc} checked={uploadedDocuments.includes(doc)} onCheckedChange={() => toggleDocument(doc)} />
-                              <Label htmlFor={doc} className="cursor-pointer font-normal">
-                                {doc}
-                              </Label>
+                  {/* BUYER SPECIAL JOURNEY */}
+                  {userType === "client" && subtype === "acheteur" ? (
+                    <div className="space-y-6">
+                      {/* Module 1: Criteria */}
+                      {buyerStep === 1 && (
+                        <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift animate-fade-in-up">
+                          <CardContent className="p-8 space-y-6">
+                            <div className="space-y-2">
+                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
+                                <Search className="h-4 w-4" />
+                                Module 1/3
+                              </div>
+                              <h2 className="text-2xl font-bold text-foreground">{t("journey.buyer.module1.title")}</h2>
+                              <p className="text-muted-foreground">{t("journey.buyer.module1.description")}</p>
                             </div>
-                            <Button variant="ghost" size="sm" className="text-primary">
-                              <Upload className="h-4 w-4 mr-2" />
-                              {t("journey.step3.documents.upload")}
-                            </Button>
-                          </div>
-                        ))}
-                      </div>
 
-                      <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
-                        <p className="text-sm text-muted-foreground">
-                          <span className="font-semibold text-foreground">💡 {t("journey.step3.documents.tipTitle")} :</span>{" "}
-                          {t("journey.step3.documents.tipText")}
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              <div className="space-y-2">
+                                <Label>{t("journey.buyer.module1.q1")}</Label>
+                                <Input
+                                  value={clientData.location}
+                                  onChange={(e) => setClientData({ ...clientData, location: e.target.value })}
+                                  placeholder="Ex: Paris 15ème"
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label>{t("journey.buyer.module1.q2")}</Label>
+                                <Input
+                                  value={clientData.budget}
+                                  onChange={(e) => setClientData({ ...clientData, budget: e.target.value })}
+                                  placeholder="Ex: 450 000 €"
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label>{t("journey.buyer.module1.q3")}</Label>
+                                <Input
+                                  value={clientData.propertyType}
+                                  onChange={(e) => setClientData({ ...clientData, propertyType: e.target.value })}
+                                  placeholder="Ex: Appartement, Maison..."
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label>{t("journey.buyer.module1.q4")}</Label>
+                                <Input
+                                  value={clientData.surface}
+                                  onChange={(e) => setClientData({ ...clientData, surface: e.target.value })}
+                                  placeholder="Ex: 60m², 2 chambres"
+                                />
+                              </div>
+                              {/* Add remaining Q5-Q8 placeholders */}
+                              <div className="space-y-2 md:col-span-2">
+                                <Label>{t("journey.buyer.module1.q8")}</Label>
+                                <Input
+                                  value={clientData.projectType}
+                                  onChange={(e) => setClientData({ ...clientData, projectType: e.target.value })}
+                                  placeholder="Ex: Résidence principale"
+                                />
+                              </div>
+                            </div>
 
-                  {subtype !== "notaire" && (
-                    <Card className="border-accent/30 bg-gradient-to-r from-accent/5 to-primary/5">
-                      <CardContent className="p-6">
-                        <div className="flex flex-col md:flex-row items-center gap-6">
-                          <div className="h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
-                            <Scale className="h-8 w-8 text-accent" />
-                          </div>
-                          <div className="flex-1 text-center md:text-left">
-                            <h3 className="text-lg font-semibold text-foreground mb-1">{t("journey.step3.notaryHelp.title")}</h3>
-                            <p className="text-sm text-muted-foreground">{t("journey.step3.notaryHelp.description")}</p>
-                          </div>
-                          <Button
-                            variant="outline"
-                            className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
-                            onClick={() => toast.success(t("journey.step3.notaryHelp.successMessage"))}
-                          >
-                            <MessageSquare className="h-4 w-4 mr-2" />
-                            {t("journey.step3.notaryHelp.cta")}
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  )}
+                            <div className="flex justify-end pt-4">
+                              <Button onClick={() => setBuyerStep(2)}>
+                                {t("common.continue")} <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      )}
 
-                  {/* Account Review Summary */}
-                  <Card className="border-border bg-card/80 backdrop-blur-sm">
-                    <CardContent className="p-8 space-y-6">
-                      <div className="space-y-2">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-sm font-medium text-accent">
-                          <CheckCircle2 className="h-4 w-4" />
-                          {t("journey.step3.summary.badge")}
-                        </div>
-                        <h2 className="text-2xl font-bold text-foreground">{t("journey.step3.summary.title")}</h2>
-                        <p className="text-muted-foreground">{t("journey.step3.summary.description")}</p>
-                      </div>
+                      {/* Module 2: Legal/Docs */}
+                      {buyerStep === 2 && (
+                        <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift animate-fade-in-up">
+                          <CardContent className="p-8 space-y-6">
+                            <div className="space-y-2">
+                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
+                                <Scale className="h-4 w-4" />
+                                Module 2/3
+                              </div>
+                              <h2 className="text-2xl font-bold text-foreground">{t("journey.buyer.module2.title")}</h2>
+                              <p className="text-muted-foreground">{t("journey.buyer.module2.description")}</p>
+                            </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {/* Personal Info */}
-                        <div className="p-4 rounded-lg bg-muted/50 space-y-3">
-                          <h4 className="font-semibold text-foreground flex items-center gap-2">
-                            <UserIcon className="h-4 w-4 text-primary" />
-                            {t("journey.step3.summary.personalInfo")}
-                          </h4>
-                          <div className="space-y-1 text-sm">
-                            <p>
-                              <span className="text-muted-foreground">{t("journey.step3.summary.name")} :</span>{" "}
-                              <span className="font-medium">
-                                {personalData.firstName || t("journey.step3.summary.notProvided")} {personalData.lastName || ""}
-                              </span>
-                            </p>
-                            <p>
-                              <span className="text-muted-foreground">Email :</span>{" "}
-                              <span className="font-medium">{personalData.email || t("journey.step3.summary.notProvided")}</span>
-                            </p>
-                            <p>
-                              <span className="text-muted-foreground">{t("journey.step3.summary.dateOfBirth")} :</span>{" "}
-                              <span className="font-medium">{personalData.dateOfBirth || t("journey.step3.summary.notProvided")}</span>
-                            </p>
-                          </div>
-                        </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              <div className="space-y-2">
+                                <Label>{t("journey.buyer.module2.q1")}</Label>
+                                <Input
+                                  value={clientData.buyerProfile}
+                                  onChange={(e) => setClientData({ ...clientData, buyerProfile: e.target.value })}
+                                  placeholder="Ex: Couple"
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label>{t("journey.buyer.module2.q2")}</Label>
+                                <Input
+                                  value={clientData.maritalStatus}
+                                  onChange={(e) => setClientData({ ...clientData, maritalStatus: e.target.value })}
+                                  placeholder="Ex: Mariés"
+                                />
+                              </div>
+                              {/* Docs List Mock */}
+                              <div className="md:col-span-2 p-4 bg-muted/50 rounded-lg space-y-3">
+                                <h3 className="font-semibold flex items-center gap-2">
+                                  <FileText className="h-4 w-4" />
+                                  {t("journey.buyer.module2.docs.title")} (Simulation)
+                                </h3>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-muted-foreground">
+                                  <div className="flex items-center gap-2">
+                                    <CheckCircle2 className="h-3 w-3 text-primary" /> {t("journey.buyer.module2.docs.id")}
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <CheckCircle2 className="h-3 w-3 text-primary" /> {t("journey.buyer.module2.docs.tax")}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
 
-                        <div className="p-4 rounded-lg bg-muted/50 space-y-3">
-                          <h4 className="font-semibold text-foreground flex items-center gap-2">
-                            {userType === "expert" ? (
-                              <Briefcase className="h-4 w-4 text-accent" />
+                            {/* Notary Help Mock */}
+                            <div className="p-4 rounded-lg border border-accent/20 bg-accent/5 flex justify-between items-center">
+                              <div>
+                                <h4 className="font-semibold text-accent">{t("journey.buyer.module2.notary.title")}</h4>
+                                <p className="text-sm text-muted-foreground">{t("journey.buyer.module2.notary.description")}</p>
+                              </div>
+                              <Button size="sm" variant="outline" className="border-accent text-accent">
+                                {t("journey.buyer.module2.notary.cta")}
+                              </Button>
+                            </div>
+
+                            <div className="flex justify-between pt-4">
+                              <Button variant="outline" onClick={() => setBuyerStep(1)}>
+                                {t("common.back")}
+                              </Button>
+                              <Button onClick={() => setBuyerStep(3)}>
+                                {t("common.continue")} <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      )}
+
+                      {/* Module 3: Solvency */}
+                      {buyerStep === 3 && (
+                        <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift animate-fade-in-up">
+                          <CardContent className="p-8 space-y-6">
+                            <div className="space-y-2">
+                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
+                                <Landmark className="h-4 w-4" />
+                                Module 3/3
+                              </div>
+                              <h2 className="text-2xl font-bold text-foreground">{t("journey.buyer.module3.title")}</h2>
+                              <p className="text-muted-foreground">{t("journey.buyer.module3.description")}</p>
+                            </div>
+
+                            {!clientData.solvencyStatus ? (
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                                <Card
+                                  className="cursor-pointer hover:border-primary transition-all"
+                                  onClick={() => setClientData({ ...clientData, solvencyStatus: "success" })}
+                                >
+                                  <CardContent className="p-6 text-center space-y-4">
+                                    <div className="h-12 w-12 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
+                                      <LinkIcon className="h-6 w-6 text-primary" />
+                                    </div>
+                                    <h3 className="font-semibold">{t("journey.buyer.module3.directLink")}</h3>
+                                    <p className="text-xs text-muted-foreground">Connexion bancaire sécurisée</p>
+                                  </CardContent>
+                                </Card>
+                                <Card
+                                  className="cursor-pointer hover:border-primary transition-all"
+                                  onClick={() => setClientData({ ...clientData, solvencyStatus: "success" })}
+                                >
+                                  <CardContent className="p-6 text-center space-y-4">
+                                    <div className="h-12 w-12 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
+                                      <Upload className="h-6 w-6 text-primary" />
+                                    </div>
+                                    <h3 className="font-semibold">{t("journey.buyer.module3.upload")}</h3>
+                                    <p className="text-xs text-muted-foreground">PDF, JPG, PNG</p>
+                                  </CardContent>
+                                </Card>
+                              </div>
                             ) : (
-                              <Users className="h-4 w-4 text-primary" />
+                              <div className="py-8 text-center space-y-4 animate-fade-in-up">
+                                <div className="h-16 w-16 mx-auto bg-green-500/10 rounded-full flex items-center justify-center">
+                                  <CheckCircle2 className="h-8 w-8 text-green-500" />
+                                </div>
+                                <h3 className="text-xl font-bold text-foreground">{t("journey.buyer.module3.success")}</h3>
+                                <p className="text-muted-foreground">{t("journey.buyer.module3.successDesc")}</p>
+                              </div>
                             )}
-                            {t("journey.step3.summary.accountType")}
-                          </h4>
-                          <div className="space-y-1 text-sm">
-                            <p>
-                              <span className="text-muted-foreground">{t("journey.step3.summary.type")} :</span>{" "}
-                              <span className="font-medium capitalize">{userType}</span>
-                            </p>
-                            <p>
-                              <span className="text-muted-foreground">{t("journey.step3.summary.profile")} :</span>{" "}
-                              <span className="font-medium">
-                                {userType === "client"
-                                  ? t(clientSubtypeLabelKeys[subtype as ClientSubtype])
-                                  : t(expertSubtypeLabelKeys[subtype as ExpertSubtype])}
-                              </span>
-                            </p>
-                          </div>
-                        </div>
 
-                        {/* Documents */}
-                        <div className="p-4 rounded-lg bg-muted/50 space-y-3 md:col-span-2">
-                          <h4 className="font-semibold text-foreground flex items-center gap-2">
-                            <FileText className="h-4 w-4 text-primary" />
-                            {t("journey.step3.summary.documents")} ({uploadedDocuments.length}/{getRequiredDocuments().length}{" "}
-                            {t("journey.step3.summary.selected")})
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {getRequiredDocuments().map((doc) => (
-                              <span
-                                key={doc}
-                                className={`text-xs px-2 py-1 rounded-full ${
-                                  uploadedDocuments.includes(doc) ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
-                                }`}
+                            <div className="flex justify-between pt-4">
+                              <Button variant="outline" onClick={() => setBuyerStep(2)}>
+                                {t("common.back")}
+                              </Button>
+                              <Button
+                                onClick={handleComplete}
+                                disabled={!clientData.solvencyStatus}
+                                className="bg-primary text-primary-foreground hover:bg-primary/90"
                               >
-                                {uploadedDocuments.includes(doc) ? "✓ " : ""}
-                                {doc}
-                              </span>
+                                {t("journey.generateProfile")} <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      )}
+                    </div>
+                  ) : (
+                    // STANDARD JOURNEY (Documents Upload for other subtypes)
+                    <>
+                      <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
+                        <CardContent className="p-8 space-y-8">
+                          <div className="space-y-2">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
+                              <FileText className="h-4 w-4" />
+                              {t("journey.step3.documents.badge")}
+                            </div>
+                            <h2 className="text-2xl font-bold text-foreground">
+                              {t("journey.step3.documents.title")}{" "}
+                              {userType === "client"
+                                ? t(clientSubtypeLabelKeys[subtype as ClientSubtype])
+                                : t(expertSubtypeLabelKeys[subtype as ExpertSubtype])}
+                            </h2>
+                            <p className="text-muted-foreground">{t("journey.step3.documents.description")}</p>
+                          </div>
+
+                          <div className="space-y-3 stagger-animation">
+                            {getRequiredDocuments().map((doc) => (
+                              <div
+                                key={doc}
+                                className="flex items-center justify-between p-4 rounded-lg border border-border bg-muted/30 hover:bg-muted/50 transition-colors"
+                              >
+                                <div className="flex items-center gap-3">
+                                  <Checkbox
+                                    id={doc}
+                                    checked={uploadedDocuments.includes(doc)}
+                                    onCheckedChange={() => toggleDocument(doc)}
+                                  />
+                                  <Label htmlFor={doc} className="cursor-pointer font-normal">
+                                    {doc}
+                                  </Label>
+                                </div>
+                                <Button variant="ghost" size="sm" className="text-primary">
+                                  <Upload className="h-4 w-4 mr-2" />
+                                  {t("journey.step3.documents.upload")}
+                                </Button>
+                              </div>
                             ))}
                           </div>
-                        </div>
-                      </div>
 
-                      <div className="flex justify-between pt-4 border-t border-border">
-                        <Button onClick={() => setSubtype(null)} variant="outline">
-                          <ArrowLeft className="mr-2 h-5 w-5" /> {t("common.back")}
-                        </Button>
-                        <Button
-                          onClick={handleComplete}
-                          className={`${userType === "expert" ? "bg-accent text-accent-foreground hover:bg-accent/90" : "bg-primary text-primary-foreground hover:bg-primary/90"}`}
-                        >
-                          {isAddingRole ? t("journey.step3.summary.addRole") : t("journey.step3.summary.createAccount")}{" "}
-                          <ArrowRight className="ml-2 h-5 w-5" />
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
+                          <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
+                            <p className="text-sm text-muted-foreground">
+                              <span className="font-semibold text-foreground">💡 {t("journey.step3.documents.tipTitle")} :</span>{" "}
+                              {t("journey.step3.documents.tipText")}
+                            </p>
+                          </div>
+                        </CardContent>
+                      </Card>
+
+                      {subtype !== "notaire" && (
+                        <Card className="border-accent/30 bg-gradient-to-r from-accent/5 to-primary/5">
+                          <CardContent className="p-6">
+                            <div className="flex flex-col md:flex-row items-center gap-6">
+                              <div className="h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                                <Scale className="h-8 w-8 text-accent" />
+                              </div>
+                              <div className="flex-1 text-center md:text-left">
+                                <h3 className="text-lg font-semibold text-foreground mb-1">{t("journey.step3.notaryHelp.title")}</h3>
+                                <p className="text-sm text-muted-foreground">{t("journey.step3.notaryHelp.description")}</p>
+                              </div>
+                              <Button
+                                variant="outline"
+                                className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
+                                onClick={() => toast.success(t("journey.step3.notaryHelp.successMessage"))}
+                              >
+                                <MessageSquare className="h-4 w-4 mr-2" />
+                                {t("journey.step3.notaryHelp.cta")}
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      )}
+
+                      {/* Account Review Summary */}
+                      <Card className="border-border bg-card/80 backdrop-blur-sm">
+                        <CardContent className="p-8 space-y-6">
+                          <div className="space-y-2">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-sm font-medium text-accent">
+                              <CheckCircle2 className="h-4 w-4" />
+                              {t("journey.step3.summary.badge")}
+                            </div>
+                            <h2 className="text-2xl font-bold text-foreground">{t("journey.step3.summary.title")}</h2>
+                            <p className="text-muted-foreground">{t("journey.step3.summary.description")}</p>
+                          </div>
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {/* Personal Info */}
+                            <div className="p-4 rounded-lg bg-muted/50 space-y-3">
+                              <h4 className="font-semibold text-foreground flex items-center gap-2">
+                                <UserIcon className="h-4 w-4 text-primary" />
+                                {t("journey.step3.summary.personalInfo")}
+                              </h4>
+                              <div className="space-y-1 text-sm">
+                                <p>
+                                  <span className="text-muted-foreground">{t("journey.step3.summary.name")} :</span>{" "}
+                                  <span className="font-medium">
+                                    {personalData.firstName || t("journey.step3.summary.notProvided")} {personalData.lastName || ""}
+                                  </span>
+                                </p>
+                                <p>
+                                  <span className="text-muted-foreground">Email :</span>{" "}
+                                  <span className="font-medium">{personalData.email || t("journey.step3.summary.notProvided")}</span>
+                                </p>
+                                <p>
+                                  <span className="text-muted-foreground">{t("journey.step3.summary.dateOfBirth")} :</span>{" "}
+                                  <span className="font-medium">{personalData.dateOfBirth || t("journey.step3.summary.notProvided")}</span>
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="p-4 rounded-lg bg-muted/50 space-y-3">
+                              <h4 className="font-semibold text-foreground flex items-center gap-2">
+                                {userType === "expert" ? (
+                                  <Briefcase className="h-4 w-4 text-accent" />
+                                ) : (
+                                  <Users className="h-4 w-4 text-primary" />
+                                )}
+                                {t("journey.step3.summary.accountType")}
+                              </h4>
+                              <div className="space-y-1 text-sm">
+                                <p>
+                                  <span className="text-muted-foreground">{t("journey.step3.summary.type")} :</span>{" "}
+                                  <span className="font-medium capitalize">{userType}</span>
+                                </p>
+                                <p>
+                                  <span className="text-muted-foreground">{t("journey.step3.summary.profile")} :</span>{" "}
+                                  <span className="font-medium">
+                                    {userType === "client"
+                                      ? t(clientSubtypeLabelKeys[subtype as ClientSubtype])
+                                      : t(expertSubtypeLabelKeys[subtype as ExpertSubtype])}
+                                  </span>
+                                </p>
+                              </div>
+                            </div>
+
+                            {/* Documents */}
+                            <div className="p-4 rounded-lg bg-muted/50 space-y-3 md:col-span-2">
+                              <h4 className="font-semibold text-foreground flex items-center gap-2">
+                                <FileText className="h-4 w-4 text-primary" />
+                                {t("journey.step3.summary.documents")} ({uploadedDocuments.length}/{getRequiredDocuments().length}{" "}
+                                {t("journey.step3.summary.selected")})
+                              </h4>
+                              <div className="flex flex-wrap gap-2">
+                                {getRequiredDocuments().map((doc) => (
+                                  <span
+                                    key={doc}
+                                    className={`text-xs px-2 py-1 rounded-full ${
+                                      uploadedDocuments.includes(doc) ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
+                                    }`}
+                                  >
+                                    {uploadedDocuments.includes(doc) ? "✓ " : ""}
+                                    {doc}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="flex justify-between pt-4 border-t border-border">
+                            <Button onClick={() => setSubtype(null)} variant="outline">
+                              <ArrowLeft className="mr-2 h-5 w-5" /> {t("common.back")}
+                            </Button>
+                            <Button
+                              onClick={handleComplete}
+                              className={`${userType === "expert" ? "bg-accent text-accent-foreground hover:bg-accent/90" : "bg-primary text-primary-foreground hover:bg-primary/90"}`}
+                            >
+                              {isAddingRole ? t("journey.step3.summary.addRole") : t("journey.step3.summary.createAccount")}{" "}
+                              <ArrowRight className="ml-2 h-5 w-5" />
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </>
+                  )}
                 </div>
               )}
             </div>

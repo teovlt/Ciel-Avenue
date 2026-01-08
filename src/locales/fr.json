@@ -617,6 +617,55 @@
         "evaluator": "Évaluateur immobilier"
       },
       "createProfile": "Créer mon profil expert"
+    },
+    "buyer": {
+      "module1": {
+        "title": "Définition de vos critères",
+        "description": "Précisez vos attentes pour le matching",
+        "q1": "Quelle(s) ville(s), quartier(s), zone géographique ?",
+        "q2": "Quel budget maximum (frais inclus) ?",
+        "q3": "Type de bien (Maison, Appartement, Terrain...)",
+        "q4": "Surface minimale et nombre de pièces ?",
+        "q5": "Extérieur et stationnement (Balcon, Jardin...)",
+        "q6": "Confort et prestations (Étage, Ascenseur...)",
+        "q7": "Environnement (Transports, Écoles...)",
+        "q8": "Type de projet (Principal, Secondaire...)"
+      },
+      "module2": {
+        "title": "Forme juridique et documents",
+        "description": "Structurez votre acquisition",
+        "q1": "Qui achète (Seul, Couple, Famille) ?",
+        "q2": "Situation matrimoniale ?",
+        "q3": "Usage du bien ?",
+        "q4": "Stratégie d'investissement ?",
+        "q5": "Fiscalité et transmission ?",
+        "q6": "Structure juridique (Nom propre, SCI...) ?",
+        "docs": {
+          "title": "Documents requis",
+          "id": "Pièce d'identité",
+          "family": "Livret de famille / Certificat mariage",
+          "pacs": "Attestation / Convention PACS",
+          "statuts": "Projet de statuts (SCI)",
+          "kbis": "KBIS (-3 mois)",
+          "tax": "Dernier avis d'imposition",
+          "patrimony": "Relevés de patrimoine"
+        },
+        "notary": {
+          "title": "Besoin d'aide ?",
+          "description": "Nos notaires partenaires peuvent vous aider à constituer votre dossier (statuts, convention...).",
+          "cta": "Contacter un notaire"
+        }
+      },
+      "module3": {
+        "title": "Vérification de solvabilité",
+        "description": "Analysez votre capacité d'emprunt",
+        "directLink": "Lien direct banque",
+        "upload": "Déposer mes documents",
+        "success": "Solvabilité suffisante",
+        "successDesc": "Votre profil est validé pour la mise en relation.",
+        "failure": "Solvabilité insuffisante",
+        "failureDesc": "Nous vous recommandons de contacter un courtier ou de revoir vos critères."
+      }
     }
   },
   "profile": {

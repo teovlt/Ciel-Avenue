@@ -101,6 +101,16 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Hide scrollbar for all elements including body */
+  html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @layer utilities {

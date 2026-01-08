@@ -40,6 +40,12 @@ import {
   Scale,
   PenTool,
   CheckCircle2,
+  PiggyBank,
+  Wallet,
+  LineChart,
+  PieChart,
+  ArrowUpRight,
+  Target,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -48,6 +54,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
+import { Checkbox } from "@/components/ui/checkbox";
 
 // Role Switcher Component
 function RoleSwitcher({ t }: { t: (key: string) => string }) {
@@ -132,52 +139,163 @@ export default function Dashboard() {
   const mockNeeds = [
     {
       id: 1,
-      type: t("dashboard.needs.propertyType.apartment"),
+      type: "Appartement T3",
       location: "Paris 15ème",
-      price: "345 000 €",
-      surface: "72 m²",
+      budget: "450k€ - 500k€",
+      price: "485 000 €",
+      surface: "65 m²",
       rooms: "3 pièces",
-      status: t("dashboard.needs.status.inProgress"),
+      status: "Nouveau",
       match: 95,
+      image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80",
     },
     {
       id: 2,
-      type: t("dashboard.needs.propertyType.apartment"),
-      location: "Issy-les-Moulineaux",
-      price: "320 000 €",
-      surface: "68 m²",
-      rooms: "3 pièces",
-      status: t("dashboard.needs.status.new"),
+      type: "Maison de ville",
+      location: "Boulogne-Billancourt",
+      budget: "850k€ - 950k€",
+      price: "920 000 €",
+      surface: "110 m²",
+      rooms: "5 pièces",
+      status: "Offre en cours",
       match: 88,
+      image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80",
     },
     {
       id: 3,
-      type: t("dashboard.needs.propertyType.apartment"),
-      location: "Boulogne-Billancourt",
-      price: "350 000 €",
-      surface: "75 m²",
-      rooms: "3 pièces",
-      status: t("dashboard.needs.status.inProgress"),
-      match: 92,
+      type: "Appartement T2",
+      location: "Levallois-Perret",
+      budget: "350k€ - 400k€",
+      price: "395 000 €",
+      surface: "45 m²",
+      rooms: "2 pièces",
+      status: "En attente",
+      match: 82,
+      image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80",
     },
   ];
 
   const mockVendors = [
-    { id: 1, name: "Jean Dupont", property: "Appartement 75m² - Paris 15ème", status: t("dashboard.vendors.status.available") },
-    { id: 2, name: "Marie Martin", property: "Appartement 68m² - Issy", status: t("dashboard.vendors.status.visitScheduled") },
-    { id: 3, name: "Pierre Dubois", property: "Appartement 72m² - Boulogne", status: t("dashboard.vendors.status.available") },
+    {
+      id: 1,
+      name: "Sophie Martin",
+      property: "Appartement 65m² paris 15",
+      status: "Visite programmée",
+      rating: 4.8,
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80",
+    },
+    {
+      id: 2,
+      name: "Marc Dubois",
+      property: "Maison 110m² Boulogne",
+      status: "Offre reçue",
+      rating: 4.5,
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+    },
+    {
+      id: 3,
+      name: "SCI Les Oliviers",
+      property: "T2 Levallois",
+      status: "En discussion",
+      rating: 4.2,
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80",
+    },
   ];
 
   const mockPromoters = [
-    { id: 1, name: "Kaufman & Broad", project: "Résidence Le Parc", units: "12 appartements", location: "Paris 15ème" },
-    { id: 2, name: "Nexity", project: "Les Jardins d'Issy", units: "8 appartements", location: "Issy-les-Moulineaux" },
-    { id: 3, name: "Bouygues Immobilier", project: "Villa Moderne", units: "15 appartements", location: "Boulogne" },
+    {
+      id: 1,
+      name: "Nexity",
+      project: "Résidence Ciel",
+      location: "Asnières-sur-Seine",
+      units: "12 lots disp.",
+      delivery: "4T 2024",
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+    },
+    {
+      id: 2,
+      name: "Kaufman & Broad",
+      project: "Les Jardins de la Seine",
+      location: "Puteaux",
+      units: "8 lots disp.",
+      delivery: "1T 2025",
+      image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80",
+    },
   ];
 
   const mockVisits = [
-    { id: 1, date: "15 Déc 2025", time: "14:00", property: "Appartement Paris 15ème", expert: "Sophie Durand" },
-    { id: 2, date: "18 Déc 2025", time: "10:30", property: "Résidence Le Parc", expert: "Marc Leblanc" },
-    { id: 3, date: "20 Déc 2025", time: "16:00", property: "Appartement Issy", expert: "Sophie Durand" },
+    { id: 1, date: "12 Oct", time: "14:30", property: "Appartement Paris 15", expert: "Jean Dupont (Agent)", status: "confirmed" },
+    { id: 2, date: "14 Oct", time: "10:00", property: "Maison Boulogne", expert: "Marie Curie (Chasseur)", status: "pending" },
+    { id: 3, date: "18 Oct", time: "11:00", property: "Chantier Résidence Ciel", expert: "Paul Nexity (Promoteur)", status: "confirmed" },
+  ];
+
+  const mockExperts = [
+    {
+      id: 1,
+      name: "Maître Renaud",
+      role: "Notaire",
+      contact: "01 23 45 67 89",
+      email: "etude.renaud@notaires.fr",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80",
+    },
+    {
+      id: 2,
+      name: "Cabinet Fisc",
+      role: "Fiscaliste",
+      contact: "01 98 76 54 32",
+      email: "contact@fisc.com",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80",
+    },
+    {
+      id: 3,
+      name: "Mme Architecte",
+      role: "Architecte",
+      contact: "06 12 34 56 78",
+      email: "archi@design.com",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80",
+    },
+    {
+      id: 4,
+      name: "Banque Privee",
+      role: "Courtier",
+      contact: "01 55 55 55 55",
+      email: "pret@banque.com",
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&q=80",
+    },
+  ];
+
+  const mockPostPurchase = [
+    { id: 1, title: "Déménagement", description: "Réserver votre déménageur", date: "Avant le 15 Nov", completed: false },
+    { id: 2, title: "Assurance Habitation", description: "Souscrire avant la remise des clés", date: "Urgent", completed: false },
+    { id: 3, title: "Énergie & Internet", description: "Ouvrir les compteurs", date: "Fait", completed: true },
+    { id: 4, title: "Travaux", description: "Valider les devis peinture", date: "En cours", completed: false },
+  ];
+
+  const mockPatrimony = [
+    {
+      id: 1,
+      type: "Résidence Principale",
+      name: "Appartement Paris 15",
+      value: 485000,
+      growth: "+2.5%",
+      image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80",
+    },
+    {
+      id: 2,
+      type: "Investissement Locatif",
+      name: "Studio Lyon",
+      value: 150000,
+      growth: "+4.1%",
+      image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80",
+    },
+    {
+      id: 3,
+      type: "SCPI",
+      name: "Pierre Papier",
+      value: 50000,
+      growth: "+5.0%",
+      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80",
+    },
   ];
 
   const mockMessages = [
@@ -857,260 +975,843 @@ export default function Dashboard() {
   }
 
   // CLIENT DASHBOARD
+  if (activeRole?.type === "client" && activeRole?.subtype !== "acheteur") {
+    return (
+      <div className="min-h-screen bg-background pt-20">
+        {/* Decorative elements */}
+        <div className="fixed inset-0 pointer-events-none overflow-hidden">
+          <div className="decorative-blob decorative-blob-primary w-96 h-96 -top-48 -right-48 animate-float-slow" />
+          <div className="decorative-blob decorative-blob-accent w-64 h-64 bottom-32 -left-32 animate-float-delay" />
+        </div>
+
+        {/* Header */}
+        <div className="border-b border-border bg-card/80 backdrop-blur-sm relative z-10">
+          <div className="container mx-auto px-4 lg:px-8 py-8">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
+              <div>
+                <h1 className="text-3xl font-bold text-foreground">{t("dashboard.title")}</h1>
+                <p className="text-muted-foreground mt-1">Bienvenue, {getUserDisplayName()}</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Button asChild variant="outline" size="sm">
+                  <Link to="/profile" className="flex items-center gap-2">
+                    <UserCircle className="h-4 w-4" />
+                    {t("dashboard.viewProfile")}
+                  </Link>
+                </Button>
+                <RoleSwitcher t={t} />
+                <Badge variant="outline">3 {t("dashboard.propertiesPending")}</Badge>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
+          <Tabs defaultValue="needs" className="space-y-8">
+            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5 h-auto">
+              <TabsTrigger value="needs" className="flex items-center gap-2">
+                <Building2 className="h-4 w-4" />
+                <span className="hidden sm:inline">{t("dashboard.tabs.needs")}</span>
+              </TabsTrigger>
+              <TabsTrigger value="messages" className="flex items-center gap-2">
+                <MessageSquare className="h-4 w-4" />
+                <span className="hidden sm:inline">{t("dashboard.tabs.messages")}</span>
+              </TabsTrigger>
+              <TabsTrigger value="vendors" className="flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                <span className="hidden sm:inline">{t("dashboard.tabs.vendors")}</span>
+              </TabsTrigger>
+              <TabsTrigger value="promoters" className="flex items-center gap-2">
+                <Building2 className="h-4 w-4" />
+                <span className="hidden sm:inline">{t("dashboard.tabs.promoters")}</span>
+              </TabsTrigger>
+              <TabsTrigger value="visits" className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                <span className="hidden sm:inline">{t("dashboard.tabs.visits")}</span>
+              </TabsTrigger>
+            </TabsList>
+
+            {/* Besoins Tab */}
+            <TabsContent value="needs" className="space-y-6 animate-fade-in-up">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <h2 className="text-2xl font-bold text-foreground">{t("dashboard.needs.title")}</h2>
+                <div className="relative w-full sm:w-auto">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input placeholder={t("dashboard.needs.searchPlaceholder")} className="pl-10 w-full sm:w-[300px]" />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 stagger-animation">
+                {mockNeeds.map((need) => (
+                  <Card key={need.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift shine-effect">
+                    <CardHeader className="pb-4">
+                      <div className="flex justify-between items-start mb-2">
+                        <Badge
+                          variant={need.status === t("dashboard.needs.status.new") ? "default" : "secondary"}
+                          className={need.status === t("dashboard.needs.status.new") ? "bg-primary text-primary-foreground" : ""}
+                        >
+                          {need.status}
+                        </Badge>
+                        <div className="text-right">
+                          <div className="text-xs text-muted-foreground">{t("dashboard.needs.match")}</div>
+                          <div className="text-lg font-bold text-primary">{need.match}%</div>
+                        </div>
+                      </div>
+                      <CardTitle className="text-xl">{need.type}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="flex items-center gap-2 text-muted-foreground">
+                        <MapPin className="h-4 w-4" />
+                        <span className="text-sm">{need.location}</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-3">
+                        <div className="text-center p-2 rounded-lg bg-muted">
+                          <Euro className="h-4 w-4 mx-auto text-primary mb-1" />
+                          <div className="text-xs text-muted-foreground">{t("dashboard.needs.price")}</div>
+                          <div className="text-sm font-semibold text-foreground">{need.price}</div>
+                        </div>
+                        <div className="text-center p-2 rounded-lg bg-muted">
+                          <Square className="h-4 w-4 mx-auto text-primary mb-1" />
+                          <div className="text-xs text-muted-foreground">{t("dashboard.needs.surface")}</div>
+                          <div className="text-sm font-semibold text-foreground">{need.surface}</div>
+                        </div>
+                        <div className="text-center p-2 rounded-lg bg-muted">
+                          <Bed className="h-4 w-4 mx-auto text-primary mb-1" />
+                          <div className="text-xs text-muted-foreground">{t("dashboard.needs.rooms")}</div>
+                          <div className="text-sm font-semibold text-foreground">{need.rooms}</div>
+                        </div>
+                      </div>
+                      <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                        {t("dashboard.needs.viewDetails")}
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            {/* Messages Tab */}
+            <TabsContent value="messages" className="space-y-6 animate-fade-in-up">
+              <Card className="border-border bg-card/80 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <MessageSquare className="h-5 w-5 text-primary" />
+                    {t("dashboard.messages.title")}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-3 max-h-[500px] overflow-y-auto stagger-animation">
+                    {mockMessages.map((msg) => (
+                      <div key={msg.id} className="p-4 rounded-lg bg-muted hover:bg-muted/70 transition-colors">
+                        <div className="flex justify-between items-start mb-2">
+                          <div>
+                            <p className="font-semibold text-foreground">{msg.from}</p>
+                            <p className="text-xs text-muted-foreground">{msg.role}</p>
+                          </div>
+                          <span className="text-xs text-muted-foreground">{msg.time}</span>
+                        </div>
+                        <p className="text-sm text-foreground">{msg.message}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex gap-2 pt-4 border-t border-border">
+                    <Input
+                      placeholder={t("dashboard.messages.writePlaceholder")}
+                      value={messageInput}
+                      onChange={(e) => setMessageInput(e.target.value)}
+                      className="flex-1"
+                    />
+                    <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+                      <Send className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Vendors Tab */}
+            <TabsContent value="vendors" className="space-y-6 animate-fade-in-up">
+              <div>
+                <h2 className="text-2xl font-bold text-foreground mb-2">{t("dashboard.vendors.title")}</h2>
+                <p className="text-muted-foreground">{t("dashboard.vendors.description")}</p>
+              </div>
+
+              <div className="space-y-4 stagger-animation">
+                {mockVendors.map((vendor) => (
+                  <Card key={vendor.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
+                    <CardContent className="p-6">
+                      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div className="flex-1">
+                          <h3 className="text-lg font-semibold text-foreground mb-1">{vendor.name}</h3>
+                          <p className="text-muted-foreground">{vendor.property}</p>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <Badge
+                            variant={vendor.status === t("dashboard.vendors.status.visitScheduled") ? "default" : "secondary"}
+                            className={
+                              vendor.status === t("dashboard.vendors.status.visitScheduled") ? "bg-primary text-primary-foreground" : ""
+                            }
+                          >
+                            {vendor.status}
+                          </Badge>
+                          <Button variant="outline">{t("dashboard.vendors.contact")}</Button>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            {/* Promoters Tab */}
+            <TabsContent value="promoters" className="space-y-6 animate-fade-in-up">
+              <div>
+                <h2 className="text-2xl font-bold text-foreground mb-2">{t("dashboard.promoters.title")}</h2>
+                <p className="text-muted-foreground">{t("dashboard.promoters.description")}</p>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 stagger-animation">
+                {mockPromoters.map((promoter) => (
+                  <Card key={promoter.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift shine-effect">
+                    <CardHeader>
+                      <div className="flex items-start justify-between mb-2">
+                        <Building2 className="h-8 w-8 text-primary" />
+                        <Badge variant="outline">{promoter.units}</Badge>
+                      </div>
+                      <CardTitle className="text-xl">{promoter.name}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div>
+                        <p className="font-semibold text-foreground mb-1">{promoter.project}</p>
+                        <div className="flex items-center gap-2 text-muted-foreground">
+                          <MapPin className="h-4 w-4" />
+                          <span className="text-sm">{promoter.location}</span>
+                        </div>
+                      </div>
+                      <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                        {t("dashboard.promoters.learnMore")}
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            {/* Visits Tab */}
+            <TabsContent value="visits" className="space-y-6 animate-fade-in-up">
+              <div>
+                <h2 className="text-2xl font-bold text-foreground mb-2">{t("dashboard.visits.title")}</h2>
+                <p className="text-muted-foreground">{t("dashboard.visits.description")}</p>
+              </div>
+
+              <div className="space-y-4 stagger-animation">
+                {mockVisits.map((visit) => (
+                  <Card key={visit.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
+                    <CardContent className="p-6">
+                      <div className="flex flex-col md:flex-row gap-6">
+                        <div className="flex-shrink-0 text-center p-4 rounded-lg bg-primary/10 border border-primary/20">
+                          <div className="text-sm font-medium text-primary mb-1">{visit.date}</div>
+                          <div className="text-2xl font-bold text-primary">{visit.time}</div>
+                        </div>
+                        <div className="flex-1 space-y-2">
+                          <h3 className="text-lg font-semibold text-foreground">{visit.property}</h3>
+                          <p className="text-sm text-muted-foreground flex items-center gap-2">
+                            <Users className="h-4 w-4" />
+                            {t("dashboard.visits.expert")} : {visit.expert}
+                          </p>
+                        </div>
+                        <div className="flex flex-col gap-2">
+                          <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+                            {t("dashboard.visits.confirm")}
+                          </Button>
+                          <Button variant="outline">{t("dashboard.visits.cancel")}</Button>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </div>
+    );
+  }
+  // ACHETEUR DASHBOARD
+  if (activeRole?.subtype === "acheteur") {
+    return (
+      <div className="min-h-screen bg-background pt-20">
+        {/* Decorative elements */}
+        <div className="fixed inset-0 pointer-events-none overflow-hidden">
+          <div className="decorative-blob decorative-blob-primary w-96 h-96 -top-48 -right-48 animate-float-slow" />
+          <div className="decorative-blob decorative-blob-accent w-64 h-64 bottom-32 -left-32 animate-float-delay" />
+        </div>
+
+        {/* Header */}
+        <div className="border-b border-border bg-card/80 backdrop-blur-sm relative z-10">
+          <div className="container mx-auto px-4 lg:px-8 py-8">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
+              <div>
+                <h1 className="text-3xl font-bold text-foreground">Tableau de bord Acheteur</h1>
+                <p className="text-muted-foreground mt-1">Bienvenue, {getUserDisplayName()}</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Button asChild variant="outline" size="sm">
+                  <Link to="/profile" className="flex items-center gap-2">
+                    <UserCircle className="h-4 w-4" />
+                    Profil
+                  </Link>
+                </Button>
+                <RoleSwitcher t={t} />
+                <Badge variant="outline">3 dossiers en cours</Badge>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
+          <Tabs defaultValue="needs" className="space-y-8">
+            <TabsList className="flex w-full h-auto flex-wrap justify-start gap-2 bg-transparent p-0">
+              <TabsTrigger
+                value="needs"
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground border border-border bg-card hover:bg-muted/50 transition-all rounded-full px-4"
+              >
+                <Target className="h-4 w-4 mr-2" />
+                Besoin en cours
+              </TabsTrigger>
+              <TabsTrigger
+                value="messages"
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground border border-border bg-card hover:bg-muted/50 transition-all rounded-full px-4"
+              >
+                <MessageSquare className="h-4 w-4 mr-2" />
+                Messagerie
+              </TabsTrigger>
+              <TabsTrigger
+                value="vendors"
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground border border-border bg-card hover:bg-muted/50 transition-all rounded-full px-4"
+              >
+                <Users className="h-4 w-4 mr-2" />
+                Parc Vendeur
+              </TabsTrigger>
+              <TabsTrigger
+                value="promoters"
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground border border-border bg-card hover:bg-muted/50 transition-all rounded-full px-4"
+              >
+                <Building2 className="h-4 w-4 mr-2" />
+                Parc Promoteur
+              </TabsTrigger>
+              <TabsTrigger
+                value="experts"
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground border border-border bg-card hover:bg-muted/50 transition-all rounded-full px-4"
+              >
+                <Briefcase className="h-4 w-4 mr-2" />
+                Accompagnement
+              </TabsTrigger>
+              <TabsTrigger
+                value="agenda"
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground border border-border bg-card hover:bg-muted/50 transition-all rounded-full px-4"
+              >
+                <Calendar className="h-4 w-4 mr-2" />
+                Mon Agenda
+              </TabsTrigger>
+              <TabsTrigger
+                value="post-purchase"
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground border border-border bg-card hover:bg-muted/50 transition-all rounded-full px-4"
+              >
+                <CheckCircle2 className="h-4 w-4 mr-2" />
+                Quoi faire après l'achat ?
+              </TabsTrigger>
+              <TabsTrigger
+                value="patrimony"
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground border border-border bg-card hover:bg-muted/50 transition-all rounded-full px-4"
+              >
+                <PiggyBank className="h-4 w-4 mr-2" />
+                Patrimoine
+              </TabsTrigger>
+            </TabsList>
+
+            {/* Besoins Tab */}
+            <TabsContent value="needs" className="space-y-6 animate-fade-in-up">
+              <h2 className="text-2xl font-bold text-foreground">Vos recherches actives</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animation">
+                {mockNeeds.map((need) => (
+                  <Card key={need.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift overflow-hidden group">
+                    <div className="h-48 w-full overflow-hidden relative">
+                      <img
+                        src={need.image}
+                        alt={need.type}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute top-4 right-4">
+                        <Badge className="bg-white/90 text-primary backdrop-blur-sm hover:bg-white">{need.status}</Badge>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                        <div className="flex justify-between items-end">
+                          <div className="text-white">
+                            <span className="text-sm font-medium opacity-90">Match</span>
+                            <div className="text-xl font-bold">{need.match}%</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <CardHeader className="pb-2">
+                      <div className="flex justify-between items-start">
+                        <CardTitle className="text-xl">{need.type}</CardTitle>
+                        <span className="text-lg font-bold text-primary">{need.price}</span>
+                      </div>
+                      <div className="flex items-center text-muted-foreground text-sm">
+                        <MapPin className="h-4 w-4 mr-1 text-accent" /> {need.location}
+                      </div>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="grid grid-cols-2 gap-4 text-sm bg-muted/50 p-3 rounded-lg">
+                        <div>
+                          <span className="text-xs text-muted-foreground uppercase tracking-wider block mb-1">Budget</span>
+                          <span className="font-medium text-foreground">{need.budget}</span>
+                        </div>
+                        <div>
+                          <span className="text-xs text-muted-foreground uppercase tracking-wider block mb-1">Surface</span>
+                          <span className="font-medium text-foreground">{need.surface}</span>
+                        </div>
+                      </div>
+                      <Button className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                        Voir 12 résultats <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            {/* Messages Tab */}
+            <TabsContent value="messages" className="space-y-6 animate-fade-in-up">
+              <Card className="border-border bg-card/80 backdrop-blur-sm h-[600px] flex flex-col overflow-hidden">
+                <div className="flex h-full">
+                  {/* Sidebar (Conversations) */}
+                  <div className="w-1/3 border-r border-border bg-muted/30 p-4 hidden md:block">
+                    <h3 className="font-semibold mb-4 text-foreground">Conversations</h3>
+                    <div className="space-y-2">
+                      {[1, 2, 3].map((i) => (
+                        <div
+                          key={i}
+                          className={`p-3 rounded-lg cursor-pointer flex items-center gap-3 ${i === 1 ? "bg-primary/10 border border-primary/20" : "hover:bg-muted"}`}
+                        >
+                          <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center">
+                            <UserCircle className="h-6 w-6 text-accent" />
+                          </div>
+                          <div className="overflow-hidden">
+                            <div className="font-medium truncate">Maître Renaud</div>
+                            <div className="text-xs text-muted-foreground truncate">Concernant votre dossier...</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Main Chat */}
+                  <div className="flex-1 flex flex-col">
+                    <CardHeader className="border-b border-border py-4">
+                      <CardTitle className="text-lg flex items-center gap-2">
+                        <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
+                        Messagerie sécurisée
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex-1 overflow-y-auto space-y-4 p-4 bg-muted/10">
+                      {mockMessages.map((m) => (
+                        <div
+                          key={m.id}
+                          className={`flex flex-col max-w-[80%] ${m.role === "Expert" ? "self-start" : "self-end items-end"}`}
+                        >
+                          <div
+                            className={`p-4 rounded-2xl shadow-sm ${m.role === "Expert" ? "bg-card border border-border rounded-tl-none" : "bg-primary text-primary-foreground rounded-tr-none"}`}
+                          >
+                            <p className="text-sm">{m.message}</p>
+                          </div>
+                          <span className="text-xs text-muted-foreground mt-1 px-2">
+                            {m.time} • {m.from}
+                          </span>
+                        </div>
+                      ))}
+                    </CardContent>
+                    <div className="p-4 border-t border-border bg-card flex gap-2">
+                      <Button variant="ghost" size="icon">
+                        <Plus className="h-5 w-5 text-muted-foreground" />
+                      </Button>
+                      <Input
+                        placeholder="Écrivez votre message..."
+                        value={messageInput}
+                        onChange={(e) => setMessageInput(e.target.value)}
+                        className="bg-muted/50 border-0 focus-visible:ring-1"
+                      />
+                      <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+                        <Send className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </TabsContent>
+
+            {/* Vendors Tab */}
+            <TabsContent value="vendors" className="space-y-6 animate-fade-in-up">
+              <h2 className="text-2xl font-bold text-foreground">Parc Vendeur</h2>
+              <div className="space-y-4">
+                {mockVendors.map((vendor) => (
+                  <Card key={vendor.id} className="card-hover-lift overflow-hidden">
+                    <CardContent className="p-0 flex flex-col md:flex-row">
+                      <div className="md:w-32 h-32 md:h-auto relative">
+                        <img
+                          src={vendor.image || "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80"}
+                          alt={vendor.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="p-6 flex-1 flex flex-col md:flex-row justify-between items-center gap-4">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h3 className="font-bold text-lg">{vendor.name}</h3>
+                            <div className="flex text-yellow-500 text-xs">{"★".repeat(Math.floor(vendor.rating))}</div>
+                          </div>
+                          <p className="text-sm text-foreground/80 font-medium mb-2">{vendor.property}</p>
+                          <div className="flex gap-2">
+                            <Badge variant="secondary" className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+                              Vendeur vérifié
+                            </Badge>
+                            <Badge variant="outline">{vendor.status}</Badge>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <Button variant="outline" className="gap-2">
+                            <Phone className="h-4 w-4" /> Appeler
+                          </Button>
+                          <Button className="gap-2">
+                            <MessageSquare className="h-4 w-4" /> Contacter
+                          </Button>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            {/* Promoters Tab */}
+            <TabsContent value="promoters" className="space-y-6 animate-fade-in-up">
+              <h2 className="text-2xl font-bold text-foreground">Parc Promoteur</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {mockPromoters.map((promoter) => (
+                  <Card key={promoter.id} className="card-hover-lift overflow-hidden group border-0 shadow-lg">
+                    <div className="h-48 relative overflow-hidden">
+                      <img
+                        src={promoter.image}
+                        alt={promoter.project}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
+                        <h3 className="font-bold text-xl text-white mb-1">{promoter.project}</h3>
+                        <p className="text-white/80 text-sm flex items-center gap-1">
+                          <MapPin className="h-3 w-3" /> {promoter.location}
+                        </p>
+                      </div>
+                    </div>
+                    <CardContent className="p-6 space-y-6 bg-card relative z-10">
+                      <div className="flex justify-between items-center bg-muted/30 p-3 rounded-lg">
+                        <div className="text-center">
+                          <span className="block text-xs text-muted-foreground uppercase">Disponibilité</span>
+                          <span className="font-bold text-primary">{promoter.units}</span>
+                        </div>
+                        <div className="h-8 w-px bg-border"></div>
+                        <div className="text-center">
+                          <span className="block text-xs text-muted-foreground uppercase">Livraison</span>
+                          <span className="font-bold text-foreground">{promoter.delivery}</span>
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <h4 className="text-sm font-semibold text-muted-foreground">Promoteur</h4>
+                        <div className="flex items-center gap-2">
+                          <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-xs">
+                            {promoter.name.substring(0, 2).toUpperCase()}
+                          </div>
+                          <span className="font-medium">{promoter.name}</span>
+                        </div>
+                      </div>
+
+                      <Button className="w-full" variant="secondary">
+                        Voir les plans et lots
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            {/* Experts Tab */}
+            <TabsContent value="experts" className="space-y-6 animate-fade-in-up">
+              <h2 className="text-2xl font-bold text-foreground">Votre Équipe d'Experts</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {mockExperts.map((expert) => (
+                  <Card key={expert.id} className="card-hover-lift text-center overflow-hidden border-t-4 border-t-primary">
+                    <CardContent className="p-6 pt-10 space-y-4 relative">
+                      <div className="absolute top-0 right-0 p-2">
+                        <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
+                      </div>
+                      <div className="h-24 w-24 mx-auto rounded-full p-1 bg-gradient-to-br from-primary to-accent">
+                        <img
+                          src={expert.image}
+                          alt={expert.name}
+                          className="w-full h-full rounded-full object-cover border-4 border-card"
+                        />
+                      </div>
+
+                      <div>
+                        <Badge variant="secondary" className="mb-2">
+                          {expert.role}
+                        </Badge>
+                        <h3 className="font-bold text-lg">{expert.name}</h3>
+                      </div>
+
+                      <div className="text-sm text-muted-foreground space-y-1 bg-muted/30 p-3 rounded-lg">
+                        <p className="font-medium text-foreground">{expert.contact}</p>
+                        <p className="text-xs truncate">{expert.email}</p>
+                      </div>
+                      <Button variant="outline" size="sm" className="w-full hover:bg-primary hover:text-primary-foreground group">
+                        Prendre RDV <ArrowUpRight className="h-3 w-3 ml-1 group-hover:rotate-45 transition-transform" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            {/* Agenda Tab */}
+            <TabsContent value="agenda" className="space-y-6 animate-fade-in-up">
+              <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-bold text-foreground">Mon Agenda</h2>
+                <Button size="sm" className="gap-2">
+                  <Plus className="h-4 w-4" /> Ajouter un événement
+                </Button>
+              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {/* Calendar Widget Placeholder */}
+                <Card className="lg:col-span-1 bg-primary/5 border-0">
+                  <CardContent className="p-6 text-center">
+                    <div className="text-8xl font-black text-primary/20 mb-4">24</div>
+                    <h3 className="text-xl font-bold mb-2">Octobre 2024</h3>
+                    <p className="text-sm text-muted-foreground">3 événements prévus ce mois-ci</p>
+                  </CardContent>
+                </Card>
+
+                {/* Events List */}
+                <Card className="lg:col-span-2">
+                  <CardContent className="p-0">
+                    {mockVisits.map((visit) => (
+                      <div
+                        key={visit.id}
+                        className="flex items-center p-6 border-b border-border last:border-0 hover:bg-muted/30 transition-colors group"
+                      >
+                        <div className="flex flex-col items-center justify-center h-16 w-16 bg-card border-2 border-primary/20 rounded-2xl text-primary mr-6 shadow-sm group-hover:border-primary transition-colors">
+                          <span className="text-xs font-bold uppercase">{visit.date.split(" ")[1]}</span>
+                          <span className="text-xl font-black">{visit.date.split(" ")[0]}</span>
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-bold text-lg text-foreground mb-1 group-hover:text-primary transition-colors">
+                            {visit.property}
+                          </h4>
+                          <div className="flex flex-wrap items-center text-sm text-muted-foreground gap-x-6 gap-y-2">
+                            <span className="flex items-center">
+                              <Clock className="h-4 w-4 mr-2 text-accent" /> {visit.time}
+                            </span>
+                            <span className="flex items-center">
+                              <UserCircle className="h-4 w-4 mr-2 text-accent" /> {visit.expert}
+                            </span>
+                          </div>
+                        </div>
+                        <Badge
+                          className={`${visit.status === "confirmed" ? "bg-green-100 text-green-700 hover:bg-green-200" : "bg-orange-100 text-orange-700 hover:bg-orange-200"}`}
+                        >
+                          {visit.status === "confirmed" ? "Confirmé" : "En attente"}
+                        </Badge>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+
+            {/* Post Purchase Tab */}
+            <TabsContent value="post-purchase" className="space-y-6 animate-fade-in-up">
+              <h2 className="text-2xl font-bold text-foreground">Quoi faire après l'achat ?</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card className="h-full">
+                  <CardHeader>
+                    <CardTitle>Checklist Emménagement</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {mockPostPurchase.map((task) => (
+                      <div
+                        key={task.id}
+                        className="flex items-start gap-4 p-4 rounded-xl border border-border bg-card hover:shadow-md transition-shadow group"
+                      >
+                        <Checkbox checked={task.completed} className="mt-1" />
+                        <div className="flex-1">
+                          <h4 className={`font-semibold ${task.completed ? "line-through text-muted-foreground" : "text-foreground"}`}>
+                            {task.title}
+                          </h4>
+                          <p className="text-sm text-muted-foreground mt-1">{task.description}</p>
+                        </div>
+                        <Badge variant="outline" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                          {task.date}
+                        </Badge>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
+                <Card className="bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20 flex flex-col justify-center items-center text-center p-8">
+                  <div className="h-20 w-20 rounded-full bg-background shadow-lg flex items-center justify-center mb-6 animate-bounce-in">
+                    <Sparkles className="h-10 w-10 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-2">Conciergerie Premium</h3>
+                  <p className="text-muted-foreground mb-8 max-w-sm">
+                    Besoin d'aide pour vos démarches ? Notre conciergerie s'occupe de tout : électricité, internet, assurance, et plus
+                    encore.
+                  </p>
+                  <Button className="w-full max-w-xs shadow-lg shadow-primary/20">Contacter la Conciergerie</Button>
+                </Card>
+              </div>
+            </TabsContent>
+
+            {/* Patrimony Tab */}
+            <TabsContent value="patrimony" className="space-y-6 animate-fade-in-up">
+              <div className="flex justify-between items-center bg-card p-6 rounded-2xl border border-border shadow-sm">
+                <div>
+                  <h2 className="text-2xl font-bold text-foreground">Mon Patrimoine Immobilier</h2>
+                  <p className="text-muted-foreground">Vue d'ensemble de vos actifs</p>
+                </div>
+                <div className="text-right">
+                  <span className="text-sm text-muted-foreground block font-medium">Estimation Totale</span>
+                  <span className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                    685 000 €
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {mockPatrimony.map((asset) => (
+                  <Card key={asset.id} className="card-hover-lift overflow-hidden group">
+                    <div className="h-32 relative">
+                      <img
+                        src={asset.image}
+                        alt={asset.name}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-black/40"></div>
+                      <div className="absolute bottom-4 left-4 text-white">
+                        <div className="text-xs font-medium opacity-80 mb-1">{asset.type}</div>
+                        <h3 className="font-bold text-lg leading-tight">{asset.name}</h3>
+                      </div>
+                    </div>
+                    <CardContent className="p-6 space-y-4">
+                      <div className="flex justify-between items-center">
+                        <Badge variant="secondary" className="text-green-600 bg-green-100 flex items-center px-2 py-1">
+                          <ArrowUpRight className="h-3 w-3 mr-1" /> {asset.growth}
+                        </Badge>
+                        <span className="text-xs text-muted-foreground">Depuis l'achat</span>
+                      </div>
+                      <div className="pt-4 border-t border-border flex justify-between items-end">
+                        <span className="text-muted-foreground text-sm">Valeur estimée</span>
+                        <span className="text-2xl font-bold">{asset.value.toLocaleString()} €</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                <Card className="bg-muted/30 border-dashed border-2">
+                  <CardContent className="p-8 text-center flex flex-col items-center justify-center h-full space-y-4">
+                    <div className="h-16 w-16 rounded-full bg-background flex items-center justify-center shadow-sm">
+                      <LineChart className="h-8 w-8 text-muted-foreground" />
+                    </div>
+                    <h3 className="text-lg font-semibold">Outils d'analyse</h3>
+                    <p className="text-muted-foreground text-sm max-w-xs">Simulez votre rentabilité et optimisez votre fiscalité.</p>
+                    <Button variant="outline" className="mt-2">
+                      Accéder au simulateur
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card className="bg-primary text-primary-foreground overflow-hidden relative">
+                  <div className="absolute -right-10 -top-10 h-64 w-64 bg-white/10 rounded-full blur-3xl"></div>
+                  <CardContent className="p-8 flex flex-col justify-center h-full relative z-10">
+                    <h3 className="text-2xl font-bold mb-2">Besoin d'une nouvelle estimation ?</h3>
+                    <p className="mb-6 opacity-90">Nos experts locaux peuvent estimer votre bien gratuitement en 48h.</p>
+                    <Button variant="secondary" className="w-fit">
+                      Demander une estimation
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </div>
+    );
+  }
+
+  // STANDARD CLIENT DASHBOARD (Non-Buyer)
   return (
     <div className="min-h-screen bg-background pt-20">
-      {/* Decorative elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="decorative-blob decorative-blob-primary w-96 h-96 -top-48 -right-48 animate-float-slow" />
-        <div className="decorative-blob decorative-blob-accent w-64 h-64 bottom-32 -left-32 animate-float-delay" />
       </div>
 
-      {/* Header */}
       <div className="border-b border-border bg-card/80 backdrop-blur-sm relative z-10">
         <div className="container mx-auto px-4 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
-              <h1 className="text-3xl font-bold text-foreground">{t("dashboard.title")}</h1>
+              <h1 className="text-3xl font-bold text-foreground">Tableau de bord</h1>
               <p className="text-muted-foreground mt-1">Bienvenue, {getUserDisplayName()}</p>
             </div>
             <div className="flex items-center gap-3">
-              <Button asChild variant="outline" size="sm">
-                <Link to="/profile" className="flex items-center gap-2">
+              <Link to="/profile">
+                <Button variant="outline" size="sm" className="flex items-center gap-2">
                   <UserCircle className="h-4 w-4" />
-                  {t("dashboard.viewProfile")}
-                </Link>
-              </Button>
+                  Profil
+                </Button>
+              </Link>
               <RoleSwitcher t={t} />
-              <Badge variant="outline">3 {t("dashboard.propertiesPending")}</Badge>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
-        <Tabs defaultValue="needs" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5 h-auto">
-            <TabsTrigger value="needs" className="flex items-center gap-2">
-              <Building2 className="h-4 w-4" />
-              <span className="hidden sm:inline">{t("dashboard.tabs.needs")}</span>
-            </TabsTrigger>
+        <Tabs defaultValue="messages" className="space-y-8">
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 h-auto">
             <TabsTrigger value="messages" className="flex items-center gap-2">
               <MessageSquare className="h-4 w-4" />
-              <span className="hidden sm:inline">{t("dashboard.tabs.messages")}</span>
+              Messagerie
             </TabsTrigger>
-            <TabsTrigger value="vendors" className="flex items-center gap-2">
-              <Users className="h-4 w-4" />
-              <span className="hidden sm:inline">{t("dashboard.tabs.vendors")}</span>
-            </TabsTrigger>
-            <TabsTrigger value="promoters" className="flex items-center gap-2">
-              <Building2 className="h-4 w-4" />
-              <span className="hidden sm:inline">{t("dashboard.tabs.promoters")}</span>
-            </TabsTrigger>
-            <TabsTrigger value="visits" className="flex items-center gap-2">
-              <Calendar className="h-4 w-4" />
-              <span className="hidden sm:inline">{t("dashboard.tabs.visits")}</span>
+            <TabsTrigger value="documents" className="flex items-center gap-2">
+              <FileText className="h-4 w-4" />
+              Documents
             </TabsTrigger>
           </TabsList>
 
-          {/* Besoins Tab */}
-          <TabsContent value="needs" className="space-y-6 animate-fade-in-up">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <h2 className="text-2xl font-bold text-foreground">{t("dashboard.needs.title")}</h2>
-              <div className="relative w-full sm:w-auto">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input placeholder={t("dashboard.needs.searchPlaceholder")} className="pl-10 w-full sm:w-[300px]" />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 stagger-animation">
-              {mockNeeds.map((need) => (
-                <Card key={need.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift shine-effect">
-                  <CardHeader className="pb-4">
-                    <div className="flex justify-between items-start mb-2">
-                      <Badge
-                        variant={need.status === t("dashboard.needs.status.new") ? "default" : "secondary"}
-                        className={need.status === t("dashboard.needs.status.new") ? "bg-primary text-primary-foreground" : ""}
-                      >
-                        {need.status}
-                      </Badge>
-                      <div className="text-right">
-                        <div className="text-xs text-muted-foreground">{t("dashboard.needs.match")}</div>
-                        <div className="text-lg font-bold text-primary">{need.match}%</div>
-                      </div>
-                    </div>
-                    <CardTitle className="text-xl">{need.type}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="flex items-center gap-2 text-muted-foreground">
-                      <MapPin className="h-4 w-4" />
-                      <span className="text-sm">{need.location}</span>
-                    </div>
-                    <div className="grid grid-cols-3 gap-3">
-                      <div className="text-center p-2 rounded-lg bg-muted">
-                        <Euro className="h-4 w-4 mx-auto text-primary mb-1" />
-                        <div className="text-xs text-muted-foreground">{t("dashboard.needs.price")}</div>
-                        <div className="text-sm font-semibold text-foreground">{need.price}</div>
-                      </div>
-                      <div className="text-center p-2 rounded-lg bg-muted">
-                        <Square className="h-4 w-4 mx-auto text-primary mb-1" />
-                        <div className="text-xs text-muted-foreground">{t("dashboard.needs.surface")}</div>
-                        <div className="text-sm font-semibold text-foreground">{need.surface}</div>
-                      </div>
-                      <div className="text-center p-2 rounded-lg bg-muted">
-                        <Bed className="h-4 w-4 mx-auto text-primary mb-1" />
-                        <div className="text-xs text-muted-foreground">{t("dashboard.needs.rooms")}</div>
-                        <div className="text-sm font-semibold text-foreground">{need.rooms}</div>
-                      </div>
-                    </div>
-                    <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                      {t("dashboard.needs.viewDetails")}
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </TabsContent>
-
-          {/* Messages Tab */}
-          <TabsContent value="messages" className="space-y-6 animate-fade-in-up">
-            <Card className="border-border bg-card/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <MessageSquare className="h-5 w-5 text-primary" />
-                  {t("dashboard.messages.title")}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-3 max-h-[500px] overflow-y-auto stagger-animation">
-                  {mockMessages.map((msg) => (
-                    <div key={msg.id} className="p-4 rounded-lg bg-muted hover:bg-muted/70 transition-colors">
-                      <div className="flex justify-between items-start mb-2">
-                        <div>
-                          <p className="font-semibold text-foreground">{msg.from}</p>
-                          <p className="text-xs text-muted-foreground">{msg.role}</p>
-                        </div>
-                        <span className="text-xs text-muted-foreground">{msg.time}</span>
-                      </div>
-                      <p className="text-sm text-foreground">{msg.message}</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex gap-2 pt-4 border-t border-border">
-                  <Input
-                    placeholder={t("dashboard.messages.writePlaceholder")}
-                    value={messageInput}
-                    onChange={(e) => setMessageInput(e.target.value)}
-                    className="flex-1"
-                  />
-                  <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
-                    <Send className="h-4 w-4" />
-                  </Button>
-                </div>
-              </CardContent>
+          <TabsContent value="messages" className="space-y-6">
+            <Card className="min-h-[400px] flex flex-col justify-center items-center text-muted-foreground">
+              <MessageSquare className="h-12 w-12 mb-4 opacity-50" />
+              <p>Votre messagerie est vide pour le moment.</p>
             </Card>
           </TabsContent>
 
-          {/* Vendors Tab */}
-          <TabsContent value="vendors" className="space-y-6 animate-fade-in-up">
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-2">{t("dashboard.vendors.title")}</h2>
-              <p className="text-muted-foreground">{t("dashboard.vendors.description")}</p>
-            </div>
-
-            <div className="space-y-4 stagger-animation">
-              {mockVendors.map((vendor) => (
-                <Card key={vendor.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
-                  <CardContent className="p-6">
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                      <div className="flex-1">
-                        <h3 className="text-lg font-semibold text-foreground mb-1">{vendor.name}</h3>
-                        <p className="text-muted-foreground">{vendor.property}</p>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Badge
-                          variant={vendor.status === t("dashboard.vendors.status.visitScheduled") ? "default" : "secondary"}
-                          className={
-                            vendor.status === t("dashboard.vendors.status.visitScheduled") ? "bg-primary text-primary-foreground" : ""
-                          }
-                        >
-                          {vendor.status}
-                        </Badge>
-                        <Button variant="outline">{t("dashboard.vendors.contact")}</Button>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </TabsContent>
-
-          {/* Promoters Tab */}
-          <TabsContent value="promoters" className="space-y-6 animate-fade-in-up">
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-2">{t("dashboard.promoters.title")}</h2>
-              <p className="text-muted-foreground">{t("dashboard.promoters.description")}</p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 stagger-animation">
-              {mockPromoters.map((promoter) => (
-                <Card key={promoter.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift shine-effect">
-                  <CardHeader>
-                    <div className="flex items-start justify-between mb-2">
-                      <Building2 className="h-8 w-8 text-primary" />
-                      <Badge variant="outline">{promoter.units}</Badge>
-                    </div>
-                    <CardTitle className="text-xl">{promoter.name}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div>
-                      <p className="font-semibold text-foreground mb-1">{promoter.project}</p>
-                      <div className="flex items-center gap-2 text-muted-foreground">
-                        <MapPin className="h-4 w-4" />
-                        <span className="text-sm">{promoter.location}</span>
-                      </div>
-                    </div>
-                    <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                      {t("dashboard.promoters.learnMore")}
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </TabsContent>
-
-          {/* Visits Tab */}
-          <TabsContent value="visits" className="space-y-6 animate-fade-in-up">
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-2">{t("dashboard.visits.title")}</h2>
-              <p className="text-muted-foreground">{t("dashboard.visits.description")}</p>
-            </div>
-
-            <div className="space-y-4 stagger-animation">
-              {mockVisits.map((visit) => (
-                <Card key={visit.id} className="border-border bg-card/80 backdrop-blur-sm card-hover-lift">
-                  <CardContent className="p-6">
-                    <div className="flex flex-col md:flex-row gap-6">
-                      <div className="flex-shrink-0 text-center p-4 rounded-lg bg-primary/10 border border-primary/20">
-                        <div className="text-sm font-medium text-primary mb-1">{visit.date}</div>
-                        <div className="text-2xl font-bold text-primary">{visit.time}</div>
-                      </div>
-                      <div className="flex-1 space-y-2">
-                        <h3 className="text-lg font-semibold text-foreground">{visit.property}</h3>
-                        <p className="text-sm text-muted-foreground flex items-center gap-2">
-                          <Users className="h-4 w-4" />
-                          {t("dashboard.visits.expert")} : {visit.expert}
-                        </p>
-                      </div>
-                      <div className="flex flex-col gap-2">
-                        <Button className="bg-primary text-primary-foreground hover:bg-primary/90">{t("dashboard.visits.confirm")}</Button>
-                        <Button variant="outline">{t("dashboard.visits.cancel")}</Button>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+          <TabsContent value="documents" className="space-y-6">
+            <Card className="min-h-[400px] flex flex-col justify-center items-center text-muted-foreground">
+              <FileText className="h-12 w-12 mb-4 opacity-50" />
+              <p>Aucun document disponible.</p>
+            </Card>
           </TabsContent>
         </Tabs>
       </div>
