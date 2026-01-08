@@ -1,4 +1,20 @@
-import { FileText, Calendar, Scale, Sparkles, CheckCircle2, Star, Search, Bug, Flame, Zap, BarChart3, AlertTriangle } from "lucide-react";
+import {
+  FileText,
+  Calendar,
+  Scale,
+  Sparkles,
+  CheckCircle2,
+  Star,
+  Search,
+  Bug,
+  Flame,
+  Zap,
+  BarChart3,
+  AlertTriangle,
+  ShoppingBag,
+  Store,
+  Key,
+} from "lucide-react";
 
 export const mockNeeds = [
   {
@@ -771,4 +787,78 @@ export const mockDiagnosticianDocuments = [
 
 export const mockDiagnosticianPayments = [
   { id: 1, date: "10 Oct 2024", client: "Mme Dubois", description: "DPE + Elec", amount: "250,00 €", status: "Paid" },
+];
+
+// Marchand de Biens Mock Data
+
+export const mockMarchandOverview = [
+  {
+    id: 1,
+    title: "Accompagnement Achat",
+    description: "Accompagnement total du besoin utilisateur (achat) jusqu'à obtention",
+    icon: ShoppingBag, // Import ShoppingBag
+    color: "text-blue-500",
+    bg: "bg-blue-500/10",
+  },
+  {
+    id: 2,
+    title: "Accompagnement Vente",
+    description: "Accompagnement total du besoin utilisateur (vente) jusqu'à obtention",
+    icon: Store, // Import Store
+    color: "text-green-500",
+    bg: "bg-green-500/10",
+  },
+  {
+    id: 3,
+    title: "Mise en location / Gestion",
+    description: "Accompagnement total du besoin utilisateur (mise en location/gestion) jusqu'à obtention",
+    icon: Key, // Import Key
+    color: "text-purple-500",
+    bg: "bg-purple-500/10",
+  },
+  {
+    id: 4,
+    title: "Recherche locative",
+    description: "Accompagnement total du besoin utilisateur (recherche locative) jusqu'à obtention",
+    icon: Search,
+    color: "text-orange-500",
+    bg: "bg-orange-500/10",
+  },
+];
+
+export const mockMarchandMissions = [
+  {
+    id: 1,
+    client: "Investisseur Paris",
+    type: "Accompagnement Achat",
+    status: "available",
+    date: "Urgent",
+    location: "Paris 11",
+    description: "Recherche immeuble de rapport",
+    price: "Commission 5%",
+  },
+  {
+    id: 2,
+    client: "SCI Familiale",
+    type: "Mise en location",
+    status: "in_progress",
+    date: "Hier",
+    location: "Lyon 3",
+    description: "Gestion de 3 lots",
+    progress: 60,
+  },
+];
+
+export const mockMarchandQuotes = [
+  { id: 1, client: "Investisseur Paris", type: "Mandat de recherche", date: "16 Oct 2024", status: "Envoyé", amount: "15 000 €" },
+];
+
+export const mockMarchandDocuments = [
+  { id: 1, name: "Carte Transaction", status: "Validé", date: "2024-2027" },
+  { id: 2, name: "Assurance RC Pro", status: "Validé", date: "2024" },
+  { id: 3, name: "Garantie Financière", status: "Validé", date: "2024" },
+];
+
+export const mockMarchandPayments = [
+  { id: 1, date: "05 Oct 2024", client: "SCI Familiale", description: "Honoraires Achat", amount: "8 500,00 €", status: "Paid" },
 ];

@@ -10,6 +10,7 @@ import { LocataireDashboard } from "./views/LocataireDashboard";
 import { RenovateurDashboard } from "./views/RenovateurDashboard";
 import { NotaryDashboard } from "./views/NotaryDashboard";
 import { DiagnosticianDashboard } from "./views/DiagnosticianDashboard";
+import { MarchandDashboard } from "./views/MarchandDashboard";
 import { NotConnectedView } from "./views/NotConnectedView";
 
 export default function Dashboard() {
@@ -41,6 +42,11 @@ export default function Dashboard() {
   // DIAGNOSTICIEN DASHBOARD (Specific Expert Subtype)
   if (activeRole?.subtype === "diagnostiqueur") {
     return <DiagnosticianDashboard />;
+  }
+
+  // MARCHAND DASHBOARD (Specific Expert Subtype)
+  if (activeRole?.subtype === "marchand") {
+    return <MarchandDashboard />;
   }
 
   // GENERIC EXPERT DASHBOARD
