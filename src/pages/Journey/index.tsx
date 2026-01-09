@@ -334,6 +334,9 @@ export default function Journey() {
           solvabilityScore: undefined,
           borrowingCapacity: undefined,
           estimatedRate: undefined,
+          bio: tenantData.bio,
+          description: tenantData.description,
+          strongPoints: tenantData.points,
         } as ClientProfile;
       } else if (subtype === "renovateur") {
         profile = {
@@ -342,12 +345,13 @@ export default function Journey() {
           budget: renovatorData.budget || "À définir",
           rooms: renovatorData.surface || "À définir",
           surface: renovatorData.surface || "À définir",
-          // Mapping other specific fields to existing profile or ignoring for now
-          // Ideally we extend ClientProfile
           maritalStatus: "N/A",
           solvabilityScore: renovatorData.solvencyStatus ? 9.0 : undefined,
           borrowingCapacity: undefined,
           estimatedRate: undefined,
+          constraints: renovatorData.constraints,
+          projectObjective: renovatorData.project,
+          workType: "Rénovation complète", // Default or derived
         } as ClientProfile;
       } else {
         profile = {

@@ -14,15 +14,18 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "@/providers/theme-provider";
+
 import { useAuth } from "@/providers/auth-provider";
 import { FR, GB } from "country-flag-icons/react/3x2";
 import { getFullNamesOfLocales, listOfLocales } from "@/lib/i18n";
 import { toast } from "sonner";
+import { RoleSwitcher } from "@/pages/Dashboard/components/RoleSwitcher";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const { setTheme, theme } = useTheme();
+
   const { user, logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
@@ -74,75 +77,109 @@ export function Navbar() {
                 <Link to="/journey">{t("navbar.start")}</Link>
               </Button>
             ) : (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" size="sm" className="h-9 w-9 rounded-full p-0">
-                    <User className="h-4 w-4" />
-                    <span className="sr-only">Open user menu</span>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56">
-                  <DropdownMenuLabel>
-                    <div className="flex flex-col space-y-1">
-                      <p className="text-sm font-medium leading-none">{user?.name}</p>
-                      <p className="text-xs leading-none text-muted-foreground">{user?.email}</p>
-                    </div>
-                  </DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem asChild className="cursor-pointer">
-                    <Link to="/profile" className="flex items-center">
-                      <UserCircle className="mr-2 h-4 w-4" />
-                      <span>{t("navbar.profile")}</span>
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuLabel className="text-xs font-normal text-muted-foreground">{t("navbar.theme")}</DropdownMenuLabel>
-                  <DropdownMenuItem
-                    onClick={() => {
-                      const currentTheme =
-                        theme === "system" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : theme;
-                      setTheme(currentTheme === "light" ? "dark" : "light");
-                    }}
-                    className="cursor-pointer"
-                  >
-                    {(() => {
-                      const currentTheme =
-                        theme === "system" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : theme;
-                      return currentTheme === "light" ? (
-                        <>
-                          <Moon className="mr-2 h-4 w-4" />
-                          <span>{t("navbar.darkMode")}</span>
-                        </>
-                      ) : (
-                        <>
-                          <Sun className="mr-2 h-4 w-4" />
-                          <span>{t("navbar.lightMode")}</span>
-                        </>
-                      );
-                    })()}
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuLabel className="text-xs font-normal text-muted-foreground">{t("navbar.language")}</DropdownMenuLabel>
-                  {listOfLocales.map((l) => (
-                    <DropdownMenuItem
-                      key={l}
-                      onClick={() => handleChangeLanguage(l)}
-                      className={`cursor-pointer flex items-center gap-2 ${i18n.language === l ? "bg-secondary" : ""}`}
-                    >
-                      <span className="w-5 h-4 flex items-center">
-                        {l === "fr" && <FR className="w-full h-full" />}
-                        {l === "en" && <GB className="w-full h-full" />}
-                      </span>
-                      <span>{getFullNamesOfLocales(l)}</span>
+              <>
+                {/* Role Switcher */}
+                {/* <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="sm" className="hidden md:flex gap-2 items-center mr-2">
+                      {activeRole?.type === "expert" ? <Briefcase className="h-4 w-4" /> : <UserCircle className="h-4 w-4" />}
+                      <span className="font-medium">{getRoleLabel(activeRole)}</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-max">
+                    <DropdownMenuLabel>Vos rôles</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    {user?.roles.map((role, idx) => (
+                      <DropdownMenuItem key={idx} onClick={() => setActiveRoleIndex(idx)} className="cursor-pointer justify-between">
+                        <span className="flex items-center gap-2">
+                          {role.type === "expert" ? <Briefcase className="h-3 w-3" /> : <UserCircle className="h-3 w-3" />}
+                          {getRoleLabel(role)}
+                        </span>
+                        {user.activeRoleIndex === idx && <Check className="h-4 w-4 text-primary" />}
+                      </DropdownMenuItem>
+                    ))}
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild className="cursor-pointer">
+                      <Link to="/journey" className="flex items-center text-primary font-medium">
+                        <PlusCircle className="mr-2 h-4 w-4" />
+                        Ajouter un rôle
+                      </Link>
                     </DropdownMenuItem>
-                  ))}
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-destructive focus:text-destructive">
-                    <LogOut className="mr-2 h-4 w-4" />
-                    <span>{t("navbar.logout")}</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                  </DropdownMenuContent>
+                </DropdownMenu> */}
+                <RoleSwitcher />
+
+                {/* User Menu */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" size="sm" className="h-9 w-9 rounded-full p-0">
+                      <User className="h-4 w-4" />
+                      <span className="sr-only">Open user menu</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-56">
+                    <DropdownMenuLabel>
+                      <div className="flex flex-col space-y-1">
+                        <p className="text-sm font-medium leading-none">{user?.name?.trim() ? user.name : "John Doe"}</p>
+                        <p className="text-xs leading-none text-muted-foreground">{user?.email}</p>
+                      </div>
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild className="cursor-pointer">
+                      <Link to="/profile" className="flex items-center">
+                        <UserCircle className="mr-2 h-4 w-4" />
+                        <span>{t("navbar.profile")}</span>
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuLabel className="text-xs font-normal text-muted-foreground">{t("navbar.theme")}</DropdownMenuLabel>
+                    <DropdownMenuItem
+                      onClick={() => {
+                        const currentTheme =
+                          theme === "system" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : theme;
+                        setTheme(currentTheme === "light" ? "dark" : "light");
+                      }}
+                      className="cursor-pointer"
+                    >
+                      {(() => {
+                        const currentTheme =
+                          theme === "system" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : theme;
+                        return currentTheme === "light" ? (
+                          <>
+                            <Moon className="mr-2 h-4 w-4" />
+                            <span>{t("navbar.darkMode")}</span>
+                          </>
+                        ) : (
+                          <>
+                            <Sun className="mr-2 h-4 w-4" />
+                            <span>{t("navbar.lightMode")}</span>
+                          </>
+                        );
+                      })()}
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuLabel className="text-xs font-normal text-muted-foreground">{t("navbar.language")}</DropdownMenuLabel>
+                    {listOfLocales.map((l) => (
+                      <DropdownMenuItem
+                        key={l}
+                        onClick={() => handleChangeLanguage(l)}
+                        className={`cursor-pointer flex items-center gap-2 ${i18n.language === l ? "bg-secondary" : ""}`}
+                      >
+                        <span className="w-5 h-4 flex items-center">
+                          {l === "fr" && <FR className="w-full h-full" />}
+                          {l === "en" && <GB className="w-full h-full" />}
+                        </span>
+                        <span>{getFullNamesOfLocales(l)}</span>
+                      </DropdownMenuItem>
+                    ))}
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-destructive focus:text-destructive">
+                      <LogOut className="mr-2 h-4 w-4" />
+                      <span>{t("navbar.logout")}</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </>
             )}
           </div>
 

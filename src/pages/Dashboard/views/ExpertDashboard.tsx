@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { RoleSwitcher } from "../components/RoleSwitcher";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/providers/auth-provider";
 import { ExpertClientsTab } from "../tabs/ExpertClientsTab";
@@ -43,7 +42,6 @@ export function ExpertDashboard() {
                   {t("dashboard.viewProfile")}
                 </Link>
               </Button>
-              <RoleSwitcher />
             </div>
           </div>
 

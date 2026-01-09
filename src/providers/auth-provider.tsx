@@ -46,6 +46,13 @@ export interface ClientProfile {
   solvabilityScore?: number;
   borrowingCapacity?: string;
   estimatedRate?: string;
+  // Extended fields for Tenant/Renovator
+  bio?: string;
+  description?: string;
+  strongPoints?: string[];
+  workType?: string;
+  constraints?: string;
+  projectObjective?: string;
 }
 
 // User role with subtype and documents

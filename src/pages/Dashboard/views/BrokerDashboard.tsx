@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/providers/auth-provider";
 import { UserCircle } from "lucide-react";
-import { RoleSwitcher } from "../components/RoleSwitcher";
 import { useTranslation } from "react-i18next";
 import { BrokerOverviewTab } from "../tabs/BrokerOverviewTab";
 import { BrokerMissionsTab } from "../tabs/BrokerMissionsTab";
@@ -39,7 +38,6 @@ export function BrokerDashboard() {
                   {t("dashboard.viewProfile")}
                 </Link>
               </Button>
-              <RoleSwitcher />
             </div>
           </div>
         </div>

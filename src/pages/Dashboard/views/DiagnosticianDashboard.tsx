@@ -2,7 +2,6 @@ import { UserCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { RoleSwitcher } from "../components/RoleSwitcher";
 import { useTranslation } from "react-i18next";
 import { DiagnosticianOverviewTab } from "../tabs/DiagnosticianOverviewTab";
 import { DiagnosticianMissionsTab } from "../tabs/DiagnosticianMissionsTab";
@@ -35,7 +34,6 @@ export function DiagnosticianDashboard() {
                   {t("dashboard.viewProfile")}
                 </Link>
               </Button>
-              <RoleSwitcher />
             </div>
           </div>
         </div>

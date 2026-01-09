@@ -10,7 +10,6 @@ import { BuyerPoolTab } from "../tabs/BuyerPoolTab";
 import { ExpertsTab } from "../tabs/ExpertsTab";
 import { TipsTab } from "../tabs/TipsTab";
 import { PatrimonyTab } from "../tabs/PatrimonyTab";
-import { RoleSwitcher } from "../components/RoleSwitcher";
 
 export function SellerDashboard() {
   const { t } = useTranslation();
@@ -37,7 +36,6 @@ export function SellerDashboard() {
                   {t("dashboard.viewProfile")}
                 </Link>
               </Button>
-              <RoleSwitcher />
             </div>
           </div>
         </div>

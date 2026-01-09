@@ -2,7 +2,6 @@ import { UserCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { RoleSwitcher } from "../components/RoleSwitcher";
 import { useTranslation } from "react-i18next";
 import { ContractorOverviewTab } from "../tabs/ContractorOverviewTab";
 import { ContractorMissionsTab } from "../tabs/ContractorMissionsTab";
@@ -35,7 +34,6 @@ export function ContractorDashboard() {
                   {t("dashboard.viewProfile")}
                 </Link>
               </Button>
-              <RoleSwitcher />
             </div>
           </div>
         </div>

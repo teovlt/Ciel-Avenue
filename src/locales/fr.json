@@ -7,7 +7,9 @@
     "cancel": "Annuler",
     "confirm": "Confirmer",
     "loading": "Chargement...",
-    "error": "Erreur"
+    "error": "Erreur",
+    "finish": "Terminer",
+    "edit": "Éditer"
   },
   "navbar": {
     "home": "Accueil",

@@ -7,7 +7,9 @@
     "cancel": "Cancel",
     "confirm": "Confirm",
     "loading": "Loading...",
-    "error": "Error"
+    "error": "Error",
+    "finish": "Finish",
+    "edit": "Edit"
   },
   "navbar": {
     "home": "Home",
