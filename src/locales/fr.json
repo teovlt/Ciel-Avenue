@@ -757,6 +757,45 @@
         "points": "Points forts",
         "pointsPlaceholder": "Sélectionnez vos atouts (Garant, Revenus 3x, etc.)"
       }
+    },
+    "renovator": {
+      "module1": {
+        "title": "Critères de Rénovation",
+        "description": "Définissez votre projet de travaux pour obtenir un accompagnement sur mesure.",
+        "q1": "1. Ville du bien (Zone urbaine, rurale, classée ?) (Filtre LOCALISATION)",
+        "q2": "2. Budget global travaux & Financement (Filtre BUDGET)",
+        "q3": "3. Type de travaux (Légère, Lourde, Énergétique ?) (Filtre TYPE)",
+        "q4": "4. Surface totale & Pièces à rénover (Filtre SURFACES)",
+        "q5": "5. Extérieur & Stationnement (Façade, Piscine...) (Filtre EXTERIEUR)",
+        "q6": "6. Performance énergétique & Confort (DPE visé, Domotique...) (Filtre PRESTATION)",
+        "q7": "7. Contraintes réglementaires (AG Copro, ABF...) (Filtre TECHNIQUE)",
+        "q8": "8. Objectif des travaux & Perspective (Valorisation, Location...) (Filtre PROJET)"
+      },
+      "module2": {
+        "title": "Documents Requis",
+        "description": "Justificatifs nécessaires pour l'analyse des experts.",
+        "docs": {
+          "title": "Documents Techniques et Financiers",
+          "d1": "Titre de propriété / Acte notarié",
+          "d2": "Attestation de financement / Relevés d'épargne",
+          "d3": "Étude thermique (si rénovation énergétique)",
+          "d4": "Plan cadastral / Plan du bien",
+          "d5": "Déclaration préalable / Permis de construire",
+          "d6": "DPE avant travaux / Audit énergétique",
+          "d7": "PV d'AG (Copro) / Accord ABF",
+          "d8": "Plan de financement / Étude de marché"
+        }
+      },
+      "module3": {
+        "title": "Vérification de Solvabilité",
+        "description": "Analysez votre capacité financière pour accéder aux services.",
+        "checkButton": "Vérifier ma solvabilité (Partenaire Bancaire)",
+        "uploadButton": "Déposer mes documents manuellement",
+        "successTitle": "Solvabilité Validée",
+        "successDesc": "Votre solvabilité est suffisante pour la mise en relation. Vous pouvez accéder aux services.",
+        "failTitle": "Solvabilité Insuffisante",
+        "failDesc": "Nous vous recommandons de revoir vos critères ou de demander une mise en relation avec un courtier."
+      }
     }
   },
   "profile": {

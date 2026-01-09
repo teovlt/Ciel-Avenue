@@ -202,6 +202,21 @@ export default function Journey() {
     points: [] as string[],
   });
 
+  const [renovatorStep, setRenovatorStep] = useState(1); // 1 = Criteria, 2 = Docs, 3 = Solvency
+  const [renovatorData, setRenovatorData] = useState({
+    // Criteria
+    location: "", // q1
+    budget: "", // q2
+    type: "", // q3
+    surface: "", // q4
+    exterior: "", // q5
+    performance: "", // q6
+    constraints: "", // q7
+    project: "", // q8
+    // Solvency
+    solvencyStatus: false,
+  });
+
   // Expert-specific data
   const [expertData] = useState({
     company: "",
@@ -317,6 +332,20 @@ export default function Journey() {
           surface: tenantData.surface || "À définir",
           maritalStatus: tenantData.situation || "À définir",
           solvabilityScore: undefined,
+          borrowingCapacity: undefined,
+          estimatedRate: undefined,
+        } as ClientProfile;
+      } else if (subtype === "renovateur") {
+        profile = {
+          propertyType: renovatorData.type || "À définir",
+          location: renovatorData.location || "À définir",
+          budget: renovatorData.budget || "À définir",
+          rooms: renovatorData.surface || "À définir",
+          surface: renovatorData.surface || "À définir",
+          // Mapping other specific fields to existing profile or ignoring for now
+          // Ideally we extend ClientProfile
+          maritalStatus: "N/A",
+          solvabilityScore: renovatorData.solvencyStatus ? 9.0 : undefined,
           borrowingCapacity: undefined,
           estimatedRate: undefined,
         } as ClientProfile;
@@ -1604,6 +1633,192 @@ export default function Journey() {
                               </Button>
                               <Button onClick={handleComplete}>
                                 {t("journey.generateProfile")} <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      )}
+                    </div>
+                  ) : userType === "client" && subtype === "renovateur" ? (
+                    // RENOVATOR SPECIAL JOURNEY
+                    <div className="space-y-6">
+                      {/* Module 1: Renovator Criteria */}
+                      {renovatorStep === 1 && (
+                        <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift animate-fade-in-up">
+                          <CardContent className="p-8 space-y-6">
+                            <div className="space-y-2">
+                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
+                                <Wrench className="h-4 w-4" />
+                                Module 1/3
+                              </div>
+                              <h2 className="text-2xl font-bold text-foreground">{t("journey.renovator.module1.title")}</h2>
+                              <p className="text-muted-foreground">{t("journey.renovator.module1.description")}</p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              {[1, 2, 3, 4, 5, 6, 7, 8].map((qNum) => (
+                                <div key={qNum} className="space-y-2">
+                                  <Label>{t(`journey.renovator.module1.q${qNum}`)}</Label>
+                                  <Input
+                                    // Mapping qNum to data fields somewhat arbitrarily for this loop, or can be explicit
+                                    value={
+                                      qNum === 1
+                                        ? renovatorData.location
+                                        : qNum === 2
+                                          ? renovatorData.budget
+                                          : qNum === 3
+                                            ? renovatorData.type
+                                            : qNum === 4
+                                              ? renovatorData.surface
+                                              : qNum === 5
+                                                ? renovatorData.exterior
+                                                : qNum === 6
+                                                  ? renovatorData.performance
+                                                  : qNum === 7
+                                                    ? renovatorData.constraints
+                                                    : renovatorData.project
+                                    }
+                                    onChange={(e) => {
+                                      const val = e.target.value;
+                                      const key =
+                                        qNum === 1
+                                          ? "location"
+                                          : qNum === 2
+                                            ? "budget"
+                                            : qNum === 3
+                                              ? "type"
+                                              : qNum === 4
+                                                ? "surface"
+                                                : qNum === 5
+                                                  ? "exterior"
+                                                  : qNum === 6
+                                                    ? "performance"
+                                                    : qNum === 7
+                                                      ? "constraints"
+                                                      : "project";
+                                      setRenovatorData({ ...renovatorData, [key]: val });
+                                    }}
+                                  />
+                                </div>
+                              ))}
+                            </div>
+
+                            <div className="flex justify-end pt-4">
+                              <Button onClick={() => setRenovatorStep(2)}>
+                                {t("common.continue")} <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      )}
+
+                      {/* Module 2: Renovator Documents */}
+                      {renovatorStep === 2 && (
+                        <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift animate-fade-in-up">
+                          <CardContent className="p-8 space-y-6">
+                            <div className="space-y-2">
+                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
+                                <FileText className="h-4 w-4" />
+                                Module 2/3
+                              </div>
+                              <h2 className="text-2xl font-bold text-foreground">{t("journey.renovator.module2.title")}</h2>
+                              <p className="text-muted-foreground">{t("journey.renovator.module2.description")}</p>
+                            </div>
+
+                            {/* Documents List */}
+                            <div className="space-y-4 pt-4 border-t border-border">
+                              <h3 className="font-semibold text-foreground">{t("journey.renovator.module2.docs.title")}</h3>
+                              <div className="space-y-3">
+                                {[1, 2, 3, 4, 5, 6, 7, 8].map((dNum) => (
+                                  <div
+                                    key={dNum}
+                                    className="flex items-center justify-between p-4 rounded-lg border border-border bg-muted/30 hover:bg-muted/50 transition-colors"
+                                  >
+                                    <div className="flex items-center gap-3">
+                                      <Checkbox id={`renov-doc-${dNum}`} />
+                                      <Label htmlFor={`renov-doc-${dNum}`} className="cursor-pointer font-normal">
+                                        {t(`journey.renovator.module2.docs.d${dNum}`)}
+                                      </Label>
+                                    </div>
+                                    <Button variant="ghost" size="sm" className="text-primary">
+                                      <Upload className="h-4 w-4 mr-2" />
+                                      Importer
+                                    </Button>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+
+                            <div className="flex justify-between pt-4">
+                              <Button variant="outline" onClick={() => setRenovatorStep(1)}>
+                                {t("common.back")}
+                              </Button>
+                              <Button onClick={() => setRenovatorStep(3)}>
+                                {t("common.continue")} <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      )}
+
+                      {/* Module 3: Solvency */}
+                      {renovatorStep === 3 && (
+                        <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift animate-fade-in-up">
+                          <CardContent className="p-8 space-y-6">
+                            <div className="space-y-2">
+                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
+                                <Landmark className="h-4 w-4" />
+                                Module 3/3
+                              </div>
+                              <h2 className="text-2xl font-bold text-foreground">{t("journey.renovator.module3.title")}</h2>
+                              <p className="text-muted-foreground">{t("journey.renovator.module3.description")}</p>
+                            </div>
+
+                            {!renovatorData.solvencyStatus ? (
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                                <Card
+                                  className="cursor-pointer hover:border-primary transition-all"
+                                  onClick={() => setRenovatorData({ ...renovatorData, solvencyStatus: true })}
+                                >
+                                  <CardContent className="p-6 text-center space-y-4">
+                                    <div className="h-12 w-12 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
+                                      <LinkIcon className="h-6 w-6 text-primary" />
+                                    </div>
+                                    <h3 className="font-semibold">{t("journey.renovator.module3.checkButton")}</h3>
+                                  </CardContent>
+                                </Card>
+                                <Card
+                                  className="cursor-pointer hover:border-primary transition-all"
+                                  onClick={() => setRenovatorData({ ...renovatorData, solvencyStatus: true })}
+                                >
+                                  <CardContent className="p-6 text-center space-y-4">
+                                    <div className="h-12 w-12 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
+                                      <Upload className="h-6 w-6 text-primary" />
+                                    </div>
+                                    <h3 className="font-semibold">{t("journey.renovator.module3.uploadButton")}</h3>
+                                  </CardContent>
+                                </Card>
+                              </div>
+                            ) : (
+                              <div className="py-8 text-center space-y-4 animate-fade-in-up">
+                                <div className="h-16 w-16 mx-auto bg-green-500/10 rounded-full flex items-center justify-center">
+                                  <CheckCircle2 className="h-8 w-8 text-green-500" />
+                                </div>
+                                <h3 className="text-xl font-bold text-foreground">{t("journey.renovator.module3.successTitle")}</h3>
+                                <p className="text-muted-foreground">{t("journey.renovator.module3.successDesc")}</p>
+                              </div>
+                            )}
+
+                            <div className="flex justify-between pt-4">
+                              <Button variant="outline" onClick={() => setRenovatorStep(2)}>
+                                {t("common.back")}
+                              </Button>
+                              <Button
+                                onClick={handleComplete}
+                                disabled={!renovatorData.solvencyStatus}
+                                className="bg-primary text-primary-foreground hover:bg-primary/90"
+                              >
+                                <CheckCircle2 className="mr-2 h-4 w-4" /> {t("common.finish")}
                               </Button>
                             </div>
                           </CardContent>

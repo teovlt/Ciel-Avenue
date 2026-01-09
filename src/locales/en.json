@@ -757,6 +757,45 @@
         "points": "Strong points",
         "pointsPlaceholder": "Select your assets (Guarantor, 3x Income, etc.)"
       }
+    },
+    "renovator": {
+      "module1": {
+        "title": "Renovation Criteria",
+        "description": "Define your renovation project for tailored support.",
+        "q1": "1. Property City (Urban, Rural, Classified zone?) (LOCATION Filter)",
+        "q2": "2. Global Work Budget & Financing (BUDGET Filter)",
+        "q3": "3. Work Type (Light, Heavy, Energy?) (TYPE Filter)",
+        "q4": "4. Total Surface & Rooms to renovate (SURFACE Filter)",
+        "q5": "5. Exterior & Parking (Facade, Pool...) (EXTERIOR Filter)",
+        "q6": "6. Energy Performance & Comfort (Target EPC, Home Auto...) (PERFORMANCE Filter)",
+        "q7": "7. Regulatory Constraints (HOA, Heritage...) (TECHNICAL Filter)",
+        "q8": "8. Work Objective & Perspective (Value, Rental...) (PROJECT Filter)"
+      },
+      "module2": {
+        "title": "Required Documents",
+        "description": "Documents needed for expert analysis.",
+        "docs": {
+          "title": "Technical and Financial Documents",
+          "d1": "Property Title / Notarial Deed",
+          "d2": "Financing Certificate / Savings Statement",
+          "d3": "Thermal Study (if energy reno)",
+          "d4": "Cadastral Plan / Property Plan",
+          "d5": "Prior Declaration / Building Permit",
+          "d6": "Pre-work EPC / Energy Audit",
+          "d7": "HOA Minutes / Heritage Approval",
+          "d8": "Financing Plan / Market Study"
+        }
+      },
+      "module3": {
+        "title": "Solvency Check",
+        "description": "Analyze your financial capacity to access services.",
+        "checkButton": "Check my solvency (Bank Partner)",
+        "uploadButton": "Upload my documents manually",
+        "successTitle": "Solvency Validated",
+        "successDesc": "Your solvency is sufficient for connection. You can now access services.",
+        "failTitle": "Insufficient Solvency",
+        "failDesc": "We recommend reviewing your criteria or contacting a broker."
+      }
     }
   },
   "profile": {
