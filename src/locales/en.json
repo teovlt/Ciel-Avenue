@@ -618,6 +618,55 @@
       },
       "createProfile": "Create my expert profile"
     },
+    "buyer": {
+      "module1": {
+        "title": "Define your criteria",
+        "description": "Specify your expectations for matching",
+        "q1": "Which city(ies), neighborhood(s), geographical area?",
+        "q2": "Maximum budget (fees included)?",
+        "q3": "Property type (House, Apartment, Land...)?",
+        "q4": "Minimum surface area and number of rooms?",
+        "q5": "Exterior and parking (Balcony, Garden...)?",
+        "q6": "Comfort and amenities (Floor, Elevator...)?",
+        "q7": "Environment (Transport, Schools...)?",
+        "q8": "Project type (Primary, Secondary...)?"
+      },
+      "module2": {
+        "title": "Legal form and documents",
+        "description": "Structure your acquisition",
+        "q1": "Who is buying (Alone, Couple, Family)?",
+        "q2": "Marital status?",
+        "q3": "Use of the property?",
+        "q4": "Investment strategy?",
+        "q5": "Taxation and transmission?",
+        "q6": "Legal structure (Own name, SCI...)?",
+        "docs": {
+          "title": "Required documents",
+          "id": "Identity document",
+          "family": "Family record book / Marriage certificate",
+          "pacs": "PACS certificate / Convention",
+          "statuts": "Draft statutes (SCI)",
+          "kbis": "KBIS (-3 months)",
+          "tax": "Last tax notice",
+          "patrimony": "Wealth statements"
+        },
+        "notary": {
+          "title": "Need help?",
+          "description": "Our partner notaries can help you compile your file (statutes, convention...).",
+          "cta": "Contact a notary"
+        }
+      },
+      "module3": {
+        "title": "Solvency check",
+        "description": "Analyze your borrowing capacity",
+        "directLink": "Direct bank link",
+        "upload": "Upload my documents",
+        "success": "Sufficient solvency",
+        "successDesc": "Your profile is validated for connection.",
+        "failure": "Insufficient solvency",
+        "failureDesc": "We recommend contacting a broker or reviewing your criteria."
+      }
+    },
     "landlord": {
       "module1": {
         "title": "Rental Criteria",
@@ -769,7 +818,11 @@
       "messages": "Messages",
       "vendors": "Vendors",
       "promoters": "Promoters",
-      "visits": "Visits"
+      "visits": "Visits",
+      "patrimony": "Assets",
+      "experts": "Support",
+      "documents": "My Documents",
+      "postPurchase": "Post-purchase"
     },
     "needs": {
       "title": "Your needs in progress",
@@ -817,6 +870,11 @@
       "confirm": "Confirm",
       "cancel": "Cancel",
       "viewProfile": "View Profile"
+    },
+    "patrimony": {
+      "title": "Your Assets",
+      "value": "Estimated value",
+      "performance": "Performance"
     },
     "notConnected": {
       "title": "Create an account to access your dashboard",
