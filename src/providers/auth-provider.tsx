@@ -300,26 +300,6 @@ function createDemoUser(): User {
     createdAt: now,
   };
 
-  const artisanRole: UserRole = {
-    type: "expert",
-    subtype: "artisan",
-    documents: [
-      { name: "Extrait K-BIS (ou attestation INSEE) de moins de 3 mois", uploaded: true, verified: true },
-      { name: "Assurance décennale", uploaded: true, verified: true },
-      { name: "Spécialité métier", uploaded: true, verified: true },
-    ],
-    profile: {
-      certifications: ["Qualibat", "RGE"],
-      expertise: ["residential"],
-      zones: ["paris"],
-      yearsExperience: 10,
-      completedProjects: 45,
-      company: "Artisan Pro",
-      siret: "987 654 321 00012",
-    } as ExpertProfile,
-    createdAt: now,
-  };
-
   return {
     id: "demo-user-123",
     firstName: "Sophie",
@@ -328,7 +308,7 @@ function createDemoUser(): User {
     dateOfBirth: "1988-05-15",
     email: "sophie.martin@demo.fr",
     termsAccepted: true,
-    roles: [expertRole, locataireRole, renovateurRole, artisanRole],
+    roles: [expertRole, locataireRole, renovateurRole],
     activeRoleIndex: 0,
     name: "Sophie Martin",
     userType: "expert",
