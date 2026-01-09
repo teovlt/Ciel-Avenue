@@ -722,6 +722,41 @@
         "step4Desc": "Positionnement : Optimal, Compétitif, Premium",
         "generate": "Générer l'annonce"
       }
+    },
+    "tenant": {
+      "module1": {
+        "title": "Critères de recherche locative",
+        "description": "Définissez votre besoin pour un matching précis",
+        "q1": "Quelle(s) ville(s), quartier(s), zone géographique souhaitez-vous habiter ?",
+        "q2": "Quel loyer maximum mensuel (charges comprises) ? Budget frais annexes ?",
+        "q3": "Type de bien (Appart, Maison, Studio, Coloc) ? Meublé/Vide ? Ancien/Récent ?",
+        "q4": "Surface minimale et nombre de chambres ? (Bureau, Buanderie...)",
+        "q5": "Extérieur (Balcon, Jardin...) et Stationnement (Garage, Parking...) ?",
+        "q6": "Confort (Orientation, Luminosité) et Équipements spécifiques ?",
+        "q7": "Environnement prioritaire (Transports, Écoles, Calme...) ?",
+        "q8": "Projet (Résidence principale, Durée, Besoins moyen terme) ?",
+        "docs": {
+          "title": "Documents obligatoires",
+          "tax": "Dernier avis d'imposition",
+          "employer": "Attestation d'employeur",
+          "payslips": "3 dernières fiches de paie",
+          "residence": "Justificatif de domicile actuel",
+          "id": "Pièce d'identité",
+          "guarantor": "Document garant"
+        }
+      },
+      "module2": {
+        "title": "Création fiche profil locataire",
+        "description": "Mettez toutes les chances de votre côté",
+        "bio": "Bio attractive",
+        "bioPlaceholder": "Présentez-vous en quelques mots...",
+        "descriptionDetails": "Description détaillée",
+        "descriptionPlaceholder": "Détaillez votre projet et votre sérieux...",
+        "situation": "Situation professionnelle",
+        "situationPlaceholder": "CDI, Etudiant, Freelance...",
+        "points": "Points forts",
+        "pointsPlaceholder": "Sélectionnez vos atouts (Garant, Revenus 3x, etc.)"
+      }
     }
   },
   "profile": {

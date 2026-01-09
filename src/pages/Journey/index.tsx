@@ -184,6 +184,24 @@ export default function Journey() {
     adPrice: "",
   });
 
+  const [tenantStep, setTenantStep] = useState(1); // 1 = Criteria, 2 = Profile
+  const [tenantData, setTenantData] = useState({
+    // Module 1: Criteria
+    location: "",
+    budget: "",
+    type: "",
+    surface: "",
+    exterior: "",
+    comfort: "",
+    environment: "",
+    project: "",
+    // Module 2: Profile
+    bio: "",
+    description: "",
+    situation: "",
+    points: [] as string[],
+  });
+
   // Expert-specific data
   const [expertData] = useState({
     company: "",
@@ -286,6 +304,18 @@ export default function Journey() {
           rooms: sellerData.details || "À définir",
           surface: sellerData.details || "À définir",
           maritalStatus: sellerData.situation || "À définir",
+          solvabilityScore: undefined,
+          borrowingCapacity: undefined,
+          estimatedRate: undefined,
+        } as ClientProfile;
+      } else if (subtype === "locataire") {
+        profile = {
+          propertyType: tenantData.type || "À définir",
+          location: tenantData.location || "À définir",
+          budget: tenantData.budget || "À définir",
+          rooms: tenantData.surface || "À définir",
+          surface: tenantData.surface || "À définir",
+          maritalStatus: tenantData.situation || "À définir",
           solvabilityScore: undefined,
           borrowingCapacity: undefined,
           estimatedRate: undefined,
@@ -1574,6 +1604,190 @@ export default function Journey() {
                               </Button>
                               <Button onClick={handleComplete}>
                                 {t("journey.generateProfile")} <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      )}
+                    </div>
+                  ) : userType === "client" && subtype === "locataire" ? (
+                    // TENANT SPECIAL JOURNEY
+                    <div className="space-y-6">
+                      {/* Module 1: Tenant Criteria */}
+                      {tenantStep === 1 && (
+                        <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift animate-fade-in-up">
+                          <CardContent className="p-8 space-y-6">
+                            <div className="space-y-2">
+                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
+                                <Key className="h-4 w-4" />
+                                Module 1/2
+                              </div>
+                              <h2 className="text-2xl font-bold text-foreground">{t("journey.tenant.module1.title")}</h2>
+                              <p className="text-muted-foreground">{t("journey.tenant.module1.description")}</p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              {/* Q1 */}
+                              <div className="space-y-2">
+                                <Label>{t("journey.tenant.module1.q1")}</Label>
+                                <Input
+                                  value={tenantData.location}
+                                  onChange={(e) => setTenantData({ ...tenantData, location: e.target.value })}
+                                />
+                              </div>
+                              {/* Q2 */}
+                              <div className="space-y-2">
+                                <Label>{t("journey.tenant.module1.q2")}</Label>
+                                <Input
+                                  value={tenantData.budget}
+                                  onChange={(e) => setTenantData({ ...tenantData, budget: e.target.value })}
+                                />
+                              </div>
+                              {/* Q3 */}
+                              <div className="space-y-2">
+                                <Label>{t("journey.tenant.module1.q3")}</Label>
+                                <Input value={tenantData.type} onChange={(e) => setTenantData({ ...tenantData, type: e.target.value })} />
+                              </div>
+                              {/* Q4 */}
+                              <div className="space-y-2">
+                                <Label>{t("journey.tenant.module1.q4")}</Label>
+                                <Input
+                                  value={tenantData.surface}
+                                  onChange={(e) => setTenantData({ ...tenantData, surface: e.target.value })}
+                                />
+                              </div>
+                              {/* Q5 */}
+                              <div className="space-y-2">
+                                <Label>{t("journey.tenant.module1.q5")}</Label>
+                                <Input
+                                  value={tenantData.exterior}
+                                  onChange={(e) => setTenantData({ ...tenantData, exterior: e.target.value })}
+                                />
+                              </div>
+                              {/* Q6 */}
+                              <div className="space-y-2">
+                                <Label>{t("journey.tenant.module1.q6")}</Label>
+                                <Input
+                                  value={tenantData.comfort}
+                                  onChange={(e) => setTenantData({ ...tenantData, comfort: e.target.value })}
+                                />
+                              </div>
+                              {/* Q7 */}
+                              <div className="space-y-2">
+                                <Label>{t("journey.tenant.module1.q7")}</Label>
+                                <Input
+                                  value={tenantData.environment}
+                                  onChange={(e) => setTenantData({ ...tenantData, environment: e.target.value })}
+                                />
+                              </div>
+                              {/* Q8 */}
+                              <div className="space-y-2">
+                                <Label>{t("journey.tenant.module1.q8")}</Label>
+                                <Input
+                                  value={tenantData.project}
+                                  onChange={(e) => setTenantData({ ...tenantData, project: e.target.value })}
+                                />
+                              </div>
+                            </div>
+
+                            {/* Documents Checklist for Tenant */}
+                            <div className="space-y-4 pt-4 border-t border-border">
+                              <h3 className="font-semibold text-foreground">{t("journey.tenant.module1.docs.title")}</h3>
+                              <div className="space-y-3">
+                                {["tax", "employer", "payslips", "residence", "id", "guarantor"].map((docKey) => (
+                                  <div
+                                    key={docKey}
+                                    className="flex items-center justify-between p-4 rounded-lg border border-border bg-muted/30 hover:bg-muted/50 transition-colors"
+                                  >
+                                    <div className="flex items-center gap-3">
+                                      <Checkbox
+                                        id={`tenant-doc-${docKey}`}
+                                        // Ideally we should bind this to uploadedDocuments or a tenant-specific doc state
+                                        // For now using the local checked state logic or simple toggle if bound
+                                      />
+                                      <Label htmlFor={`tenant-doc-${docKey}`} className="cursor-pointer font-normal">
+                                        {t(`journey.tenant.module1.docs.${docKey}`)}
+                                      </Label>
+                                    </div>
+                                    <Button variant="ghost" size="sm" className="text-primary">
+                                      <Upload className="h-4 w-4 mr-2" />
+                                      Importer
+                                    </Button>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+
+                            <div className="flex justify-end pt-4">
+                              <Button onClick={() => setTenantStep(2)}>
+                                {t("common.continue")} <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      )}
+
+                      {/* Module 2: Tenant Profile */}
+                      {tenantStep === 2 && (
+                        <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift animate-fade-in-up">
+                          <CardContent className="p-8 space-y-6">
+                            <div className="space-y-2">
+                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
+                                <UserIcon className="h-4 w-4" />
+                                Module 2/2
+                              </div>
+                              <h2 className="text-2xl font-bold text-foreground">{t("journey.tenant.module2.title")}</h2>
+                              <p className="text-muted-foreground">{t("journey.tenant.module2.description")}</p>
+                            </div>
+
+                            <div className="space-y-6">
+                              {/* Bio */}
+                              <div className="space-y-2">
+                                <Label>{t("journey.tenant.module2.bio")}</Label>
+                                <Input
+                                  placeholder={t("journey.tenant.module2.bioPlaceholder")}
+                                  value={tenantData.bio}
+                                  onChange={(e) => setTenantData({ ...tenantData, bio: e.target.value })}
+                                />
+                              </div>
+
+                              {/* Description */}
+                              <div className="space-y-2">
+                                <Label>{t("journey.tenant.module2.descriptionDetails")}</Label>
+                                <textarea
+                                  className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                  placeholder={t("journey.tenant.module2.descriptionPlaceholder")}
+                                  value={tenantData.description}
+                                  onChange={(e) => setTenantData({ ...tenantData, description: e.target.value })}
+                                />
+                              </div>
+
+                              {/* Situation */}
+                              <div className="space-y-2">
+                                <Label>{t("journey.tenant.module2.situation")}</Label>
+                                <Input
+                                  placeholder={t("journey.tenant.module2.situationPlaceholder")}
+                                  value={tenantData.situation}
+                                  onChange={(e) => setTenantData({ ...tenantData, situation: e.target.value })}
+                                />
+                              </div>
+
+                              {/* Strong Points */}
+                              <div className="space-y-2">
+                                <Label>{t("journey.tenant.module2.points")}</Label>
+                                <Input
+                                  placeholder={t("journey.tenant.module2.pointsPlaceholder")}
+                                  // Simple input for now, could be a multi-select
+                                />
+                              </div>
+                            </div>
+
+                            <div className="flex justify-between pt-4">
+                              <Button variant="outline" onClick={() => setTenantStep(1)}>
+                                {t("common.back")}
+                              </Button>
+                              <Button onClick={handleComplete}>
+                                <CheckCircle2 className="mr-2 h-4 w-4" /> {t("journey.generateProfile")}
                               </Button>
                             </div>
                           </CardContent>

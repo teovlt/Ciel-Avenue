@@ -722,6 +722,41 @@
         "step4Desc": "Positioning: Optimal, Competitive, Premium",
         "generate": "Generate ad"
       }
+    },
+    "tenant": {
+      "module1": {
+        "title": "Rental Search Criteria",
+        "description": "Define your needs for precise matching",
+        "q1": "Which city(ies), neighborhood(s), geographical area do you wish to live in?",
+        "q2": "What maximum monthly rent (charges included)? Budget for additional fees?",
+        "q3": "Property type (Apt, House, Studio, Shared)? Furnished/Empty? Old/New?",
+        "q4": "Minimum surface and number of bedrooms? (Office, Laundry...)",
+        "q5": "Exterior (Balcony, Garden...) and Parking (Garage...)?",
+        "q6": "Comfort (Orientation, Brightness) and Specific equipment?",
+        "q7": "Priority environment (Transport, Schools, Quiet...)?",
+        "q8": "Project (Primary residence, Duration, Medium-term needs)?",
+        "docs": {
+          "title": "Mandatory documents",
+          "tax": "Last tax notice",
+          "employer": "Employer certificate",
+          "payslips": "Last 3 payslips",
+          "residence": "Current proof of residence",
+          "id": "Identity document",
+          "guarantor": "Guarantor document"
+        }
+      },
+      "module2": {
+        "title": "Tenant Profile Creation",
+        "description": "Put all chances on your side",
+        "bio": "Attractive bio",
+        "bioPlaceholder": "Introduce yourself in a few words...",
+        "descriptionDetails": "Detailed description",
+        "descriptionPlaceholder": "Detail your project and seriousness...",
+        "situation": "Professional situation",
+        "situationPlaceholder": "Permanent contract, Student, Freelance...",
+        "points": "Strong points",
+        "pointsPlaceholder": "Select your assets (Guarantor, 3x Income, etc.)"
+      }
     }
   },
   "profile": {
