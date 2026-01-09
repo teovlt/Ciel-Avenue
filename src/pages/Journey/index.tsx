@@ -158,6 +158,32 @@ export default function Journey() {
     situation: "", // pourquoi vente
   });
 
+  const [landlordStep, setLandlordStep] = useState(1); // 1 = Criteria, 2 = Legal, 3 = Ad
+  const [landlordData, setLandlordData] = useState({
+    // Module 1: Criteria
+    location: "",
+    type: "",
+    comfort: "",
+    state: "",
+    rent: "",
+    tenantProfile: "",
+    leaseType: "",
+    management: "",
+    // Module 2: Legal
+    zone: "",
+    nature: "",
+    objective: "",
+    legalForm: "",
+    taxRegime: "",
+    leaseEnvisioned: "",
+    managementMode: "",
+    // Module 3: Ad (Mock)
+    adPhotos: false,
+    adTitle: "",
+    adDescription: "",
+    adPrice: "",
+  });
+
   // Expert-specific data
   const [expertData] = useState({
     company: "",
@@ -240,17 +266,43 @@ export default function Journey() {
     let profile: ClientProfile | ExpertProfile;
 
     if (userType === "client") {
-      profile = {
-        propertyType: clientData.propertyType || "À définir",
-        location: clientData.location || "À définir",
-        budget: clientData.budget || "À définir",
-        rooms: clientData.rooms || "À définir",
-        surface: clientData.surface || "À définir",
-        maritalStatus: clientData.maritalStatus || "À définir",
-        solvabilityScore: 8.5,
-        borrowingCapacity: "350 000 €",
-        estimatedRate: "3.2%",
-      } as ClientProfile;
+      if (subtype === "bailleur") {
+        profile = {
+          propertyType: landlordData.type || "À définir",
+          location: landlordData.location || "À définir",
+          budget: landlordData.rent || "À définir",
+          rooms: "N/A",
+          surface: "N/A",
+          maritalStatus: "N/A",
+          solvabilityScore: undefined,
+          borrowingCapacity: undefined,
+          estimatedRate: undefined,
+        } as ClientProfile;
+      } else if (subtype === "vendeur") {
+        profile = {
+          propertyType: sellerData.type || "À définir",
+          location: sellerData.location || "À définir",
+          budget: sellerData.price || "À définir",
+          rooms: sellerData.details || "À définir",
+          surface: sellerData.details || "À définir",
+          maritalStatus: sellerData.situation || "À définir",
+          solvabilityScore: undefined,
+          borrowingCapacity: undefined,
+          estimatedRate: undefined,
+        } as ClientProfile;
+      } else {
+        profile = {
+          propertyType: clientData.propertyType || "À définir",
+          location: clientData.location || "À définir",
+          budget: clientData.budget || "À définir",
+          rooms: clientData.rooms || "À définir",
+          surface: clientData.surface || "À définir",
+          maritalStatus: clientData.maritalStatus || "À définir",
+          solvabilityScore: 8.5,
+          borrowingCapacity: "350 000 €",
+          estimatedRate: "3.2%",
+        } as ClientProfile;
+      }
     } else {
       profile = {
         certifications: expertData.certifications,
@@ -816,11 +868,342 @@ export default function Journey() {
                 </>
               )}
 
-              {/* Documents Upload (Standard) OR Buyer Modules (Special) */}
+              {/* Documents Upload (Standard) OR Buyer/Seller/Landlord Modules (Special) */}
               {subtype && (
                 <div className="space-y-6">
-                  {/* BUYER SPECIAL JOURNEY */}
-                  {userType === "client" && subtype === "acheteur" ? (
+                  {/* LANDLORD SPECIAL JOURNEY */}
+                  {userType === "client" && subtype === "bailleur" ? (
+                    <div className="space-y-6">
+                      {/* Module 1: Rental Criteria */}
+                      {landlordStep === 1 && (
+                        <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift animate-fade-in-up">
+                          <CardContent className="p-8 space-y-6">
+                            <div className="space-y-2">
+                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
+                                <Building className="h-4 w-4" />
+                                Module 1/3
+                              </div>
+                              <h2 className="text-2xl font-bold text-foreground">{t("journey.landlord.module1.title")}</h2>
+                              <p className="text-muted-foreground">{t("journey.landlord.module1.description")}</p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              <div className="space-y-2">
+                                <Label>{t("journey.landlord.module1.q1")}</Label>
+                                <Input
+                                  value={landlordData.location}
+                                  onChange={(e) => setLandlordData({ ...landlordData, location: e.target.value })}
+                                  placeholder="Ex: Lyon 3ème"
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label>{t("journey.landlord.module1.q2")}</Label>
+                                <Input
+                                  value={landlordData.type}
+                                  onChange={(e) => setLandlordData({ ...landlordData, type: e.target.value })}
+                                  placeholder="Ex: T2, 45m², Ancien"
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label>{t("journey.landlord.module1.q3")}</Label>
+                                <Input
+                                  value={landlordData.comfort}
+                                  onChange={(e) => setLandlordData({ ...landlordData, comfort: e.target.value })}
+                                  placeholder="Ex: Balcon, Ascenseur..."
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label>{t("journey.landlord.module1.q4")}</Label>
+                                <Input
+                                  value={landlordData.state}
+                                  onChange={(e) => setLandlordData({ ...landlordData, state: e.target.value })}
+                                  placeholder="Ex: Bon état, DPE C"
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label>{t("journey.landlord.module1.q5")}</Label>
+                                <Input
+                                  value={landlordData.rent}
+                                  onChange={(e) => setLandlordData({ ...landlordData, rent: e.target.value })}
+                                  placeholder="Ex: 800€ CC"
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label>{t("journey.landlord.module1.q6")}</Label>
+                                <Input
+                                  value={landlordData.tenantProfile}
+                                  onChange={(e) => setLandlordData({ ...landlordData, tenantProfile: e.target.value })}
+                                  placeholder="Ex: Étudiant, Couple..."
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label>{t("journey.landlord.module1.q7")}</Label>
+                                <Input
+                                  value={landlordData.leaseType}
+                                  onChange={(e) => setLandlordData({ ...landlordData, leaseType: e.target.value })}
+                                  placeholder="Ex: Meublé 1 an"
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label>{t("journey.landlord.module1.q8")}</Label>
+                                <Input
+                                  value={landlordData.management}
+                                  onChange={(e) => setLandlordData({ ...landlordData, management: e.target.value })}
+                                  placeholder="Ex: Gestion déléguée"
+                                />
+                              </div>
+                            </div>
+
+                            {/* Documents Module 1 */}
+                            <div className="mt-6 p-6 bg-muted/30 rounded-lg border border-border">
+                              <h3 className="font-semibold mb-4 flex items-center gap-2">
+                                <FileText className="h-4 w-4 text-primary" />
+                                {t("journey.landlord.module1.docs.title")}
+                              </h3>
+                              <div className="space-y-3">
+                                {[
+                                  "journey.landlord.module1.docs.d1",
+                                  "journey.landlord.module1.docs.d2",
+                                  "journey.landlord.module1.docs.d3",
+                                  "journey.landlord.module1.docs.d4",
+                                  "journey.landlord.module1.docs.d5",
+                                  "journey.landlord.module1.docs.d7",
+                                  "journey.landlord.module1.docs.d8",
+                                ].map((key) => (
+                                  <div key={key} className="flex items-center justify-between text-sm">
+                                    <span className="text-muted-foreground">• {t(key)}</span>
+                                    <Button variant="ghost" size="sm" className="h-6 text-primary">
+                                      <Upload className="h-3 w-3 mr-1" /> Importer
+                                    </Button>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+
+                            <div className="flex justify-end pt-4">
+                              <Button onClick={() => setLandlordStep(2)}>
+                                {t("common.continue")} <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      )}
+
+                      {/* Module 2: Legal & Fiscal */}
+                      {landlordStep === 2 && (
+                        <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift animate-fade-in-up">
+                          <CardContent className="p-8 space-y-6">
+                            <div className="space-y-2">
+                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
+                                <Scale className="h-4 w-4" />
+                                Module 2/3
+                              </div>
+                              <h2 className="text-2xl font-bold text-foreground">{t("journey.landlord.module2.title")}</h2>
+                              <p className="text-muted-foreground">{t("journey.landlord.module2.description")}</p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              <div className="space-y-2">
+                                <Label>{t("journey.landlord.module2.q1")}</Label>
+                                <Input
+                                  value={landlordData.zone}
+                                  onChange={(e) => setLandlordData({ ...landlordData, zone: e.target.value })}
+                                  placeholder="Ex: Zone tendue"
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label>{t("journey.landlord.module2.q2")}</Label>
+                                <Input
+                                  value={landlordData.nature}
+                                  onChange={(e) => setLandlordData({ ...landlordData, nature: e.target.value })}
+                                  placeholder="Ex: Meublé"
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label>{t("journey.landlord.module2.q3")}</Label>
+                                <Input
+                                  value={landlordData.objective}
+                                  onChange={(e) => setLandlordData({ ...landlordData, objective: e.target.value })}
+                                  placeholder="Ex: Complément de revenus"
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label>{t("journey.landlord.module2.q4")}</Label>
+                                <Input
+                                  value={landlordData.legalForm}
+                                  onChange={(e) => setLandlordData({ ...landlordData, legalForm: e.target.value })}
+                                  placeholder="Ex: LMNP"
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label>{t("journey.landlord.module2.q5")}</Label>
+                                <Input
+                                  value={landlordData.taxRegime}
+                                  onChange={(e) => setLandlordData({ ...landlordData, taxRegime: e.target.value })}
+                                  placeholder="Ex: Réel"
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label>{t("journey.landlord.module2.q6")}</Label>
+                                <Input
+                                  value={landlordData.leaseEnvisioned}
+                                  onChange={(e) => setLandlordData({ ...landlordData, leaseEnvisioned: e.target.value })}
+                                  placeholder="Ex: Bail étudiant 9 mois"
+                                />
+                              </div>
+                              <div className="space-y-2 md:col-span-2">
+                                <Label>{t("journey.landlord.module2.q7")}</Label>
+                                <Input
+                                  value={landlordData.managementMode}
+                                  onChange={(e) => setLandlordData({ ...landlordData, managementMode: e.target.value })}
+                                  placeholder="Ex: Gestion directe"
+                                />
+                              </div>
+                            </div>
+
+                            {/* Documents Module 2 */}
+                            <div className="mt-6 p-6 bg-muted/30 rounded-lg border border-border">
+                              <h3 className="font-semibold mb-4 flex items-center gap-2">
+                                <FileText className="h-4 w-4 text-primary" />
+                                {t("journey.landlord.module2.docs.title")}
+                              </h3>
+                              <div className="space-y-3">
+                                {[
+                                  "journey.landlord.module2.docs.d1",
+                                  "journey.landlord.module2.docs.d4",
+                                  "journey.landlord.module2.docs.d5",
+                                  "journey.landlord.module2.docs.d6",
+                                  "journey.landlord.module2.docs.d7",
+                                ].map((key) => (
+                                  <div key={key} className="flex items-center justify-between text-sm">
+                                    <span className="text-muted-foreground">• {t(key)}</span>
+                                    <Button variant="ghost" size="sm" className="h-6 text-primary">
+                                      <Upload className="h-3 w-3 mr-1" /> Importer
+                                    </Button>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+
+                            <div className="flex justify-between pt-4">
+                              <Button variant="outline" onClick={() => setLandlordStep(1)}>
+                                {t("common.back")}
+                              </Button>
+                              <Button onClick={() => setLandlordStep(3)}>
+                                {t("common.continue")} <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      )}
+
+                      {/* Module 3: Ad Creation */}
+                      {landlordStep === 3 && (
+                        <Card className="border-border bg-card/80 backdrop-blur-sm card-hover-lift animate-fade-in-up">
+                          <CardContent className="p-8 space-y-6">
+                            <div className="space-y-2">
+                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-sm font-medium text-primary">
+                                <Tag className="h-4 w-4" />
+                                Module 3/3
+                              </div>
+                              <h2 className="text-2xl font-bold text-foreground">{t("journey.landlord.module3.title")}</h2>
+                              <p className="text-muted-foreground">{t("journey.landlord.module3.description")}</p>
+                            </div>
+
+                            <div className="space-y-8">
+                              {/* Step 1: Photos */}
+                              <div className="space-y-4">
+                                <div className="flex items-center gap-3">
+                                  <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center font-bold text-muted-foreground">
+                                    1
+                                  </div>
+                                  <div>
+                                    <h3 className="font-semibold">{t("journey.landlord.module3.step1")}</h3>
+                                    <p className="text-sm text-muted-foreground">{t("journey.landlord.module3.step1Desc")}</p>
+                                  </div>
+                                </div>
+                                <div className="ml-11 border-2 border-dashed border-border rounded-lg p-8 text-center bg-muted/20">
+                                  <Camera className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
+                                  <p className="text-sm text-muted-foreground">Glissez vos photos ici</p>
+                                </div>
+                              </div>
+
+                              {/* Step 2: Title */}
+                              <div className="space-y-4">
+                                <div className="flex items-center gap-3">
+                                  <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center font-bold text-muted-foreground">
+                                    2
+                                  </div>
+                                  <div>
+                                    <h3 className="font-semibold">{t("journey.landlord.module3.step2")}</h3>
+                                    <p className="text-sm text-muted-foreground">{t("journey.landlord.module3.step2Desc")}</p>
+                                  </div>
+                                </div>
+                                <Input
+                                  className="ml-11 max-w-md"
+                                  value={landlordData.adTitle}
+                                  onChange={(e) => setLandlordData({ ...landlordData, adTitle: e.target.value })}
+                                  placeholder="Ex: Superbe T2 rénové - Lyon 6ème"
+                                />
+                              </div>
+
+                              {/* Step 3: Description */}
+                              <div className="space-y-4">
+                                <div className="flex items-center gap-3">
+                                  <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center font-bold text-muted-foreground">
+                                    3
+                                  </div>
+                                  <div>
+                                    <h3 className="font-semibold">{t("journey.landlord.module3.step3")}</h3>
+                                    <p className="text-sm text-muted-foreground">{t("journey.landlord.module3.step3Desc")}</p>
+                                  </div>
+                                </div>
+                                <textarea
+                                  className="ml-11 max-w-md w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 min-h-[100px]"
+                                  value={landlordData.adDescription}
+                                  onChange={(e) => setLandlordData({ ...landlordData, adDescription: e.target.value })}
+                                  placeholder="Décrivez votre bien..."
+                                />
+                              </div>
+
+                              {/* Step 4: Price */}
+                              <div className="space-y-4">
+                                <div className="flex items-center gap-3">
+                                  <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center font-bold text-muted-foreground">
+                                    4
+                                  </div>
+                                  <div>
+                                    <h3 className="font-semibold">{t("journey.landlord.module3.step4")}</h3>
+                                    <p className="text-sm text-muted-foreground">{t("journey.landlord.module3.step4Desc")}</p>
+                                  </div>
+                                </div>
+                                <div className="ml-11 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                                  <p className="text-sm text-blue-700 dark:text-blue-300 mb-2">
+                                    Prix moyen constaté dans votre secteur : <strong>18€/m²</strong>
+                                  </p>
+                                  <Input
+                                    className="max-w-[200px]"
+                                    value={landlordData.adPrice}
+                                    onChange={(e) => setLandlordData({ ...landlordData, adPrice: e.target.value })}
+                                    placeholder="Votre loyer HC"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="flex justify-between pt-8">
+                              <Button variant="outline" onClick={() => setLandlordStep(2)}>
+                                {t("common.back")}
+                              </Button>
+                              <Button onClick={handleComplete}>
+                                <CheckCircle2 className="mr-2 h-4 w-4" /> {t("journey.landlord.module3.generate")}
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      )}
+                    </div>
+                  ) : userType === "client" && subtype === "acheteur" ? (
                     <div className="space-y-6">
                       {/* Module 1: Criteria */}
                       {buyerStep === 1 && (

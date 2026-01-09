@@ -27,7 +27,7 @@ export function VendorsTab() {
                 <span className="font-bold">{vendor.rating}</span>
               </div>
               <Button className="w-full" variant="outline">
-                {t("dashboard.clients.contact") || "Contacter"}
+                {t("dashboard.vendors.contact") || "Contacter"}
               </Button>
             </CardContent>
           </Card>

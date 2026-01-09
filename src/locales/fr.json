@@ -666,6 +666,62 @@
         "failure": "Solvabilité insuffisante",
         "failureDesc": "Nous vous recommandons de contacter un courtier ou de revoir vos critères."
       }
+    },
+    "landlord": {
+      "module1": {
+        "title": "Critères de mise en location",
+        "description": "Définissez votre bien pour une mise en relation ciblée",
+        "q1": "Quelle(s) ville(s), quartier(s), zone géographique ?",
+        "q2": "Type de bien, ancienneté, surface, pièces ?",
+        "q3": "Extérieurs, équipements, confort ?",
+        "q4": "État du bien, DPE, travaux nécessaires ?",
+        "q5": "Loyer souhaité, charges, encadrement ?",
+        "q6": "Profil locataire recherché ?",
+        "q7": "Type de bail et durée souhaitée ?",
+        "q8": "Gestion locative : Seul ou Déléguée ?",
+        "docs": {
+          "title": "Documents requis",
+          "d1": "Titre de propriété ou acte notarié",
+          "d2": "Diagnostic surface / Plans",
+          "d3": "Diagnostics techniques (DPE, gaz, élec...)",
+          "d4": "Factures de rénovation",
+          "d5": "Taxe foncière / Règlement copropriété",
+          "d7": "Attestation assurance loyers impayés",
+          "d8": "Mandat de gestion (si expert)"
+        }
+      },
+      "module2": {
+        "title": "Situation juridique et fiscale",
+        "description": "Optimisez votre fiscalité et sécurisez votre location",
+        "q1": "Zone tendue / Encadrement des loyers ?",
+        "q2": "Nature du bien (Vide, Meublé, Saisonnier) ?",
+        "q3": "Objectif (Revenus, Amortissement, Transmission) ?",
+        "q4": "Forme juridique (Nom propre, LMNP, SCI...) ?",
+        "q5": "Régime fiscal (Micro-foncier, Réel...) ?",
+        "q6": "Type de bail envisagé ?",
+        "q7": "Mode de gestion (Directe, Agence, SCI) ?",
+        "docs": {
+          "title": "Documents juridiques",
+          "d1": "Titre de propriété",
+          "d4": "Statuts société / Décl. Greffe LMNP",
+          "d5": "Derniers avis d'imposition / Simulation",
+          "d6": "Déclaration préalable mairie (si meublé)",
+          "d7": "Mandat de gestion / Statuts SCI"
+        }
+      },
+      "module3": {
+        "title": "Création de votre annonce",
+        "description": "Mettez en valeur votre bien pour louer rapidement",
+        "step1": "Choix des photos",
+        "step1Desc": "Sélectionnez vos meilleures photos ou demandez un photographe",
+        "step2": "Titre de l'annonce",
+        "step2Desc": "Accrocheur et précis",
+        "step3": "Description détaillée",
+        "step3Desc": "Mettez en avant les atouts (calme, lumineux...)",
+        "step4": "Prix du marché",
+        "step4Desc": "Positionnement : Optimal, Compétitif, Premium",
+        "generate": "Générer l'annonce"
+      }
     }
   },
   "profile": {

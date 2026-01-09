@@ -617,6 +617,62 @@
         "evaluator": "Property evaluator"
       },
       "createProfile": "Create my expert profile"
+    },
+    "landlord": {
+      "module1": {
+        "title": "Rental Criteria",
+        "description": "Define your property for targeted matching",
+        "q1": "Which city, neighborhood, geographical area?",
+        "q2": "Property type, age, surface, rooms?",
+        "q3": "Exterior, equipment, comfort?",
+        "q4": "Property condition, EPC, work needed?",
+        "q5": "Desired rent, charges, rent control?",
+        "q6": "Target tenant profile?",
+        "q7": "Lease type and duration?",
+        "q8": "Management: Direct or Delegated?",
+        "docs": {
+          "title": "Required documents",
+          "d1": "Property title or notarial deed",
+          "d2": "Surface certificate / Plans",
+          "d3": "Technical diagnostics (EPC, gas, elec...)",
+          "d4": "Renovation invoices",
+          "d5": "Property tax / Co-ownership regulations",
+          "d7": "Unpaid rent insurance certificate",
+          "d8": "Management mandate (if expert)"
+        }
+      },
+      "module2": {
+        "title": "Legal and Fiscal Status",
+        "description": "Optimize your taxation and secure your rental",
+        "q1": "Tight zone / Rent control?",
+        "q2": "Property nature (Empty, Furnished, Seasonal)?",
+        "q3": "Objective (Income, Amortization, Transmission)?",
+        "q4": "Legal form (Individual, LMNP, SCI...)?",
+        "q5": "Tax regime (Micro-land, Real...)?",
+        "q6": "Envisioned lease type?",
+        "q7": "Management mode (Direct, Agency, SCI)?",
+        "docs": {
+          "title": "Legal documents",
+          "d1": "Property title",
+          "d4": "Company statutes / LMNP declaration",
+          "d5": "Last tax notice / Simulation",
+          "d6": "City hall declaration (if furnished)",
+          "d7": "Management mandate / SCI statutes"
+        }
+      },
+      "module3": {
+        "title": "Create your ad",
+        "description": "Highlight your property to rent quickly",
+        "step1": "Photo choice",
+        "step1Desc": "Select your best photos or ask a photographer",
+        "step2": "Ad title",
+        "step2Desc": "Catchy and precise",
+        "step3": "Detailed description",
+        "step3Desc": "Highlight assets (calm, bright...)",
+        "step4": "Market price",
+        "step4Desc": "Positioning: Optimal, Competitive, Premium",
+        "generate": "Generate ad"
+      }
     }
   },
   "profile": {
