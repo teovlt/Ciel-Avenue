@@ -1,19 +1,15 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { useAuth } from "@/providers/auth-provider";
 import { UserCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
-import { BrokerOverviewTab } from "../tabs/BrokerOverviewTab";
-import { BrokerMissionsTab } from "../tabs/BrokerMissionsTab";
-import { BrokerQuotesTab } from "../tabs/BrokerQuotesTab";
-import { BrokerDocumentsTab } from "../tabs/BrokerDocumentsTab";
-import { BrokerPaymentsTab } from "../tabs/BrokerPaymentsTab";
+import { ContractorOverviewTab } from "./ContractorOverviewTab";
+import { ContractorMissionsTab } from "./ContractorMissionsTab";
+import { ContractorQuotesTab } from "./ContractorQuotesTab";
+import { ContractorDocumentsTab } from "./ContractorDocumentsTab";
+import { ContractorPaymentsTab } from "./ContractorPaymentsTab";
 
-import { FileText, Briefcase, FileCheck, Euro, LayoutDashboard } from "lucide-react";
-
-export function BrokerDashboard() {
-  const { user } = useAuth();
+export function ContractorDashboard() {
   const { t } = useTranslation();
 
   return (
@@ -28,8 +24,8 @@ export function BrokerDashboard() {
         <div className="container mx-auto px-4 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
-              <h1 className="text-3xl font-bold text-foreground">Espace Courtier</h1>
-              <p className="text-muted-foreground mt-1">Bonjour {user?.firstName || "Courtier"}, gérez vos financements et vos clients.</p>
+              <h1 className="text-3xl font-bold text-foreground">Espace Maître d'Œuvre</h1>
+              <p className="text-muted-foreground mt-1">Pilotez vos chantiers et coordonnez les travaux.</p>
             </div>
             <div className="flex items-center gap-3">
               <Button asChild variant="outline" size="sm">
@@ -46,48 +42,38 @@ export function BrokerDashboard() {
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
         <Tabs defaultValue="overview" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-2 h-auto md:grid-cols-5 p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
-            <TabsTrigger value="overview">
-              <LayoutDashboard className="h-4 w-4 mr-2" />
-              <span className="hidden md:inline">Vue d'ensemble</span>
-              <span className="md:hidden">Aperçu</span>
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
+            <TabsTrigger value="overview" className="text-xs sm:text-sm">
+              Accueil
             </TabsTrigger>
-            <TabsTrigger value="missions">
-              <Briefcase className="h-4 w-4 mr-2" />
+            <TabsTrigger value="missions" className="text-xs sm:text-sm">
               Missions
             </TabsTrigger>
-            <TabsTrigger value="quotes">
-              <FileText className="h-4 w-4 mr-2" />
-              Devis
+            <TabsTrigger value="quotes" className="text-xs sm:text-sm">
+              Vos devis
             </TabsTrigger>
-            <TabsTrigger value="documents">
-              <FileCheck className="h-4 w-4 mr-2" />
-              <span>Docs</span>
+            <TabsTrigger value="documents" className="text-xs sm:text-sm">
+              Vos documents
             </TabsTrigger>
-            <TabsTrigger value="payments">
-              <Euro className="h-4 w-4 mr-2" />
+            <TabsTrigger value="payments" className="text-xs sm:text-sm">
               Paiements
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview">
-            <BrokerOverviewTab />
+            <ContractorOverviewTab />
           </TabsContent>
-
           <TabsContent value="missions">
-            <BrokerMissionsTab />
+            <ContractorMissionsTab />
           </TabsContent>
-
           <TabsContent value="quotes">
-            <BrokerQuotesTab />
+            <ContractorQuotesTab />
           </TabsContent>
-
           <TabsContent value="documents">
-            <BrokerDocumentsTab />
+            <ContractorDocumentsTab />
           </TabsContent>
-
           <TabsContent value="payments">
-            <BrokerPaymentsTab />
+            <ContractorPaymentsTab />
           </TabsContent>
         </Tabs>
       </div>

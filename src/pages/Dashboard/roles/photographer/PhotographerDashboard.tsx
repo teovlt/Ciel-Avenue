@@ -3,13 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
-import { NotaryOverviewTab } from "../tabs/NotaryOverviewTab";
-import { NotaryMissionsTab } from "../tabs/NotaryMissionsTab";
-import { NotaryQuotesTab } from "../tabs/NotaryQuotesTab";
-import { NotaryDocumentsTab } from "../tabs/NotaryDocumentsTab";
-import { NotaryPaymentsTab } from "../tabs/NotaryPaymentsTab";
+import { PhotographerOverviewTab } from "./PhotographerOverviewTab";
+import { PhotographerMissionsTab } from "./PhotographerMissionsTab";
+import { PhotographerQuotesTab } from "./PhotographerQuotesTab";
+import { PhotographerDocumentsTab } from "./PhotographerDocumentsTab";
+import { PhotographerPaymentsTab } from "./PhotographerPaymentsTab";
 
-export function NotaryDashboard() {
+export function PhotographerDashboard() {
   const { t } = useTranslation();
 
   return (
@@ -24,8 +24,8 @@ export function NotaryDashboard() {
         <div className="container mx-auto px-4 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
-              <h1 className="text-3xl font-bold text-foreground">Espace Notaire</h1>
-              <p className="text-muted-foreground mt-1">Gérez vos missions et votre activité notariale.</p>
+              <h1 className="text-3xl font-bold text-foreground">Espace Photographe</h1>
+              <p className="text-muted-foreground mt-1">Gérez vos reportages et visites virtuelles.</p>
             </div>
             <div className="flex items-center gap-3">
               <Button asChild variant="outline" size="sm">
@@ -61,19 +61,19 @@ export function NotaryDashboard() {
           </TabsList>
 
           <TabsContent value="overview">
-            <NotaryOverviewTab />
+            <PhotographerOverviewTab />
           </TabsContent>
           <TabsContent value="missions">
-            <NotaryMissionsTab />
+            <PhotographerMissionsTab />
           </TabsContent>
           <TabsContent value="quotes">
-            <NotaryQuotesTab />
+            <PhotographerQuotesTab />
           </TabsContent>
           <TabsContent value="documents">
-            <NotaryDocumentsTab />
+            <PhotographerDocumentsTab />
           </TabsContent>
           <TabsContent value="payments">
-            <NotaryPaymentsTab />
+            <PhotographerPaymentsTab />
           </TabsContent>
         </Tabs>
       </div>

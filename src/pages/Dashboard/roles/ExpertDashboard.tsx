@@ -5,11 +5,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/providers/auth-provider";
-import { ExpertClientsTab } from "../tabs/ExpertClientsTab";
-import { ExpertMissionsTab } from "../tabs/ExpertMissionsTab";
-import { NotaryMissionsTab } from "../tabs/NotaryMissionsTab";
-import { ExpertScheduleTab } from "../tabs/ExpertScheduleTab";
-import { MessagesTab } from "../tabs/MessagesTab";
+import { ExpertClientsTab } from "./shared/ExpertClientsTab";
+import { ExpertMissionsTab } from "./shared/ExpertMissionsTab";
+import { NotaryMissionsTab } from "./notary/NotaryMissionsTab";
+import { ExpertScheduleTab } from "./shared/ExpertScheduleTab";
+import { MessagesTab } from "./shared/MessagesTab";
 
 export function ExpertDashboard() {
   const { t } = useTranslation();

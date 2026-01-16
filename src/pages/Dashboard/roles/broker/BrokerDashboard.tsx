@@ -1,15 +1,19 @@
-import { UserCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { useAuth } from "@/providers/auth-provider";
+import { UserCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { MarchandOverviewTab } from "../tabs/MarchandOverviewTab";
-import { MarchandMissionsTab } from "../tabs/MarchandMissionsTab";
-import { MarchandQuotesTab } from "../tabs/MarchandQuotesTab";
-import { MarchandDocumentsTab } from "../tabs/MarchandDocumentsTab";
-import { MarchandPaymentsTab } from "../tabs/MarchandPaymentsTab";
+import { BrokerOverviewTab } from "./BrokerOverviewTab";
+import { BrokerMissionsTab } from "./BrokerMissionsTab";
+import { BrokerQuotesTab } from "./BrokerQuotesTab";
+import { BrokerDocumentsTab } from "./BrokerDocumentsTab";
+import { BrokerPaymentsTab } from "./BrokerPaymentsTab";
 
-export function MarchandDashboard() {
+import { FileText, Briefcase, FileCheck, Euro, LayoutDashboard } from "lucide-react";
+
+export function BrokerDashboard() {
+  const { user } = useAuth();
   const { t } = useTranslation();
 
   return (
@@ -24,8 +28,8 @@ export function MarchandDashboard() {
         <div className="container mx-auto px-4 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
-              <h1 className="text-3xl font-bold text-foreground">Espace Marchand de Biens</h1>
-              <p className="text-muted-foreground mt-1">Gérez vos opérations d'investissement et clientèle.</p>
+              <h1 className="text-3xl font-bold text-foreground">Espace Courtier</h1>
+              <p className="text-muted-foreground mt-1">Bonjour {user?.firstName || "Courtier"}, gérez vos financements et vos clients.</p>
             </div>
             <div className="flex items-center gap-3">
               <Button asChild variant="outline" size="sm">
@@ -42,38 +46,48 @@ export function MarchandDashboard() {
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
         <Tabs defaultValue="overview" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
-            <TabsTrigger value="overview" className="text-xs sm:text-sm">
-              Accueil
+          <TabsList className="grid w-full grid-cols-2 h-auto md:grid-cols-5 p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
+            <TabsTrigger value="overview">
+              <LayoutDashboard className="h-4 w-4 mr-2" />
+              <span className="hidden md:inline">Vue d'ensemble</span>
+              <span className="md:hidden">Aperçu</span>
             </TabsTrigger>
-            <TabsTrigger value="missions" className="text-xs sm:text-sm">
+            <TabsTrigger value="missions">
+              <Briefcase className="h-4 w-4 mr-2" />
               Missions
             </TabsTrigger>
-            <TabsTrigger value="quotes" className="text-xs sm:text-sm">
-              Vos devis
+            <TabsTrigger value="quotes">
+              <FileText className="h-4 w-4 mr-2" />
+              Devis
             </TabsTrigger>
-            <TabsTrigger value="documents" className="text-xs sm:text-sm">
-              Vos documents
+            <TabsTrigger value="documents">
+              <FileCheck className="h-4 w-4 mr-2" />
+              <span>Docs</span>
             </TabsTrigger>
-            <TabsTrigger value="payments" className="text-xs sm:text-sm">
+            <TabsTrigger value="payments">
+              <Euro className="h-4 w-4 mr-2" />
               Paiements
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview">
-            <MarchandOverviewTab />
+            <BrokerOverviewTab />
           </TabsContent>
+
           <TabsContent value="missions">
-            <MarchandMissionsTab />
+            <BrokerMissionsTab />
           </TabsContent>
+
           <TabsContent value="quotes">
-            <MarchandQuotesTab />
+            <BrokerQuotesTab />
           </TabsContent>
+
           <TabsContent value="documents">
-            <MarchandDocumentsTab />
+            <BrokerDocumentsTab />
           </TabsContent>
+
           <TabsContent value="payments">
-            <MarchandPaymentsTab />
+            <BrokerPaymentsTab />
           </TabsContent>
         </Tabs>
       </div>

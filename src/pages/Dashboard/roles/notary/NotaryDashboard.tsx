@@ -3,13 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
-import { PromoterOverviewTab } from "../tabs/PromoterOverviewTab";
-import { PromoterMissionsTab } from "../tabs/PromoterMissionsTab";
-import { PromoterProgramsTab } from "../tabs/PromoterProgramsTab";
-import { PromoterDocumentsTab } from "../tabs/PromoterDocumentsTab";
-import { PromoterPaymentsTab } from "../tabs/PromoterPaymentsTab";
+import { NotaryOverviewTab } from "./NotaryOverviewTab";
+import { NotaryMissionsTab } from "./NotaryMissionsTab";
+import { NotaryQuotesTab } from "./NotaryQuotesTab";
+import { NotaryDocumentsTab } from "./NotaryDocumentsTab";
+import { NotaryPaymentsTab } from "./NotaryPaymentsTab";
 
-export function PromoterDashboard() {
+export function NotaryDashboard() {
   const { t } = useTranslation();
 
   return (
@@ -24,8 +24,8 @@ export function PromoterDashboard() {
         <div className="container mx-auto px-4 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
-              <h1 className="text-3xl font-bold text-foreground">Espace Promoteur</h1>
-              <p className="text-muted-foreground mt-1">Gérez vos programmes immobiliers neufs.</p>
+              <h1 className="text-3xl font-bold text-foreground">Espace Notaire</h1>
+              <p className="text-muted-foreground mt-1">Gérez vos missions et votre activité notariale.</p>
             </div>
             <div className="flex items-center gap-3">
               <Button asChild variant="outline" size="sm">
@@ -49,8 +49,8 @@ export function PromoterDashboard() {
             <TabsTrigger value="missions" className="text-xs sm:text-sm">
               Missions
             </TabsTrigger>
-            <TabsTrigger value="programs" className="text-xs sm:text-sm">
-              Vos Programmes
+            <TabsTrigger value="quotes" className="text-xs sm:text-sm">
+              Vos devis
             </TabsTrigger>
             <TabsTrigger value="documents" className="text-xs sm:text-sm">
               Vos documents
@@ -61,19 +61,19 @@ export function PromoterDashboard() {
           </TabsList>
 
           <TabsContent value="overview">
-            <PromoterOverviewTab />
+            <NotaryOverviewTab />
           </TabsContent>
           <TabsContent value="missions">
-            <PromoterMissionsTab />
+            <NotaryMissionsTab />
           </TabsContent>
-          <TabsContent value="programs">
-            <PromoterProgramsTab />
+          <TabsContent value="quotes">
+            <NotaryQuotesTab />
           </TabsContent>
           <TabsContent value="documents">
-            <PromoterDocumentsTab />
+            <NotaryDocumentsTab />
           </TabsContent>
           <TabsContent value="payments">
-            <PromoterPaymentsTab />
+            <NotaryPaymentsTab />
           </TabsContent>
         </Tabs>
       </div>

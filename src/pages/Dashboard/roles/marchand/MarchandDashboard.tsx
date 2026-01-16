@@ -3,13 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
-import { PhotographerOverviewTab } from "../tabs/PhotographerOverviewTab";
-import { PhotographerMissionsTab } from "../tabs/PhotographerMissionsTab";
-import { PhotographerQuotesTab } from "../tabs/PhotographerQuotesTab";
-import { PhotographerDocumentsTab } from "../tabs/PhotographerDocumentsTab";
-import { PhotographerPaymentsTab } from "../tabs/PhotographerPaymentsTab";
+import { MarchandOverviewTab } from "./MarchandOverviewTab";
+import { MarchandMissionsTab } from "./MarchandMissionsTab";
+import { MarchandQuotesTab } from "./MarchandQuotesTab";
+import { MarchandDocumentsTab } from "./MarchandDocumentsTab";
+import { MarchandPaymentsTab } from "./MarchandPaymentsTab";
 
-export function PhotographerDashboard() {
+export function MarchandDashboard() {
   const { t } = useTranslation();
 
   return (
@@ -24,8 +24,8 @@ export function PhotographerDashboard() {
         <div className="container mx-auto px-4 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
-              <h1 className="text-3xl font-bold text-foreground">Espace Photographe</h1>
-              <p className="text-muted-foreground mt-1">Gérez vos reportages et visites virtuelles.</p>
+              <h1 className="text-3xl font-bold text-foreground">Espace Marchand de Biens</h1>
+              <p className="text-muted-foreground mt-1">Gérez vos opérations d'investissement et clientèle.</p>
             </div>
             <div className="flex items-center gap-3">
               <Button asChild variant="outline" size="sm">
@@ -61,19 +61,19 @@ export function PhotographerDashboard() {
           </TabsList>
 
           <TabsContent value="overview">
-            <PhotographerOverviewTab />
+            <MarchandOverviewTab />
           </TabsContent>
           <TabsContent value="missions">
-            <PhotographerMissionsTab />
+            <MarchandMissionsTab />
           </TabsContent>
           <TabsContent value="quotes">
-            <PhotographerQuotesTab />
+            <MarchandQuotesTab />
           </TabsContent>
           <TabsContent value="documents">
-            <PhotographerDocumentsTab />
+            <MarchandDocumentsTab />
           </TabsContent>
           <TabsContent value="payments">
-            <PhotographerPaymentsTab />
+            <MarchandPaymentsTab />
           </TabsContent>
         </Tabs>
       </div>

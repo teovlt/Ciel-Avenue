@@ -3,14 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
+import { DiagnosticianOverviewTab } from "./DiagnosticianOverviewTab";
+import { DiagnosticianMissionsTab } from "./DiagnosticianMissionsTab";
+import { DiagnosticianQuotesTab } from "./DiagnosticianQuotesTab";
+import { DiagnosticianDocumentsTab } from "./DiagnosticianDocumentsTab";
+import { DiagnosticianPaymentsTab } from "./DiagnosticianPaymentsTab";
 
-import { ArtisanOverviewTab } from "../tabs/ArtisanOverviewTab";
-import { ArtisanMissionsTab } from "../tabs/ArtisanMissionsTab";
-import { ArtisanQuotesTab } from "../tabs/ArtisanQuotesTab";
-import { ArtisanDocumentsTab } from "../tabs/ArtisanDocumentsTab";
-import { ArtisanPaymentsTab } from "../tabs/ArtisanPaymentsTab";
-
-export function ArtisanDashboard() {
+export function DiagnosticianDashboard() {
   const { t } = useTranslation();
 
   return (
@@ -25,8 +24,8 @@ export function ArtisanDashboard() {
         <div className="container mx-auto px-4 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
-              <h1 className="text-3xl font-bold text-foreground">Espace Artisan</h1>
-              <p className="text-muted-foreground mt-1">Gérez vos chantiers et devis travaux.</p>
+              <h1 className="text-3xl font-bold text-foreground">Espace Diagnostiqueur</h1>
+              <p className="text-muted-foreground mt-1">Gérez vos diagnostics immobiliers.</p>
             </div>
             <div className="flex items-center gap-3">
               <Button asChild variant="outline" size="sm">
@@ -48,7 +47,7 @@ export function ArtisanDashboard() {
               Accueil
             </TabsTrigger>
             <TabsTrigger value="missions" className="text-xs sm:text-sm">
-              Chantiers
+              Missions
             </TabsTrigger>
             <TabsTrigger value="quotes" className="text-xs sm:text-sm">
               Vos devis
@@ -57,24 +56,24 @@ export function ArtisanDashboard() {
               Vos documents
             </TabsTrigger>
             <TabsTrigger value="payments" className="text-xs sm:text-sm">
-              Paiements
+              Vos paiements
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview">
-            <ArtisanOverviewTab />
+            <DiagnosticianOverviewTab />
           </TabsContent>
           <TabsContent value="missions">
-            <ArtisanMissionsTab />
+            <DiagnosticianMissionsTab />
           </TabsContent>
           <TabsContent value="quotes">
-            <ArtisanQuotesTab />
+            <DiagnosticianQuotesTab />
           </TabsContent>
           <TabsContent value="documents">
-            <ArtisanDocumentsTab />
+            <DiagnosticianDocumentsTab />
           </TabsContent>
           <TabsContent value="payments">
-            <ArtisanPaymentsTab />
+            <DiagnosticianPaymentsTab />
           </TabsContent>
         </Tabs>
       </div>

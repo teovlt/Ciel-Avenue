@@ -3,15 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
-import { MessagesTab } from "../tabs/MessagesTab";
-import { NeedsTab } from "../tabs/NeedsTab";
-import { ListingsTab } from "../tabs/ListingsTab";
-import { BuyerPoolTab } from "../tabs/BuyerPoolTab";
-import { ExpertsTab } from "../tabs/ExpertsTab";
-import { TipsTab } from "../tabs/TipsTab";
-import { PatrimonyTab } from "../tabs/PatrimonyTab";
+import { MessagesTab } from "../shared/MessagesTab";
+import { NeedsTab } from "../shared/NeedsTab";
+import { LandlordPoolTab } from "../bailleur/LandlordPoolTab";
+import { ExpertsTab } from "../shared/ExpertsTab";
+import { VisitsTab } from "../shared/VisitsTab";
+import { PostMoveInTab } from "./PostMoveInTab";
+import { PatrimonyTab } from "../shared/PatrimonyTab";
 
-export function SellerDashboard() {
+export function LocataireDashboard() {
   const { t } = useTranslation();
 
   return (
@@ -26,8 +26,8 @@ export function SellerDashboard() {
         <div className="container mx-auto px-4 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
-              <h1 className="text-3xl font-bold text-foreground">Tableau de bord Vendeur</h1>
-              <p className="text-muted-foreground mt-1">Gérez la vente de vos biens et suivez les acquéreurs potentiels.</p>
+              <h1 className="text-3xl font-bold text-foreground">Tableau de bord Locataire</h1>
+              <p className="text-muted-foreground mt-1">Gérez vos recherches et votre installation.</p>
             </div>
             <div className="flex items-center gap-3">
               <Button asChild variant="outline" size="sm">
@@ -43,25 +43,25 @@ export function SellerDashboard() {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
-        <Tabs defaultValue="listings" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-7 h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
+        <Tabs defaultValue="needs" className="space-y-8">
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
             <TabsTrigger value="needs" className="text-xs sm:text-sm">
               {t("dashboard.tabs.needs")}
             </TabsTrigger>
             <TabsTrigger value="messages" className="text-xs sm:text-sm">
               {t("dashboard.tabs.messages")}
             </TabsTrigger>
-            <TabsTrigger value="buyers" className="text-xs sm:text-sm">
-              Parc acheteur
+            <TabsTrigger value="landlords" className="text-xs sm:text-sm">
+              Parc bailleur
             </TabsTrigger>
             <TabsTrigger value="experts" className="text-xs sm:text-sm">
-              Experts
+              Accompagnements
             </TabsTrigger>
-            <TabsTrigger value="listings" className="text-xs sm:text-sm">
-              Mes annonces
+            <TabsTrigger value="visits" className="text-xs sm:text-sm">
+              Mon agenda
             </TabsTrigger>
-            <TabsTrigger value="tips" className="text-xs sm:text-sm">
-              Conseils
+            <TabsTrigger value="post_move_in" className="text-xs sm:text-sm">
+              Après logement
             </TabsTrigger>
             <TabsTrigger value="patrimony" className="text-xs sm:text-sm">
               {t("dashboard.tabs.patrimony")}
@@ -74,17 +74,17 @@ export function SellerDashboard() {
           <TabsContent value="messages">
             <MessagesTab />
           </TabsContent>
-          <TabsContent value="buyers">
-            <BuyerPoolTab />
+          <TabsContent value="landlords">
+            <LandlordPoolTab />
           </TabsContent>
           <TabsContent value="experts">
             <ExpertsTab />
           </TabsContent>
-          <TabsContent value="listings">
-            <ListingsTab />
+          <TabsContent value="visits">
+            <VisitsTab />
           </TabsContent>
-          <TabsContent value="tips">
-            <TipsTab />
+          <TabsContent value="post_move_in">
+            <PostMoveInTab />
           </TabsContent>
           <TabsContent value="patrimony">
             <PatrimonyTab />

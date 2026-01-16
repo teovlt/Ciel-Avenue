@@ -3,15 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
-import { MessagesTab } from "../tabs/MessagesTab";
-import { NeedsTab } from "../tabs/NeedsTab";
-import { ArtisanPoolTab } from "../tabs/ArtisanPoolTab";
-import { ExpertsTab } from "../tabs/ExpertsTab";
-import { QuotesTab } from "../tabs/QuotesTab";
-import { PostRenovationTab } from "../tabs/PostRenovationTab";
-import { PatrimonyTab } from "../tabs/PatrimonyTab";
+import { MessagesTab } from "../shared/MessagesTab";
+import { NeedsTab } from "../shared/NeedsTab";
+import { ListingsTab } from "./ListingsTab";
+import { BuyerPoolTab } from "../buyer/BuyerPoolTab";
+import { ExpertsTab } from "../shared/ExpertsTab";
+import { TipsTab } from "../shared/TipsTab";
+import { PatrimonyTab } from "../shared/PatrimonyTab";
 
-export function RenovateurDashboard() {
+export function SellerDashboard() {
   const { t } = useTranslation();
 
   return (
@@ -26,8 +26,8 @@ export function RenovateurDashboard() {
         <div className="container mx-auto px-4 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
-              <h1 className="text-3xl font-bold text-foreground">Tableau de bord Rénovateur</h1>
-              <p className="text-muted-foreground mt-1">Suivez vos travaux et gérez vos devis.</p>
+              <h1 className="text-3xl font-bold text-foreground">Tableau de bord Vendeur</h1>
+              <p className="text-muted-foreground mt-1">Gérez la vente de vos biens et suivez les acquéreurs potentiels.</p>
             </div>
             <div className="flex items-center gap-3">
               <Button asChild variant="outline" size="sm">
@@ -43,25 +43,25 @@ export function RenovateurDashboard() {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
-        <Tabs defaultValue="needs" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
+        <Tabs defaultValue="listings" className="space-y-8">
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-7 h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
             <TabsTrigger value="needs" className="text-xs sm:text-sm">
               {t("dashboard.tabs.needs")}
             </TabsTrigger>
             <TabsTrigger value="messages" className="text-xs sm:text-sm">
               {t("dashboard.tabs.messages")}
             </TabsTrigger>
-            <TabsTrigger value="artisans" className="text-xs sm:text-sm">
-              Parc artisans
+            <TabsTrigger value="buyers" className="text-xs sm:text-sm">
+              Parc acheteur
             </TabsTrigger>
             <TabsTrigger value="experts" className="text-xs sm:text-sm">
-              Accompagnements
+              Experts
             </TabsTrigger>
-            <TabsTrigger value="quotes" className="text-xs sm:text-sm">
-              Mes devis
+            <TabsTrigger value="listings" className="text-xs sm:text-sm">
+              Mes annonces
             </TabsTrigger>
-            <TabsTrigger value="post_renovation" className="text-xs sm:text-sm">
-              Après rénovation
+            <TabsTrigger value="tips" className="text-xs sm:text-sm">
+              Conseils
             </TabsTrigger>
             <TabsTrigger value="patrimony" className="text-xs sm:text-sm">
               {t("dashboard.tabs.patrimony")}
@@ -74,17 +74,17 @@ export function RenovateurDashboard() {
           <TabsContent value="messages">
             <MessagesTab />
           </TabsContent>
-          <TabsContent value="artisans">
-            <ArtisanPoolTab />
+          <TabsContent value="buyers">
+            <BuyerPoolTab />
           </TabsContent>
           <TabsContent value="experts">
             <ExpertsTab />
           </TabsContent>
-          <TabsContent value="quotes">
-            <QuotesTab />
+          <TabsContent value="listings">
+            <ListingsTab />
           </TabsContent>
-          <TabsContent value="post_renovation">
-            <PostRenovationTab />
+          <TabsContent value="tips">
+            <TipsTab />
           </TabsContent>
           <TabsContent value="patrimony">
             <PatrimonyTab />

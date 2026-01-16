@@ -3,13 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
-import { ContractorOverviewTab } from "../tabs/ContractorOverviewTab";
-import { ContractorMissionsTab } from "../tabs/ContractorMissionsTab";
-import { ContractorQuotesTab } from "../tabs/ContractorQuotesTab";
-import { ContractorDocumentsTab } from "../tabs/ContractorDocumentsTab";
-import { ContractorPaymentsTab } from "../tabs/ContractorPaymentsTab";
 
-export function ContractorDashboard() {
+import { ArtisanOverviewTab } from "./ArtisanOverviewTab";
+import { ArtisanMissionsTab } from "./ArtisanMissionsTab";
+import { ArtisanQuotesTab } from "./ArtisanQuotesTab";
+import { ArtisanDocumentsTab } from "./ArtisanDocumentsTab";
+import { ArtisanPaymentsTab } from "./ArtisanPaymentsTab";
+
+export function ArtisanDashboard() {
   const { t } = useTranslation();
 
   return (
@@ -24,8 +25,8 @@ export function ContractorDashboard() {
         <div className="container mx-auto px-4 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
-              <h1 className="text-3xl font-bold text-foreground">Espace Maître d'Œuvre</h1>
-              <p className="text-muted-foreground mt-1">Pilotez vos chantiers et coordonnez les travaux.</p>
+              <h1 className="text-3xl font-bold text-foreground">Espace Artisan</h1>
+              <p className="text-muted-foreground mt-1">Gérez vos chantiers et devis travaux.</p>
             </div>
             <div className="flex items-center gap-3">
               <Button asChild variant="outline" size="sm">
@@ -47,7 +48,7 @@ export function ContractorDashboard() {
               Accueil
             </TabsTrigger>
             <TabsTrigger value="missions" className="text-xs sm:text-sm">
-              Missions
+              Chantiers
             </TabsTrigger>
             <TabsTrigger value="quotes" className="text-xs sm:text-sm">
               Vos devis
@@ -61,19 +62,19 @@ export function ContractorDashboard() {
           </TabsList>
 
           <TabsContent value="overview">
-            <ContractorOverviewTab />
+            <ArtisanOverviewTab />
           </TabsContent>
           <TabsContent value="missions">
-            <ContractorMissionsTab />
+            <ArtisanMissionsTab />
           </TabsContent>
           <TabsContent value="quotes">
-            <ContractorQuotesTab />
+            <ArtisanQuotesTab />
           </TabsContent>
           <TabsContent value="documents">
-            <ContractorDocumentsTab />
+            <ArtisanDocumentsTab />
           </TabsContent>
           <TabsContent value="payments">
-            <ContractorPaymentsTab />
+            <ArtisanPaymentsTab />
           </TabsContent>
         </Tabs>
       </div>

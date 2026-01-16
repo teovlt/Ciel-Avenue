@@ -3,13 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
-import { MessagesTab } from "../tabs/MessagesTab";
-import { NeedsTab } from "../tabs/NeedsTab";
-import { TenantPoolTab } from "../tabs/TenantPoolTab";
-import { ExpertsTab } from "../tabs/ExpertsTab";
-import { PostRentalTab } from "../tabs/PostRentalTab";
-import { PatrimonyTab } from "../tabs/PatrimonyTab";
-import { RentalListingsTab } from "../tabs/RentalListingsTab";
+import { MessagesTab } from "../shared/MessagesTab";
+import { NeedsTab } from "../shared/NeedsTab";
+import { TenantPoolTab } from "../locataire/TenantPoolTab";
+import { ExpertsTab } from "../shared/ExpertsTab";
+import { PostRentalTab } from "./PostRentalTab";
+import { PatrimonyTab } from "../shared/PatrimonyTab";
+import { RentalListingsTab } from "./RentalListingsTab";
 
 export function BailleurDashboard() {
   const { t } = useTranslation();

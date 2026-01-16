@@ -3,13 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
-import { DiagnosticianOverviewTab } from "../tabs/DiagnosticianOverviewTab";
-import { DiagnosticianMissionsTab } from "../tabs/DiagnosticianMissionsTab";
-import { DiagnosticianQuotesTab } from "../tabs/DiagnosticianQuotesTab";
-import { DiagnosticianDocumentsTab } from "../tabs/DiagnosticianDocumentsTab";
-import { DiagnosticianPaymentsTab } from "../tabs/DiagnosticianPaymentsTab";
+import { PromoterOverviewTab } from "./PromoterOverviewTab";
+import { PromoterMissionsTab } from "./PromoterMissionsTab";
+import { PromoterProgramsTab } from "./PromoterProgramsTab";
+import { PromoterDocumentsTab } from "./PromoterDocumentsTab";
+import { PromoterPaymentsTab } from "./PromoterPaymentsTab";
 
-export function DiagnosticianDashboard() {
+export function PromoterDashboard() {
   const { t } = useTranslation();
 
   return (
@@ -24,8 +24,8 @@ export function DiagnosticianDashboard() {
         <div className="container mx-auto px-4 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
-              <h1 className="text-3xl font-bold text-foreground">Espace Diagnostiqueur</h1>
-              <p className="text-muted-foreground mt-1">Gérez vos diagnostics immobiliers.</p>
+              <h1 className="text-3xl font-bold text-foreground">Espace Promoteur</h1>
+              <p className="text-muted-foreground mt-1">Gérez vos programmes immobiliers neufs.</p>
             </div>
             <div className="flex items-center gap-3">
               <Button asChild variant="outline" size="sm">
@@ -49,31 +49,31 @@ export function DiagnosticianDashboard() {
             <TabsTrigger value="missions" className="text-xs sm:text-sm">
               Missions
             </TabsTrigger>
-            <TabsTrigger value="quotes" className="text-xs sm:text-sm">
-              Vos devis
+            <TabsTrigger value="programs" className="text-xs sm:text-sm">
+              Vos Programmes
             </TabsTrigger>
             <TabsTrigger value="documents" className="text-xs sm:text-sm">
               Vos documents
             </TabsTrigger>
             <TabsTrigger value="payments" className="text-xs sm:text-sm">
-              Vos paiements
+              Paiements
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview">
-            <DiagnosticianOverviewTab />
+            <PromoterOverviewTab />
           </TabsContent>
           <TabsContent value="missions">
-            <DiagnosticianMissionsTab />
+            <PromoterMissionsTab />
           </TabsContent>
-          <TabsContent value="quotes">
-            <DiagnosticianQuotesTab />
+          <TabsContent value="programs">
+            <PromoterProgramsTab />
           </TabsContent>
           <TabsContent value="documents">
-            <DiagnosticianDocumentsTab />
+            <PromoterDocumentsTab />
           </TabsContent>
           <TabsContent value="payments">
-            <DiagnosticianPaymentsTab />
+            <PromoterPaymentsTab />
           </TabsContent>
         </Tabs>
       </div>

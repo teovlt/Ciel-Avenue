@@ -2,21 +2,21 @@
 
 import { useAuth } from "@/providers/auth-provider";
 import { useTranslation } from "react-i18next";
-import { ExpertDashboard } from "./views/ExpertDashboard";
-import { SellerDashboard } from "./views/SellerDashboard";
-import { BuyerDashboard } from "./views/BuyerDashboard";
-import { BailleurDashboard } from "./views/BailleurDashboard";
-import { LocataireDashboard } from "./views/LocataireDashboard";
-import { RenovateurDashboard } from "./views/RenovateurDashboard";
-import { NotaryDashboard } from "./views/NotaryDashboard";
-import { DiagnosticianDashboard } from "./views/DiagnosticianDashboard";
-import { MarchandDashboard } from "./views/MarchandDashboard";
-import { ContractorDashboard } from "./views/ContractorDashboard";
-import { PromoterDashboard } from "./views/PromoterDashboard";
-import { PhotographerDashboard } from "./views/PhotographerDashboard";
-import { BrokerDashboard } from "./views/BrokerDashboard";
-import { NotConnectedView } from "./views/NotConnectedView";
-import { ArtisanDashboard } from "./views/ArtisanDashboard";
+import { ExpertDashboard } from "./roles/ExpertDashboard";
+import { SellerDashboard } from "./roles/seller/SellerDashboard";
+import { BuyerDashboard } from "./roles/buyer/BuyerDashboard";
+import { BailleurDashboard } from "./roles/bailleur/BailleurDashboard";
+import { LocataireDashboard } from "./roles/locataire/LocataireDashboard";
+import { RenovateurDashboard } from "./roles/renovateur/RenovateurDashboard";
+import { NotaryDashboard } from "./roles/notary/NotaryDashboard";
+import { DiagnosticianDashboard } from "./roles/diagnostician/DiagnosticianDashboard";
+import { MarchandDashboard } from "./roles/marchand/MarchandDashboard";
+import { ContractorDashboard } from "./roles/contractor/ContractorDashboard";
+import { PromoterDashboard } from "./roles/promoter/PromoterDashboard";
+import { PhotographerDashboard } from "./roles/photographer/PhotographerDashboard";
+import { BrokerDashboard } from "./roles/broker/BrokerDashboard";
+import { NotConnectedView } from "./roles/NotConnectedView";
+import { ArtisanDashboard } from "./roles/artisan/ArtisanDashboard";
 
 export default function Dashboard() {
   const { t } = useTranslation();
