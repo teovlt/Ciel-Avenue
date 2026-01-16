@@ -8,8 +8,8 @@ export default function About() {
   const { t } = useTranslation();
 
   const team = [
-    { name: "Thomas Bernabé", role: t("about.team.member1.role"), image: "/images/thomas.jpeg" },
     { name: "Timon guillotin", role: t("about.team.member2.role"), image: "/images/timon.jpeg" },
+    { name: "Thomas Bernabé", role: t("about.team.member1.role"), image: "/images/thomas.jpeg" },
   ];
 
   return (
