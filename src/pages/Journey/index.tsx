@@ -518,8 +518,8 @@ export default function Journey() {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 lg:px-8 py-12 relative z-10">
-        <div className="max-w-3xl mx-auto">
+      <div className="container mx-auto px-4 lg:px-12 xl:px-20 2xl:px-32 py-12 relative z-10">
+        <div className="max-w-6xl mx-auto">
           {/* LOGIN MODE */}
           {mode === "login" && (
             <div className="space-y-6 animate-fade-in-up">
@@ -849,76 +849,116 @@ export default function Journey() {
                     <p className="text-muted-foreground">{t("journey.step3.selectProfile")}</p>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
                     {userType === "client"
-                      ? // Client subtypes
+                      ? // Client subtypes - clean professional style
                         (Object.keys(clientSubtypeLabelKeys) as ClientSubtype[]).map((key) => {
                           const Icon = clientSubtypeIcons[key];
                           const alreadyHasRole = user?.roles.some((r) => r.subtype === key) ?? false;
+
                           return (
-                            <Card
+                            <div
                               key={key}
-                              className={`border-2 transition-all ${
+                              className={`group rounded-xl border bg-card transition-all duration-200 ${
                                 alreadyHasRole
-                                  ? "border-muted bg-muted/30 opacity-60 cursor-not-allowed"
-                                  : "border-border hover:border-primary cursor-pointer card-hover-lift"
+                                  ? "border-muted opacity-50 cursor-not-allowed"
+                                  : "border-border hover:border-primary/50 hover:shadow-lg cursor-pointer"
                               }`}
                               onClick={() => !alreadyHasRole && handleSubtypeSelect(key)}
                             >
-                              <CardContent className="p-6 text-center space-y-4">
+                              <div className="p-8 space-y-6">
+                                {/* Icon */}
                                 <div
-                                  className={`h-14 w-14 rounded-full mx-auto flex items-center justify-center ${alreadyHasRole ? "bg-muted" : "bg-primary/10"}`}
+                                  className={`h-14 w-14 rounded-xl flex items-center justify-center ${
+                                    alreadyHasRole ? "bg-muted" : "bg-primary/10"
+                                  }`}
                                 >
                                   <Icon className={`h-7 w-7 ${alreadyHasRole ? "text-muted-foreground" : "text-primary"}`} />
                                 </div>
-                                <div>
-                                  <h3 className="font-semibold text-foreground flex items-center justify-center gap-2">
-                                    {t(clientSubtypeLabelKeys[key])}
+
+                                {/* Content */}
+                                <div className="space-y-3">
+                                  <div className="flex items-center justify-between">
+                                    <h3 className={`text-xl font-semibold ${alreadyHasRole ? "text-muted-foreground" : "text-foreground"}`}>
+                                      {t(clientSubtypeLabelKeys[key])}
+                                    </h3>
                                     {alreadyHasRole && (
-                                      <span className="text-xs px-2 py-0.5 rounded-full bg-muted-foreground/20 text-muted-foreground">
-                                        {t("journey.step3.alreadyAdded")}
-                                      </span>
+                                      <span className="text-xs px-2 py-1 rounded bg-muted text-muted-foreground">Déjà ajouté</span>
                                     )}
-                                  </h3>
-                                  <p className="text-xs text-muted-foreground mt-1">{t(clientSubtypeDescriptionKeys[key])}</p>
+                                  </div>
+                                  <p
+                                    className={`text-sm leading-relaxed ${alreadyHasRole ? "text-muted-foreground/60" : "text-muted-foreground"}`}
+                                  >
+                                    {t(clientSubtypeDescriptionKeys[key])}
+                                  </p>
                                 </div>
-                              </CardContent>
-                            </Card>
+
+                                {/* Action */}
+                                {!alreadyHasRole && (
+                                  <div className="pt-2">
+                                    <span className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:gap-3 transition-all duration-200">
+                                      Sélectionner
+                                      <ArrowRight className="h-4 w-4" />
+                                    </span>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
                           );
                         })
-                      : // Expert subtypes
+                      : // Expert subtypes - clean professional style
                         (Object.keys(expertSubtypeLabelKeys) as ExpertSubtype[]).map((key) => {
                           const Icon = expertSubtypeIcons[key];
                           const alreadyHasRole = user?.roles.some((r) => r.subtype === key) ?? false;
+
                           return (
-                            <Card
+                            <div
                               key={key}
-                              className={`border-2 transition-all ${
+                              className={`group rounded-xl border bg-card transition-all duration-200 ${
                                 alreadyHasRole
-                                  ? "border-muted bg-muted/30 opacity-60 cursor-not-allowed"
-                                  : "border-border hover:border-accent cursor-pointer card-hover-lift"
+                                  ? "border-muted opacity-50 cursor-not-allowed"
+                                  : "border-border hover:border-primary/50 hover:shadow-lg cursor-pointer"
                               }`}
                               onClick={() => !alreadyHasRole && handleSubtypeSelect(key)}
                             >
-                              <CardContent className="p-6 text-center space-y-4">
+                              <div className="p-8 space-y-6">
+                                {/* Icon */}
                                 <div
-                                  className={`h-14 w-14 rounded-full mx-auto flex items-center justify-center ${alreadyHasRole ? "bg-muted" : "bg-accent/10"}`}
+                                  className={`h-14 w-14 rounded-xl flex items-center justify-center ${
+                                    alreadyHasRole ? "bg-muted" : "bg-primary/10"
+                                  }`}
                                 >
-                                  <Icon className={`h-7 w-7 ${alreadyHasRole ? "text-muted-foreground" : "text-accent"}`} />
+                                  <Icon className={`h-7 w-7 ${alreadyHasRole ? "text-muted-foreground" : "text-primary"}`} />
                                 </div>
-                                <div>
-                                  <h3 className="font-semibold text-foreground flex items-center justify-center gap-2">
-                                    {t(expertSubtypeLabelKeys[key])}
+
+                                {/* Content */}
+                                <div className="space-y-3">
+                                  <div className="flex items-center justify-between">
+                                    <h3 className={`text-xl font-semibold ${alreadyHasRole ? "text-muted-foreground" : "text-foreground"}`}>
+                                      {t(expertSubtypeLabelKeys[key])}
+                                    </h3>
                                     {alreadyHasRole && (
-                                      <span className="text-xs px-2 py-0.5 rounded-full bg-muted-foreground/20 text-muted-foreground">
-                                        {t("journey.step3.alreadyAdded")}
-                                      </span>
+                                      <span className="text-xs px-2 py-1 rounded bg-muted text-muted-foreground">Déjà ajouté</span>
                                     )}
-                                  </h3>
-                                  <p className="text-xs text-muted-foreground mt-1">{t(expertSubtypeDescriptionKeys[key])}</p>
+                                  </div>
+                                  <p
+                                    className={`text-sm leading-relaxed ${alreadyHasRole ? "text-muted-foreground/60" : "text-muted-foreground"}`}
+                                  >
+                                    {t(expertSubtypeDescriptionKeys[key])}
+                                  </p>
                                 </div>
-                              </CardContent>
-                            </Card>
+
+                                {/* Action */}
+                                {!alreadyHasRole && (
+                                  <div className="pt-2">
+                                    <span className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:gap-3 transition-all duration-200">
+                                      Sélectionner
+                                      <ArrowRight className="h-4 w-4" />
+                                    </span>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
                           );
                         })}
                   </div>
