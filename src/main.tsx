@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "./providers/theme-provider";
 import { AuthProvider } from "./providers/auth-provider";
 import { Toaster } from "./components/ui/sonner";
+import { Chatbot } from "./components/customs/Chatbot";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -15,6 +16,7 @@ createRoot(document.getElementById("root")!).render(
         <BrowserRouter>
           <App />
           <Toaster />
+          <Chatbot />
         </BrowserRouter>
       </AuthProvider>
     </ThemeProvider>
