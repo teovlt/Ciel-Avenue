@@ -97,19 +97,21 @@
     "value": {
       "title": "Why CIEL AVENUE?",
       "description": "A unique approach that combines cutting-edge technology and human expertise to revolutionize your real estate experience.",
-      "buyers": {
-        "title": "For buyers",
-        "feature1": "Guided and personalized journey",
-        "feature2": "Quick creditworthiness assessment",
-        "feature3": "Matching with the best properties",
-        "feature4": "Support from local experts"
+      "clients": {
+        "title": "You are a Client",
+        "subtitle": "Buyer • Seller • Landlord • Tenant • Renovator",
+        "feature1": "Guided journey tailored to your profile",
+        "feature2": "Verified file and solvency score",
+        "feature3": "Matching with the best local experts",
+        "feature4": "Multi-profiles: combine several roles"
       },
-      "professionals": {
-        "title": "For professionals",
-        "feature1": "Pre-qualified and serious leads",
-        "feature2": "Zero prospecting, automatic matching",
-        "feature3": "Matching with the best properties",
-        "feature4": "Integrated management tools"
+      "experts": {
+        "title": "You are an Expert",
+        "subtitle": "Notary • Surveyor • Broker • Artisan • Photographer...",
+        "feature1": "Receive qualified leads without prospecting",
+        "feature2": "Verified clients in your geographical area",
+        "feature3": "Certified profile and increased visibility",
+        "feature4": "Integrated management and tracking tools"
       }
     },
     "cta": {

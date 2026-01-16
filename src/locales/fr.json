@@ -97,19 +97,21 @@
     "value": {
       "title": "Pourquoi CIEL AVENUE ?",
       "description": "Une approche unique qui combine technologie de pointe et expertise humaine pour révolutionner votre expérience immobilière.",
-      "buyers": {
-        "title": "Pour les acheteurs",
-        "feature1": "Parcours guidé et personnalisé",
-        "feature2": "Évaluation de solvabilité rapide",
-        "feature3": "Matching avec les meilleurs biens",
-        "feature4": "Accompagnement d'experts locaux"
+      "clients": {
+        "title": "Vous êtes Client",
+        "subtitle": "Acheteur • Vendeur • Bailleur • Locataire • Rénovateur",
+        "feature1": "Parcours guidé et personnalisé selon votre profil",
+        "feature2": "Dossier vérifié et score de solvabilité",
+        "feature3": "Matching avec les meilleurs experts locaux",
+        "feature4": "Multi-profils : combinez plusieurs rôles"
       },
-      "professionals": {
-        "title": "Pour les professionnels",
-        "feature1": "Dossiers préqualifiés et sérieux",
-        "feature2": "Zéro prospection, matching automatique",
-        "feature3": "Clients dans votre zone géographique",
-        "feature4": "Outils de gestion intégrés"
+      "experts": {
+        "title": "Vous êtes Expert",
+        "subtitle": "Notaire • Diagnostiqueur • Courtier • Artisan • Photographe...",
+        "feature1": "Recevez des leads qualifiés sans prospection",
+        "feature2": "Clients vérifiés dans votre zone géographique",
+        "feature3": "Profil certifié et visibilité accrue",
+        "feature4": "Outils de gestion et suivi intégrés"
       }
     },
     "cta": {

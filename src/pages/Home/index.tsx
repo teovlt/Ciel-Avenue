@@ -180,28 +180,31 @@ export function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* For Buyers */}
+            {/* For Clients */}
             <Card className="border-0 shadow-lg overflow-hidden">
               <div className="h-2 bg-gradient-to-r from-blue-500 to-blue-600" />
               <CardContent className="pt-8 pb-8 space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="h-12 w-12 rounded-xl bg-blue-50 dark:bg-blue-950 flex items-center justify-center">
-                    <Building2 className="h-6 w-6 text-blue-600" />
+                    <Users className="h-6 w-6 text-blue-600" />
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground">{t("home.value.buyers.title")}</h3>
+                  <div>
+                    <h3 className="text-2xl font-bold text-foreground">{t("home.value.clients.title")}</h3>
+                    <p className="text-sm text-muted-foreground">{t("home.value.clients.subtitle")}</p>
+                  </div>
                 </div>
                 <ul className="space-y-4">
                   {[1, 2, 3, 4].map((num) => (
                     <li key={num} className="flex gap-3 text-muted-foreground">
                       <CheckCircle2 className="h-5 w-5 text-blue-500 flex-shrink-0 mt-0.5" />
-                      <span>{t(`home.value.buyers.feature${num}`)}</span>
+                      <span>{t(`home.value.clients.feature${num}`)}</span>
                     </li>
                   ))}
                 </ul>
               </CardContent>
             </Card>
 
-            {/* For Professionals */}
+            {/* For Experts */}
             <Card className="border-0 shadow-lg overflow-hidden">
               <div className="h-2 bg-gradient-to-r from-emerald-500 to-emerald-600" />
               <CardContent className="pt-8 pb-8 space-y-6">
@@ -209,13 +212,16 @@ export function Home() {
                   <div className="h-12 w-12 rounded-xl bg-emerald-50 dark:bg-emerald-950 flex items-center justify-center">
                     <Award className="h-6 w-6 text-emerald-600" />
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground">{t("home.value.professionals.title")}</h3>
+                  <div>
+                    <h3 className="text-2xl font-bold text-foreground">{t("home.value.experts.title")}</h3>
+                    <p className="text-sm text-muted-foreground">{t("home.value.experts.subtitle")}</p>
+                  </div>
                 </div>
                 <ul className="space-y-4">
                   {[1, 2, 3, 4].map((num) => (
                     <li key={num} className="flex gap-3 text-muted-foreground">
                       <CheckCircle2 className="h-5 w-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                      <span>{t(`home.value.professionals.feature${num}`)}</span>
+                      <span>{t(`home.value.experts.feature${num}`)}</span>
                     </li>
                   ))}
                 </ul>
