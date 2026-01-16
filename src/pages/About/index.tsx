@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Target, Users, Lightbulb, Award, Mail } from "lucide-react";
+import { Target, Users, Lightbulb, Award, Mail, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -8,26 +8,27 @@ export default function About() {
   const { t } = useTranslation();
 
   const team = [
-    { name: "Timon guillotin", role: t("about.team.member2.role"), image: "/images/timon.jpeg" },
+    { name: "Timon Guillotin", role: t("about.team.member2.role"), image: "/images/timon.jpeg" },
     { name: "Thomas Bernabé", role: t("about.team.member1.role"), image: "/images/thomas.jpeg" },
   ];
 
-  return (
-    <div className="min-h-screen pt-20 page-transition">
-      {/* Decorative elements */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="decorative-blob decorative-blob-primary w-96 h-96 -top-48 -right-48 animate-float-slow" />
-        <div className="decorative-blob decorative-blob-accent w-64 h-64 bottom-32 -left-32 animate-float-delay" />
-      </div>
+  const values = [
+    { icon: Users, key: "human", color: "bg-blue-100 dark:bg-blue-950", iconColor: "text-blue-600" },
+    { icon: Target, key: "excellence", color: "bg-purple-100 dark:bg-purple-950", iconColor: "text-purple-600" },
+    { icon: Lightbulb, key: "innovation", color: "bg-amber-100 dark:bg-amber-950", iconColor: "text-amber-600" },
+    { icon: Award, key: "integrity", color: "bg-emerald-100 dark:bg-emerald-950", iconColor: "text-emerald-600" },
+  ];
 
+  return (
+    <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-background">
-        <div className="container mx-auto px-4 lg:px-8 py-24 relative z-10">
+      <section className="bg-muted/30">
+        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
           <div className="max-w-4xl mx-auto text-center space-y-6">
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight text-balance animate-fade-in-up">
-              {t("about.hero.title")} <span className="text-gradient">CIEL AVENUE</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight animate-fade-in-up">
+              {t("about.hero.title")} <span className="text-primary">CIEL AVENUE</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty animate-fade-in-up-delay-1">
+            <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto animate-fade-in-up-delay-1">
               {t("about.hero.description")}
             </p>
           </div>
@@ -35,24 +36,25 @@ export default function About() {
       </section>
 
       {/* Vision Section */}
-      <section className="py-24 bg-background">
+      <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div className="relative h-[400px] lg:h-[500px] rounded-xl overflow-hidden animate-slide-in-left card-hover-lift">
-                <img
-                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80"
-                  alt={t("about.vision.imageAlt")}
-                  className="object-cover w-full h-full"
-                />
+              <div className="relative">
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+                  <img
+                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80"
+                    alt={t("about.vision.imageAlt")}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
 
-              <div className="space-y-6 animate-slide-in-right">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-sm font-medium text-primary animate-bounce-in">
-                  <Target className="h-4 w-4" />
+              <div className="space-y-6">
+                <span className="inline-block text-sm font-semibold text-primary bg-primary/10 px-4 py-2 rounded-full">
                   {t("about.vision.badge")}
-                </div>
-                <h2 className="text-3xl md:text-5xl font-bold text-foreground text-balance">{t("about.vision.title")}</h2>
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">{t("about.vision.title")}</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">{t("about.vision.description1")}</p>
                 <p className="text-lg text-muted-foreground leading-relaxed">{t("about.vision.description2")}</p>
               </div>
@@ -62,54 +64,40 @@ export default function About() {
       </section>
 
       {/* Mission Section */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-20 md:py-28 bg-muted/30">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-6 order-2 lg:order-1 animate-slide-in-left">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-sm font-medium text-primary animate-bounce-in">
-                  <Lightbulb className="h-4 w-4" />
+              <div className="space-y-6 order-2 lg:order-1">
+                <span className="inline-block text-sm font-semibold text-primary bg-primary/10 px-4 py-2 rounded-full">
                   {t("about.mission.badge")}
-                </div>
-                <h2 className="text-3xl md:text-5xl font-bold text-foreground text-balance">{t("about.mission.title")}</h2>
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">{t("about.mission.title")}</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">{t("about.mission.description")}</p>
-                <div className="space-y-4 pt-4 stagger-animation">
-                  <div className="flex gap-3 animate-fade-in-up">
-                    <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary font-bold">1</span>
+
+                <div className="space-y-4 pt-4">
+                  {[1, 2, 3].map((num) => (
+                    <div key={num} className="flex gap-4">
+                      <div className="h-10 w-10 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
+                        <span className="text-primary-foreground font-bold">{num}</span>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-foreground">{t(`about.mission.step${num}.title`)}</h4>
+                        <p className="text-muted-foreground text-sm">{t(`about.mission.step${num}.description`)}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-1">{t("about.mission.step1.title")}</h4>
-                      <p className="text-sm text-muted-foreground">{t("about.mission.step1.description")}</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3 animate-fade-in-up">
-                    <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary font-bold">2</span>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-1">{t("about.mission.step2.title")}</h4>
-                      <p className="text-sm text-muted-foreground">{t("about.mission.step2.description")}</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3 animate-fade-in-up">
-                    <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary font-bold">3</span>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-1">{t("about.mission.step3.title")}</h4>
-                      <p className="text-sm text-muted-foreground">{t("about.mission.step3.description")}</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="relative h-[400px] lg:h-[500px] rounded-xl overflow-hidden order-1 lg:order-2 animate-slide-in-right card-hover-lift">
-                <img
-                  src="https://images.unsplash.com/photo-1542596594-649edbc13630?w=1200&q=80"
-                  alt={t("about.mission.imageAlt")}
-                  className="object-cover w-full h-full"
-                />
+              <div className="relative order-1 lg:order-2">
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+                  <img
+                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80"
+                    alt={t("about.mission.imageAlt")}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -117,77 +105,22 @@ export default function About() {
       </section>
 
       {/* Values Section */}
-      <section className="py-24 bg-background">
+      <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center space-y-6 mb-16 animate-fade-in-up">
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground text-balance">{t("about.values.title")}</h2>
-            <p className="text-lg text-muted-foreground leading-relaxed text-pretty">{t("about.values.description")}</p>
+          <div className="max-w-3xl mx-auto text-center space-y-6 mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">{t("about.values.title")}</h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">{t("about.values.description")}</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            <Card className="border-border bg-card text-center hover:shadow-lg transition-shadow card-hover-lift animate-scale-in">
-              <CardContent className="pt-8 pb-8 space-y-4">
-                <div className="mx-auto h-14 w-14 rounded-lg bg-primary/10 flex items-center justify-center animate-bounce-in">
-                  <Users className="h-7 w-7 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">{t("about.values.human.title")}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{t("about.values.human.description")}</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-border bg-card text-center hover:shadow-lg transition-shadow card-hover-lift animate-scale-in-delay-1">
-              <CardContent className="pt-8 pb-8 space-y-4">
-                <div className="mx-auto h-14 w-14 rounded-lg bg-primary/10 flex items-center justify-center animate-bounce-in">
-                  <Target className="h-7 w-7 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">{t("about.values.excellence.title")}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{t("about.values.excellence.description")}</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-border bg-card text-center hover:shadow-lg transition-shadow card-hover-lift animate-scale-in-delay-2">
-              <CardContent className="pt-8 pb-8 space-y-4">
-                <div className="mx-auto h-14 w-14 rounded-lg bg-primary/10 flex items-center justify-center animate-bounce-in">
-                  <Lightbulb className="h-7 w-7 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">{t("about.values.innovation.title")}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{t("about.values.innovation.description")}</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-border bg-card text-center hover:shadow-lg transition-shadow card-hover-lift animate-scale-in-delay-3">
-              <CardContent className="pt-8 pb-8 space-y-4">
-                <div className="mx-auto h-14 w-14 rounded-lg bg-primary/10 flex items-center justify-center animate-bounce-in">
-                  <Award className="h-7 w-7 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">{t("about.values.integrity.title")}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{t("about.values.integrity.description")}</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center space-y-6 mb-16 animate-fade-in-up">
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground text-balance">{t("about.team.title")}</h2>
-            <p className="text-lg text-muted-foreground leading-relaxed text-pretty">{t("about.team.description")}</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
-            {team.map((member, index) => (
-              <Card
-                key={member.name}
-                className={`border-border bg-card hover:shadow-lg transition-shadow overflow-hidden card-hover-lift animate-fade-in-up-delay-${index + 1}`}
-              >
-                <div className="aspect-square relative overflow-hidden">
-                  <img src={member.image || "/placeholder.svg"} alt={member.name} className="object-cover object-center w-full h-full" />
-                </div>
-                <CardContent className="p-6 text-center">
-                  <h3 className="text-lg font-semibold text-foreground mb-1">{member.name}</h3>
-                  <p className="text-sm text-muted-foreground">{member.role}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {values.map((value) => (
+              <Card key={value.key} className="border-0 shadow-lg text-center">
+                <CardContent className="p-8 space-y-4">
+                  <div className={`mx-auto h-14 w-14 rounded-2xl ${value.color} flex items-center justify-center`}>
+                    <value.icon className={`h-7 w-7 ${value.iconColor}`} />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground">{t(`about.values.${value.key}.title`)}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{t(`about.values.${value.key}.description`)}</p>
                 </CardContent>
               </Card>
             ))}
@@ -195,17 +128,51 @@ export default function About() {
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="py-24 bg-primary text-primary-foreground animate-fade-in">
+      {/* Team Section */}
+      <section className="py-20 md:py-28 bg-muted/30">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <Mail className="h-16 w-16 mx-auto animate-bounce-in" />
-            <h2 className="text-3xl md:text-5xl font-bold text-balance animate-fade-in-up">{t("about.cta.title")}</h2>
-            <p className="text-lg text-primary-foreground/90 leading-relaxed text-pretty animate-fade-in-up-delay-1">
-              {t("about.cta.description")}
-            </p>
-            <Button asChild size="lg" variant="secondary" className="text-base px-8 card-hover-lift animate-fade-in-up-delay-2">
-              <Link to="/contact">{t("about.cta.button")}</Link>
+          <div className="max-w-3xl mx-auto text-center space-y-6 mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">{t("about.team.title")}</h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">{t("about.team.description")}</p>
+          </div>
+
+          <div className="flex flex-col md:flex-row gap-8 justify-center max-w-3xl mx-auto">
+            {team.map((member) => (
+              <div key={member.name} className="flex-1 max-w-xs mx-auto">
+                <Card className="border-0 shadow-lg overflow-hidden">
+                  <div className="aspect-[3/4] relative">
+                    <img src={member.image || "/placeholder.svg"} alt={member.name} className="w-full h-full object-cover object-top" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                      <h3 className="text-xl font-bold">{member.name}</h3>
+                      <p className="text-white/80">{member.role}</p>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 md:py-28 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-background/10 mx-auto">
+              <Mail className="h-8 w-8" />
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold leading-tight">{t("about.cta.title")}</h2>
+            <p className="text-xl text-primary-foreground/80 leading-relaxed max-w-2xl mx-auto">{t("about.cta.description")}</p>
+            <Button
+              asChild
+              size="lg"
+              className="bg-background text-foreground hover:bg-background/90 text-lg px-8 py-6 h-auto rounded-xl group"
+            >
+              <Link to="/contact">
+                {t("about.cta.button")}
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </Button>
           </div>
         </div>

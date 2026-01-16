@@ -58,9 +58,6 @@ export function PromoterDashboard() {
             <TabsTrigger value="payments" className="text-xs sm:text-sm">
               Paiements
             </TabsTrigger>
-            <TabsTrigger value="account" className="text-xs sm:text-sm">
-              Compte
-            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview">

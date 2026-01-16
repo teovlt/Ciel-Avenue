@@ -55,6 +55,9 @@ export function DiagnosticianDashboard() {
             <TabsTrigger value="documents" className="text-xs sm:text-sm">
               Vos documents
             </TabsTrigger>
+            <TabsTrigger value="payments" className="text-xs sm:text-sm">
+              Vos paiements
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview">

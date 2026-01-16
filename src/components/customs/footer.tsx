@@ -23,7 +23,11 @@ export function Footer() {
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a
+                href="https://fr.linkedin.com/company/ciel-avenue"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                target="_blank"
+              >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors">

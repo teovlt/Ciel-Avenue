@@ -4,6 +4,7 @@ import { NotFound } from "@/pages/NotFound";
 import { Routes, Route } from "react-router-dom";
 import { LayoutWrapper } from "./layout-wrapper";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import Dashboard from "@/pages/Dashboard";
 import About from "@/pages/About";
 import HowItWorks from "@/pages/How-it-works";
@@ -13,6 +14,7 @@ import Journey from "@/pages/Journey";
 export const Router = () => {
   return (
     <>
+      <ScrollToTop />
       <Routes>
         <Route element={<LayoutWrapper />}>
           <Route path="/" element={<Home />} />
