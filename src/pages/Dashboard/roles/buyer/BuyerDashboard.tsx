@@ -45,32 +45,34 @@ export function BuyerDashboard() {
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
         <Tabs defaultValue="needs" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
-            <TabsTrigger value="needs" className="text-xs sm:text-sm">
-              {t("dashboard.tabs.needs")}
-            </TabsTrigger>
-            <TabsTrigger value="messages" className="text-xs sm:text-sm">
-              {t("dashboard.tabs.messages")}
-            </TabsTrigger>
-            <TabsTrigger value="vendors" className="text-xs sm:text-sm">
-              Parc vendeur
-            </TabsTrigger>
-            <TabsTrigger value="promoters" className="text-xs sm:text-sm">
-              Parc promoteur
-            </TabsTrigger>
-            <TabsTrigger value="experts" className="text-xs sm:text-sm">
-              Accompagnements
-            </TabsTrigger>
-            <TabsTrigger value="visits" className="text-xs sm:text-sm">
-              Mon agenda
-            </TabsTrigger>
-            <TabsTrigger value="post_purchase" className="text-xs sm:text-sm">
-              Conseils après achat
-            </TabsTrigger>
-            <TabsTrigger value="patrimony" className="text-xs sm:text-sm">
-              {t("dashboard.tabs.patrimony")}
-            </TabsTrigger>
-          </TabsList>
+          <div className="overflow-x-auto -mx-4 px-4 scrollbar-hide">
+            <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
+              <TabsTrigger value="needs" className="text-xs sm:text-sm px-4 py-2.5 whitespace-nowrap">
+                {t("dashboard.tabs.needs")}
+              </TabsTrigger>
+              <TabsTrigger value="messages" className="text-xs sm:text-sm px-4 py-2.5 whitespace-nowrap">
+                {t("dashboard.tabs.messages")}
+              </TabsTrigger>
+              <TabsTrigger value="vendors" className="text-xs sm:text-sm px-4 py-2.5 whitespace-nowrap">
+                Parc vendeur
+              </TabsTrigger>
+              <TabsTrigger value="promoters" className="text-xs sm:text-sm px-4 py-2.5 whitespace-nowrap">
+                Parc promoteur
+              </TabsTrigger>
+              <TabsTrigger value="experts" className="text-xs sm:text-sm px-4 py-2.5 whitespace-nowrap">
+                Accompagnements
+              </TabsTrigger>
+              <TabsTrigger value="visits" className="text-xs sm:text-sm px-4 py-2.5 whitespace-nowrap">
+                Mon agenda
+              </TabsTrigger>
+              <TabsTrigger value="post_purchase" className="text-xs sm:text-sm px-4 py-2.5 whitespace-nowrap">
+                Conseils après achat
+              </TabsTrigger>
+              <TabsTrigger value="patrimony" className="text-xs sm:text-sm px-4 py-2.5 whitespace-nowrap">
+                {t("dashboard.tabs.patrimony")}
+              </TabsTrigger>
+            </TabsList>
+          </div>
 
           <TabsContent value="needs">
             <NeedsTab />

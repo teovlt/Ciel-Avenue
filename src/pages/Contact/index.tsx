@@ -65,10 +65,12 @@ export function Contact() {
       <section className="relative overflow-hidden bg-muted/30">
         <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight animate-fade-in-up">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight animate-fade-in-up">
               {t("contact.hero.title")}
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed animate-fade-in-up-delay-1">{t("contact.hero.description")}</p>
+            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed animate-fade-in-up-delay-1">
+              {t("contact.hero.description")}
+            </p>
           </div>
         </div>
       </section>

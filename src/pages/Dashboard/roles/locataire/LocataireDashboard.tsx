@@ -44,7 +44,8 @@ export function LocataireDashboard() {
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
         <Tabs defaultValue="needs" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
+          <div className="overflow-x-auto -mx-4 px-4 scrollbar-hide">
+          <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
             <TabsTrigger value="needs" className="text-xs sm:text-sm">
               {t("dashboard.tabs.needs")}
             </TabsTrigger>
@@ -67,6 +68,7 @@ export function LocataireDashboard() {
               {t("dashboard.tabs.patrimony")}
             </TabsTrigger>
           </TabsList>
+          </div>
 
           <TabsContent value="needs">
             <NeedsTab />

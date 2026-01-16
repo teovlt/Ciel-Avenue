@@ -41,12 +41,12 @@ export function Home() {
             </div>
 
             {/* Title */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground tracking-tight leading-[1.1] animate-fade-in-up-delay-1">
+            <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground tracking-tight leading-[1.1] animate-fade-in-up-delay-1">
               {t("home.hero.titleStart")} <span className="text-primary">{t("home.hero.titleHighlight")}</span> {t("home.hero.titleEnd")}
             </h1>
 
             {/* Description */}
-            <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed animate-fade-in-up-delay-2">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed animate-fade-in-up-delay-2">
               {t("home.hero.description")}
             </p>
 
@@ -70,9 +70,9 @@ export function Home() {
           <div className="container mx-auto px-4 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-border/50">
               {stats.map((stat) => (
-                <div key={stat.label} className="py-8 px-4 md:px-8 text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <div key={stat.label} className="py-6 sm:py-8 px-2 sm:px-4 md:px-8 text-center">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-1">{stat.value}</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
                 </div>
               ))}
             </div>

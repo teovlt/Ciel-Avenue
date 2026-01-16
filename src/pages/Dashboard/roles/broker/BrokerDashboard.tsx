@@ -46,7 +46,8 @@ export function BrokerDashboard() {
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
         <Tabs defaultValue="overview" className="space-y-8">
-          <TabsList className="grid w-full grid-cols-2 h-auto md:grid-cols-5 p-1 bg-muted/50 backdrop-blur-sm rounded-xl">
+          <div className="overflow-x-auto -mx-4 px-4 scrollbar-hide">
+          <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
             <TabsTrigger value="overview">
               <LayoutDashboard className="h-4 w-4 mr-2" />
               <span className="hidden md:inline">Vue d'ensemble</span>
@@ -69,6 +70,7 @@ export function BrokerDashboard() {
               Paiements
             </TabsTrigger>
           </TabsList>
+          </div>
 
           <TabsContent value="overview">
             <BrokerOverviewTab />
