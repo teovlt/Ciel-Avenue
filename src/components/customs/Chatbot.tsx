@@ -1,15 +1,16 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { MessageCircle, X, Send, Loader2, Bot, User, Trash2 } from "lucide-react";
+import { MessageCircle, X, Send, Loader2, User, Trash2, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { sendMessage, checkOllamaHealth, type Message } from "@/lib/ollama-service";
 
 const STORAGE_KEY = "ciel-avenue-chat-history";
+const VOICE_ENABLED_KEY = "ciel-avenue-voice-enabled";
 
 interface ChatMessage {
   id: string;
   role: "user" | "assistant";
   content: string;
-  timestamp: string; // Changed to string for JSON serialization
+  timestamp: string;
 }
 
 // Load messages from localStorage
@@ -34,18 +35,149 @@ function saveMessages(messages: ChatMessage[]) {
   }
 }
 
+// Céleste avatar path
+const CELESTE_AVATAR = "/images/celeste-avatar.png";
+
+// Text-to-Speech Service for Céleste
+class CelesteVoice {
+  private synth: SpeechSynthesis;
+  private voice: SpeechSynthesisVoice | null = null;
+  private isReady = false;
+
+  constructor() {
+    this.synth = window.speechSynthesis;
+    this.initVoice();
+  }
+
+  private initVoice() {
+    // Try to get a French female voice
+    const loadVoices = () => {
+      const voices = this.synth.getVoices();
+
+      // Priority order for French female voices
+      const preferredVoices = [
+        "Microsoft Denise", // Windows French
+        "Amélie", // macOS French
+        "Thomas", // Alternative French
+        "Google français", // Chrome
+      ];
+
+      // First try to find a French female voice
+      this.voice = voices.find((v) => v.lang.startsWith("fr") && v.name.toLowerCase().includes("female")) || null;
+
+      // If not found, try preferred voices
+      if (!this.voice) {
+        for (const preferred of preferredVoices) {
+          this.voice =
+            voices.find((v) => v.name.includes(preferred) || (v.lang.startsWith("fr") && v.name.toLowerCase().includes("denise"))) || null;
+          if (this.voice) break;
+        }
+      }
+
+      // Fallback to any French voice
+      if (!this.voice) {
+        this.voice = voices.find((v) => v.lang.startsWith("fr")) || null;
+      }
+
+      this.isReady = true;
+      console.log("[Céleste Voice] Initialized with voice:", this.voice?.name || "default");
+    };
+
+    // Voices might not be loaded immediately
+    if (this.synth.getVoices().length > 0) {
+      loadVoices();
+    } else {
+      this.synth.addEventListener("voiceschanged", loadVoices);
+    }
+  }
+
+  speak(text: string): void {
+    if (!this.synth || !this.isReady) {
+      console.warn("[Céleste Voice] Not ready yet");
+      return;
+    }
+
+    // Cancel any current speech
+    this.synth.cancel();
+
+    // Clean text from emojis and special characters for better pronunciation
+    const cleanText = text
+      .replace(/[\u{1F300}-\u{1F9FF}]/gu, "") // Remove emojis
+      .replace(/[→←↑↓]/g, "") // Remove arrows
+      .replace(/\*\*/g, "") // Remove markdown bold
+      .replace(/`/g, "") // Remove code backticks
+      .trim();
+
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+
+    if (this.voice) {
+      utterance.voice = this.voice;
+    }
+
+    // Customize voice parameters for a warm, professional female tone
+    utterance.lang = "fr-FR";
+    utterance.rate = 0.95; // Slightly slower for clarity
+    utterance.pitch = 1.1; // Slightly higher for feminine voice
+    utterance.volume = 1.0;
+
+    this.synth.speak(utterance);
+  }
+
+  stop(): void {
+    this.synth?.cancel();
+  }
+
+  get isSpeaking(): boolean {
+    return this.synth?.speaking || false;
+  }
+}
+
+// Singleton instance
+let celesteVoice: CelesteVoice | null = null;
+
+function getCelesteVoice(): CelesteVoice {
+  if (!celesteVoice && typeof window !== "undefined" && "speechSynthesis" in window) {
+    celesteVoice = new CelesteVoice();
+  }
+  return celesteVoice!;
+}
+
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>(() => loadMessages());
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isAvailable, setIsAvailable] = useState(true);
+  const [voiceEnabled, setVoiceEnabled] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem(VOICE_ENABLED_KEY) !== "false";
+    }
+    return true;
+  });
+  const [isSpeaking, setIsSpeaking] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Check Ollama availability on mount
   useEffect(() => {
     checkOllamaHealth().then(setIsAvailable);
+  }, []);
+
+  // Save voice preference
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(VOICE_ENABLED_KEY, String(voiceEnabled));
+    }
+  }, [voiceEnabled]);
+
+  // Update speaking state
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (celesteVoice) {
+        setIsSpeaking(celesteVoice.isSpeaking);
+      }
+    }, 100);
+    return () => clearInterval(interval);
   }, []);
 
   // Save messages to localStorage when they change
@@ -70,22 +202,39 @@ export function Chatbot() {
   // Add welcome message when chat opens for the first time
   useEffect(() => {
     if (isOpen && messages.length === 0) {
+      const welcomeContent =
+        "Bonjour et bienvenue ! Je suis Céleste, votre conseillère CIEL AVENUE. Je suis là pour vous accompagner dans votre projet immobilier. Comment puis-je vous aider aujourd'hui ?";
       const welcomeMessage: ChatMessage = {
         id: "welcome",
         role: "assistant",
-        content:
-          "Bonjour ! 👋 Je suis votre assistant Ciel Avenue. Je peux vous aider à créer votre compte et à choisir le profil qui correspond le mieux à vos besoins. Comment puis-je vous aider ?",
+        content: welcomeContent,
         timestamp: new Date().toISOString(),
       };
       setMessages([welcomeMessage]);
+
+      // Speak welcome message if voice is enabled
+      if (voiceEnabled) {
+        setTimeout(() => {
+          getCelesteVoice()?.speak(welcomeContent);
+        }, 500);
+      }
     }
-  }, [isOpen, messages.length]);
+  }, [isOpen, messages.length, voiceEnabled]);
 
   // Clear chat history
   const clearHistory = useCallback(() => {
+    getCelesteVoice()?.stop();
     localStorage.removeItem(STORAGE_KEY);
     setMessages([]);
   }, []);
+
+  // Toggle voice
+  const toggleVoice = useCallback(() => {
+    if (voiceEnabled) {
+      getCelesteVoice()?.stop();
+    }
+    setVoiceEnabled(!voiceEnabled);
+  }, [voiceEnabled]);
 
   const handleSend = async () => {
     if (!inputValue.trim() || isLoading) return;
@@ -120,6 +269,11 @@ export function Chatbot() {
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
+
+      // Speak the response if voice is enabled
+      if (voiceEnabled) {
+        getCelesteVoice()?.speak(response);
+      }
     } catch (error) {
       console.error("Chat error:", error);
     } finally {
@@ -139,7 +293,7 @@ export function Chatbot() {
       {/* Chat bubble button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg transition-all hover:scale-110 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-primary to-accent text-white shadow-lg transition-all hover:scale-110 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
         aria-label={isOpen ? "Fermer le chat" : "Ouvrir le chat"}
       >
         {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
@@ -147,43 +301,59 @@ export function Chatbot() {
 
       {/* Chat panel */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 flex h-[500px] w-[380px] flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-900">
+        <div className="fixed bottom-24 right-6 z-50 flex h-[500px] w-[380px] flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-2xl">
           {/* Header */}
-          <div className="flex items-center justify-between bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-white">
+          <div className="flex items-center justify-between bg-gradient-to-r from-primary to-accent px-4 py-3 text-primary-foreground">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
-                <Bot className="h-5 w-5" />
+              <div className="h-10 w-10 rounded-full overflow-hidden border-2 border-white/30">
+                <img src={CELESTE_AVATAR} alt="Céleste" className="h-full w-full object-cover" />
               </div>
               <div>
-                <h3 className="font-semibold">Assistant Ciel Avenue</h3>
-                <p className="text-xs text-white/80">{isAvailable ? "En ligne • Aide à la création de compte" : "Hors ligne"}</p>
+                <h3 className="font-semibold">Céleste</h3>
+                <p className="text-xs text-white/80">
+                  {isAvailable ? (isSpeaking ? "Je parle..." : "Conseillère CIEL AVENUE") : "Hors ligne"}
+                </p>
               </div>
             </div>
-            {messages.length > 1 && (
+            <div className="flex items-center gap-2">
+              {/* Voice toggle button */}
               <button
-                onClick={clearHistory}
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                title="Effacer l'historique"
+                onClick={toggleVoice}
+                className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors ${
+                  voiceEnabled ? "bg-white/20 hover:bg-white/30" : "bg-white/10 hover:bg-white/20"
+                }`}
+                title={voiceEnabled ? "Désactiver la voix" : "Activer la voix"}
               >
-                <Trash2 className="h-4 w-4" />
+                {voiceEnabled ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
               </button>
-            )}
+              {messages.length > 1 && (
+                <button
+                  onClick={clearHistory}
+                  className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                  title="Effacer l'historique"
+                >
+                  <Trash2 className="h-4 w-4" />
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {messages.map((message) => (
               <div key={message.id} className={`flex gap-2 ${message.role === "user" ? "flex-row-reverse" : "flex-row"}`}>
-                <div
-                  className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full ${
-                    message.role === "user" ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300"
-                  }`}
-                >
-                  {message.role === "user" ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
-                </div>
+                {message.role === "user" ? (
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                    <User className="h-4 w-4" />
+                  </div>
+                ) : (
+                  <div className="h-8 w-8 flex-shrink-0 rounded-full overflow-hidden border border-border">
+                    <img src={CELESTE_AVATAR} alt="Céleste" className="h-full w-full object-cover" />
+                  </div>
+                )}
                 <div
                   className={`max-w-[75%] rounded-2xl px-4 py-2 ${
-                    message.role === "user" ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200"
+                    message.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted text-foreground"
                   }`}
                 >
                   <p className="text-sm whitespace-pre-wrap">{message.content}</p>
@@ -193,12 +363,12 @@ export function Chatbot() {
 
             {isLoading && (
               <div className="flex gap-2">
-                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300">
-                  <Bot className="h-4 w-4" />
+                <div className="h-8 w-8 flex-shrink-0 rounded-full overflow-hidden border border-border">
+                  <img src={CELESTE_AVATAR} alt="Céleste" className="h-full w-full object-cover" />
                 </div>
-                <div className="flex items-center gap-2 rounded-2xl bg-gray-100 px-4 py-2 dark:bg-gray-800">
-                  <Loader2 className="h-4 w-4 animate-spin text-blue-600" />
-                  <span className="text-sm text-gray-500">Réflexion...</span>
+                <div className="flex items-center gap-2 rounded-2xl bg-muted px-4 py-2">
+                  <Loader2 className="h-4 w-4 animate-spin text-primary" />
+                  <span className="text-sm text-muted-foreground">Céleste réfléchit...</span>
                 </div>
               </div>
             )}
@@ -207,7 +377,7 @@ export function Chatbot() {
           </div>
 
           {/* Input */}
-          <div className="border-t border-gray-200 p-4 dark:border-gray-700">
+          <div className="border-t border-border p-4">
             <div className="flex gap-2">
               <input
                 ref={inputRef}
@@ -217,12 +387,12 @@ export function Chatbot() {
                 onKeyDown={handleKeyDown}
                 placeholder="Posez votre question..."
                 disabled={isLoading || !isAvailable}
-                className="flex-1 rounded-full border border-gray-300 bg-gray-50 px-4 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:opacity-50 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                className="flex-1 rounded-full border border-input bg-background px-4 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-50"
               />
               <Button
                 onClick={handleSend}
                 disabled={!inputValue.trim() || isLoading || !isAvailable}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 p-0 hover:bg-blue-700 disabled:opacity-50"
+                className="flex h-10 w-10 items-center justify-center rounded-full p-0"
               >
                 <Send className="h-4 w-4" />
               </Button>
