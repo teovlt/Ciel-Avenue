@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { MessageCircle, X, Send, Loader2, User, Trash2, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { sendMessage, checkOllamaHealth, type Message } from "@/lib/ollama-service";
+import { sendMessage, checkServiceHealth, type Message } from "@/lib/ollama-service";
 
 const STORAGE_KEY = "ciel-avenue-chat-history";
 const VOICE_ENABLED_KEY = "ciel-avenue-voice-enabled";
@@ -160,7 +160,7 @@ export function Chatbot() {
 
   // Check Ollama availability on mount
   useEffect(() => {
-    checkOllamaHealth().then(setIsAvailable);
+    checkServiceHealth().then(setIsAvailable);
   }, []);
 
   // Save voice preference

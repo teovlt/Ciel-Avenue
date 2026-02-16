@@ -1,56 +1,56 @@
-// Service pour communiquer avec le LLM (via backend sécurisé ou Ollama local)
+// Service pour communiquer avec le LLM (Groq)
+// En local: appelle Groq directement depuis le frontend (dev only)
+// En production: utilise l'API backend sécurisée
+
+import { CELESTE_SYSTEM_PROMPT } from "./celeste-prompt";
 
 export interface Message {
   role: "user" | "assistant" | "system";
   content: string;
 }
 
-// Configuration Ollama pour le développement local
-const OLLAMA_BASE_URL = "http://127.0.0.1:11434";
-const OLLAMA_MODEL = "llama3.2:1b";
+// Configuration Groq
+const GROQ_BASE_URL = "https://api.groq.com/openai/v1";
+const GROQ_MODEL = "llama-3.3-70b-versatile";
 
 // Détection automatique du mode
 const isProduction = import.meta.env.PROD;
 
-// System prompt Céleste - utilisé en local avec Ollama
-const SYSTEM_PROMPT = `Tu es Céleste, l'assistante virtuelle de CIEL AVENUE, plateforme immobilière française.
-Tu es une femme professionnelle de 35-40 ans, chaleureuse, rassurante et experte.
+// Clé API Groq pour le développement local (depuis .env.local)
+// ATTENTION: En production, la clé est stockée côté serveur uniquement
+const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
 
-# PERSONNALITÉ
-- RASSURANTE: Ton chaleureux, valide les émotions
-- PROFESSIONNELLE: Expertise solide, réponses structurées
-- EMPATHIQUE: Écoute active, détecte l'anxiété
-- PROACTIVE: Propose toujours une prochaine étape
+// Envoyer un message via Groq directement (développement local)
+async function sendMessageGroqDirect(userMessage: string, history: Message[]): Promise<string> {
+  if (!GROQ_API_KEY) {
+    throw new Error("VITE_GROQ_API_KEY n'est pas configurée dans .env.local");
+  }
 
-# STRUCTURE DES RÉPONSES
-1. Accusé de réception empathique (1 phrase)
-2. Réponse principale (2-3 phrases)
-3. Question ou proposition d'action (1 phrase)
+  const messages: Message[] = [{ role: "system", content: CELESTE_SYSTEM_PROMPT }, ...history, { role: "user", content: userMessage }];
 
-# RÈGLES
-- Réponds TOUJOURS en français
-- Chaque réponse contient UN call-to-action
-- Utilise les emojis avec modération: 🏠 ✅ 😊
-- NE donne JAMAIS de conseils juridiques/fiscaux → redirige vers experts
+  const response = await fetch(`${GROQ_BASE_URL}/chat/completions`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${GROQ_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: GROQ_MODEL,
+      messages,
+      temperature: 0.7,
+      max_tokens: 512,
+    }),
+  });
 
-# PAGES
-- /journey → Création de compte
-- /how-it-works → Fonctionnement
-- /contact → Questions
-- /dashboard → Espace personnel
+  if (!response.ok) {
+    const error = await response.text();
+    console.error("Groq API error:", error);
+    throw new Error(`Groq API error: ${response.status}`);
+  }
 
-# PROFILS CLIENTS
-1. ACHETEUR - Cherche à acheter
-2. VENDEUR - Veut vendre
-3. BAILLEUR - Veut louer
-4. LOCATAIRE - Cherche location
-5. RÉNOVATEUR - Projet travaux
-
-# EXPERTS
-Notaire, Diagnostiqueur, Marchand, Maître d'œuvre, Promoteur, Photographe, Courtier, Artisan
-
-# MESSAGE D'ACCUEIL
-"Bonjour ! 🏠 Je suis Céleste, votre conseillère CIEL AVENUE. Comment puis-je vous aider ?"`;
+  const data = await response.json();
+  return data.choices?.[0]?.message?.content || "Désolé, je n'ai pas pu générer une réponse.";
+}
 
 // Envoyer un message via l'API backend sécurisée (production)
 async function sendMessageAPI(userMessage: string, history: Message[]): Promise<string> {
@@ -74,32 +74,6 @@ async function sendMessageAPI(userMessage: string, history: Message[]): Promise<
   return data.content || "Désolé, je n'ai pas pu générer une réponse.";
 }
 
-// Envoyer un message via Ollama (développement local)
-async function sendMessageOllama(messages: Message[]): Promise<string> {
-  const response = await fetch(`${OLLAMA_BASE_URL}/api/chat`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: OLLAMA_MODEL,
-      messages,
-      stream: false,
-      options: {
-        temperature: 0.7,
-        num_predict: 512,
-      },
-    }),
-  });
-
-  if (!response.ok) {
-    throw new Error(`Ollama error: ${response.status}`);
-  }
-
-  const data = await response.json();
-  return data.message?.content || "Désolé, je n'ai pas pu générer une réponse.";
-}
-
 // Fonction principale - choisit automatiquement le bon backend
 export async function sendMessage(userMessage: string, conversationHistory: Message[] = []): Promise<string> {
   try {
@@ -108,24 +82,19 @@ export async function sendMessage(userMessage: string, conversationHistory: Mess
       console.log("[Chat] Using backend API (production)");
       return await sendMessageAPI(userMessage, conversationHistory);
     } else {
-      // En local: utilise Ollama
-      console.log("[Chat] Using Ollama (local)");
-      const messages: Message[] = [
-        { role: "system", content: SYSTEM_PROMPT },
-        ...conversationHistory,
-        { role: "user", content: userMessage },
-      ];
-      return await sendMessageOllama(messages);
+      // En local: appelle Groq directement
+      console.log("[Chat] Using Groq API directly (local dev)");
+      return await sendMessageGroqDirect(userMessage, conversationHistory);
     }
   } catch (error) {
     console.error("Chat service error:", error);
 
-    // Messages d'erreur spécifiques
+    if (error instanceof Error && error.message.includes("VITE_GROQ_API_KEY")) {
+      return "⚠️ Clé API Groq non configurée. Ajoutez VITE_GROQ_API_KEY dans votre fichier .env.local";
+    }
+
     if (error instanceof TypeError && error.message.includes("fetch")) {
-      if (isProduction) {
-        return "Le service d'assistance n'est pas disponible. Veuillez réessayer plus tard.";
-      }
-      return "Le service d'assistance n'est pas disponible. Assurez-vous qu'Ollama est en cours d'exécution (ollama serve).";
+      return "Le service d'assistance n'est pas disponible. Veuillez réessayer plus tard.";
     }
 
     return "Une erreur s'est produite. Veuillez réessayer.";
@@ -133,15 +102,13 @@ export async function sendMessage(userMessage: string, conversationHistory: Mess
 }
 
 // Vérifier la disponibilité du service
-export async function checkOllamaHealth(): Promise<boolean> {
+export async function checkServiceHealth(): Promise<boolean> {
   try {
     if (isProduction) {
-      // En production, on suppose que l'API est disponible
       return true;
     }
-    // Pour Ollama local, on fait un ping
-    const response = await fetch(`${OLLAMA_BASE_URL}/api/tags`);
-    return response.ok;
+    // En local, on vérifie juste que la clé API est présente
+    return !!GROQ_API_KEY;
   } catch {
     return false;
   }
