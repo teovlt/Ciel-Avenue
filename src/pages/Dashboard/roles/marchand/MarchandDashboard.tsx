@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
+
+import { MarchandOverviewTab } from "./MarchandOverviewTab";
 import { MarchandMissionsTab } from "./MarchandMissionsTab";
 import { MarchandMessagesTab } from "./MarchandMessagesTab";
 import { MarchandQuotesTab } from "./MarchandQuotesTab";
@@ -42,9 +44,12 @@ export function MarchandDashboard() {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
-        <Tabs defaultValue="missions" className="space-y-8">
+        <Tabs defaultValue="overview" className="space-y-8">
           <div className="overflow-x-auto -mx-4 px-4 scrollbar-hide">
             <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
+              <TabsTrigger value="overview" className="text-xs sm:text-sm">
+                Accueil
+              </TabsTrigger>
               <TabsTrigger value="missions" className="text-xs sm:text-sm">
                 Missions
               </TabsTrigger>
@@ -66,6 +71,9 @@ export function MarchandDashboard() {
             </TabsList>
           </div>
 
+          <TabsContent value="overview">
+            <MarchandOverviewTab />
+          </TabsContent>
           <TabsContent value="missions">
             <MarchandMissionsTab />
           </TabsContent>
