@@ -2,6 +2,9 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { MessageCircle, X, Send, Loader2, User, Trash2, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { sendMessage, checkServiceHealth, type Message } from "@/lib/ollama-service";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { Link } from "react-router-dom";
 
 const STORAGE_KEY = "ciel-avenue-chat-history";
 const VOICE_ENABLED_KEY = "ciel-avenue-voice-enabled";
@@ -352,11 +355,37 @@ export function Chatbot() {
                   </div>
                 )}
                 <div
-                  className={`max-w-[75%] rounded-2xl px-4 py-2 ${
+                  className={`max-w-[85%] rounded-2xl px-4 py-3 ${
                     message.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted text-foreground"
                   }`}
                 >
-                  <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                  {message.role === "user" ? (
+                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                  ) : (
+                    <div className="text-sm space-y-3 prose-p:leading-relaxed">
+                      <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        components={{
+                          a: ({ node, ...props }) => (
+                            <Link
+                              to={props.href || "#"}
+                              className="text-primary underline font-medium hover:text-primary/80 transition-colors"
+                              {...props}
+                            >
+                              {props.children}
+                            </Link>
+                          ),
+                          p: ({ node, ...props }) => <p className="leading-relaxed" {...props} />,
+                          strong: ({ node, ...props }) => <strong className="font-semibold text-foreground" {...props} />,
+                          ul: ({ node, ...props }) => <ul className="list-disc pl-4 space-y-1 my-2" {...props} />,
+                          ol: ({ node, ...props }) => <ol className="list-decimal pl-4 space-y-1 my-2" {...props} />,
+                          li: ({ node, ...props }) => <li className="marker:text-primary/70" {...props} />,
+                        }}
+                      >
+                        {message.content}
+                      </ReactMarkdown>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
