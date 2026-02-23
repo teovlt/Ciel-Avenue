@@ -47,29 +47,29 @@ export function BrokerDashboard() {
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
         <Tabs defaultValue="overview" className="space-y-8">
           <div className="overflow-x-auto -mx-4 px-4 scrollbar-hide">
-          <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
-            <TabsTrigger value="overview">
-              <LayoutDashboard className="h-4 w-4 mr-2" />
-              <span className="hidden md:inline">Vue d'ensemble</span>
-              <span className="md:hidden">Aperçu</span>
-            </TabsTrigger>
-            <TabsTrigger value="missions">
-              <Briefcase className="h-4 w-4 mr-2" />
-              Missions
-            </TabsTrigger>
-            <TabsTrigger value="quotes">
-              <FileText className="h-4 w-4 mr-2" />
-              Devis
-            </TabsTrigger>
-            <TabsTrigger value="documents">
-              <FileCheck className="h-4 w-4 mr-2" />
-              <span>Docs</span>
-            </TabsTrigger>
-            <TabsTrigger value="payments">
-              <Euro className="h-4 w-4 mr-2" />
-              Paiements
-            </TabsTrigger>
-          </TabsList>
+            <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
+              <TabsTrigger value="overview">
+                <LayoutDashboard className="h-4 w-4 mr-2" />
+                <span className="hidden md:inline">Vue d'ensemble</span>
+                <span className="md:hidden">Aperçu</span>
+              </TabsTrigger>
+              <TabsTrigger value="missions">
+                <Briefcase className="h-4 w-4 mr-2" />
+                Missions
+              </TabsTrigger>
+              <TabsTrigger value="quotes">
+                <FileText className="h-4 w-4 mr-2" />
+                Devis
+              </TabsTrigger>
+              <TabsTrigger value="documents">
+                <FileCheck className="h-4 w-4 mr-2" />
+                <span>Docs</span>
+              </TabsTrigger>
+              <TabsTrigger value="payments">
+                <Euro className="h-4 w-4 mr-2" />
+                Paiements
+              </TabsTrigger>
+            </TabsList>
           </div>
 
           <TabsContent value="overview">

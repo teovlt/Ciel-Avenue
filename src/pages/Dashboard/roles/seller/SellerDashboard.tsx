@@ -45,29 +45,29 @@ export function SellerDashboard() {
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
         <Tabs defaultValue="listings" className="space-y-8">
           <div className="overflow-x-auto -mx-4 px-4 scrollbar-hide">
-          <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
-            <TabsTrigger value="needs" className="text-xs sm:text-sm">
-              {t("dashboard.tabs.needs")}
-            </TabsTrigger>
-            <TabsTrigger value="messages" className="text-xs sm:text-sm">
-              {t("dashboard.tabs.messages")}
-            </TabsTrigger>
-            <TabsTrigger value="buyers" className="text-xs sm:text-sm">
-              Parc acheteur
-            </TabsTrigger>
-            <TabsTrigger value="experts" className="text-xs sm:text-sm">
-              Experts
-            </TabsTrigger>
-            <TabsTrigger value="listings" className="text-xs sm:text-sm">
-              Mes annonces
-            </TabsTrigger>
-            <TabsTrigger value="tips" className="text-xs sm:text-sm">
-              Conseils
-            </TabsTrigger>
-            <TabsTrigger value="patrimony" className="text-xs sm:text-sm">
-              {t("dashboard.tabs.patrimony")}
-            </TabsTrigger>
-          </TabsList>
+            <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
+              <TabsTrigger value="needs" className="text-xs sm:text-sm">
+                {t("dashboard.tabs.needs")}
+              </TabsTrigger>
+              <TabsTrigger value="messages" className="text-xs sm:text-sm">
+                {t("dashboard.tabs.messages")}
+              </TabsTrigger>
+              <TabsTrigger value="buyers" className="text-xs sm:text-sm">
+                Parc acheteur
+              </TabsTrigger>
+              <TabsTrigger value="experts" className="text-xs sm:text-sm">
+                Experts
+              </TabsTrigger>
+              <TabsTrigger value="listings" className="text-xs sm:text-sm">
+                Mes annonces
+              </TabsTrigger>
+              <TabsTrigger value="tips" className="text-xs sm:text-sm">
+                Conseils
+              </TabsTrigger>
+              <TabsTrigger value="patrimony" className="text-xs sm:text-sm">
+                {t("dashboard.tabs.patrimony")}
+              </TabsTrigger>
+            </TabsList>
           </div>
 
           <TabsContent value="needs">

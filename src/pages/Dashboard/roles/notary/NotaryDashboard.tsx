@@ -6,8 +6,8 @@ import { useTranslation } from "react-i18next";
 import { NotaryOverviewTab } from "./NotaryOverviewTab";
 import { NotaryMissionsTab } from "./NotaryMissionsTab";
 import { NotaryQuotesTab } from "./NotaryQuotesTab";
-import { NotaryDocumentsTab } from "./NotaryDocumentsTab";
-import { NotaryPaymentsTab } from "./NotaryPaymentsTab";
+import { NotaryInvoicesTab } from "./NotaryInvoicesTab";
+import { NotaryAgendaTab } from "./NotaryAgendaTab";
 
 export function NotaryDashboard() {
   const { t } = useTranslation();
@@ -25,7 +25,7 @@ export function NotaryDashboard() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
               <h1 className="text-3xl font-bold text-foreground">Espace Notaire</h1>
-              <p className="text-muted-foreground mt-1">Gérez vos missions et votre activité notariale.</p>
+              <p className="text-muted-foreground mt-1">Gérez vos missions, agenda et facturation.</p>
             </div>
             <div className="flex items-center gap-3">
               <Button asChild variant="outline" size="sm">
@@ -43,27 +43,30 @@ export function NotaryDashboard() {
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
         <Tabs defaultValue="overview" className="space-y-8">
           <div className="overflow-x-auto -mx-4 px-4 scrollbar-hide">
-          <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
-            <TabsTrigger value="overview" className="text-xs sm:text-sm">
-              Accueil
-            </TabsTrigger>
-            <TabsTrigger value="missions" className="text-xs sm:text-sm">
-              Missions
-            </TabsTrigger>
-            <TabsTrigger value="quotes" className="text-xs sm:text-sm">
-              Vos devis
-            </TabsTrigger>
-            <TabsTrigger value="documents" className="text-xs sm:text-sm">
-              Vos documents
-            </TabsTrigger>
-            <TabsTrigger value="payments" className="text-xs sm:text-sm">
-              Paiements
-            </TabsTrigger>
-          </TabsList>
+            <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
+              <TabsTrigger value="overview" className="text-xs sm:text-sm">
+                Accueil
+              </TabsTrigger>
+              <TabsTrigger value="agenda" className="text-xs sm:text-sm">
+                Agenda
+              </TabsTrigger>
+              <TabsTrigger value="missions" className="text-xs sm:text-sm">
+                Missions
+              </TabsTrigger>
+              <TabsTrigger value="quotes" className="text-xs sm:text-sm">
+                Deals
+              </TabsTrigger>
+              <TabsTrigger value="invoices" className="text-xs sm:text-sm">
+                Factures
+              </TabsTrigger>
+            </TabsList>
           </div>
 
           <TabsContent value="overview">
             <NotaryOverviewTab />
+          </TabsContent>
+          <TabsContent value="agenda">
+            <NotaryAgendaTab />
           </TabsContent>
           <TabsContent value="missions">
             <NotaryMissionsTab />
@@ -71,11 +74,8 @@ export function NotaryDashboard() {
           <TabsContent value="quotes">
             <NotaryQuotesTab />
           </TabsContent>
-          <TabsContent value="documents">
-            <NotaryDocumentsTab />
-          </TabsContent>
-          <TabsContent value="payments">
-            <NotaryPaymentsTab />
+          <TabsContent value="invoices">
+            <NotaryInvoicesTab />
           </TabsContent>
         </Tabs>
       </div>

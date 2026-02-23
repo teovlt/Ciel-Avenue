@@ -43,23 +43,23 @@ export function DiagnosticianDashboard() {
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
         <Tabs defaultValue="overview" className="space-y-8">
           <div className="overflow-x-auto -mx-4 px-4 scrollbar-hide">
-          <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
-            <TabsTrigger value="overview" className="text-xs sm:text-sm">
-              Accueil
-            </TabsTrigger>
-            <TabsTrigger value="missions" className="text-xs sm:text-sm">
-              Missions
-            </TabsTrigger>
-            <TabsTrigger value="quotes" className="text-xs sm:text-sm">
-              Vos devis
-            </TabsTrigger>
-            <TabsTrigger value="documents" className="text-xs sm:text-sm">
-              Vos documents
-            </TabsTrigger>
-            <TabsTrigger value="payments" className="text-xs sm:text-sm">
-              Vos paiements
-            </TabsTrigger>
-          </TabsList>
+            <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
+              <TabsTrigger value="overview" className="text-xs sm:text-sm">
+                Accueil
+              </TabsTrigger>
+              <TabsTrigger value="missions" className="text-xs sm:text-sm">
+                Missions
+              </TabsTrigger>
+              <TabsTrigger value="quotes" className="text-xs sm:text-sm">
+                Vos devis
+              </TabsTrigger>
+              <TabsTrigger value="documents" className="text-xs sm:text-sm">
+                Vos documents
+              </TabsTrigger>
+              <TabsTrigger value="payments" className="text-xs sm:text-sm">
+                Vos paiements
+              </TabsTrigger>
+            </TabsList>
           </div>
 
           <TabsContent value="overview">
