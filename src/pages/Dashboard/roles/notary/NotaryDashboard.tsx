@@ -45,13 +45,13 @@ export function NotaryDashboard() {
           <div className="overflow-x-auto -mx-4 px-4 scrollbar-hide">
             <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
               <TabsTrigger value="overview" className="text-xs sm:text-sm">
-                Accueil
+                Missions
               </TabsTrigger>
               <TabsTrigger value="agenda" className="text-xs sm:text-sm">
                 Agenda
               </TabsTrigger>
               <TabsTrigger value="missions" className="text-xs sm:text-sm">
-                Missions
+                Vos dossiers
               </TabsTrigger>
               <TabsTrigger value="quotes" className="text-xs sm:text-sm">
                 Deals

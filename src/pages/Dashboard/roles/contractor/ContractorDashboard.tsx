@@ -3,11 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
-import { ContractorOverviewTab } from "./ContractorOverviewTab";
 import { ContractorMissionsTab } from "./ContractorMissionsTab";
+import { ContractorMessagesTab } from "./ContractorMessagesTab";
 import { ContractorQuotesTab } from "./ContractorQuotesTab";
-import { ContractorDocumentsTab } from "./ContractorDocumentsTab";
-import { ContractorPaymentsTab } from "./ContractorPaymentsTab";
+import { ContractorInvoicesTab } from "./ContractorInvoicesTab";
+import { ContractorAgendaTab } from "./ContractorAgendaTab";
 
 export function ContractorDashboard() {
   const { t } = useTranslation();
@@ -25,7 +25,7 @@ export function ContractorDashboard() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
               <h1 className="text-3xl font-bold text-foreground">Espace Maître d'Œuvre</h1>
-              <p className="text-muted-foreground mt-1">Pilotez vos chantiers et coordonnez les travaux.</p>
+              <p className="text-muted-foreground mt-1">Pilotez vos chantiers, devis, facturations et votre agenda.</p>
             </div>
             <div className="flex items-center gap-3">
               <Button asChild variant="outline" size="sm">
@@ -41,41 +41,41 @@ export function ContractorDashboard() {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
-        <Tabs defaultValue="overview" className="space-y-8">
+        <Tabs defaultValue="missions" className="space-y-8">
           <div className="overflow-x-auto -mx-4 px-4 scrollbar-hide">
             <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
-              <TabsTrigger value="overview" className="text-xs sm:text-sm">
-                Accueil
-              </TabsTrigger>
               <TabsTrigger value="missions" className="text-xs sm:text-sm">
                 Missions
               </TabsTrigger>
+              <TabsTrigger value="messages" className="text-xs sm:text-sm">
+                Messages
+              </TabsTrigger>
               <TabsTrigger value="quotes" className="text-xs sm:text-sm">
-                Vos devis
+                Devis
               </TabsTrigger>
-              <TabsTrigger value="documents" className="text-xs sm:text-sm">
-                Vos documents
+              <TabsTrigger value="invoices" className="text-xs sm:text-sm">
+                Factures
               </TabsTrigger>
-              <TabsTrigger value="payments" className="text-xs sm:text-sm">
-                Paiements
+              <TabsTrigger value="agenda" className="text-xs sm:text-sm">
+                Agenda
               </TabsTrigger>
             </TabsList>
           </div>
 
-          <TabsContent value="overview">
-            <ContractorOverviewTab />
-          </TabsContent>
           <TabsContent value="missions">
             <ContractorMissionsTab />
+          </TabsContent>
+          <TabsContent value="messages">
+            <ContractorMessagesTab />
           </TabsContent>
           <TabsContent value="quotes">
             <ContractorQuotesTab />
           </TabsContent>
-          <TabsContent value="documents">
-            <ContractorDocumentsTab />
+          <TabsContent value="invoices">
+            <ContractorInvoicesTab />
           </TabsContent>
-          <TabsContent value="payments">
-            <ContractorPaymentsTab />
+          <TabsContent value="agenda">
+            <ContractorAgendaTab />
           </TabsContent>
         </Tabs>
       </div>

@@ -4,13 +4,11 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/providers/auth-provider";
 import { UserCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { BrokerOverviewTab } from "./BrokerOverviewTab";
 import { BrokerMissionsTab } from "./BrokerMissionsTab";
+import { BrokerMessagesTab } from "./BrokerMessagesTab";
 import { BrokerQuotesTab } from "./BrokerQuotesTab";
-import { BrokerDocumentsTab } from "./BrokerDocumentsTab";
-import { BrokerPaymentsTab } from "./BrokerPaymentsTab";
-
-import { FileText, Briefcase, FileCheck, Euro, LayoutDashboard } from "lucide-react";
+import { BrokerInvoicesTab } from "./BrokerInvoicesTab";
+import { BrokerAgendaTab } from "./BrokerAgendaTab";
 
 export function BrokerDashboard() {
   const { user } = useAuth();
@@ -45,51 +43,41 @@ export function BrokerDashboard() {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
-        <Tabs defaultValue="overview" className="space-y-8">
+        <Tabs defaultValue="missions" className="space-y-8">
           <div className="overflow-x-auto -mx-4 px-4 scrollbar-hide">
             <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
-              <TabsTrigger value="overview">
-                <LayoutDashboard className="h-4 w-4 mr-2" />
-                <span className="hidden md:inline">Vue d'ensemble</span>
-                <span className="md:hidden">Aperçu</span>
-              </TabsTrigger>
-              <TabsTrigger value="missions">
-                <Briefcase className="h-4 w-4 mr-2" />
+              <TabsTrigger value="missions" className="text-xs sm:text-sm">
                 Missions
               </TabsTrigger>
-              <TabsTrigger value="quotes">
-                <FileText className="h-4 w-4 mr-2" />
+              <TabsTrigger value="messages" className="text-xs sm:text-sm">
+                Messages
+              </TabsTrigger>
+              <TabsTrigger value="quotes" className="text-xs sm:text-sm">
                 Devis
               </TabsTrigger>
-              <TabsTrigger value="documents">
-                <FileCheck className="h-4 w-4 mr-2" />
-                <span>Docs</span>
+              <TabsTrigger value="invoices" className="text-xs sm:text-sm">
+                Factures
               </TabsTrigger>
-              <TabsTrigger value="payments">
-                <Euro className="h-4 w-4 mr-2" />
-                Paiements
+              <TabsTrigger value="agenda" className="text-xs sm:text-sm">
+                Agenda
               </TabsTrigger>
             </TabsList>
           </div>
 
-          <TabsContent value="overview">
-            <BrokerOverviewTab />
-          </TabsContent>
-
           <TabsContent value="missions">
             <BrokerMissionsTab />
           </TabsContent>
-
+          <TabsContent value="messages">
+            <BrokerMessagesTab />
+          </TabsContent>
           <TabsContent value="quotes">
             <BrokerQuotesTab />
           </TabsContent>
-
-          <TabsContent value="documents">
-            <BrokerDocumentsTab />
+          <TabsContent value="invoices">
+            <BrokerInvoicesTab />
           </TabsContent>
-
-          <TabsContent value="payments">
-            <BrokerPaymentsTab />
+          <TabsContent value="agenda">
+            <BrokerAgendaTab />
           </TabsContent>
         </Tabs>
       </div>

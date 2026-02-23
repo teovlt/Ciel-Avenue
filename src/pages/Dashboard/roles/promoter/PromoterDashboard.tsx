@@ -3,11 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
-import { PromoterOverviewTab } from "./PromoterOverviewTab";
+
 import { PromoterMissionsTab } from "./PromoterMissionsTab";
-import { PromoterProgramsTab } from "./PromoterProgramsTab";
-import { PromoterDocumentsTab } from "./PromoterDocumentsTab";
-import { PromoterPaymentsTab } from "./PromoterPaymentsTab";
+import { PromoterMessagesTab } from "./PromoterMessagesTab";
+import { PromoterQuotesTab } from "./PromoterQuotesTab";
+import { PromoterInvoicesTab } from "./PromoterInvoicesTab";
+import { PromoterAgendaTab } from "./PromoterAgendaTab";
+import { PromoterListingsTab } from "./PromoterListingsTab";
 
 export function PromoterDashboard() {
   const { t } = useTranslation();
@@ -25,7 +27,7 @@ export function PromoterDashboard() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
               <h1 className="text-3xl font-bold text-foreground">Espace Promoteur</h1>
-              <p className="text-muted-foreground mt-1">Gérez vos programmes immobiliers neufs.</p>
+              <p className="text-muted-foreground mt-1">Gérez vos programmes immobiliers neufs et vos commercialisations.</p>
             </div>
             <div className="flex items-center gap-3">
               <Button asChild variant="outline" size="sm">
@@ -41,41 +43,47 @@ export function PromoterDashboard() {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
-        <Tabs defaultValue="overview" className="space-y-8">
+        <Tabs defaultValue="missions" className="space-y-8">
           <div className="overflow-x-auto -mx-4 px-4 scrollbar-hide">
             <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
-              <TabsTrigger value="overview" className="text-xs sm:text-sm">
-                Accueil
-              </TabsTrigger>
               <TabsTrigger value="missions" className="text-xs sm:text-sm">
                 Missions
               </TabsTrigger>
-              <TabsTrigger value="programs" className="text-xs sm:text-sm">
-                Vos Programmes
+              <TabsTrigger value="messages" className="text-xs sm:text-sm">
+                Messages
               </TabsTrigger>
-              <TabsTrigger value="documents" className="text-xs sm:text-sm">
-                Vos documents
+              <TabsTrigger value="quotes" className="text-xs sm:text-sm">
+                Devis
               </TabsTrigger>
-              <TabsTrigger value="payments" className="text-xs sm:text-sm">
-                Paiements
+              <TabsTrigger value="invoices" className="text-xs sm:text-sm">
+                Factures
+              </TabsTrigger>
+              <TabsTrigger value="agenda" className="text-xs sm:text-sm">
+                Agenda
+              </TabsTrigger>
+              <TabsTrigger value="listings" className="text-xs sm:text-sm">
+                Annonces
               </TabsTrigger>
             </TabsList>
           </div>
 
-          <TabsContent value="overview">
-            <PromoterOverviewTab />
-          </TabsContent>
           <TabsContent value="missions">
             <PromoterMissionsTab />
           </TabsContent>
-          <TabsContent value="programs">
-            <PromoterProgramsTab />
+          <TabsContent value="messages">
+            <PromoterMessagesTab />
           </TabsContent>
-          <TabsContent value="documents">
-            <PromoterDocumentsTab />
+          <TabsContent value="quotes">
+            <PromoterQuotesTab />
           </TabsContent>
-          <TabsContent value="payments">
-            <PromoterPaymentsTab />
+          <TabsContent value="invoices">
+            <PromoterInvoicesTab />
+          </TabsContent>
+          <TabsContent value="agenda">
+            <PromoterAgendaTab />
+          </TabsContent>
+          <TabsContent value="listings">
+            <PromoterListingsTab />
           </TabsContent>
         </Tabs>
       </div>

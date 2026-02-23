@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
 
-import { ArtisanOverviewTab } from "./ArtisanOverviewTab";
 import { ArtisanMissionsTab } from "./ArtisanMissionsTab";
+import { ArtisanMessagesTab } from "./ArtisanMessagesTab";
 import { ArtisanQuotesTab } from "./ArtisanQuotesTab";
-import { ArtisanDocumentsTab } from "./ArtisanDocumentsTab";
-import { ArtisanPaymentsTab } from "./ArtisanPaymentsTab";
+import { ArtisanInvoicesTab } from "./ArtisanInvoicesTab";
+import { ArtisanAgendaTab } from "./ArtisanAgendaTab";
 
 export function ArtisanDashboard() {
   const { t } = useTranslation();
@@ -26,7 +26,7 @@ export function ArtisanDashboard() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
               <h1 className="text-3xl font-bold text-foreground">Espace Artisan</h1>
-              <p className="text-muted-foreground mt-1">Gérez vos chantiers et devis travaux.</p>
+              <p className="text-muted-foreground mt-1">Gérez vos chantiers, devis, factures et planning d'interventions.</p>
             </div>
             <div className="flex items-center gap-3">
               <Button asChild variant="outline" size="sm">
@@ -42,41 +42,41 @@ export function ArtisanDashboard() {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
-        <Tabs defaultValue="overview" className="space-y-8">
+        <Tabs defaultValue="missions" className="space-y-8">
           <div className="overflow-x-auto -mx-4 px-4 scrollbar-hide">
             <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
-              <TabsTrigger value="overview" className="text-xs sm:text-sm">
-                Accueil
-              </TabsTrigger>
               <TabsTrigger value="missions" className="text-xs sm:text-sm">
-                Chantiers
+                Missions
+              </TabsTrigger>
+              <TabsTrigger value="messages" className="text-xs sm:text-sm">
+                Messages
               </TabsTrigger>
               <TabsTrigger value="quotes" className="text-xs sm:text-sm">
-                Vos devis
+                Devis
               </TabsTrigger>
-              <TabsTrigger value="documents" className="text-xs sm:text-sm">
-                Vos documents
+              <TabsTrigger value="invoices" className="text-xs sm:text-sm">
+                Factures
               </TabsTrigger>
-              <TabsTrigger value="payments" className="text-xs sm:text-sm">
-                Paiements
+              <TabsTrigger value="agenda" className="text-xs sm:text-sm">
+                Agenda
               </TabsTrigger>
             </TabsList>
           </div>
 
-          <TabsContent value="overview">
-            <ArtisanOverviewTab />
-          </TabsContent>
           <TabsContent value="missions">
             <ArtisanMissionsTab />
+          </TabsContent>
+          <TabsContent value="messages">
+            <ArtisanMessagesTab />
           </TabsContent>
           <TabsContent value="quotes">
             <ArtisanQuotesTab />
           </TabsContent>
-          <TabsContent value="documents">
-            <ArtisanDocumentsTab />
+          <TabsContent value="invoices">
+            <ArtisanInvoicesTab />
           </TabsContent>
-          <TabsContent value="payments">
-            <ArtisanPaymentsTab />
+          <TabsContent value="agenda">
+            <ArtisanAgendaTab />
           </TabsContent>
         </Tabs>
       </div>

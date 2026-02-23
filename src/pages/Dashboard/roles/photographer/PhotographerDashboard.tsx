@@ -3,11 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
-import { PhotographerOverviewTab } from "./PhotographerOverviewTab";
+
 import { PhotographerMissionsTab } from "./PhotographerMissionsTab";
+import { PhotographerMessagesTab } from "./PhotographerMessagesTab";
 import { PhotographerQuotesTab } from "./PhotographerQuotesTab";
-import { PhotographerDocumentsTab } from "./PhotographerDocumentsTab";
-import { PhotographerPaymentsTab } from "./PhotographerPaymentsTab";
+import { PhotographerInvoicesTab } from "./PhotographerInvoicesTab";
+import { PhotographerAgendaTab } from "./PhotographerAgendaTab";
+import { PhotographerPortfolioTab } from "./PhotographerPortfolioTab";
 
 export function PhotographerDashboard() {
   const { t } = useTranslation();
@@ -41,41 +43,47 @@ export function PhotographerDashboard() {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
-        <Tabs defaultValue="overview" className="space-y-8">
+        <Tabs defaultValue="missions" className="space-y-8">
           <div className="overflow-x-auto -mx-4 px-4 scrollbar-hide">
             <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
-              <TabsTrigger value="overview" className="text-xs sm:text-sm">
-                Accueil
-              </TabsTrigger>
               <TabsTrigger value="missions" className="text-xs sm:text-sm">
                 Missions
               </TabsTrigger>
+              <TabsTrigger value="messages" className="text-xs sm:text-sm">
+                Messages
+              </TabsTrigger>
               <TabsTrigger value="quotes" className="text-xs sm:text-sm">
-                Vos devis
+                Devis
               </TabsTrigger>
-              <TabsTrigger value="documents" className="text-xs sm:text-sm">
-                Vos documents
+              <TabsTrigger value="invoices" className="text-xs sm:text-sm">
+                Factures
               </TabsTrigger>
-              <TabsTrigger value="payments" className="text-xs sm:text-sm">
-                Paiements
+              <TabsTrigger value="agenda" className="text-xs sm:text-sm">
+                Agenda
+              </TabsTrigger>
+              <TabsTrigger value="portfolio" className="text-xs sm:text-sm">
+                Portfolio
               </TabsTrigger>
             </TabsList>
           </div>
 
-          <TabsContent value="overview">
-            <PhotographerOverviewTab />
-          </TabsContent>
           <TabsContent value="missions">
             <PhotographerMissionsTab />
+          </TabsContent>
+          <TabsContent value="messages">
+            <PhotographerMessagesTab />
           </TabsContent>
           <TabsContent value="quotes">
             <PhotographerQuotesTab />
           </TabsContent>
-          <TabsContent value="documents">
-            <PhotographerDocumentsTab />
+          <TabsContent value="invoices">
+            <PhotographerInvoicesTab />
           </TabsContent>
-          <TabsContent value="payments">
-            <PhotographerPaymentsTab />
+          <TabsContent value="agenda">
+            <PhotographerAgendaTab />
+          </TabsContent>
+          <TabsContent value="portfolio">
+            <PhotographerPortfolioTab />
           </TabsContent>
         </Tabs>
       </div>

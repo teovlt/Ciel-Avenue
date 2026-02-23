@@ -3,11 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslation } from "react-i18next";
-import { MarchandOverviewTab } from "./MarchandOverviewTab";
 import { MarchandMissionsTab } from "./MarchandMissionsTab";
+import { MarchandMessagesTab } from "./MarchandMessagesTab";
 import { MarchandQuotesTab } from "./MarchandQuotesTab";
-import { MarchandDocumentsTab } from "./MarchandDocumentsTab";
-import { MarchandPaymentsTab } from "./MarchandPaymentsTab";
+import { MarchandInvoicesTab } from "./MarchandInvoicesTab";
+import { MarchandAgendaTab } from "./MarchandAgendaTab";
+import { MarchandListingsTab } from "./MarchandListingsTab";
 
 export function MarchandDashboard() {
   const { t } = useTranslation();
@@ -25,7 +26,7 @@ export function MarchandDashboard() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in-up">
             <div>
               <h1 className="text-3xl font-bold text-foreground">Espace Marchand de Biens</h1>
-              <p className="text-muted-foreground mt-1">Gérez vos opérations d'investissement et clientèle.</p>
+              <p className="text-muted-foreground mt-1">Gérez vos opérations, vos clients et vos annonces immobilières.</p>
             </div>
             <div className="flex items-center gap-3">
               <Button asChild variant="outline" size="sm">
@@ -41,41 +42,47 @@ export function MarchandDashboard() {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8 relative z-10">
-        <Tabs defaultValue="overview" className="space-y-8">
+        <Tabs defaultValue="missions" className="space-y-8">
           <div className="overflow-x-auto -mx-4 px-4 scrollbar-hide">
             <TabsList className="inline-flex min-w-full justify-between h-auto p-1 bg-muted/50 backdrop-blur-sm rounded-xl gap-1">
-              <TabsTrigger value="overview" className="text-xs sm:text-sm">
-                Accueil
-              </TabsTrigger>
               <TabsTrigger value="missions" className="text-xs sm:text-sm">
                 Missions
               </TabsTrigger>
+              <TabsTrigger value="messages" className="text-xs sm:text-sm">
+                Messages
+              </TabsTrigger>
               <TabsTrigger value="quotes" className="text-xs sm:text-sm">
-                Vos devis
+                Devis
               </TabsTrigger>
-              <TabsTrigger value="documents" className="text-xs sm:text-sm">
-                Vos documents
+              <TabsTrigger value="invoices" className="text-xs sm:text-sm">
+                Factures
               </TabsTrigger>
-              <TabsTrigger value="payments" className="text-xs sm:text-sm">
-                Paiements
+              <TabsTrigger value="agenda" className="text-xs sm:text-sm">
+                Agenda
+              </TabsTrigger>
+              <TabsTrigger value="listings" className="text-xs sm:text-sm">
+                Annonces
               </TabsTrigger>
             </TabsList>
           </div>
 
-          <TabsContent value="overview">
-            <MarchandOverviewTab />
-          </TabsContent>
           <TabsContent value="missions">
             <MarchandMissionsTab />
+          </TabsContent>
+          <TabsContent value="messages">
+            <MarchandMessagesTab />
           </TabsContent>
           <TabsContent value="quotes">
             <MarchandQuotesTab />
           </TabsContent>
-          <TabsContent value="documents">
-            <MarchandDocumentsTab />
+          <TabsContent value="invoices">
+            <MarchandInvoicesTab />
           </TabsContent>
-          <TabsContent value="payments">
-            <MarchandPaymentsTab />
+          <TabsContent value="agenda">
+            <MarchandAgendaTab />
+          </TabsContent>
+          <TabsContent value="listings">
+            <MarchandListingsTab />
           </TabsContent>
         </Tabs>
       </div>
