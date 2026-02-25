@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ChevronLeft, ChevronRight, MapPin, Clock, Calendar as CalendarIcon, User, Search, Store } from "lucide-react";
-
+import { BookingActions } from "../shared/BookingActions";
 const mockAppointments = [
   { id: 1, date: 15, title: "Visite Appartement T3", client: "Lucas D.", time: "10:00", type: "visite", location: "Paris 15ème" },
   {
@@ -186,6 +186,7 @@ export function MarchandAgendaTab() {
                         </span>
                       </div>
                     </div>
+                    <BookingActions />
                   </CardContent>
                 </Card>
               ))}

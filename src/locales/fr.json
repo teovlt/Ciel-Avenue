@@ -1137,6 +1137,13 @@
       "projectDocuments": "Documents du projet",
       "workQuotes": "Devis travaux",
       "fundingProof": "Justificatif de financement"
+    },
+    "bookingActions": {
+      "train": "Train",
+      "hotel": "Hôtel",
+      "airbnb": "Airbnb",
+      "booking": "Booking",
+      "book": "Réserver :"
     }
   }
 }

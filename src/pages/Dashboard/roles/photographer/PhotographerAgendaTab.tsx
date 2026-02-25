@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ChevronLeft, ChevronRight, MapPin, Clock, Calendar as CalendarIcon, Camera, Image as ImageIcon, Video } from "lucide-react";
-
+import { BookingActions } from "../shared/BookingActions";
 const mockAppointments = [
   { id: 1, date: 15, title: "Shooting Maison de Maître", client: "Agence Orpi", time: "10:00", type: "shooting", location: "Marseille 08" },
   {
@@ -166,6 +166,7 @@ export function PhotographerAgendaTab() {
                         </span>
                       </div>
                     </div>
+                    <BookingActions />
                   </CardContent>
                 </Card>
               ))}

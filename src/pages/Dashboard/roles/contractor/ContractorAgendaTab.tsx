@@ -13,6 +13,7 @@ import {
   AlertTriangle,
   CheckSquare,
 } from "lucide-react";
+import { BookingActions } from "../shared/BookingActions";
 
 const mockAppointments = [
   { id: 1, date: 15, title: "Lancement Chantier SDB", client: "Mme Martin", time: "08:30", type: "creation", location: "Marseille 08" },
@@ -184,6 +185,7 @@ export function ContractorAgendaTab() {
                         </span>
                       </div>
                     </div>
+                    <BookingActions />
                   </CardContent>
                 </Card>
               ))}

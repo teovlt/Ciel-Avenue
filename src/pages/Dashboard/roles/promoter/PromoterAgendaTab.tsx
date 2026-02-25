@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ChevronLeft, ChevronRight, MapPin, Clock, Calendar as CalendarIcon, Key, FileText, CheckCircle } from "lucide-react";
-
+import { BookingActions } from "../shared/BookingActions";
 const mockAppointments = [
   {
     id: 1,
@@ -174,6 +174,7 @@ export function PromoterAgendaTab() {
                         </span>
                       </div>
                     </div>
+                    <BookingActions />
                   </CardContent>
                 </Card>
               ))}
