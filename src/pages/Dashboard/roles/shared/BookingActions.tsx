@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Train, Hotel, MapPin, Building } from "lucide-react";
+import { Train, MapPin, Building } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 interface BookingActionsProps {
