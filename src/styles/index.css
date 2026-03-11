@@ -101,29 +101,10 @@
   html,
   body {
     @apply bg-background text-foreground;
-    overflow-x: hidden;
-  }
-
-  /* Hide scrollbar for all elements including body */
-  html {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  html::-webkit-scrollbar {
-    display: none;
   }
 }
 
 @layer utilities {
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-
   /* Fade in up animation */
   .animate-fade-in-up {
     animation: fadeInUp 0.6s ease-out forwards;
