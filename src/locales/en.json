@@ -1138,5 +1138,12 @@
       "workQuotes": "Work quotes",
       "fundingProof": "Proof of funding"
     }
+  },
+  "maintenance": {
+    "badge": "Maintenance in progress",
+    "title": "Site under construction",
+    "description": "We are currently carrying out improvements on our platform. The website will be accessible again very soon.",
+    "subtext": "Thank you for your patience and understanding.",
+    "footer": "© 2025 CIEL AVENUE. All rights reserved."
   }
 }

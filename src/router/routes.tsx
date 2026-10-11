@@ -10,12 +10,14 @@ import About from "@/pages/About";
 import HowItWorks from "@/pages/How-it-works";
 import ProfilPage from "@/pages/Profile";
 import Journey from "@/pages/Journey";
+import { MaintenancePage } from "@/pages/Maintenance";
 
 export const Router = () => {
   return (
     <>
       <ScrollToTop />
       <Routes>
+        <Route path="/maintenance" element={<MaintenancePage />} />
         <Route element={<LayoutWrapper />}>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
@@ -37,3 +39,4 @@ export const Router = () => {
     </>
   );
 };
+

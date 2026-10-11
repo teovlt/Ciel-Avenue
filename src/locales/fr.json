@@ -1145,5 +1145,12 @@
       "booking": "Booking",
       "book": "Réserver :"
     }
+  },
+  "maintenance": {
+    "badge": "Maintenance en cours",
+    "title": "Site actuellement en travaux",
+    "description": "Nous réalisons actuellement des travaux d'amélioration sur notre plateforme. Le site sera de nouveau accessible très prochainement.",
+    "subtext": "Merci pour votre patience et votre compréhension.",
+    "footer": "© 2025 CIEL AVENUE. Tous droits réservés."
   }
 }

@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { sendMessage, checkServiceHealth, type Message } from "@/lib/ollama-service";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { isProductionEnv } from "@/lib/env";
 
 const STORAGE_KEY = "ciel-avenue-chat-history";
 const VOICE_ENABLED_KEY = "ciel-avenue-voice-enabled";
@@ -146,6 +147,13 @@ function getCelesteVoice(): CelesteVoice {
 }
 
 export function Chatbot() {
+  const location = useLocation();
+
+  // Hide completely when in maintenance mode (prod) or on /maintenance page
+  if (isProductionEnv() || location.pathname === "/maintenance") {
+    return null;
+  }
+
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>(() => loadMessages());
   const [inputValue, setInputValue] = useState("");
