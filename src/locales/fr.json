@@ -15,7 +15,7 @@
     "home": "Accueil",
     "howItWorks": "Comment ça marche",
     "journey": "Parcours client",
-    "dashboard": "Dashboard",
+    "dashboard": "Prototype",
     "contact": "Contact",
     "about": "À propos",
     "start": "Commencer",
@@ -26,99 +26,232 @@
     "darkMode": "Mode sombre",
     "lightMode": "Mode clair",
     "logout": "Déconnexion",
-    "loggedOut": "Vous avez été déconnecté"
+    "loggedOut": "Vous avez été déconnecté",
+    "method": "La méthode",
+    "journeys": "Parcours",
+    "passport": "Passeport du bien",
+    "faq": "FAQ",
+    "cta": "Être informé du pilote",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "mainNav": "Navigation principale",
+    "homeAria": "CIEL AVENUE, accueil",
+    "skipToContent": "Aller au contenu",
+    "individuals": "Particuliers",
+    "professionals": "Professionnels"
   },
   "footer": {
-    "tagline": "La révolution de la gestion immobilière digitale.",
+    "tagline": "Un cap clair pour vos projets immobiliers. Projet en construction, pilote à Rennes et en Ille-et-Vilaine.",
     "platform": "Plateforme",
     "howItWorks": "Comment ça marche",
-    "journey": "Parcours client",
-    "dashboard": "Dashboard",
-    "professionals": "Professionnels",
-    "becomeExpert": "Devenir expert",
-    "sellerSpace": "Espace vendeur",
-    "promoterSpace": "Espace promoteur",
+    "dashboard": "Prototype (données fictives)",
     "aboutUs": "À propos",
     "ourMission": "Notre mission",
     "contact": "Contact",
-    "legal": "Mentions légales",
-    "rights": "© 2025 CIEL AVENUE. Tous droits réservés.",
-    "developedBy": "Application web développée par"
+    "rights": "© {{year}} CIEL AVENUE. Tous droits réservés.",
+    "developedBy": "Application web développée par",
+    "method": "La méthode",
+    "faq": "Questions fréquentes",
+    "pilot": "Pilote",
+    "pilotIndividual": "Je suis un particulier",
+    "pilotProfessional": "Je suis un professionnel",
+    "linkedin": "CIEL AVENUE sur LinkedIn (nouvel onglet)",
+    "individuals": "Parcours particuliers",
+    "professionalsPage": "Parcours professionnels"
   },
   "home": {
     "hero": {
-      "badge": "La révolution immobilière est en marche",
-      "titleStart": "L'immobilier",
-      "titleHighlight": "réinventé",
-      "titleEnd": "pour vous",
-      "description": "CIEL AVENUE révolutionne la gestion immobilière avec une plateforme digitale qui connecte acheteurs, vendeurs, promoteurs et experts. Trouvez votre bien idéal en toute simplicité.",
-      "ctaPrimary": "Découvrir le parcours",
-      "ctaSecondary": "Comment ça marche",
-      "stats": {
-        "users": "Utilisateurs actifs",
-        "properties": "Biens analysés",
-        "experts": "Experts certifiés",
-        "satisfaction": "Satisfaction client"
+      "title": "Votre projet immobilier, un cap clair pour avancer.",
+      "description": "Réunissez les informations de votre bien, comparez vos options et préparez les prochaines étapes avec les professionnels adaptés.",
+      "ctaPrimary": "Être informé du pilote",
+      "ctaSecondary": "Découvrir la méthode",
+      "microtext": "Un projet en construction. Des fonctionnalités à tester, étape par étape."
+    },
+    "preview": {
+      "label": "Mon projet",
+      "project": "Appartement T3 — exemple",
+      "status": "Exemple",
+      "goalLabel": "Objectif",
+      "goal": "Rénover puis mettre en location",
+      "step1": "Clarifier le projet",
+      "step2": "Rassembler les informations",
+      "step2Detail": "2 documents à demander avant le rendez-vous",
+      "step3": "Préparer les échanges",
+      "state": {
+        "done": "terminé",
+        "current": "en cours",
+        "todo": "à venir"
+      },
+      "documents": "Documents réunis",
+      "documentsCount": "6 sur 10",
+      "caption": "Illustration avec des données fictives — l'interface définitive sera précisée pendant le pilote."
+    },
+    "benefits": {
+      "title": "Ce que CIEL AVENUE vous aide à faire",
+      "b1": {
+        "title": "Organiser les informations du bien",
+        "description": "Retrouvez au même endroit les documents, diagnostics et caractéristiques utiles à votre projet."
+      },
+      "b2": {
+        "title": "Explorer vos options",
+        "description": "Rénover, louer, vendre ou acheter : comparez les pistes avant de vous engager."
+      },
+      "b3": {
+        "title": "Préparer vos échanges avec les professionnels",
+        "description": "Arrivez à chaque rendez-vous avec vos questions et les bonnes pièces."
       }
     },
-    "vision": {
-      "title": "Notre vision",
-      "description": "Transformer l'expérience immobilière en offrant une plateforme transparente, efficace et centrée sur l'humain. Nous mettons la technologie au service de vos projets de vie.",
-      "card1": {
-        "title": "Transparence totale",
-        "description": "Des informations claires et vérifiées à chaque étape de votre parcours immobilier."
+    "method": {
+      "eyebrow": "La méthode",
+      "title": "Trois étapes pour avancer",
+      "description": "Une démarche simple, pensée pour éviter les allers-retours et les décisions prises sans les bonnes informations.",
+      "stepLabel": "Étape {{n}} :",
+      "step1": {
+        "title": "Clarifier le projet",
+        "description": "Votre situation, votre objectif, vos contraintes de calendrier et de budget."
       },
-      "card2": {
-        "title": "Rapidité d'exécution",
-        "description": "Un processus optimisé qui réduit considérablement les délais traditionnels."
+      "step2": {
+        "title": "Rassembler les informations",
+        "description": "Les documents disponibles, ceux qui manquent et les points à vérifier."
       },
-      "card3": {
-        "title": "Expertise humaine",
-        "description": "Des experts qualifiés vous accompagnent personnellement dans votre projet."
+      "step3": {
+        "title": "Préparer les prochaines étapes",
+        "description": "Les questions à poser et les professionnels à solliciter, dans le bon ordre."
       }
     },
-    "mission": {
-      "title": "Notre mission",
-      "description": "Simplifier et moderniser l'accès à la propriété en France. Nous croyons que chaque projet immobilier mérite une attention personnalisée et des outils digitaux de pointe.",
-      "feature1": {
-        "title": "Matching intelligent",
-        "description": "entre acheteurs et biens"
+    "journeys": {
+      "eyebrow": "Deux parcours",
+      "title": "Un point de départ adapté à votre situation",
+      "demoLink": "Voir le prototype du parcours (données fictives)",
+      "individuals": {
+        "label": "Particuliers",
+        "title": "Vous avez un bien ou un projet d’achat ?",
+        "benefits": [
+          "Identifier les documents utiles ou manquants",
+          "Explorer vos options : rénover, louer ou vendre",
+          "Préparer vos échanges avec les professionnels"
+        ],
+        "cta": "Participer au pilote",
+        "pageLink": "Découvrir le parcours particuliers"
       },
-      "feature2": {
-        "title": "Préqualification automatique",
-        "description": "des profils acheteurs"
-      },
-      "feature3": {
-        "title": "Accompagnement sur mesure",
-        "description": "par des experts locaux"
-      },
-      "imageAlt": "CIEL AVENUE - Votre partenaire immobilier"
-    },
-    "value": {
-      "title": "Pourquoi CIEL AVENUE ?",
-      "description": "Une approche unique qui combine technologie de pointe et expertise humaine pour révolutionner votre expérience immobilière.",
-      "clients": {
-        "title": "Vous êtes Client",
-        "subtitle": "Acheteur • Vendeur • Bailleur • Locataire • Rénovateur",
-        "feature1": "Parcours guidé et personnalisé selon votre profil",
-        "feature2": "Dossier vérifié et score de solvabilité",
-        "feature3": "Matching avec les meilleurs experts locaux",
-        "feature4": "Multi-profils : combinez plusieurs rôles"
-      },
-      "experts": {
-        "title": "Vous êtes Expert",
-        "subtitle": "Notaire • Diagnostiqueur • Courtier • Artisan • Photographe...",
-        "feature1": "Recevez des leads qualifiés sans prospection",
-        "feature2": "Clients vérifiés dans votre zone géographique",
-        "feature3": "Profil certifié et visibilité accrue",
-        "feature4": "Outils de gestion et suivi intégrés"
+      "professionals": {
+        "label": "Professionnels de l’immobilier",
+        "title": "Vous accompagnez des projets immobiliers ?",
+        "benefits": [
+          "Comprendre les objectifs de vos clients",
+          "Identifier les informations nécessaires à votre intervention",
+          "Clarifier les responsabilités et les prochaines étapes"
+        ],
+        "cta": "Échanger sur le pilote",
+        "pageLink": "Découvrir le parcours professionnels"
       }
+    },
+    "passport": {
+      "eyebrow": "Le Passeport du bien",
+      "title": "Toutes les informations d’un bien, au même endroit",
+      "description": "Le Passeport du bien rassemble ce que l’on sait d’un logement — documents, diagnostics, travaux, options envisagées — pour que chacun parte des mêmes informations.",
+      "points": [
+        "Voir d’un coup d’œil ce qui est disponible, manquant ou à vérifier",
+        "Garder une trace des options étudiées et des décisions prises",
+        "Partager un dossier clair avec les professionnels de votre choix"
+      ],
+      "status": "Le Passeport du bien est en cours de conception : son contenu exact sera défini avec les participants du pilote.",
+      "mockup": {
+        "label": "Passeport du bien",
+        "property": "Maison, 4 pièces — exemple",
+        "documentsTitle": "Documents",
+        "docs": {
+          "deed": "Titre de propriété",
+          "dpe": "Diagnostic de performance énergétique",
+          "tax": "Dernier avis de taxe foncière",
+          "works": "Factures des travaux récents"
+        },
+        "state": {
+          "available": "Disponible",
+          "missing": "Manquant",
+          "toCheck": "À vérifier"
+        },
+        "optionsTitle": "Options étudiées",
+        "options": {
+          "renovate": "Rénover",
+          "rent": "Louer",
+          "sell": "Vendre"
+        },
+        "nextTitle": "Prochaine étape",
+        "next": "Demander l’avis de taxe foncière et préparer les questions pour le diagnostiqueur.",
+        "caption": "Exemple illustratif — les données affichées sont fictives."
+      }
+    },
+    "trust": {
+      "title": "Un projet local, présenté tel qu’il est",
+      "description": "CIEL AVENUE est en construction. Nous préférons vous dire précisément ce qui existe aujourd’hui et ce qui reste à faire.",
+      "territory": {
+        "title": "Territoire pilote",
+        "description": "Rennes et l’Ille-et-Vilaine."
+      },
+      "status": {
+        "title": "Statut actuel",
+        "description": "Prototype en cours de validation, pilote en préparation."
+      },
+      "sharing": {
+        "title": "Partage des informations",
+        "description": "Principe retenu : les informations d’un bien ne sont partagées qu’avec les personnes que vous choisissez. Les modalités techniques seront précisées avant le pilote."
+      },
+      "availability": {
+        "title": "Où en est le produit ?",
+        "available": {
+          "label": "Consultable aujourd’hui",
+          "description": "Un prototype du parcours et des espaces de démonstration, avec des données fictives."
+        },
+        "inProgress": {
+          "label": "En construction",
+          "description": "Le Passeport du bien et la liste des pièces adaptée à chaque situation."
+        },
+        "planned": {
+          "label": "Envisagé",
+          "description": "Céleste, l’assistant, et le partage de dossiers avec les professionnels."
+        }
+      }
+    },
+    "celeste": {
+      "title": "Céleste",
+      "badge": "Envisagé",
+      "description": "Un assistant envisagé pour organiser l’information et préparer les questions. Il ne remplace pas les conseils juridiques, techniques ou financiers des professionnels compétents."
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "items": [
+        {
+          "question": "Qu’est-ce que CIEL AVENUE ?",
+          "answer": "CIEL AVENUE est un outil en construction qui aide à structurer un projet immobilier : réunir les informations d’un bien, comparer les options et préparer les échanges avec les professionnels. Ce n’est pas encore un service ouvert au public."
+        },
+        {
+          "question": "À qui s’adresse le pilote ?",
+          "answer": "Aux particuliers qui ont un bien ou un projet d’achat, et aux professionnels de l’immobilier qui les accompagnent, à Rennes et en Ille-et-Vilaine. Les conditions de participation seront précisées avant le lancement."
+        },
+        {
+          "question": "Qu’est-ce que le Passeport du bien ?",
+          "answer": "Un dossier structuré qui rassemble les informations d’un logement : documents disponibles ou manquants, diagnostics, travaux, options envisagées. Il est en cours de conception et sera construit avec les participants du pilote."
+        },
+        {
+          "question": "Quand le service sera-t-il disponible ?",
+          "answer": "Aucune date n’est fixée pour le moment. Un prototype avec des données fictives est consultable ; le pilote est en préparation."
+        },
+        {
+          "question": "Comment être informé du pilote ?",
+          "answer": "Le bouton « Être informé du pilote » ouvre votre messagerie avec un e-mail prérempli à l’adresse de l’équipe. Aucune donnée n’est collectée sur ce site : vous choisissez ce que vous nous écrivez."
+        },
+        {
+          "question": "Céleste peut-il me conseiller ?",
+          "answer": "Non. Céleste est un assistant envisagé pour aider à organiser l’information et à préparer des questions. Il ne remplace pas les conseils juridiques, techniques ou financiers des professionnels compétents."
+        }
+      ]
     },
     "cta": {
-      "title": "Prêt à révolutionner votre projet immobilier ?",
-      "description": "Rejoignez des milliers d'utilisateurs qui ont déjà fait confiance à CIEL AVENUE pour concrétiser leurs projets immobiliers.",
-      "ctaPrimary": "Découvrir le parcours",
-      "ctaSecondary": "Rejoindre la plateforme"
+      "title": "Envie de tester CIEL AVENUE ?",
+      "description": "Écrivez-nous pour être informé de l’ouverture du pilote à Rennes et en Ille-et-Vilaine.",
+      "button": "Être informé du pilote",
+      "note": "Sans engagement. Votre e-mail sert uniquement à vous répondre."
     }
   },
   "howItWorks": {
@@ -233,58 +366,336 @@
   },
   "contact": {
     "hero": {
-      "badge": "Parlons de votre projet",
-      "title": "Contactez-nous",
-      "description": "Une question, un projet immobilier ou simplement envie d'en savoir plus ? Notre équipe est là pour vous accompagner."
+      "badge": "Rennes & Ille-et-Vilaine",
+      "title": "Un projet, une question ou une collaboration ? Parlons-en.",
+      "description": "Indiquez ce que vous cherchez à préparer, votre point de blocage et votre horizon. Choisissez ici le parcours de contact adapté à votre situation.",
+      "cta": "Choisir ma demande",
+      "microtext": "Projet pilote · Les formulaires de cette page sont des démonstrations : aucune donnée n’est envoyée."
     },
-    "form": {
-      "name": "Nom complet",
-      "namePlaceholder": "Jean Dupont",
-      "email": "Adresse email",
-      "emailPlaceholder": "jean.dupont@exemple.fr",
-      "subject": "Sujet",
-      "subjectPlaceholder": "Sélectionnez un sujet",
-      "subjects": {
-        "general": "Question générale",
-        "buyer": "Je suis acheteur",
-        "seller": "Je suis vendeur",
-        "expert": "Devenir expert",
-        "partnership": "Partenariat",
-        "other": "Autre"
-      },
-      "message": "Message",
-      "messagePlaceholder": "Décrivez votre projet ou posez votre question...",
-      "submit": "Envoyer le message",
-      "successTitle": "Message envoyé !",
-      "successMessage": "Merci pour votre message. Notre équipe vous répondra dans les plus brefs délais."
+    "card": {
+      "label": "Mon espace / Vue d’ensemble",
+      "title": "Préparer ma première demande",
+      "subtitle": "Mon besoin, mon contexte, les informations qui me manquent.",
+      "startLabel": "Un point de départ simple",
+      "start": ["Situation", "Objectif", "Horizon"],
+      "specifyLabel": "À préciser :",
+      "specify": "le bien concerné ou le projet envisagé.",
+      "avoidLabel": "À éviter :",
+      "avoid": "documents d’identité, pièces bancaires et informations sensibles.",
+      "caption": "Exemple illustratif, non connecté."
     },
-    "info": {
-      "title": "Restons en contact",
-      "description": "Nous sommes disponibles pour répondre à toutes vos questions et vous accompagner dans votre projet immobilier.",
-      "email": {
-        "title": "Email",
-        "description": "Réponse sous 24h"
+    "vision": {
+      "title": "Un premier échange utile commence par une demande claire.",
+      "description": "Pour orienter une demande, le contexte compte davantage qu’un long dossier : dites ce que vous voulez faire, ce qui vous manque et à quelle échéance.",
+      "rightRequest": {
+        "title": "La bonne demande",
+        "description": "Un projet personnel, une activité professionnelle, une organisation ou une question générale : des entrées distinctes pour éviter les messages trop vagues."
       },
-      "phone": {
-        "title": "Téléphone",
-        "description": "Du lundi au vendredi"
+      "rightLevel": {
+        "title": "Le bon niveau d’information",
+        "description": "Votre objectif, votre situation et les points à clarifier suffisent pour un premier échange. Aucun document à transmettre ici."
       },
-      "address": {
-        "title": "Adresse",
-        "description": "Siège social"
-      },
-      "hours": {
-        "title": "Horaires",
-        "description": "Nous sommes disponibles",
-        "schedule": "Lun - Ven : 9h - 18h"
+      "nextSteps": {
+        "title": "Une suite à préciser",
+        "description": "Les modalités de réponse et d’accès au pilote seront définies avant l’ouverture des formulaires."
       }
     },
+    "choose": {
+      "title": "Quel est le bon point d’entrée pour votre demande ?",
+      "description": "Vous préparez une décision sur un bien, vous exercez un métier de l’immobilier ou vous représentez une organisation : choisissez la demande qui correspond à votre rôle.",
+      "navLabel": "Types de demande",
+      "individuals": {
+        "title": "Je suis un particulier",
+        "description": "Propriétaire ou futur acquéreur : présentez votre projet."
+      },
+      "professionals": {
+        "title": "Je suis un professionnel",
+        "description": "Présentez votre métier, votre zone et vos besoins de coordination."
+      },
+      "organizations": {
+        "title": "Je représente une organisation",
+        "description": "Décrivez le cas d’usage à tester et les intervenants concernés."
+      },
+      "general": {
+        "title": "Une autre demande",
+        "description": "Une question générale, une collaboration ou l’écosystème."
+      }
+    },
+    "offers": {
+      "provisional": "Tarif provisoire · Offre non ouverte, conditions à définir",
+      "discovery": {
+        "name": "Découverte",
+        "price": "0 €",
+        "description": "Périmètre envisagé : décrire votre objectif, préparer le Passeport du bien et repérer les informations nécessaires à votre décision."
+      },
+      "expertPro": {
+        "name": "Expert Pro",
+        "price": "299 € HT / mois",
+        "description": "Périmètre envisagé : contextualiser les demandes, consulter les pièces autorisées et préparer la collaboration. Aucun volume de missions ni chiffre d’affaires n’est garanti."
+      },
+      "pilotOrganization": {
+        "name": "Pilote Organisation",
+        "price": "3 000 € HT / 3 mois",
+        "description": "Cadre envisagé pour tester un cas réel avec une équipe : documents, rôles, échéances, relances et bilan. Périmètre, livrables et conditions à convenir."
+      }
+    },
+    "individuals": {
+      "eyebrow": "Particuliers",
+      "title": "Un achat, des travaux ou un bien à valoriser : présentez votre situation.",
+      "description": "Dites si vous avez déjà un bien ou si vous préparez un achat, ce que vous souhaitez faire, la question qui vous bloque et votre horizon, même approximatif. Le premier échange ne nécessite pas de dossier complet."
+    },
+    "professionals": {
+      "eyebrow": "Professionnels",
+      "title": "Quel métier exercez-vous et sur quels projets intervenez-vous ?",
+      "description": "Présentez votre spécialité, votre zone d’intervention et les situations où un dossier client mieux contextualisé vous serait utile."
+    },
+    "organizations": {
+      "eyebrow": "Organisations",
+      "title": "Tester un cas réel avec votre équipe.",
+      "description": "Agence, promoteur, bailleur, collectivité ou réseau : précisez le contexte, le cas d’usage, les acteurs à coordonner et ce que vous attendez d’un pilote."
+    },
+    "general": {
+      "title": "Restons en contact",
+      "description": "Pour toute autre question sur CIEL AVENUE : un échange sur le projet, une collaboration ou une information.",
+      "zone": {
+        "label": "Zone pilote",
+        "value": "Rennes et l’Ille-et-Vilaine."
+      },
+      "afterRequest": {
+        "label": "Après votre demande",
+        "value": "Le traitement des demandes et les délais de réponse seront précisés à l’ouverture des formulaires."
+      }
+    },
+    "formCommon": {
+      "demoNotice": "Démonstration : ce formulaire n’envoie et ne conserve aucune donnée.",
+      "requiredLegend": "Les champs marqués d’un astérisque (*) sont obligatoires.",
+      "optional": "(facultatif)",
+      "choose": "Choisir…",
+      "acknowledge": "J’ai compris qu’il s’agit d’une démonstration : ma demande ne sera pas envoyée.",
+      "errors": {
+        "summary_one": "1 point à corriger avant de continuer :",
+        "summary_other": "{{count}} points à corriger avant de continuer :",
+        "required": "Renseignez le champ « {{field}} ».",
+        "email": "Saisissez une adresse e-mail valide, par exemple nom@domaine.fr.",
+        "acknowledge": "Cochez la case pour confirmer que vous avez compris qu’il s’agit d’une démonstration."
+      },
+      "simulated": {
+        "title": "Simulation terminée : votre demande n’a pas été envoyée.",
+        "body": "Ce formulaire est une démonstration du parcours. Rien n’a été transmis à l’équipe CIEL AVENUE et les informations saisies ont été effacées. Les formulaires seront activés une fois le traitement des demandes défini.",
+        "restart": "Recommencer la démonstration"
+      }
+    },
+    "forms": {
+      "individual": {
+        "title": "Demande pilote — particulier",
+        "intro": "Pour situer votre projet : votre situation, votre objectif, votre horizon et votre question principale. N’ajoutez aucun justificatif d’identité, document financier ou pièce du bien.",
+        "submit": "Simuler ma demande",
+        "fields": {
+          "name": {
+            "label": "Nom complet",
+            "placeholder": "Camille Martin"
+          },
+          "email": {
+            "label": "E-mail",
+            "placeholder": "camille.martin@exemple.fr"
+          },
+          "situation": {
+            "label": "Votre situation actuelle",
+            "options": ["Déjà propriétaire", "En préparation d’un achat", "Locataire avec un projet", "Autre situation"]
+          },
+          "objective": {
+            "label": "Votre objectif principal",
+            "options": ["Acheter", "Rénover", "Louer", "Vendre", "À clarifier"]
+          },
+          "timeline": {
+            "label": "Horizon du projet",
+            "options": ["Moins de 3 mois", "3 à 12 mois", "Plus de 12 mois", "Je ne sais pas encore"]
+          },
+          "question": {
+            "label": "Votre question ou préoccupation principale",
+            "hint": "Quelques lignes suffisent.",
+            "placeholder": "Exemple : nous avons une maison à Cesson-Sévigné et hésitons entre rénover pour louer ou vendre en l’état. Quelles informations réunir avant de demander des devis ?"
+          }
+        }
+      },
+      "professional": {
+        "title": "Candidature — professionnel",
+        "intro": "Pour comprendre votre contribution : votre entreprise, votre métier, votre territoire et le besoin de coordination à tester. Aucun document confidentiel ni information sur vos clients.",
+        "submit": "Simuler ma candidature",
+        "fields": {
+          "name": {
+            "label": "Nom complet",
+            "placeholder": "Julien Le Goff"
+          },
+          "email": {
+            "label": "E-mail professionnel",
+            "placeholder": "julien@diagnostics-exemple.fr"
+          },
+          "company": {
+            "label": "Entreprise",
+            "placeholder": "Diagnostics Le Goff (exemple)"
+          },
+          "role": {
+            "label": "Métier ou fonction",
+            "placeholder": "Diagnostiqueur immobilier"
+          },
+          "area": {
+            "label": "Zone d’intervention",
+            "placeholder": "Rennes Métropole et Pays de Vitré"
+          },
+          "needs": {
+            "label": "Vos besoins de coordination",
+            "placeholder": "Exemple : je reçois souvent des demandes sans plans ni historique des travaux, ce qui oblige à rappeler le propriétaire avant de chiffrer."
+          }
+        }
+      },
+      "organization": {
+        "title": "Demande — organisation",
+        "intro": "Pour préparer un échange : votre organisation, le cas d’usage envisagé, les intervenants et le résultat attendu. Le périmètre d’un pilote reste à convenir.",
+        "submit": "Simuler ma demande",
+        "fields": {
+          "name": {
+            "label": "Nom complet",
+            "placeholder": "Sophie Bernard"
+          },
+          "email": {
+            "label": "E-mail professionnel",
+            "placeholder": "s.bernard@organisation-exemple.fr"
+          },
+          "organization": {
+            "label": "Organisation",
+            "placeholder": "Bailleur social, agence, promoteur… (nom fictif : Habitat Exemple)"
+          },
+          "context": {
+            "label": "Contexte",
+            "placeholder": "Exemple : nous gérons une centaine de logements en Ille-et-Vilaine avec plusieurs prestataires de travaux."
+          },
+          "useCase": {
+            "label": "Cas d’usage envisagé",
+            "placeholder": "Exemple : préparer la remise en location d’un logement après travaux, de l’état des lieux à la mise en location."
+          },
+          "stakeholders": {
+            "label": "Intervenants concernés",
+            "placeholder": "Gestionnaire, artisans, diagnostiqueur, agence de location"
+          },
+          "outcome": {
+            "label": "Résultat attendu",
+            "placeholder": "Exemple : savoir à tout moment quelles pièces manquent et qui porte la prochaine action."
+          }
+        }
+      },
+      "general": {
+        "title": "Autre demande",
+        "intro": "Expliquez l’objet de votre demande et la suite que vous recherchez. N’envoyez pas de document sensible.",
+        "submit": "Simuler l’envoi du message",
+        "fields": {
+          "name": {
+            "label": "Nom complet",
+            "placeholder": "Alex Moreau"
+          },
+          "email": {
+            "label": "E-mail",
+            "placeholder": "alex.moreau@exemple.fr"
+          },
+          "subject": {
+            "label": "Sujet",
+            "options": [
+              "Mon projet immobilier",
+              "Une collaboration professionnelle",
+              "Le pilote organisation",
+              "Investissement / écosystème",
+              "Une question générale"
+            ]
+          },
+          "message": {
+            "label": "Votre demande et la suite souhaitée",
+            "placeholder": "Précisez votre question, votre rôle et ce que vous attendez d’un premier échange."
+          }
+        }
+      }
+    },
+    "trust": {
+      "title": "Avant d’écrire, trois repères.",
+      "sensitive": {
+        "title": "Pas de pièces sensibles au premier échange.",
+        "description": "Un objectif, une situation et un horizon suffisent. N’indiquez pas de données bancaires, de justificatifs d’identité ou de documents confidentiels."
+      },
+      "routing": {
+        "title": "Une demande orientée vers le bon parcours.",
+        "description": "Propriétaire ou futur acquéreur : décrivez votre projet. Professionnel : présentez votre métier et votre zone. Organisation : précisez le cas d’usage et les intervenants."
+      },
+      "simulation": {
+        "title": "Une simulation, sans envoi réel.",
+        "description": "Les formulaires de cette page ne transmettent ni ne conservent de données. Ils seront activés une fois le destinataire, les délais et la politique de confidentialité définis."
+      }
+    },
+    "visionMission": {
+      "label": "Vision et mission",
+      "vision": {
+        "eyebrow": "Notre vision",
+        "title": "Présenter votre besoin sans constituer tout le dossier.",
+        "paragraphs": [
+          "Pour un premier contact, expliquez le projet envisagé, votre rôle et ce qui vous bloque. Il n’est pas nécessaire d’envoyer les pièces du bien.",
+          "Les documents utiles dépendront de la suite retenue et du professionnel concerné."
+        ]
+      },
+      "mission": {
+        "eyebrow": "Notre mission",
+        "title": "Quelques informations bien choisies valent mieux qu’un long récit.",
+        "description": "Indiquez votre objectif, votre territoire, votre horizon et la principale question à traiter. Pour une organisation, ajoutez le cas d’usage et les métiers à coordonner.",
+        "points": [
+          "Décrire votre situation ou votre activité.",
+          "Nommer le besoin et le point de blocage.",
+          "Préciser le territoire et l’horizon envisagé."
+        ]
+      }
+    },
+    "journal": {
+      "title": "Comprendre le projet avant de prendre contact.",
+      "description": "Les coulisses du projet, les essais de parcours et les évolutions du produit, en distinguant ce qui est réalisé, en prototype ou encore à l’étude.",
+      "topics": ["Décrire le besoin", "Préciser le bien concerné", "Indiquer votre horizon", "Préparer une demande utile"]
+    },
     "faq": {
-      "title": "Questions fréquentes",
-      "description": "Voici les questions les plus posées :",
-      "question1": "Comment fonctionne le parcours acheteur ?",
-      "question2": "Quels sont les frais de la plateforme ?",
-      "question3": "Comment devenir expert partenaire ?"
+      "title": "Avant de préparer votre demande.",
+      "items": [
+        {
+          "question": "Quel formulaire choisir pour mon projet personnel ?",
+          "answer": "La demande « particulier » : bien déjà détenu ou achat envisagé, objectif, horizon et question principale."
+        },
+        {
+          "question": "Que préciser si je suis professionnel ?",
+          "answer": "Votre entreprise, votre métier, votre zone d’intervention et le besoin de coordination que vous souhaitez tester. Évitez les informations confidentielles de vos clients."
+        },
+        {
+          "question": "Comment présenter une demande d’organisation ?",
+          "answer": "Précisez le contexte, le cas d’usage, les intervenants impliqués et le résultat attendu. Le périmètre d’un pilote devra être convenu ensemble."
+        },
+        {
+          "question": "Puis-je envoyer les documents de mon bien ?",
+          "answer": "Non. N’envoyez pas de pièce d’identité, document bancaire, diagnostic nominatif ou pièce confidentielle. Les documents utiles seront définis dans un cadre adapté."
+        },
+        {
+          "question": "Les offres et tarifs affichés sont-ils définitifs ?",
+          "answer": "Non. Ce sont des tarifs provisoires. Le périmètre, les conditions et l’ouverture des offres restent à définir."
+        },
+        {
+          "question": "Mon message est-il réellement transmis ?",
+          "answer": "Non. Les formulaires de cette page sont des démonstrations : la confirmation indique seulement que le parcours a été simulé. Aucune donnée n’est envoyée ni conservée."
+        },
+        {
+          "question": "Quel est le délai de réponse ?",
+          "answer": "Aucun délai n’est annoncé pour le moment. Le traitement des demandes et les délais seront précisés à l’ouverture des formulaires."
+        },
+        {
+          "question": "Comment suivre l’avancement du projet ?",
+          "answer": "Les actualités du projet sont publiées sur la page LinkedIn de CIEL AVENUE."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Une demande claire, c’est déjà un meilleur point de départ.",
+      "button": "Préparer mon message",
+      "note": "Formulaires de démonstration · Aucune donnée envoyée ni conservée."
     }
   },
   "notFound": {
@@ -297,74 +708,168 @@
   },
   "about": {
     "hero": {
-      "title": "À propos de",
-      "description": "Nous révolutionnons l'immobilier en France avec une plateforme digitale qui connecte tous les acteurs du marché."
+      "badge": "Rennes & Ille-et-Vilaine",
+      "title": "Né du terrain. Pensé pour la continuité du projet.",
+      "description": "Du chantier à la gestion du bien, un même constat : l’information circule, mais le contexte se perd. CIEL AVENUE est né pour relier les étapes et les personnes.",
+      "cta": "Comprendre notre démarche",
+      "microtext": "Projet pilote · Usages envisagés, périmètre et accès à confirmer."
+    },
+    "card": {
+      "label": "Mon espace / Vue d’ensemble",
+      "title": "Un bien, plusieurs décisions",
+      "subtitle": "Le contexte doit suivre le projet, pas rester dans un échange isolé.",
+      "threadLabel": "Le fil conducteur envisagé",
+      "thread": ["Situation", "Bien", "Décision", "Suite"],
+      "findingLabel": "Le constat :",
+      "finding": "des informations dispersées entre les acteurs.",
+      "ambitionLabel": "L’ambition :",
+      "ambition": "relier les pièces, les questions et les responsabilités.",
+      "caption": "Exemple illustratif, non connecté."
     },
     "vision": {
-      "badge": "Notre vision",
-      "title": "Réinventer l'expérience immobilière",
-      "description1": "CIEL AVENUE est née d'un constat simple : l'immobilier traditionnel est trop complexe, trop long, et manque de transparence. Nous avons créé une plateforme qui simplifie chaque étape du parcours d'achat tout en garantissant un accompagnement expert et personnalisé.",
-      "description2": "Notre vision est de devenir la référence de l'immobilier digital en France, en alliant technologie de pointe et expertise humaine pour offrir la meilleure expérience possible à nos utilisateurs.",
-      "imageAlt": "Vision CIEL AVENUE"
-    },
-    "mission": {
-      "badge": "Notre mission",
-      "title": "Démocratiser l'accès à la propriété",
-      "description": "Notre mission est de rendre l'accès à la propriété plus simple, plus rapide et plus transparent pour tous. Nous croyons que chaque projet immobilier mérite une attention personnalisée et des outils digitaux performants.",
-      "imageAlt": "Mission CIEL AVENUE",
-      "step1": {
-        "title": "Simplifier le parcours acheteur",
-        "description": "Un processus guidé et optimisé à chaque étape"
+      "title": "Notre vision : préserver le fil du projet.",
+      "description": "Créer de la continuité entre les décisions du propriétaire, les informations du bien et le travail des professionnels, sans effacer leurs responsabilités.",
+      "origin": {
+        "title": "Une origine concrète",
+        "description": "Des chantiers, des propriétaires et des documents qui circulent sans toujours préserver le contexte du projet."
       },
-      "step2": {
-        "title": "Connecter les acteurs",
-        "description": "Acheteurs, vendeurs, promoteurs et experts sur une même plateforme"
+      "method": {
+        "title": "Une méthode de continuité",
+        "description": "Relier situation, informations du bien, options, décision et coordination plutôt que juxtaposer des outils."
       },
-      "step3": {
-        "title": "Garantir la transparence",
-        "description": "Des informations claires et vérifiées tout au long du parcours"
+      "proof": {
+        "title": "Une construction par la preuve",
+        "description": "Tester localement les usages envisagés, expliciter les limites et faire évoluer le produit à partir des retours terrain."
       }
     },
-    "values": {
-      "title": "Nos valeurs",
-      "description": "Les principes qui guident chacune de nos actions et décisions.",
-      "human": {
-        "title": "Humain",
-        "description": "La technologie au service de l'humain, jamais l'inverse"
-      },
-      "excellence": {
-        "title": "Excellence",
-        "description": "Nous visons l'excellence dans chaque détail"
-      },
-      "innovation": {
-        "title": "Innovation",
-        "description": "Nous innovons constamment pour mieux servir"
-      },
-      "integrity": {
-        "title": "Intégrité",
-        "description": "Transparence et honnêteté en toutes circonstances"
-      }
+    "story": {
+      "eyebrow": "Notre histoire",
+      "title": "Comment tout a débuté : un besoin observé sur le terrain.",
+      "paragraphs": [
+        "L’expérience des chantiers et de la structuration de Guillotin Peinture Père & Fils, puis l’implication dans Guillotin Immo, ont placé Timon au contact de décisions qui traversent plusieurs métiers.",
+        "Le constat à l’origine du projet : des documents disponibles, mais dispersés ; des décisions prises à différents moments ; et un contexte qui se perd entre le propriétaire, le chantier et la gestion du bien.",
+        "CIEL AVENUE cherche à relier ces étapes. Le Passeport du bien et la préparation des options sont les objets envisagés pour rendre ce fil conducteur concret."
+      ]
     },
     "team": {
-      "title": "Notre équipe",
-      "description": "Une équipe passionnée et expérimentée, dédiée à transformer l'immobilier.",
-      "member1": {
-        "role": "Manager & Co-fondateur"
+      "title": "Équipe & écosystème"
+    },
+    "founder": {
+      "role": "Fondateur & CEO",
+      "imageAlt": "Portrait de Timon Guillotin",
+      "headline": "Porter la vision et arbitrer ce qui doit être construit.",
+      "bio": [
+        "Timon définit la direction du projet, structure la stratégie et pilote les arbitrages. L’enjeu : maintenir la cohérence entre besoins terrain, périmètre produit et conditions de déploiement.",
+        "Son expérience nourrit un principe : une plateforme n’a de valeur que si elle aide les propriétaires et les professionnels à préparer une décision ou une intervention réelle."
+      ]
+    },
+    "advisors": {
+      "title": "Comité de conseillers",
+      "description": "Des expertises complémentaires pour challenger le projet. Les décisions restent portées par le fondateur.",
+      "portraitAlt": "Portrait de {{name}}",
+      "expertise": {
+        "aurelien": "Croissance et développement commercial",
+        "wassima": "Opérations et structuration",
+        "maximilien": "Innovation et écosystèmes public-privé",
+        "denis": "Stratégie immobilière",
+        "benoit": "Intelligence artificielle et confiance numérique"
       },
-      "member2": {
-        "role": "CEO"
+      "note": "Les rôles des conseillers sont en cours de formalisation."
+    },
+    "ecosystem": {
+      "title": "Écosystème",
+      "description": "Incubation, innovation, immobilier et financement : les relations d’écosystème doivent aider à confronter le projet au terrain.",
+      "items": ["Le Poool", "La French Tech Rennes St-Malo", "Écosystème immobilier", "Innovation & financement"],
+      "note": "Cette présentation ne vaut pas confirmation d’un partenariat ni d’un accompagnement."
+    },
+    "invest": {
+      "title": "Investir dans la prochaine étape de CIEL AVENUE",
+      "description": "Une phase de pré-traction et de validation des hypothèses. L’objectif : construire une preuve locale de produit, d’usage et de déploiement.",
+      "cta": "Manifester mon intérêt",
+      "ambition": {
+        "title": "Une ambition produit, pas une promesse de tout résoudre.",
+        "description": "CIEL AVENUE vise à organiser la continuité du projet immobilier, sans masquer le rôle des professionnels ni présenter les fonctionnalités envisagées comme déjà opérationnelles."
       },
-      "member3": {
-        "role": "Directrice Commerciale"
+      "proof": {
+        "title": "Une preuve locale avant le déploiement.",
+        "description": "Le pilote à Rennes et en Ille-et-Vilaine doit permettre d’observer les usages, les blocages et les conditions d’une coordination utile."
       },
-      "member4": {
-        "role": "Directeur Technique"
+      "governance": {
+        "title": "Une gouvernance lisible.",
+        "description": "Timon porte les arbitrages du projet. Les conseillers apportent des expertises complémentaires."
+      },
+      "note": "Aucune offre d’investissement, aucun rendement ni financement acquis n’est annoncé sur cette page."
+    },
+    "visionMission": {
+      "label": "Vision et mission",
+      "vision": {
+        "eyebrow": "Notre vision",
+        "title": "Pourquoi la continuité est au cœur du projet.",
+        "paragraphs": [
+          "Entre les documents, les outils métiers et les échanges, le propriétaire peut perdre le fil. CIEL AVENUE cherche à préserver le lien entre la situation de départ et les décisions successives.",
+          "Cette ambition doit se traduire en usages observables, pas seulement en un discours de plateforme."
+        ]
+      },
+      "mission": {
+        "eyebrow": "Notre mission",
+        "title": "Construire avec les réalités du terrain.",
+        "description": "Les usages des propriétaires et les obligations des professionnels ne sont pas interchangeables. Le produit doit s’adapter aux décisions à préparer et aux responsabilités à respecter.",
+        "points": [
+          "Observer les besoins dans des situations réelles.",
+          "Tester des usages avant d’élargir le périmètre.",
+          "Rendre les limites et responsabilités explicites."
+        ]
       }
     },
+    "journal": {
+      "title": "Une construction documentée, pas une promesse figée.",
+      "description": "Les coulisses du projet, les essais de parcours et les évolutions du produit, en distinguant ce qui est réalisé, en prototype ou encore à l’étude.",
+      "topics": ["Observer le besoin terrain", "Tester le dossier commun", "Apprendre des parcours", "Faire évoluer le projet"],
+      "followTitle": "Suivre CIEL AVENUE",
+      "followDescription": "Actualités, démonstrations et coulisses du projet.",
+      "linkedin": "LinkedIn"
+    },
+    "faq": {
+      "title": "Comprendre la démarche et ses limites.",
+      "items": [
+        {
+          "question": "Quel constat a donné naissance à CIEL AVENUE ?",
+          "answer": "La perte de continuité entre documents, décisions et interventions. L’expérience terrain du fondateur, entre chantiers et gestion de biens, nourrit cette problématique."
+        },
+        {
+          "question": "Quelle est l’ambition du Passeport du bien ?",
+          "answer": "Relier les pièces et l’historique utiles au contexte du projet, pour préparer les échanges et les prochaines décisions. Son contenu et ses capacités doivent encore être testés."
+        },
+        {
+          "question": "Pourquoi commencer par Rennes et l’Ille-et-Vilaine ?",
+          "answer": "C’est le territoire pilote retenu. Une phase locale vise à observer les usages et à valider les conditions de coordination avant un élargissement."
+        },
+        {
+          "question": "Qui porte les décisions du projet ?",
+          "answer": "Timon Guillotin porte la vision et les arbitrages. Les conseillers apportent des expertises complémentaires."
+        },
+        {
+          "question": "Les noms d’écosystème présentés prouvent-ils un partenariat ?",
+          "answer": "Non. Une présence sur cette page ne vaut pas confirmation d’un partenariat ni d’un accompagnement."
+        },
+        {
+          "question": "Qu’est-ce qui est opérationnel aujourd’hui ?",
+          "answer": "Un prototype du parcours avec des données fictives est consultable. Le Passeport du bien est en construction et l’assistant Céleste est envisagé."
+        },
+        {
+          "question": "Comment participer à la construction du projet ?",
+          "answer": "Écrivez-nous en précisant votre rôle : propriétaire, futur acquéreur, professionnel, organisation ou acteur de l’écosystème. Ne transmettez aucun document sensible."
+        },
+        {
+          "question": "Comment manifester un intérêt d’investissement ?",
+          "answer": "Le bouton « Manifester mon intérêt » ouvre un e-mail prérempli à l’équipe. Aucun rendement, financement acquis ou offre d’investissement ferme n’est annoncé."
+        }
+      ]
+    },
     "cta": {
-      "title": "Une question ? Contactez-nous",
-      "description": "Notre équipe est à votre disposition pour répondre à toutes vos questions.",
-      "button": "Nous contacter"
+      "title": "Construire la continuité du projet, avec les réalités du terrain.",
+      "button": "Proposer un échange",
+      "note": "Ce bouton ouvre votre messagerie. Aucune donnée n’est collectée sur ce site."
     }
   },
   "journey": {
@@ -1152,5 +1657,700 @@
     "description": "Nous réalisons actuellement des travaux d'amélioration sur notre plateforme. Le site sera de nouveau accessible très prochainement.",
     "subtext": "Merci pour votre patience et votre compréhension.",
     "footer": "© 2025 CIEL AVENUE. Tous droits réservés."
+  },
+  "individuals": {
+    "hero": {
+      "badge": "Particuliers · Rennes & Ille-et-Vilaine",
+      "titleStart": "Votre projet immobilier,",
+      "titleHighlight": "enfin clair et bien accompagné.",
+      "description": "Premier achat, travaux, mise en location ou vente : faites le point sur votre objectif, votre budget, vos documents et les questions à trancher avant de vous engager.",
+      "ctaPrimary": "Rejoindre le pilote",
+      "ctaSecondary": "Voir les 7 étapes",
+      "microtext": "Projet pilote en préparation · Pas encore de compte à créer : nous recueillons d’abord les situations à tester."
+    },
+    "card": {
+      "label": "Mon espace / Vue d’ensemble",
+      "title": "Ma maison à Rennes",
+      "goal": "Je souhaite rénover avant de décider de louer ou de vendre.",
+      "passportLabel": "Passeport du bien",
+      "passport": "Plans disponibles · DPE à vérifier · factures de travaux à retrouver",
+      "questionLabel": "Question ouverte",
+      "question": "Quelle option est adaptée à ma situation et à mon budget ?",
+      "nextLabel": "Prochaine étape",
+      "next": "Réunir les pièces et préparer les questions pour l’artisan et l’agence.",
+      "caption": "Exemple illustratif avec des données fictives, non connecté."
+    },
+    "vision": {
+      "title": "Pour prendre une décision, commencez par y voir clair.",
+      "description": "Vous n’avez pas besoin de tout savoir dès le départ. L’essentiel est de rendre visibles votre objectif, les informations du bien et les vérifications à prévoir.",
+      "clarity": {
+        "title": "Ne plus avancer à l’aveugle",
+        "description": "Avant un achat ou des travaux, mettez à plat ce que vous savez du bien, votre budget envisagé et les questions encore ouvertes."
+      },
+      "prepare": {
+        "title": "Savoir quoi préparer",
+        "description": "Retrouvez les documents déjà disponibles et identifiez ceux à demander pour votre prochaine décision."
+      },
+      "dialogue": {
+        "title": "Mieux dialoguer avec les professionnels",
+        "description": "Expliquez votre objectif et vos contraintes sans recommencer tout le récit à chaque interlocuteur."
+      }
+    },
+    "method": {
+      "eyebrow": "La méthode",
+      "title": "Du « je ne sais pas par où commencer » à une prochaine étape claire.",
+      "description": "Trois temps, dans cet ordre : réunir vos documents, comparer vos options, puis choisir la prochaine action concrète.",
+      "start": {
+        "title": "Vous avez un projet, mais pas encore toutes les réponses.",
+        "description": "Achat, rénovation, location ou vente : vos documents et vos questions sont souvent dispersés. Commencez par organiser ce que vous savez déjà.",
+        "before": {
+          "label": "Avant",
+          "text": "Des e-mails, des pièces jointes et des échanges sans vue d’ensemble."
+        },
+        "after": {
+          "label": "Après",
+          "text": "Un objectif, un budget indicatif, les pièces utiles et une liste de questions à traiter."
+        }
+      },
+      "documents": {
+        "eyebrow": "1 · Documents",
+        "title": "Retrouver et vérifier vos pièces",
+        "description": "Commencez par ce que vous avez déjà. Exemples de documents souvent utiles :",
+        "items": [
+          "Titre de propriété ou compromis de vente",
+          "Diagnostics (DPE, électricité, gaz, amiante…)",
+          "Plans du logement",
+          "Factures et garanties des travaux passés",
+          "Taxe foncière et charges",
+          "Copropriété : règlement et derniers procès-verbaux d’assemblée générale",
+          "Devis déjà reçus"
+        ],
+        "warning": "Un document présent n’est pas forcément à jour : regardez sa date et sa source. Le professionnel concerné vous dira ce qui doit être actualisé."
+      },
+      "options": {
+        "eyebrow": "2 · Options",
+        "title": "Comparer ce que chaque option implique",
+        "description": "Pour chaque piste, notez ce qui reste à vérifier : faisabilité, coût envisagé, contraintes et calendrier.",
+        "items": [
+          {
+            "name": "Acheter",
+            "questions": ["Quel budget global : prix, frais de notaire, travaux ?", "Que vérifier sur le bien avant de faire une offre ?"]
+          },
+          {
+            "name": "Rénover",
+            "questions": ["Quels travaux, dans quel ordre, et faut-il une autorisation ?", "Quel budget et quel calendrier étudier ?"]
+          },
+          {
+            "name": "Louer",
+            "questions": [
+              "Le logement respecte-t-il les exigences de location, notamment énergétiques ?",
+              "Location vide ou meublée : qu’est-ce que cela change pour vous ?"
+            ]
+          },
+          {
+            "name": "Vendre",
+            "questions": ["Quelles pièces préparer pour le dossier de vente ?", "Quel horizon et quel prix envisager, avec qui en parler ?"]
+          }
+        ],
+        "warning": "Ces questions servent à préparer vos échanges. Elles ne remplacent ni une estimation, ni un devis, ni un conseil professionnel."
+      },
+      "next": {
+        "eyebrow": "3 · Prochaine action",
+        "title": "Choisir une seule chose à faire maintenant",
+        "description": "Une fois vos pièces et vos options posées, la suite devient concrète :",
+        "items": [
+          "Demander le document qui manque",
+          "Préparer 3 à 5 questions pour un professionnel",
+          "Prendre un premier rendez-vous (artisan, agence, notaire, banque ou courtier selon le cas)"
+        ],
+        "example": "Exemple : « Demander le DPE au vendeur avant la visite de samedi, et lister mes questions sur le chauffage. »"
+      }
+    },
+    "steps": {
+      "eyebrow": "Le parcours en 7 étapes",
+      "title": "Votre projet se prépare à chaque étape.",
+      "description": "Vous avancez à partir des informations disponibles, en identifiant les vérifications à faire avant chaque décision. Le parcours n’impose pas d’aller plus vite que votre situation ne le permet.",
+      "stepLabel": "Étape {{n}} :",
+      "todoLabel": "Ce que vous pouvez faire",
+      "items": [
+        {
+          "title": "Votre situation",
+          "description": "Votre objectif, votre horizon et les contraintes déjà connues.",
+          "todo": [
+            "Écrire votre objectif en une phrase",
+            "Estimer un budget, même approximatif",
+            "Fixer un horizon : moins de 3 mois, dans l’année, plus tard"
+          ]
+        },
+        {
+          "title": "Passeport du bien",
+          "description": "Les pièces disponibles, manquantes ou à vérifier.",
+          "todo": [
+            "Lister les documents que vous avez déjà",
+            "Noter ceux qui manquent et à qui les demander",
+            "Repérer les dates : un diagnostic ancien peut devoir être refait"
+          ]
+        },
+        {
+          "title": "Options à explorer",
+          "description": "Acheter, rénover, louer ou vendre : les questions propres à chaque option.",
+          "todo": [
+            "Garder deux ou trois pistes réalistes",
+            "Pour chacune, noter coût envisagé, délai et contraintes",
+            "Écarter ce qui ne correspond pas à votre budget ou à votre horizon"
+          ]
+        },
+        {
+          "title": "Décision à préparer",
+          "description": "Les hypothèses à confirmer avant de vous engager.",
+          "todo": [
+            "Lister ce qui doit être vrai pour que l’option tienne",
+            "Identifier qui peut confirmer chaque hypothèse",
+            "Ne signer aucun engagement avant ces vérifications"
+          ]
+        },
+        {
+          "title": "Cadre du projet",
+          "description": "Le périmètre, les actions et les validations nécessaires.",
+          "todo": [
+            "Décrire ce qui est inclus et ce qui ne l’est pas",
+            "Établir un calendrier simple",
+            "Prévoir une marge pour les imprévus"
+          ]
+        },
+        {
+          "title": "Professionnels",
+          "description": "Les expertises à mobiliser et les questions à leur poser.",
+          "todo": [
+            "Choisir le bon interlocuteur selon la question : technique, juridique ou financière",
+            "Envoyer un résumé clair avant le rendez-vous",
+            "Comparer plusieurs devis quand c’est possible"
+          ]
+        },
+        {
+          "title": "Suivi et bilan",
+          "description": "Les actions réalisées et ce qui reste à traiter.",
+          "todo": [
+            "Cocher ce qui est fait",
+            "Conserver les nouveaux documents (factures, attestations, diagnostics)",
+            "Noter ce qui reste ouvert pour la suite"
+          ]
+        }
+      ],
+      "caption": "Les vignettes sont des écrans du prototype, avec des données fictives. Les fonctionnalités et le calendrier restent à confirmer."
+    },
+    "dark": {
+      "label": "Les difficultés de départ et le fil conducteur",
+      "frictions": {
+        "title": "Vous avez des informations, mais pas encore une vue d’ensemble.",
+        "intro": "Ce qui rend souvent le premier pas difficile :",
+        "items": [
+          "Vous ne savez pas quelles pièces sont utiles à votre décision.",
+          "Vous hésitez entre plusieurs options, sans critères pour les comparer.",
+          "Vous ne savez pas quel professionnel solliciter en premier."
+        ],
+        "note": "Situations courantes, données à titre d’exemple : aucun gain de temps ni résultat n’est garanti."
+      },
+      "thread": {
+        "title": "Un dossier qui accompagne votre réflexion et la suite du projet.",
+        "steps": ["Situation", "Passeport du bien", "Options", "Décision", "Coordination", "Bilan"],
+        "description": "Les informations et questions préparées servent de base aux échanges. Le choix vous appartient, et les décisions sensibles nécessitent l’avis des professionnels compétents."
+      }
+    },
+    "celeste": {
+      "badge": "Assistant envisagé · non disponible",
+      "title": "Céleste vous aiderait à formuler les bonnes questions.",
+      "description": "L’assistant envisagé aide à organiser ce que vous savez du bien et à préparer vos échanges. Il ne décide pas à votre place.",
+      "can": {
+        "title": "Ce qu’il pourrait faire",
+        "items": [
+          "Résumer votre situation et votre objectif",
+          "Repérer les documents qui semblent manquer",
+          "Proposer des questions à poser à un professionnel"
+        ]
+      },
+      "cannot": {
+        "title": "Ce qu’il ne fera pas",
+        "items": [
+          "Donner un avis juridique, financier ou technique",
+          "Estimer de façon fiable un prix ou un coût de travaux",
+          "Remplacer une visite, un diagnostic ou un devis"
+        ]
+      },
+      "questionsTitle": "Trois questions pour préparer la suite",
+      "questions": [
+        {
+          "question": "Quels documents dois-je retrouver ?",
+          "answer": "Commencez par les pièces déjà en votre possession. Le professionnel concerné précisera ce qui manque pour votre décision."
+        },
+        {
+          "question": "Que dois-je vérifier avant de choisir ?",
+          "answer": "Les contraintes, la faisabilité et les coûts envisagés doivent être examinés avant de retenir une option."
+        },
+        {
+          "question": "À qui poser ma prochaine question ?",
+          "answer": "Selon le sujet : un artisan ou un architecte pour les travaux, une agence pour la location ou la vente, un notaire pour les aspects juridiques, une banque ou un courtier pour le financement."
+        }
+      ],
+      "note": "Vous gardez la décision. Céleste ne remplace aucun professionnel habilité."
+    },
+    "benefits": {
+      "title": "Ce que le parcours doit vous aider à préparer.",
+      "start": {
+        "title": "Savoir par où commencer",
+        "description": "Décrire votre situation et distinguer ce qui relève de votre projet de ce qui reste à vérifier sur le bien."
+      },
+      "compare": {
+        "title": "Comparer sans brûler les étapes",
+        "description": "Mettre vos options côte à côte et préparer les questions de faisabilité, de budget et de calendrier."
+      },
+      "meeting": {
+        "title": "Préparer un rendez-vous utile",
+        "description": "Arriver avec vos documents, vos contraintes et votre objectif pour éviter une discussion sans point de départ."
+      },
+      "cta": "Rejoindre le pilote"
+    },
+    "trust": {
+      "title": "Ce qu’il faut savoir avant de commencer.",
+      "privacy": {
+        "title": "Votre dossier n’est pas destiné à tout le monde.",
+        "description": "Un plan, un devis ou un diagnostic peut contenir des informations personnelles. Qui y accède, pour quel usage et combien de temps : ces règles seront définies avant tout partage réel."
+      },
+      "territory": {
+        "title": "Un pilote ancré dans votre territoire.",
+        "description": "Le parcours vise d’abord Rennes et l’Ille-et-Vilaine. Les critères de participation et le calendrier d’accès restent à confirmer."
+      },
+      "decision": {
+        "title": "Vous gardez la décision.",
+        "description": "Le dossier et l’assistant envisagés préparent les questions. Travaux, choix patrimoniaux et engagements nécessitent les conseils des professionnels compétents."
+      }
+    },
+    "visionMission": {
+      "label": "Vision et mission",
+      "vision": {
+        "eyebrow": "Notre vision",
+        "title": "Votre décision commence avant le premier devis.",
+        "description": "Avant des travaux, une mise en location ou une vente, comprenez ce que vous cherchez à faire et ce qu’il reste à vérifier. Le parcours prépare la discussion avec les professionnels, sans vous pousser vers une option unique.",
+        "points": []
+      },
+      "mission": {
+        "eyebrow": "Notre mission",
+        "title": "Un projet qui suit votre situation de vie.",
+        "description": "Un premier achat, un logement à adapter, un bien à valoriser : les besoins diffèrent. L’objectif est de partir de votre situation, pas d’une réponse standard.",
+        "points": [
+          "Poser votre objectif et votre horizon.",
+          "Identifier les informations du bien à retrouver.",
+          "Préparer les questions à poser aux professionnels."
+        ]
+      }
+    },
+    "journal": {
+      "title": "Voir comment le parcours se construit.",
+      "description": "Les coulisses du projet, les essais de parcours et les évolutions du produit, en distinguant ce qui est réalisé, en prototype ou encore à l’étude.",
+      "topics": ["Décrire votre situation", "Retrouver les documents du bien", "Préparer vos rendez-vous", "Comparer vos options"]
+    },
+    "faq": {
+      "title": "Vos questions avant un achat, des travaux ou une décision sur votre bien.",
+      "items": [
+        {
+          "question": "Je ne sais pas encore si je dois rénover, louer ou vendre. Puis-je commencer ?",
+          "answer": "Oui. Commencez par votre objectif, votre budget indicatif et vos contraintes. Les options pourront ensuite être examinées avec les professionnels concernés."
+        },
+        {
+          "question": "Je prépare un premier achat : par quoi commencer ?",
+          "answer": "Clarifiez votre budget global (prix, frais de notaire, éventuels travaux), vos critères indispensables et votre horizon. Avant une offre, demandez les diagnostics et, en copropriété, les derniers procès-verbaux d’assemblée générale. Votre banque ou un courtier pourra préciser votre capacité d’emprunt."
+        },
+        {
+          "question": "Quels documents dois-je retrouver sur mon bien ?",
+          "answer": "Ceux que vous avez déjà : titre de propriété, plans, diagnostics, factures de travaux, taxe foncière, documents de copropriété. Leur présence ne garantit pas qu’ils soient à jour : un professionnel précisera ce qui doit être actualisé."
+        },
+        {
+          "question": "Comment estimer mon budget et mon calendrier ?",
+          "answer": "Partez d’une fourchette, même large, et d’un horizon (moins de 3 mois, dans l’année, plus tard). Prévoyez une marge pour les imprévus. Les montants précis viendront des devis, estimations et simulations des professionnels."
+        },
+        {
+          "question": "Le Passeport du bien remplace-t-il un diagnostic ?",
+          "answer": "Non. Il est envisagé comme un dossier pour organiser l’information, pas comme un diagnostic technique, énergétique ou réglementaire."
+        },
+        {
+          "question": "Céleste peut-il me dire quels travaux réaliser ?",
+          "answer": "Non. L’assistant envisagé aide à préparer les informations et les questions. Il ne remplace ni une visite technique, ni une étude de faisabilité, ni un devis, ni le conseil d’un professionnel."
+        },
+        {
+          "question": "Qui pourra consulter mon dossier ?",
+          "answer": "Les règles d’accès, les usages et les durées de conservation seront définis avant toute collecte réelle. Aucun dossier n’est partagé aujourd’hui."
+        },
+        {
+          "question": "Puis-je déjà créer un compte ?",
+          "answer": "Non. Le pilote est en préparation et aucun espace personnel n’est ouvert. Un prototype avec des données fictives permet seulement de visualiser le parcours."
+        },
+        {
+          "question": "L’offre Découverte est-elle déjà accessible ?",
+          "answer": "Pas encore. Le tarif de 0 € est provisoire ; le contenu de l’offre, ses conditions et sa date d’ouverture restent à confirmer."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Avant de choisir une option, clarifiez ce qui compte pour votre projet.",
+      "button": "Préparer ma demande pilote",
+      "note": "Le formulaire de demande est pour l’instant une démonstration : aucune donnée n’est envoyée."
+    }
+  },
+  "professionals": {
+    "hero": {
+      "badge": "Professionnels · Rennes & Ille-et-Vilaine",
+      "title": "Le contexte du projet, avant votre intervention.",
+      "description": "Une demande client claire, les pièces utiles identifiées et un périmètre explicite : préparez votre intervention à partir d’un dossier contextualisé, selon les accès que le client autorise.",
+      "ctaPrimary": "Candidater au pilote",
+      "ctaSecondary": "Voir les 7 étapes",
+      "microtext": "Pilote en préparation · Aucun compte professionnel ouvert pour l’instant. Les écrans présentés sont des illustrations."
+    },
+    "card": {
+      "label": "Mon espace / Vue d’ensemble",
+      "title": "Dossier client · Rénovation à Rennes",
+      "goal": "Objectif : cadrer les travaux avant de chiffrer.",
+      "documentsLabel": "Pièces utiles à votre intervention",
+      "documents": "Plans disponibles · DPE à vérifier · photos des pièces concernées",
+      "questionLabel": "Point à clarifier",
+      "question": "Qui valide le périmètre des travaux côté client ?",
+      "nextLabel": "Prochaine étape",
+      "next": "Préciser les pièces manquantes et la répartition des responsabilités.",
+      "caption": "Exemple illustratif avec des données fictives, non connecté."
+    },
+    "vision": {
+      "title": "Préparer une intervention, pas ajouter un outil de plus.",
+      "description": "Un dossier sans contexte oblige à refaire la découverte du besoin. La démarche envisagée relie l’objectif du client, ses documents et le cadre de votre intervention.",
+      "context": {
+        "title": "Un contexte exploitable",
+        "description": "Comprendre la demande du client, l’état du dossier et les contraintes avant de définir votre intervention."
+      },
+      "nextAction": {
+        "title": "Une prochaine action attribuée",
+        "description": "Rendre visibles les pièces attendues, les validations à obtenir et la personne responsable de la prochaine étape."
+      },
+      "expertise": {
+        "title": "Votre expertise, à sa juste place",
+        "description": "Distinguer l’organisation du dossier des diagnostics, conseils, chiffrages et validations qui relèvent de votre métier."
+      }
+    },
+    "method": {
+      "eyebrow": "Experts et organisations",
+      "title": "Un dossier contextualisé pour préparer votre intervention.",
+      "description": "Partez de la demande du client, des pièces accessibles et des points à vérifier. Puis définissez ce qui relève de votre métier et de chaque intervenant.",
+      "request": {
+        "eyebrow": "Demande client",
+        "title": "Avant de répondre, comprendre la demande.",
+        "description": "Un brief incomplet, un diagnostic introuvable ou un objectif mal formulé brouillent le cadrage. Le dossier envisagé réunit le contexte utile avant votre prise en charge.",
+        "before": {
+          "label": "Avant : découverte à refaire",
+          "text": "Des pièces isolées, sans objectif ni responsabilités clairs."
+        },
+        "after": {
+          "label": "Après : contexte à compléter",
+          "text": "Un objectif partagé, des pièces identifiées et des vérifications attribuées."
+        }
+      },
+      "options": {
+        "eyebrow": "Options à instruire",
+        "title": "Instruire les options avec le client.",
+        "description": "Les scénarios servent de support de discussion. Faisabilité, contraintes réglementaires, coûts et délais restent examinés par les professionnels concernés.",
+        "items": [
+          {
+            "name": "Rénover",
+            "scope": "Périmètre technique, autorisations éventuelles, chiffrage et planning."
+          },
+          {
+            "name": "Louer",
+            "scope": "État du bien, exigences applicables (notamment énergétiques) et usage prévu."
+          },
+          {
+            "name": "Vendre",
+            "scope": "Pièces du dossier de vente, diagnostics obligatoires, contraintes et calendrier."
+          }
+        ]
+      },
+      "context": {
+        "eyebrow": "Contexte utile",
+        "title": "Le contexte, pas seulement une pile de documents.",
+        "description": "Le Passeport du bien vise à relier les pièces au projet, en conservant leur source, leur date et les points à vérifier :",
+        "items": [
+          "Objectif du client et usage prévu du bien",
+          "Pièces disponibles, manquantes ou à actualiser",
+          "Vérifications attendues et qui les porte",
+          "Responsabilités et prochaine action"
+        ],
+        "boundary": "Accès limité aux pièces autorisées par le client pour votre mission : aucun accès universel, aucune validation automatique des documents."
+      }
+    },
+    "steps": {
+      "eyebrow": "Le parcours en 7 étapes",
+      "title": "Du brief client au bilan : préserver le contexte de l’intervention.",
+      "description": "Le parcours envisagé clarifie les points de passage, sans uniformiser les métiers. Chaque professionnel conserve son périmètre et ses obligations.",
+      "stepLabel": "Étape {{n}} :",
+      "todoLabel": "En pratique",
+      "items": [
+        {
+          "title": "Demande du client",
+          "description": "Objectif, usage du bien et contraintes de l’intervention.",
+          "todo": [
+            "Reformuler la demande en une phrase validée par le client",
+            "Identifier le décideur et l’échéance",
+            "Repérer ce qui sort de votre périmètre"
+          ]
+        },
+        {
+          "title": "Pièces accessibles",
+          "description": "Documents utiles à votre métier et accès autorisés.",
+          "todo": [
+            "Lister les pièces nécessaires à votre intervention",
+            "Vérifier date, source et version de chaque document",
+            "Demander au client les pièces manquantes, avec un motif clair"
+          ]
+        },
+        {
+          "title": "Options à instruire",
+          "description": "Faisabilité, points réglementaires et hypothèses à examiner.",
+          "todo": [
+            "Distinguer hypothèses et faits vérifiés",
+            "Signaler les points qui demandent un autre expert",
+            "Présenter les options sans décider à la place du client"
+          ]
+        },
+        {
+          "title": "Décision du client",
+          "description": "Choix retenu et validations encore nécessaires.",
+          "todo": [
+            "Faire confirmer l’option retenue par écrit",
+            "Lister les validations restantes (copropriété, autorisations, financement)",
+            "Noter ce qui reste conditionnel"
+          ]
+        },
+        {
+          "title": "Cadre d’intervention",
+          "description": "Périmètre, livrables, échéances et responsabilités.",
+          "todo": [
+            "Décrire ce qui est inclus et exclu de la mission",
+            "Préciser les livrables attendus et leur format",
+            "Fixer les échéances et le circuit de validation"
+          ]
+        },
+        {
+          "title": "Coordination",
+          "description": "Informations attendues, intervenants et prochaine action.",
+          "todo": [
+            "Indiquer qui attend quoi, de qui et pour quand",
+            "Transmettre au prochain intervenant uniquement ce qui le concerne",
+            "Relancer sur les pièces ou validations en attente"
+          ]
+        },
+        {
+          "title": "Bilan de mission",
+          "description": "Réalisations, pièces produites et points restant ouverts.",
+          "todo": [
+            "Déposer les livrables et documents produits",
+            "Noter les réserves et points ouverts",
+            "Indiquer la suite recommandée et qui la porte"
+          ]
+        }
+      ],
+      "caption": "Les vignettes sont des écrans du prototype, avec des données fictives. Elles ne représentent pas une plateforme opérationnelle."
+    },
+    "dark": {
+      "label": "Continuité et coordination",
+      "frictions": {
+        "title": "Le client a des documents. Vous avez besoin de contexte.",
+        "intro": "Avant une intervention, trois sources de friction fréquentes :",
+        "items": [
+          "Un objectif client encore imprécis ou contradictoire.",
+          "Des pièces sans date, sans source ou hors périmètre.",
+          "Des responsabilités et validations restées implicites."
+        ],
+        "note": "Situations courantes, données à titre d’exemple : aucun gain de temps ni résultat commercial n’est garanti."
+      },
+      "thread": {
+        "title": "Relier le brief, les pièces et les responsabilités.",
+        "steps": ["Situation", "Passeport du bien", "Options", "Décision", "Coordination", "Bilan"],
+        "description": "Le dossier prépare les échanges entre intervenants. Vos avis techniques, chiffrages et validations ne sont ni produits ni remplacés automatiquement."
+      }
+    },
+    "roles": {
+      "title": "Qui fait quoi : responsabilités, livrables et partage.",
+      "description": "Le dossier rend les rôles explicites ; il ne transfère aucune responsabilité.",
+      "items": [
+        {
+          "who": "Le client",
+          "items": [
+            "Exprime son objectif et décide",
+            "Fournit les pièces en sa possession",
+            "Autorise l’accès de chaque professionnel à ses documents"
+          ]
+        },
+        {
+          "who": "Vous, professionnel",
+          "items": [
+            "Définissez votre périmètre et vos livrables",
+            "Réalisez vos propres vérifications et validations",
+            "Restez responsable de vos avis, chiffrages et engagements"
+          ]
+        },
+        {
+          "who": "CIEL AVENUE (envisagé)",
+          "items": [
+            "Organise l’information et l’historique du dossier",
+            "Rend visibles les pièces manquantes et la prochaine action",
+            "Ne produit aucun avis métier ni validation réglementaire"
+          ]
+        }
+      ],
+      "sharing": {
+        "title": "Principes de partage des documents envisagés",
+        "items": [
+          "Accès limité aux pièces utiles à votre mission",
+          "Autorisation donnée par le client, document par document ou par mission",
+          "Aucune visibilité globale sur les données du client par défaut",
+          "Chaque pièce conserve sa source et sa date"
+        ],
+        "note": "Ces principes sont à l’étude : les règles d’accès, de conservation et de confidentialité seront définies avant tout partage réel."
+      }
+    },
+    "celeste": {
+      "badge": "Assistant envisagé · non disponible",
+      "title": "Céleste préparerait l’information. Vous apportez l’expertise.",
+      "description": "L’assistant envisagé aiderait à structurer le contexte client, repérer les pièces manquantes et préparer les relances. Ses suggestions resteraient à vérifier.",
+      "can": {
+        "title": "Ce qu’il pourrait faire",
+        "items": ["Résumer la demande du client", "Repérer les pièces qui semblent manquer", "Préparer un message de relance"]
+      },
+      "cannot": {
+        "title": "Ce qu’il ne fera pas",
+        "items": [
+          "Signer un avis ou valider une conformité",
+          "Chiffrer une mission ou des travaux",
+          "Remplacer votre jugement professionnel"
+        ]
+      },
+      "questionsTitle": "Trois questions pour préparer la suite",
+      "questions": [
+        {
+          "question": "Quelles pièces sont nécessaires à mon intervention ?",
+          "answer": "Votre métier détermine les documents et vérifications utiles. Le dossier aide à les demander, selon les accès accordés par le client."
+        },
+        {
+          "question": "Quel point bloque le cadrage ?",
+          "answer": "Un objectif, une pièce ou une validation peut manquer. L’enjeu est de rendre ce point explicite et d’identifier qui doit le traiter."
+        },
+        {
+          "question": "Qui porte la prochaine action ?",
+          "answer": "Préciser l’action attendue, la personne responsable et les conditions qui permettent de poursuivre."
+        }
+      ],
+      "note": "Le client garde la décision, vous gardez la responsabilité de vos avis. Céleste ne remplace aucun professionnel habilité."
+    },
+    "benefits": {
+      "title": "Ce que le dossier doit rendre plus exploitable pour votre métier.",
+      "description": "Des exemples d’usages que le pilote doit tester, pas des résultats acquis.",
+      "brief": {
+        "title": "Une demande mieux cadrée",
+        "description": "Objectif du client, usage envisagé et limites de votre mission : un point de départ explicite.",
+        "example": "Exemple : avant de se déplacer, un diagnostiqueur sait si le bien est en copropriété, sa surface approximative et les diagnostics déjà réalisés."
+      },
+      "documents": {
+        "title": "Des pièces à examiner, pas à deviner",
+        "description": "Identifier les documents disponibles et demander ceux qui manquent, selon les autorisations.",
+        "example": "Exemple : un artisan voit que les plans existent mais que le DPE date de plus de dix ans, et le signale avant de chiffrer."
+      },
+      "followUp": {
+        "title": "Un suivi plus lisible",
+        "description": "Clarifier les actions attendues, les validations à obtenir et ce qu’il faut transmettre au prochain intervenant.",
+        "example": "Exemple : un agent immobilier sait que la mise en vente attend l’attestation de fin de travaux, et qui doit la fournir."
+      },
+      "note": "Exemples fictifs. Aucun volume de missions, revenu ou gain de temps n’est garanti.",
+      "cta": "Candidater au pilote"
+    },
+    "trust": {
+      "title": "Ce qu’il faut savoir avant de candidater.",
+      "access": {
+        "title": "Un accès limité à votre intervention.",
+        "description": "Le partage envisagé suit les autorisations du client et le périmètre de la mission. Aucune visibilité globale n’est acquise par défaut."
+      },
+      "territory": {
+        "title": "Un pilote pour tester les usages métier.",
+        "description": "Le territoire visé est Rennes et l’Ille-et-Vilaine. Les candidatures servent à préciser l’activité, la zone et les besoins de coordination."
+      },
+      "responsibility": {
+        "title": "Des responsabilités qui restent explicites.",
+        "description": "L’organisation du dossier ne vaut ni diagnostic, ni validation réglementaire, ni garantie de conformité."
+      }
+    },
+    "visionMission": {
+      "label": "Vision et mission",
+      "vision": {
+        "eyebrow": "Notre vision",
+        "title": "La continuité entre les métiers se prépare.",
+        "description": "Une intervention technique, immobilière ou juridique dépend d’informations détenues par d’autres. Leur présence dans un dossier ne suffit pas : il faut connaître leur source et leur portée.",
+        "points": []
+      },
+      "mission": {
+        "eyebrow": "Notre mission",
+        "title": "Cadrer avant de coordonner.",
+        "description": "Qui attend quoi, de qui, et à quelle étape ? Le périmètre de la mission et les validations requises doivent être explicites.",
+        "points": [
+          "Définir le périmètre de votre intervention.",
+          "Identifier les pièces et validations attendues.",
+          "Attribuer la prochaine action de coordination."
+        ]
+      }
+    },
+    "journal": {
+      "title": "Suivre les tests d’usage et les sujets de coordination.",
+      "description": "Les coulisses du projet, les essais de parcours et les évolutions du produit, en distinguant ce qui est réalisé, en prototype ou encore à l’étude.",
+      "topics": ["Cadrer la demande client", "Identifier les pièces accessibles", "Préparer la coordination", "Préciser les validations"]
+    },
+    "faq": {
+      "title": "Les points à clarifier avant de candidater.",
+      "items": [
+        {
+          "question": "Qui peut candidater au pilote ?",
+          "answer": "Le pilote vise les professionnels de l’immobilier et du bâtiment intervenant à Rennes et en Ille-et-Vilaine : diagnostiqueurs, artisans, agents immobiliers, architectes, notaires, gestionnaires… Les critères d’admission restent à définir : une candidature ne vaut pas admission."
+        },
+        {
+          "question": "Qu’est-ce qui fonctionne aujourd’hui ?",
+          "answer": "Un prototype avec des données fictives est consultable. Le Passeport du bien et le partage de dossiers sont en conception ; l’assistant Céleste est envisagé. Aucun espace professionnel n’est ouvert."
+        },
+        {
+          "question": "À quels documents aurai-je accès ?",
+          "answer": "Uniquement aux pièces que le client autorise pour votre mission, selon les règles qui seront définies avant tout partage réel. Aucun accès intégral au dossier client n’est prévu par défaut."
+        },
+        {
+          "question": "Le dossier remplace-t-il mes propres vérifications ?",
+          "answer": "Non. Vous conservez les vérifications, obligations et responsabilités propres à votre métier. Un document présent dans le dossier ne vaut pas validation de son contenu."
+        },
+        {
+          "question": "Comment les responsabilités sont-elles réparties ?",
+          "answer": "Le périmètre de chaque mission, les livrables et les validations sont convenus entre vous et le client. Le dossier rend ces points explicites ; il ne transfère pas les responsabilités."
+        },
+        {
+          "question": "La plateforme me garantit-elle des missions ?",
+          "answer": "Non. Aucun volume de projets, revenu, rendez-vous ou taux de conversion n’est garanti. CIEL AVENUE n’est pas présenté comme un apporteur d’affaires."
+        },
+        {
+          "question": "Comment candidater et comment se passe l’intégration ?",
+          "answer": "Présentez votre entreprise, votre métier, votre zone et le besoin de coordination à tester. Le formulaire actuel est une démonstration qui n’envoie rien ; les modalités d’intégration au pilote seront précisées lors de son ouverture."
+        },
+        {
+          "question": "Quelles sont les conditions commerciales ?",
+          "answer": "Les offres Expert Pro et Pilote Organisation sont présentées avec des tarifs provisoires. Contenu, tarifs et conditions restent à confirmer."
+        },
+        {
+          "question": "Que ferait Céleste dans un parcours professionnel ?",
+          "answer": "L’assistant envisagé aiderait à structurer le brief, repérer les pièces manquantes et préparer les relances. Il ne produit ni validation métier ni engagement en votre nom, et ses suggestions restent à vérifier."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Préparer la bonne intervention commence par le bon contexte.",
+      "button": "Présenter mon métier et mon besoin",
+      "note": "Le formulaire de candidature est pour l’instant une démonstration : aucune donnée n’est envoyée."
+    }
   }
 }

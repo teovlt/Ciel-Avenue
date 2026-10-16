@@ -8,7 +8,9 @@ i18n.use(initReactI18next).init({
     en: { translation: en },
     fr: { translation: fr },
   },
-  lng: localStorage.getItem("i18nextLng") || navigator.language.split("-")[0] || "fr",
+  // French by default; English only when the visitor picked it in the language menu
+  lng: localStorage.getItem("i18nextLng") || "fr",
+  fallbackLng: "fr",
 });
 
 export const listOfLocales = ["en", "fr"];
@@ -22,3 +24,9 @@ const localeNames: { [key: string]: string } = {
 export const getFullNamesOfLocales = (locale: string) => {
   return localeNames[locale] || "";
 };
+
+// Keep <html lang> in sync with the active language (screen readers, hyphenation)
+document.documentElement.lang = i18n.language;
+i18n.on("languageChanged", (lng) => {
+  document.documentElement.lang = lng;
+});

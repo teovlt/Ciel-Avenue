@@ -31,6 +31,12 @@
   --chart-4: oklch(0.6 0.1 30);
   --chart-5: oklch(0.55 0.06 85);
   --radius: 0.75rem;
+  /* Dark caramel for text accents and primary CTAs (WCAG AA on cream) */
+  --caramel: oklch(0.46 0.085 55);
+  --caramel-foreground: oklch(0.985 0.01 75);
+  /* Dark espresso panels (same in both themes) */
+  --espresso: oklch(0.27 0.05 62);
+  --espresso-foreground: oklch(0.96 0.015 75);
 }
 
 .dark {
@@ -59,6 +65,8 @@
   --chart-3: oklch(0.65 0.09 55);
   --chart-4: oklch(0.6 0.1 45);
   --chart-5: oklch(0.55 0.08 80);
+  --caramel: oklch(0.8 0.1 70);
+  --caramel-foreground: oklch(0.15 0.02 60);
 }
 
 @theme inline {
@@ -83,6 +91,10 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-caramel: var(--caramel);
+  --color-caramel-foreground: var(--caramel-foreground);
+  --color-espresso: var(--espresso);
+  --color-espresso-foreground: var(--espresso-foreground);
   --color-chart-1: var(--chart-chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -101,6 +113,32 @@
   html,
   body {
     @apply bg-background text-foreground;
+  }
+  /* Visible keyboard focus everywhere */
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--caramel);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

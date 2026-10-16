@@ -15,7 +15,7 @@
     "home": "Home",
     "howItWorks": "How it works",
     "journey": "Customer journey",
-    "dashboard": "Dashboard",
+    "dashboard": "Prototype",
     "contact": "Contact",
     "about": "About",
     "start": "Get started",
@@ -26,155 +26,562 @@
     "darkMode": "Dark mode",
     "lightMode": "Light mode",
     "logout": "Logout",
-    "loggedOut": "You have been logged out"
+    "loggedOut": "You have been logged out",
+    "method": "Method",
+    "journeys": "Journeys",
+    "passport": "Property Passport",
+    "faq": "FAQ",
+    "cta": "Get pilot updates",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainNav": "Main navigation",
+    "homeAria": "CIEL AVENUE, home",
+    "skipToContent": "Skip to content",
+    "individuals": "Individuals",
+    "professionals": "Professionals"
   },
   "footer": {
-    "tagline": "The digital real estate management revolution.",
+    "tagline": "A clear course for your property projects. Under construction, piloting in Rennes and Ille-et-Vilaine.",
     "platform": "Platform",
     "howItWorks": "How it works",
-    "journey": "Customer journey",
-    "dashboard": "Dashboard",
-    "professionals": "Professionals",
-    "becomeExpert": "Become an expert",
-    "sellerSpace": "Seller space",
-    "promoterSpace": "Promoter space",
+    "dashboard": "Prototype (fictitious data)",
     "aboutUs": "About us",
     "ourMission": "Our mission",
     "contact": "Contact",
-    "legal": "Legal notice",
-    "rights": "© 2025 CIEL AVENUE. All rights reserved.",
-    "developedBy": "Web application developed by"
+    "rights": "© {{year}} CIEL AVENUE. All rights reserved.",
+    "developedBy": "Web application developed by",
+    "method": "The method",
+    "faq": "FAQ",
+    "pilot": "Pilot",
+    "pilotIndividual": "I'm an individual",
+    "pilotProfessional": "I'm a professional",
+    "linkedin": "CIEL AVENUE on LinkedIn (new tab)",
+    "individuals": "Individuals' journey",
+    "professionalsPage": "Professionals' journey"
   },
   "home": {
     "hero": {
-      "badge": "The real estate revolution is underway",
-      "titleStart": "Real estate",
-      "titleHighlight": "reinvented",
-      "titleEnd": "for you",
-      "description": "CIEL AVENUE revolutionizes real estate management with a digital platform that connects buyers, sellers, developers and experts. Find your ideal property with ease.",
-      "ctaPrimary": "Discover the journey",
-      "ctaSecondary": "How it works",
-      "stats": {
-        "users": "Active users",
-        "properties": "Properties analyzed",
-        "experts": "Certified experts",
-        "satisfaction": "Client satisfaction"
+      "title": "Your property project, with a clear course ahead.",
+      "description": "Gather your property's information, compare your options and prepare the next steps with the right professionals.",
+      "ctaPrimary": "Get pilot updates",
+      "ctaSecondary": "See the method",
+      "microtext": "A project under construction. Features to test, step by step."
+    },
+    "preview": {
+      "label": "My project",
+      "project": "2-bedroom flat — example",
+      "status": "Example",
+      "goalLabel": "Goal",
+      "goal": "Renovate, then rent out",
+      "step1": "Clarify the project",
+      "step2": "Gather the information",
+      "step2Detail": "2 documents to request before the meeting",
+      "step3": "Prepare the discussions",
+      "state": {
+        "done": "done",
+        "current": "in progress",
+        "todo": "upcoming"
+      },
+      "documents": "Documents gathered",
+      "documentsCount": "6 of 10",
+      "caption": "Illustration with fictitious data — the final interface will be defined during the pilot."
+    },
+    "benefits": {
+      "title": "What CIEL AVENUE helps you do",
+      "b1": {
+        "title": "Organise property information",
+        "description": "Keep the documents, surveys and key features of your project in one place."
+      },
+      "b2": {
+        "title": "Explore your options",
+        "description": "Renovate, rent, sell or buy: compare the paths before committing."
+      },
+      "b3": {
+        "title": "Prepare discussions with professionals",
+        "description": "Arrive at each meeting with your questions and the right documents."
       }
     },
-    "vision": {
-      "title": "Our vision",
-      "description": "Transform the real estate experience by offering a transparent, efficient and human-centered platform. We put technology at the service of your life projects.",
-      "card1": {
-        "title": "Total transparency",
-        "description": "Clear and verified information at every step of your real estate journey."
+    "method": {
+      "eyebrow": "The method",
+      "title": "Three steps to move forward",
+      "description": "A simple approach designed to avoid back-and-forth and decisions made without the right information.",
+      "stepLabel": "Step {{n}}:",
+      "step1": {
+        "title": "Clarify the project",
+        "description": "Your situation, your goal, your timing and budget constraints."
       },
-      "card2": {
-        "title": "Speed of execution",
-        "description": "An optimized process that significantly reduces traditional delays."
+      "step2": {
+        "title": "Gather the information",
+        "description": "Available documents, missing ones and points to check."
       },
-      "card3": {
-        "title": "Human expertise",
-        "description": "Qualified experts personally support you in your project."
+      "step3": {
+        "title": "Prepare the next steps",
+        "description": "The questions to ask and the professionals to involve, in the right order."
       }
     },
-    "mission": {
-      "title": "Our mission",
-      "description": "Simplify and modernize access to property ownership in France. We believe that every real estate project deserves personalized attention and cutting-edge digital tools.",
-      "feature1": {
-        "title": "Intelligent matching",
-        "description": "between buyers and properties"
+    "journeys": {
+      "eyebrow": "Two journeys",
+      "title": "A starting point suited to your situation",
+      "demoLink": "See the journey prototype (fictitious data)",
+      "individuals": {
+        "label": "Individuals",
+        "title": "Do you own a property or plan to buy?",
+        "benefits": [
+          "Identify useful or missing documents",
+          "Explore your options: renovate, rent or sell",
+          "Prepare your discussions with professionals"
+        ],
+        "cta": "Join the pilot",
+        "pageLink": "Explore the individuals' journey"
       },
-      "feature2": {
-        "title": "Automatic prequalification",
-        "description": "of buyer profiles"
-      },
-      "feature3": {
-        "title": "Tailored support",
-        "description": "by local experts"
-      },
-      "imageAlt": "CIEL AVENUE - Your real estate partner"
-    },
-    "value": {
-      "title": "Why CIEL AVENUE?",
-      "description": "A unique approach that combines cutting-edge technology and human expertise to revolutionize your real estate experience.",
-      "clients": {
-        "title": "You are a Client",
-        "subtitle": "Buyer • Seller • Landlord • Tenant • Renovator",
-        "feature1": "Guided journey tailored to your profile",
-        "feature2": "Verified file and solvency score",
-        "feature3": "Matching with the best local experts",
-        "feature4": "Multi-profiles: combine several roles"
-      },
-      "experts": {
-        "title": "You are an Expert",
-        "subtitle": "Notary • Surveyor • Broker • Artisan • Photographer...",
-        "feature1": "Receive qualified leads without prospecting",
-        "feature2": "Verified clients in your geographical area",
-        "feature3": "Certified profile and increased visibility",
-        "feature4": "Integrated management and tracking tools"
+      "professionals": {
+        "label": "Real estate professionals",
+        "title": "Do you support property projects?",
+        "benefits": [
+          "Understand your clients' goals",
+          "Identify the information your work requires",
+          "Clarify responsibilities and next steps"
+        ],
+        "cta": "Talk about the pilot",
+        "pageLink": "Explore the professionals' journey"
       }
+    },
+    "passport": {
+      "eyebrow": "The Property Passport",
+      "title": "All of a property's information, in one place",
+      "description": "The Property Passport gathers what is known about a home — documents, surveys, works, options considered — so everyone starts from the same information.",
+      "points": [
+        "See at a glance what is available, missing or to be checked",
+        "Keep track of the options studied and decisions made",
+        "Share a clear file with the professionals you choose"
+      ],
+      "status": "The Property Passport is being designed: its exact content will be defined with pilot participants.",
+      "mockup": {
+        "label": "Property Passport",
+        "property": "4-room house — example",
+        "documentsTitle": "Documents",
+        "docs": {
+          "deed": "Title deed",
+          "dpe": "Energy performance certificate",
+          "tax": "Latest property tax notice",
+          "works": "Invoices for recent works"
+        },
+        "state": {
+          "available": "Available",
+          "missing": "Missing",
+          "toCheck": "To check"
+        },
+        "optionsTitle": "Options studied",
+        "options": {
+          "renovate": "Renovate",
+          "rent": "Rent",
+          "sell": "Sell"
+        },
+        "nextTitle": "Next step",
+        "next": "Request the property tax notice and prepare questions for the surveyor.",
+        "caption": "Illustrative example — the data shown is fictitious."
+      }
+    },
+    "trust": {
+      "title": "A local project, presented as it is",
+      "description": "CIEL AVENUE is under construction. We would rather tell you exactly what exists today and what remains to be done.",
+      "territory": {
+        "title": "Pilot area",
+        "description": "Rennes and Ille-et-Vilaine."
+      },
+      "status": {
+        "title": "Current status",
+        "description": "Prototype being validated, pilot in preparation."
+      },
+      "sharing": {
+        "title": "Information sharing",
+        "description": "Guiding principle: a property's information is only shared with the people you choose. Technical details will be specified before the pilot."
+      },
+      "availability": {
+        "title": "Where does the product stand?",
+        "available": {
+          "label": "Available today",
+          "description": "A prototype of the journey and demo spaces, with fictitious data."
+        },
+        "inProgress": {
+          "label": "In progress",
+          "description": "The Property Passport and a document list tailored to each situation."
+        },
+        "planned": {
+          "label": "Planned",
+          "description": "Céleste, the assistant, and sharing files with professionals."
+        }
+      }
+    },
+    "celeste": {
+      "title": "Céleste",
+      "badge": "Planned",
+      "description": "A planned assistant to organise information and prepare questions. It does not replace legal, technical or financial advice from qualified professionals."
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": [
+        {
+          "question": "What is CIEL AVENUE?",
+          "answer": "CIEL AVENUE is a tool under construction that helps structure a property project: gathering a property's information, comparing options and preparing discussions with professionals. It is not yet open to the public."
+        },
+        {
+          "question": "Who is the pilot for?",
+          "answer": "Individuals who own a property or plan to buy, and the real estate professionals who support them, in Rennes and Ille-et-Vilaine. Participation terms will be specified before launch."
+        },
+        {
+          "question": "What is the Property Passport?",
+          "answer": "A structured file gathering a home's information: available or missing documents, surveys, works, options considered. It is being designed and will be built with pilot participants."
+        },
+        {
+          "question": "When will the service be available?",
+          "answer": "No date has been set yet. A prototype with fictitious data can be viewed; the pilot is in preparation."
+        },
+        {
+          "question": "How do I get pilot updates?",
+          "answer": "The \"Get pilot updates\" button opens your email app with a prefilled message to the team. No data is collected on this site: you choose what you write to us."
+        },
+        {
+          "question": "Can Céleste advise me?",
+          "answer": "No. Céleste is a planned assistant to help organise information and prepare questions. It does not replace legal, technical or financial advice from qualified professionals."
+        }
+      ]
     },
     "cta": {
-      "title": "Ready to revolutionize your real estate project?",
-      "description": "Join thousands of users who have already trusted CIEL AVENUE to make their real estate projects a reality.",
-      "ctaPrimary": "Discover the journey",
-      "ctaSecondary": "Join the platform"
+      "title": "Want to try CIEL AVENUE?",
+      "description": "Write to us to be told when the pilot opens in Rennes and Ille-et-Vilaine.",
+      "button": "Get pilot updates",
+      "note": "No commitment. Your email is only used to reply to you."
     }
   },
   "contact": {
     "hero": {
-      "badge": "Let's talk about your project",
-      "title": "Contact us",
-      "description": "Have a question, a real estate project, or just want to learn more? Our team is here to help you."
+      "badge": "Rennes & Ille-et-Vilaine",
+      "title": "A project, a question or a collaboration? Let's talk.",
+      "description": "Tell us what you want to prepare, what is blocking you and your timeframe. Choose the contact path that fits your situation.",
+      "cta": "Choose my request",
+      "microtext": "Pilot project · The forms on this page are demonstrations: no data is sent."
     },
-    "form": {
-      "name": "Full name",
-      "namePlaceholder": "John Smith",
-      "email": "Email address",
-      "emailPlaceholder": "john.smith@example.com",
-      "subject": "Subject",
-      "subjectPlaceholder": "Select a subject",
-      "subjects": {
-        "general": "General inquiry",
-        "buyer": "I'm a buyer",
-        "seller": "I'm a seller",
-        "expert": "Become an expert",
-        "partnership": "Partnership",
-        "other": "Other"
-      },
-      "message": "Message",
-      "messagePlaceholder": "Describe your project or ask your question...",
-      "submit": "Send message",
-      "successTitle": "Message sent!",
-      "successMessage": "Thank you for your message. Our team will get back to you as soon as possible."
+    "card": {
+      "label": "My space / Overview",
+      "title": "Preparing my first request",
+      "subtitle": "My need, my context, the information I'm missing.",
+      "startLabel": "A simple starting point",
+      "start": ["Situation", "Goal", "Timeframe"],
+      "specifyLabel": "To specify:",
+      "specify": "the property or the intended project.",
+      "avoidLabel": "To avoid:",
+      "avoid": "ID documents, bank documents and sensitive information.",
+      "caption": "Illustrative example, not connected."
     },
-    "info": {
-      "title": "Let's stay in touch",
-      "description": "We're available to answer all your questions and support you in your real estate project.",
-      "email": {
-        "title": "Email",
-        "description": "Response within 24h"
+    "vision": {
+      "title": "A useful first exchange starts with a clear request.",
+      "description": "To route a request, context matters more than a long file: say what you want to do, what you're missing and by when.",
+      "rightRequest": {
+        "title": "The right request",
+        "description": "A personal project, a professional activity, an organisation or a general question: separate entry points to avoid vague messages."
       },
-      "phone": {
-        "title": "Phone",
-        "description": "Monday to Friday"
+      "rightLevel": {
+        "title": "The right level of detail",
+        "description": "Your goal, your situation and the points to clarify are enough for a first exchange. No documents to send here."
       },
-      "address": {
-        "title": "Address",
-        "description": "Head office"
-      },
-      "hours": {
-        "title": "Hours",
-        "description": "We're available",
-        "schedule": "Mon - Fri: 9am - 6pm"
+      "nextSteps": {
+        "title": "Next steps to be defined",
+        "description": "How requests are answered and how pilot access works will be defined before the forms open."
       }
     },
+    "choose": {
+      "title": "What's the right entry point for your request?",
+      "description": "Preparing a decision about a property, working in real estate, or representing an organisation: pick the request that matches your role.",
+      "navLabel": "Request types",
+      "individuals": {
+        "title": "I'm an individual",
+        "description": "Owner or future buyer: describe your project."
+      },
+      "professionals": {
+        "title": "I'm a professional",
+        "description": "Describe your trade, your area and your coordination needs."
+      },
+      "organizations": {
+        "title": "I represent an organisation",
+        "description": "Describe the use case to test and the people involved."
+      },
+      "general": {
+        "title": "Another request",
+        "description": "A general question, a collaboration or the ecosystem."
+      }
+    },
+    "offers": {
+      "provisional": "Provisional price · Offer not open, terms to be defined",
+      "discovery": {
+        "name": "Discovery",
+        "price": "€0",
+        "description": "Intended scope: describe your goal, prepare the Property Passport and identify the information your decision needs."
+      },
+      "expertPro": {
+        "name": "Expert Pro",
+        "price": "€299 excl. VAT / month",
+        "description": "Intended scope: contextualise requests, view authorised documents and prepare collaboration. No volume of assignments or revenue is guaranteed."
+      },
+      "pilotOrganization": {
+        "name": "Organisation Pilot",
+        "price": "€3,000 excl. VAT / 3 months",
+        "description": "Intended framework to test a real case with a team: documents, roles, deadlines, follow-ups and review. Scope, deliverables and terms to be agreed."
+      }
+    },
+    "individuals": {
+      "eyebrow": "Individuals",
+      "title": "A purchase, works or a property to make the most of: describe your situation.",
+      "description": "Say whether you already own a property or are preparing a purchase, what you want to do, the question blocking you and your timeframe, even roughly. A first exchange doesn't need a complete file."
+    },
+    "professionals": {
+      "eyebrow": "Professionals",
+      "title": "What's your trade and which projects do you work on?",
+      "description": "Describe your speciality, your area and the situations where a better-contextualised client file would help you."
+    },
+    "organizations": {
+      "eyebrow": "Organisations",
+      "title": "Test a real case with your team.",
+      "description": "Agency, developer, landlord, local authority or network: describe the context, the use case, the people to coordinate and what you expect from a pilot."
+    },
+    "general": {
+      "title": "Stay in touch",
+      "description": "For any other question about CIEL AVENUE: a conversation about the project, a collaboration or information.",
+      "zone": {
+        "label": "Pilot area",
+        "value": "Rennes and Ille-et-Vilaine."
+      },
+      "afterRequest": {
+        "label": "After your request",
+        "value": "How requests are handled and response times will be specified when the forms open."
+      }
+    },
+    "formCommon": {
+      "demoNotice": "Demonstration: this form does not send or store any data.",
+      "requiredLegend": "Fields marked with an asterisk (*) are required.",
+      "optional": "(optional)",
+      "choose": "Choose…",
+      "acknowledge": "I understand this is a demonstration: my request will not be sent.",
+      "errors": {
+        "summary_one": "1 thing to fix before continuing:",
+        "summary_other": "{{count}} things to fix before continuing:",
+        "required": "Fill in \"{{field}}\".",
+        "email": "Enter a valid email address, for example name@domain.com.",
+        "acknowledge": "Tick the box to confirm you understand this is a demonstration."
+      },
+      "simulated": {
+        "title": "Simulation complete: your request was not sent.",
+        "body": "This form is a demonstration of the journey. Nothing was sent to the CIEL AVENUE team and what you typed has been cleared. The forms will be activated once request handling is defined.",
+        "restart": "Restart the demonstration"
+      }
+    },
+    "forms": {
+      "individual": {
+        "title": "Pilot request — individual",
+        "intro": "To understand your project: your situation, goal, timeframe and main question. Do not add ID, financial or property documents.",
+        "submit": "Simulate my request",
+        "fields": {
+          "name": {
+            "label": "Full name",
+            "placeholder": "Camille Martin"
+          },
+          "email": {
+            "label": "Email",
+            "placeholder": "camille.martin@example.com"
+          },
+          "situation": {
+            "label": "Your current situation",
+            "options": ["Already an owner", "Preparing a purchase", "Tenant with a project", "Other situation"]
+          },
+          "objective": {
+            "label": "Your main goal",
+            "options": ["Buy", "Renovate", "Rent out", "Sell", "To be clarified"]
+          },
+          "timeline": {
+            "label": "Project timeframe",
+            "options": ["Under 3 months", "3 to 12 months", "Over 12 months", "Not sure yet"]
+          },
+          "question": {
+            "label": "Your main question or concern",
+            "hint": "A few lines are enough.",
+            "placeholder": "Example: we own a house near Rennes and can't decide between renovating to rent it out or selling as is. What should we gather before asking for quotes?"
+          }
+        }
+      },
+      "professional": {
+        "title": "Application — professional",
+        "intro": "To understand your contribution: your company, trade, area and the coordination need to test. No confidential documents or client information.",
+        "submit": "Simulate my application",
+        "fields": {
+          "name": {
+            "label": "Full name",
+            "placeholder": "Julien Le Goff"
+          },
+          "email": {
+            "label": "Work email",
+            "placeholder": "julien@surveys-example.com"
+          },
+          "company": {
+            "label": "Company",
+            "placeholder": "Le Goff Surveys (example)"
+          },
+          "role": {
+            "label": "Trade or role",
+            "placeholder": "Property surveyor"
+          },
+          "area": {
+            "label": "Area of operation",
+            "placeholder": "Rennes Métropole and Vitré area"
+          },
+          "needs": {
+            "label": "Your coordination needs",
+            "placeholder": "Example: I often receive requests without plans or works history, so I have to call the owner back before quoting."
+          }
+        }
+      },
+      "organization": {
+        "title": "Request — organisation",
+        "intro": "To prepare a conversation: your organisation, the intended use case, the people involved and the expected outcome. Pilot scope to be agreed.",
+        "submit": "Simulate my request",
+        "fields": {
+          "name": {
+            "label": "Full name",
+            "placeholder": "Sophie Bernard"
+          },
+          "email": {
+            "label": "Work email",
+            "placeholder": "s.bernard@organisation-example.com"
+          },
+          "organization": {
+            "label": "Organisation",
+            "placeholder": "Social landlord, agency, developer… (fictitious: Example Housing)"
+          },
+          "context": {
+            "label": "Context",
+            "placeholder": "Example: we manage around a hundred homes in Ille-et-Vilaine with several works contractors."
+          },
+          "useCase": {
+            "label": "Intended use case",
+            "placeholder": "Example: preparing a home for re-letting after works, from inspection to letting."
+          },
+          "stakeholders": {
+            "label": "People involved",
+            "placeholder": "Property manager, tradespeople, surveyor, letting agency"
+          },
+          "outcome": {
+            "label": "Expected outcome",
+            "placeholder": "Example: always knowing which documents are missing and who owns the next action."
+          }
+        }
+      },
+      "general": {
+        "title": "Other request",
+        "intro": "Explain what your request is about and what you're looking for next. Don't send sensitive documents.",
+        "submit": "Simulate sending the message",
+        "fields": {
+          "name": {
+            "label": "Full name",
+            "placeholder": "Alex Moreau"
+          },
+          "email": {
+            "label": "Email",
+            "placeholder": "alex.moreau@example.com"
+          },
+          "subject": {
+            "label": "Subject",
+            "options": [
+              "My property project",
+              "A professional collaboration",
+              "The organisation pilot",
+              "Investment / ecosystem",
+              "A general question"
+            ]
+          },
+          "message": {
+            "label": "Your request and the next step you'd like",
+            "placeholder": "Describe your question, your role and what you expect from a first conversation."
+          }
+        }
+      }
+    },
+    "trust": {
+      "title": "Before you write, three pointers.",
+      "sensitive": {
+        "title": "No sensitive documents in a first exchange.",
+        "description": "A goal, a situation and a timeframe are enough. Don't include bank details, ID or confidential documents."
+      },
+      "routing": {
+        "title": "A request routed to the right path.",
+        "description": "Owner or future buyer: describe your project. Professional: describe your trade and area. Organisation: specify the use case and people involved."
+      },
+      "simulation": {
+        "title": "A simulation, nothing actually sent.",
+        "description": "The forms on this page neither send nor store data. They will be activated once the recipient, response times and privacy policy are defined."
+      }
+    },
+    "visionMission": {
+      "label": "Vision and mission",
+      "vision": {
+        "eyebrow": "Our vision",
+        "title": "Describe your need without building the whole file.",
+        "paragraphs": [
+          "For a first contact, explain the intended project, your role and what's blocking you. There's no need to send property documents.",
+          "Which documents are useful will depend on the chosen next step and the professional involved."
+        ]
+      },
+      "mission": {
+        "eyebrow": "Our mission",
+        "title": "A few well-chosen details beat a long story.",
+        "description": "State your goal, your area, your timeframe and the main question. For an organisation, add the use case and the trades to coordinate.",
+        "points": ["Describe your situation or activity.", "Name the need and the blocker.", "Specify the area and intended timeframe."]
+      }
+    },
+    "journal": {
+      "title": "Understand the project before getting in touch.",
+      "description": "Behind the scenes, journey tests and product changes, distinguishing what is done, prototyped or still being studied.",
+      "topics": ["Describe the need", "Specify the property", "State your timeframe", "Prepare a useful request"]
+    },
     "faq": {
-      "title": "Frequently asked questions",
-      "description": "Here are the most common questions:",
-      "question1": "How does the buyer journey work?",
-      "question2": "What are the platform fees?",
-      "question3": "How to become a partner expert?"
+      "title": "Before preparing your request.",
+      "items": [
+        {
+          "question": "Which form should I use for a personal project?",
+          "answer": "The \"individual\" request: property owned or purchase planned, goal, timeframe and main question."
+        },
+        {
+          "question": "What should I include as a professional?",
+          "answer": "Your company, trade, area of operation and the coordination need you'd like to test. Avoid your clients' confidential information."
+        },
+        {
+          "question": "How do I present an organisation request?",
+          "answer": "Specify the context, use case, people involved and expected outcome. Pilot scope will be agreed together."
+        },
+        {
+          "question": "Can I send my property's documents?",
+          "answer": "No. Don't send ID, bank documents, named surveys or confidential documents. Useful documents will be defined in an appropriate setting."
+        },
+        {
+          "question": "Are the offers and prices shown final?",
+          "answer": "No. These are provisional prices. Scope, terms and availability of the offers are still to be defined."
+        },
+        {
+          "question": "Is my message actually sent?",
+          "answer": "No. The forms on this page are demonstrations: the confirmation only shows that the journey was simulated. No data is sent or stored."
+        },
+        {
+          "question": "How long until I get a reply?",
+          "answer": "No response time is announced yet. Request handling and response times will be specified when the forms open."
+        },
+        {
+          "question": "How can I follow the project?",
+          "answer": "Project news is published on CIEL AVENUE's LinkedIn page."
+        }
+      ]
+    },
+    "cta": {
+      "title": "A clear request is already a better starting point.",
+      "button": "Prepare my message",
+      "note": "Demonstration forms · No data sent or stored."
     }
   },
   "notFound": {
@@ -187,74 +594,168 @@
   },
   "about": {
     "hero": {
-      "title": "About",
-      "description": "We are revolutionizing real estate in France with a digital platform that connects all market players."
+      "badge": "Rennes & Ille-et-Vilaine",
+      "title": "Born in the field. Designed for project continuity.",
+      "description": "From the building site to managing the property, the same observation: information moves around, but context gets lost. CIEL AVENUE was created to connect the steps and the people.",
+      "cta": "Understand our approach",
+      "microtext": "Pilot project · Intended uses, scope and access to be confirmed."
+    },
+    "card": {
+      "label": "My space / Overview",
+      "title": "One property, several decisions",
+      "subtitle": "Context should follow the project, not stay stuck in a single exchange.",
+      "threadLabel": "The intended common thread",
+      "thread": ["Situation", "Property", "Decision", "Next steps"],
+      "findingLabel": "The observation:",
+      "finding": "information scattered across stakeholders.",
+      "ambitionLabel": "The ambition:",
+      "ambition": "connect documents, questions and responsibilities.",
+      "caption": "Illustrative example, not connected."
     },
     "vision": {
-      "badge": "Our vision",
-      "title": "Reinventing the real estate experience",
-      "description1": "CIEL AVENUE was born from a simple observation: traditional real estate is too complex, too slow, and lacks transparency. We have created a platform that simplifies every step of the buying journey while ensuring expert and personalized support.",
-      "description2": "Our vision is to become the reference for digital real estate in France, combining cutting-edge technology and human expertise to offer the best possible experience to our users.",
-      "imageAlt": "CIEL AVENUE Vision"
-    },
-    "mission": {
-      "badge": "Our mission",
-      "title": "Democratizing access to property",
-      "description": "Our mission is to make access to property simpler, faster and more transparent for everyone. We believe that every real estate project deserves personalized attention and high-performance digital tools.",
-      "imageAlt": "CIEL AVENUE Mission",
-      "step1": {
-        "title": "Simplify the buyer journey",
-        "description": "A guided and optimized process at every step"
+      "title": "Our vision: keep the project's thread.",
+      "description": "Create continuity between the owner's decisions, the property's information and the professionals' work, without blurring their responsibilities.",
+      "origin": {
+        "title": "A concrete origin",
+        "description": "Building sites, owners and documents that circulate without always keeping the project's context."
       },
-      "step2": {
-        "title": "Connect stakeholders",
-        "description": "Buyers, sellers, developers and experts on the same platform"
+      "method": {
+        "title": "A continuity method",
+        "description": "Connect situation, property information, options, decision and coordination instead of stacking tools."
       },
-      "step3": {
-        "title": "Ensure transparency",
-        "description": "Clear and verified information throughout the journey"
+      "proof": {
+        "title": "Built on evidence",
+        "description": "Test intended uses locally, make limits explicit and evolve the product from field feedback."
       }
     },
-    "values": {
-      "title": "Our values",
-      "description": "The principles that guide each of our actions and decisions.",
-      "human": {
-        "title": "Human",
-        "description": "Technology at the service of humans, never the other way around"
-      },
-      "excellence": {
-        "title": "Excellence",
-        "description": "We strive for excellence in every detail"
-      },
-      "innovation": {
-        "title": "Innovation",
-        "description": "We constantly innovate to better serve"
-      },
-      "integrity": {
-        "title": "Integrity",
-        "description": "Transparency and honesty in all circumstances"
-      }
+    "story": {
+      "eyebrow": "Our story",
+      "title": "How it started: a need observed in the field.",
+      "paragraphs": [
+        "Experience on building sites and in structuring Guillotin Peinture Père & Fils, then involvement in Guillotin Immo, brought Timon into contact with decisions that span several trades.",
+        "The observation behind the project: documents that exist but are scattered; decisions made at different times; and context lost between the owner, the building site and property management.",
+        "CIEL AVENUE aims to connect these steps. The Property Passport and option preparation are the intended tools to make this common thread concrete."
+      ]
     },
     "team": {
-      "title": "Our team",
-      "description": "A passionate and experienced team, dedicated to transforming real estate.",
-      "member1": {
-        "role": "Manager & Co-fondateur"
+      "title": "Team & ecosystem"
+    },
+    "founder": {
+      "role": "Founder & CEO",
+      "imageAlt": "Portrait of Timon Guillotin",
+      "headline": "Carrying the vision and deciding what should be built.",
+      "bio": [
+        "Timon sets the project's direction, structures the strategy and leads the trade-offs. The challenge: keep field needs, product scope and rollout conditions consistent.",
+        "His experience drives one principle: a platform only has value if it helps owners and professionals prepare a real decision or intervention."
+      ]
+    },
+    "advisors": {
+      "title": "Advisory board",
+      "description": "Complementary expertise to challenge the project. Decisions remain with the founder.",
+      "portraitAlt": "Portrait of {{name}}",
+      "expertise": {
+        "aurelien": "Growth and business development",
+        "wassima": "Operations and structuring",
+        "maximilien": "Innovation and public-private ecosystems",
+        "denis": "Real estate strategy",
+        "benoit": "Artificial intelligence and digital trust"
       },
-      "member2": {
-        "role": "CEO"
+      "note": "Advisor roles are being formalised."
+    },
+    "ecosystem": {
+      "title": "Ecosystem",
+      "description": "Incubation, innovation, real estate and funding: ecosystem relationships should help test the project against reality.",
+      "items": ["Le Poool", "La French Tech Rennes St-Malo", "Real estate ecosystem", "Innovation & funding"],
+      "note": "This presentation does not confirm any partnership or support programme."
+    },
+    "invest": {
+      "title": "Invest in CIEL AVENUE's next stage",
+      "description": "A pre-traction phase focused on validating assumptions. The goal: build local proof of product, usage and rollout.",
+      "cta": "Express interest",
+      "ambition": {
+        "title": "A product ambition, not a promise to solve everything.",
+        "description": "CIEL AVENUE aims to organise property project continuity, without hiding the role of professionals or presenting planned features as already live."
       },
-      "member3": {
-        "role": "Sales Director"
+      "proof": {
+        "title": "Local proof before rollout.",
+        "description": "The pilot in Rennes and Ille-et-Vilaine should reveal uses, blockers and the conditions for useful coordination."
       },
-      "member4": {
-        "role": "Technical Director"
+      "governance": {
+        "title": "Clear governance.",
+        "description": "Timon leads the project's decisions. Advisors bring complementary expertise."
+      },
+      "note": "No investment offer, return or secured funding is announced on this page."
+    },
+    "visionMission": {
+      "label": "Vision and mission",
+      "vision": {
+        "eyebrow": "Our vision",
+        "title": "Why continuity is at the heart of the project.",
+        "paragraphs": [
+          "Between documents, professional tools and conversations, owners can lose the thread. CIEL AVENUE aims to keep the link between the starting situation and successive decisions.",
+          "This ambition must translate into observable uses, not just platform talk."
+        ]
+      },
+      "mission": {
+        "eyebrow": "Our mission",
+        "title": "Build with real-world constraints.",
+        "description": "Owners' needs and professionals' obligations are not interchangeable. The product must adapt to the decisions to prepare and the responsibilities to respect.",
+        "points": [
+          "Observe needs in real situations.",
+          "Test uses before widening the scope.",
+          "Make limits and responsibilities explicit."
+        ]
       }
     },
+    "journal": {
+      "title": "Documented progress, not a fixed promise.",
+      "description": "Behind the scenes, journey tests and product changes, distinguishing what is done, prototyped or still being studied.",
+      "topics": ["Observing field needs", "Testing the shared file", "Learning from journeys", "Evolving the project"],
+      "followTitle": "Follow CIEL AVENUE",
+      "followDescription": "News, demos and behind the scenes.",
+      "linkedin": "LinkedIn"
+    },
+    "faq": {
+      "title": "Understanding the approach and its limits.",
+      "items": [
+        {
+          "question": "What observation led to CIEL AVENUE?",
+          "answer": "The loss of continuity between documents, decisions and interventions. The founder's field experience, between building sites and property management, shapes this problem."
+        },
+        {
+          "question": "What is the Property Passport's ambition?",
+          "answer": "Connect the documents and history relevant to the project, to prepare discussions and next decisions. Its content and capabilities still need testing."
+        },
+        {
+          "question": "Why start with Rennes and Ille-et-Vilaine?",
+          "answer": "It is the chosen pilot area. A local phase aims to observe uses and validate coordination conditions before expanding."
+        },
+        {
+          "question": "Who makes the project's decisions?",
+          "answer": "Timon Guillotin carries the vision and the trade-offs. Advisors bring complementary expertise."
+        },
+        {
+          "question": "Do the ecosystem names shown prove a partnership?",
+          "answer": "No. Being mentioned on this page does not confirm a partnership or support programme."
+        },
+        {
+          "question": "What works today?",
+          "answer": "A journey prototype with fictitious data can be viewed. The Property Passport is being built and the Céleste assistant is planned."
+        },
+        {
+          "question": "How can I contribute to the project?",
+          "answer": "Write to us stating your role: owner, future buyer, professional, organisation or ecosystem player. Do not send any sensitive documents."
+        },
+        {
+          "question": "How do I express investment interest?",
+          "answer": "The \"Express interest\" button opens a prefilled email to the team. No return, secured funding or firm investment offer is announced."
+        }
+      ]
+    },
     "cta": {
-      "title": "Have a question? Contact us",
-      "description": "Our team is at your disposal to answer all your questions.",
-      "button": "Contact us"
+      "title": "Building project continuity, grounded in real-world constraints.",
+      "button": "Suggest a conversation",
+      "note": "This button opens your email app. No data is collected on this site."
     }
   },
   "howItWorks": {
@@ -1145,5 +1646,680 @@
     "description": "We are currently carrying out improvements on our platform. The website will be accessible again very soon.",
     "subtext": "Thank you for your patience and understanding.",
     "footer": "© 2025 CIEL AVENUE. All rights reserved."
+  },
+  "individuals": {
+    "hero": {
+      "badge": "Individuals · Rennes & Ille-et-Vilaine",
+      "titleStart": "Your property project,",
+      "titleHighlight": "finally clear and well supported.",
+      "description": "First purchase, works, renting out or selling: take stock of your goal, budget, documents and the questions to settle before committing.",
+      "ctaPrimary": "Join the pilot",
+      "ctaSecondary": "See the 7 steps",
+      "microtext": "Pilot in preparation · No account to create yet: we're first gathering situations to test."
+    },
+    "card": {
+      "label": "My space / Overview",
+      "title": "My house in Rennes",
+      "goal": "I want to renovate before deciding whether to rent or sell.",
+      "passportLabel": "Property Passport",
+      "passport": "Plans available · EPC to check · works invoices to find",
+      "questionLabel": "Open question",
+      "question": "Which option suits my situation and budget?",
+      "nextLabel": "Next step",
+      "next": "Gather the documents and prepare questions for the tradesperson and the agency.",
+      "caption": "Illustrative example with fictitious data, not connected."
+    },
+    "vision": {
+      "title": "To make a decision, start by seeing clearly.",
+      "description": "You don't need to know everything at the start. What matters is making your goal, the property's information and the checks to plan visible.",
+      "clarity": {
+        "title": "Stop moving forward blind",
+        "description": "Before a purchase or works, lay out what you know about the property, your intended budget and the open questions."
+      },
+      "prepare": {
+        "title": "Know what to prepare",
+        "description": "Find the documents you already have and identify which to request for your next decision."
+      },
+      "dialogue": {
+        "title": "Talk better with professionals",
+        "description": "Explain your goal and constraints without retelling the whole story to each person."
+      }
+    },
+    "method": {
+      "eyebrow": "The method",
+      "title": "From \"I don't know where to start\" to a clear next step.",
+      "description": "Three stages, in this order: gather your documents, compare your options, then choose the next concrete action.",
+      "start": {
+        "title": "You have a project, but not all the answers yet.",
+        "description": "Buying, renovating, renting or selling: your documents and questions are often scattered. Start by organising what you already know.",
+        "before": {
+          "label": "Before",
+          "text": "Emails, attachments and conversations with no overview."
+        },
+        "after": {
+          "label": "After",
+          "text": "A goal, an indicative budget, the useful documents and a list of questions to handle."
+        }
+      },
+      "documents": {
+        "eyebrow": "1 · Documents",
+        "title": "Find and check your documents",
+        "description": "Start with what you already have. Examples of often useful documents:",
+        "items": [
+          "Title deed or preliminary sale agreement",
+          "Surveys (EPC, electrical, gas, asbestos…)",
+          "Floor plans",
+          "Invoices and warranties for past works",
+          "Property tax and service charges",
+          "Co-ownership: rules and latest general meeting minutes",
+          "Quotes already received"
+        ],
+        "warning": "Having a document doesn't mean it's up to date: check its date and source. The relevant professional will tell you what needs updating."
+      },
+      "options": {
+        "eyebrow": "2 · Options",
+        "title": "Compare what each option involves",
+        "description": "For each path, note what remains to check: feasibility, intended cost, constraints and timing.",
+        "items": [
+          {
+            "name": "Buy",
+            "questions": ["What overall budget: price, notary fees, works?", "What should be checked before making an offer?"]
+          },
+          {
+            "name": "Renovate",
+            "questions": ["Which works, in what order, and is a permit needed?", "What budget and timeline to consider?"]
+          },
+          {
+            "name": "Rent out",
+            "questions": [
+              "Does the home meet letting requirements, especially energy ones?",
+              "Furnished or unfurnished: what difference does it make for you?"
+            ]
+          },
+          {
+            "name": "Sell",
+            "questions": ["Which documents should the sale file include?", "What timeframe and price to consider, and who to ask?"]
+          }
+        ],
+        "warning": "These questions help prepare your conversations. They don't replace a valuation, a quote or professional advice."
+      },
+      "next": {
+        "eyebrow": "3 · Next action",
+        "title": "Choose one thing to do now",
+        "description": "Once your documents and options are laid out, the next step becomes concrete:",
+        "items": [
+          "Request the missing document",
+          "Prepare 3 to 5 questions for a professional",
+          "Book a first meeting (tradesperson, agency, notary, bank or broker as needed)"
+        ],
+        "example": "Example: \"Ask the seller for the EPC before Saturday's visit, and list my questions about the heating.\""
+      }
+    },
+    "steps": {
+      "eyebrow": "The 7-step journey",
+      "title": "Your project is prepared at every step.",
+      "description": "You move forward from the information available, identifying the checks to make before each decision. The journey never pushes you faster than your situation allows.",
+      "stepLabel": "Step {{n}}:",
+      "todoLabel": "What you can do",
+      "items": [
+        {
+          "title": "Your situation",
+          "description": "Your goal, your timeframe and the constraints you already know.",
+          "todo": [
+            "Write your goal in one sentence",
+            "Estimate a budget, even roughly",
+            "Set a timeframe: under 3 months, this year, later"
+          ]
+        },
+        {
+          "title": "Property Passport",
+          "description": "Documents available, missing or to check.",
+          "todo": [
+            "List the documents you already have",
+            "Note those missing and who to ask",
+            "Check dates: an old survey may need redoing"
+          ]
+        },
+        {
+          "title": "Options to explore",
+          "description": "Buy, renovate, rent out or sell: the questions specific to each.",
+          "todo": [
+            "Keep two or three realistic paths",
+            "For each, note intended cost, time and constraints",
+            "Drop what doesn't fit your budget or timeframe"
+          ]
+        },
+        {
+          "title": "Decision to prepare",
+          "description": "Assumptions to confirm before committing.",
+          "todo": [
+            "List what must be true for the option to work",
+            "Identify who can confirm each assumption",
+            "Sign nothing before these checks"
+          ]
+        },
+        {
+          "title": "Project framework",
+          "description": "Scope, actions and approvals needed.",
+          "todo": ["Describe what's included and what isn't", "Draw up a simple timeline", "Allow a margin for the unexpected"]
+        },
+        {
+          "title": "Professionals",
+          "description": "Expertise to involve and questions to ask.",
+          "todo": [
+            "Pick the right person for the question: technical, legal or financial",
+            "Send a clear summary before the meeting",
+            "Compare several quotes where possible"
+          ]
+        },
+        {
+          "title": "Follow-up and review",
+          "description": "Actions completed and what remains.",
+          "todo": ["Tick off what's done", "Keep new documents (invoices, certificates, surveys)", "Note what's still open"]
+        }
+      ],
+      "caption": "Thumbnails are prototype screens with fictitious data. Features and timing are still to be confirmed."
+    },
+    "dark": {
+      "label": "Starting difficulties and the common thread",
+      "frictions": {
+        "title": "You have information, but not yet an overview.",
+        "intro": "What often makes the first step hard:",
+        "items": [
+          "You don't know which documents matter for your decision.",
+          "You're torn between several options, with no criteria to compare them.",
+          "You don't know which professional to approach first."
+        ],
+        "note": "Common situations, given as examples: no time saving or result is guaranteed."
+      },
+      "thread": {
+        "title": "A file that supports your thinking and the next steps.",
+        "steps": ["Situation", "Property Passport", "Options", "Decision", "Coordination", "Review"],
+        "description": "The information and questions you prepare form the basis for discussions. The choice is yours, and sensitive decisions need advice from qualified professionals."
+      }
+    },
+    "celeste": {
+      "badge": "Planned assistant · not available",
+      "title": "Céleste would help you ask the right questions.",
+      "description": "The planned assistant helps organise what you know about the property and prepare your conversations. It doesn't decide for you.",
+      "can": {
+        "title": "What it could do",
+        "items": ["Summarise your situation and goal", "Spot documents that seem to be missing", "Suggest questions to ask a professional"]
+      },
+      "cannot": {
+        "title": "What it won't do",
+        "items": [
+          "Give legal, financial or technical advice",
+          "Reliably estimate a price or works cost",
+          "Replace a visit, a survey or a quote"
+        ]
+      },
+      "questionsTitle": "Three questions to prepare what comes next",
+      "questions": [
+        {
+          "question": "Which documents should I find?",
+          "answer": "Start with what you already have. The relevant professional will say what's missing for your decision."
+        },
+        {
+          "question": "What should I check before choosing?",
+          "answer": "Constraints, feasibility and intended costs should be examined before picking an option."
+        },
+        {
+          "question": "Who should I ask next?",
+          "answer": "Depending on the topic: a tradesperson or architect for works, an agency for renting or selling, a notary for legal matters, a bank or broker for financing."
+        }
+      ],
+      "note": "You keep the decision. Céleste doesn't replace any qualified professional."
+    },
+    "benefits": {
+      "title": "What the journey should help you prepare.",
+      "start": {
+        "title": "Know where to start",
+        "description": "Describe your situation and separate what concerns your project from what remains to check on the property."
+      },
+      "compare": {
+        "title": "Compare without rushing",
+        "description": "Put your options side by side and prepare questions on feasibility, budget and timing."
+      },
+      "meeting": {
+        "title": "Prepare a useful meeting",
+        "description": "Arrive with your documents, constraints and goal to avoid a conversation with no starting point."
+      },
+      "cta": "Join the pilot"
+    },
+    "trust": {
+      "title": "What to know before you start.",
+      "privacy": {
+        "title": "Your file isn't for everyone.",
+        "description": "A plan, quote or survey can contain personal information. Who can access it, for what and for how long will be defined before any real sharing."
+      },
+      "territory": {
+        "title": "A pilot rooted in your area.",
+        "description": "The journey first targets Rennes and Ille-et-Vilaine. Participation criteria and access timing are still to be confirmed."
+      },
+      "decision": {
+        "title": "You keep the decision.",
+        "description": "The planned file and assistant prepare questions. Works, property choices and commitments require advice from qualified professionals."
+      }
+    },
+    "visionMission": {
+      "label": "Vision and mission",
+      "vision": {
+        "eyebrow": "Our vision",
+        "title": "Your decision starts before the first quote.",
+        "description": "Before works, letting or selling, understand what you're trying to do and what remains to check. The journey prepares the conversation with professionals, without pushing you towards a single option.",
+        "points": []
+      },
+      "mission": {
+        "eyebrow": "Our mission",
+        "title": "A project that follows your life situation.",
+        "description": "A first purchase, a home to adapt, a property to make the most of: needs differ. The goal is to start from your situation, not a standard answer.",
+        "points": [
+          "Set your goal and timeframe.",
+          "Identify the property information to find.",
+          "Prepare the questions to ask professionals."
+        ]
+      }
+    },
+    "journal": {
+      "title": "See how the journey is being built.",
+      "description": "Behind the scenes, journey tests and product changes, distinguishing what is done, prototyped or still being studied.",
+      "topics": ["Describing your situation", "Finding the property's documents", "Preparing your meetings", "Comparing your options"]
+    },
+    "faq": {
+      "title": "Your questions before a purchase, works or a decision about your property.",
+      "items": [
+        {
+          "question": "I don't know yet whether to renovate, rent or sell. Can I start?",
+          "answer": "Yes. Start with your goal, an indicative budget and your constraints. The options can then be examined with the relevant professionals."
+        },
+        {
+          "question": "I'm preparing a first purchase: where do I start?",
+          "answer": "Clarify your overall budget (price, notary fees, any works), your must-haves and your timeframe. Before an offer, ask for the surveys and, in a co-ownership, the latest general meeting minutes. Your bank or a broker can specify your borrowing capacity."
+        },
+        {
+          "question": "Which documents should I find for my property?",
+          "answer": "The ones you already have: title deed, plans, surveys, works invoices, property tax, co-ownership documents. Having them doesn't mean they're up to date: a professional will say what needs updating."
+        },
+        {
+          "question": "How do I estimate my budget and timeline?",
+          "answer": "Start from a range, even a wide one, and a timeframe (under 3 months, this year, later). Allow a margin for the unexpected. Precise amounts will come from professionals' quotes, valuations and simulations."
+        },
+        {
+          "question": "Does the Property Passport replace a survey?",
+          "answer": "No. It's intended as a file to organise information, not a technical, energy or regulatory survey."
+        },
+        {
+          "question": "Can Céleste tell me which works to do?",
+          "answer": "No. The planned assistant helps prepare information and questions. It doesn't replace a technical visit, a feasibility study, a quote or professional advice."
+        },
+        {
+          "question": "Who will be able to see my file?",
+          "answer": "Access rules, uses and retention periods will be defined before any real data collection. No file is shared today."
+        },
+        {
+          "question": "Can I create an account already?",
+          "answer": "No. The pilot is in preparation and no personal space is open. A prototype with fictitious data only lets you visualise the journey."
+        },
+        {
+          "question": "Is the Discovery offer available yet?",
+          "answer": "Not yet. The €0 price is provisional; the offer's content, terms and opening date are still to be confirmed."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Before choosing an option, clarify what matters for your project.",
+      "button": "Prepare my pilot request",
+      "note": "The request form is a demonstration for now: no data is sent."
+    }
+  },
+  "professionals": {
+    "hero": {
+      "badge": "Professionals · Rennes & Ille-et-Vilaine",
+      "title": "The project's context, before you step in.",
+      "description": "A clear client request, the useful documents identified and an explicit scope: prepare your work from a contextualised file, within the access the client authorises.",
+      "ctaPrimary": "Apply for the pilot",
+      "ctaSecondary": "See the 7 steps",
+      "microtext": "Pilot in preparation · No professional accounts are open yet. Screens shown are illustrations."
+    },
+    "card": {
+      "label": "My space / Overview",
+      "title": "Client file · Renovation in Rennes",
+      "goal": "Goal: scope the works before quoting.",
+      "documentsLabel": "Documents useful to your work",
+      "documents": "Plans available · EPC to check · photos of the rooms concerned",
+      "questionLabel": "Point to clarify",
+      "question": "Who approves the scope of works on the client side?",
+      "nextLabel": "Next step",
+      "next": "Specify the missing documents and how responsibilities are split.",
+      "caption": "Illustrative example with fictitious data, not connected."
+    },
+    "vision": {
+      "title": "Prepare an intervention, not add another tool.",
+      "description": "A file without context forces you to rediscover the need. The intended approach links the client's goal, their documents and the framework of your work.",
+      "context": {
+        "title": "Usable context",
+        "description": "Understand the client's request, the state of the file and the constraints before defining your work."
+      },
+      "nextAction": {
+        "title": "An assigned next action",
+        "description": "Make visible the expected documents, approvals to obtain and who owns the next step."
+      },
+      "expertise": {
+        "title": "Your expertise, in its rightful place",
+        "description": "Separate file organisation from the surveys, advice, quotes and approvals that belong to your trade."
+      }
+    },
+    "method": {
+      "eyebrow": "Experts and organisations",
+      "title": "A contextualised file to prepare your work.",
+      "description": "Start from the client's request, the accessible documents and the points to check. Then define what belongs to your trade and to each party.",
+      "request": {
+        "eyebrow": "Client request",
+        "title": "Before answering, understand the request.",
+        "description": "An incomplete brief, a missing survey or a poorly framed goal blur the scoping. The intended file gathers the useful context before you take over.",
+        "before": {
+          "label": "Before: discovery to redo",
+          "text": "Isolated documents, with no clear goal or responsibilities."
+        },
+        "after": {
+          "label": "After: context to complete",
+          "text": "A shared goal, identified documents and assigned checks."
+        }
+      },
+      "options": {
+        "eyebrow": "Options to examine",
+        "title": "Examine the options with the client.",
+        "description": "Scenarios support the discussion. Feasibility, regulatory constraints, costs and timing remain examined by the relevant professionals.",
+        "items": [
+          {
+            "name": "Renovate",
+            "scope": "Technical scope, any permits, quote and schedule."
+          },
+          {
+            "name": "Rent out",
+            "scope": "Condition of the property, applicable requirements (especially energy) and intended use."
+          },
+          {
+            "name": "Sell",
+            "scope": "Sale file documents, mandatory surveys, constraints and timeline."
+          }
+        ]
+      },
+      "context": {
+        "eyebrow": "Useful context",
+        "title": "Context, not just a pile of documents.",
+        "description": "The Property Passport aims to link documents to the project, keeping their source, date and points to check:",
+        "items": [
+          "Client goal and intended use of the property",
+          "Documents available, missing or to update",
+          "Expected checks and who owns them",
+          "Responsibilities and next action"
+        ],
+        "boundary": "Access limited to the documents the client authorises for your assignment: no universal access, no automatic validation of documents."
+      }
+    },
+    "steps": {
+      "eyebrow": "The 7-step journey",
+      "title": "From client brief to review: keep the context of the work.",
+      "description": "The intended journey clarifies the handover points without standardising trades. Each professional keeps their scope and obligations.",
+      "stepLabel": "Step {{n}}:",
+      "todoLabel": "In practice",
+      "items": [
+        {
+          "title": "Client request",
+          "description": "Goal, use of the property and constraints of the work.",
+          "todo": [
+            "Restate the request in one sentence approved by the client",
+            "Identify the decision-maker and the deadline",
+            "Spot what falls outside your scope"
+          ]
+        },
+        {
+          "title": "Accessible documents",
+          "description": "Documents useful to your trade and authorised access.",
+          "todo": [
+            "List the documents your work requires",
+            "Check date, source and version of each",
+            "Ask the client for missing documents, with a clear reason"
+          ]
+        },
+        {
+          "title": "Options to examine",
+          "description": "Feasibility, regulatory points and assumptions to examine.",
+          "todo": [
+            "Separate assumptions from verified facts",
+            "Flag points that need another expert",
+            "Present options without deciding for the client"
+          ]
+        },
+        {
+          "title": "Client decision",
+          "description": "Chosen option and approvals still needed.",
+          "todo": [
+            "Get the chosen option confirmed in writing",
+            "List remaining approvals (co-ownership, permits, financing)",
+            "Note what remains conditional"
+          ]
+        },
+        {
+          "title": "Scope of work",
+          "description": "Scope, deliverables, deadlines and responsibilities.",
+          "todo": [
+            "Describe what's included and excluded",
+            "Specify expected deliverables and their format",
+            "Set deadlines and the approval process"
+          ]
+        },
+        {
+          "title": "Coordination",
+          "description": "Expected information, parties and next action.",
+          "todo": [
+            "State who expects what, from whom and by when",
+            "Pass on to the next party only what concerns them",
+            "Follow up on pending documents or approvals"
+          ]
+        },
+        {
+          "title": "Assignment review",
+          "description": "Work done, documents produced and open points.",
+          "todo": [
+            "Upload deliverables and documents produced",
+            "Note reservations and open points",
+            "State the recommended next step and who owns it"
+          ]
+        }
+      ],
+      "caption": "Thumbnails are prototype screens with fictitious data. They don't represent an operational platform."
+    },
+    "dark": {
+      "label": "Continuity and coordination",
+      "frictions": {
+        "title": "The client has documents. You need context.",
+        "intro": "Before stepping in, three common sources of friction:",
+        "items": [
+          "A client goal that is still vague or contradictory.",
+          "Documents with no date, no source or out of scope.",
+          "Responsibilities and approvals left implicit."
+        ],
+        "note": "Common situations, given as examples: no time saving or commercial result is guaranteed."
+      },
+      "thread": {
+        "title": "Link the brief, the documents and the responsibilities.",
+        "steps": ["Situation", "Property Passport", "Options", "Decision", "Coordination", "Review"],
+        "description": "The file prepares exchanges between parties. Your technical opinions, quotes and approvals are neither produced nor replaced automatically."
+      }
+    },
+    "roles": {
+      "title": "Who does what: responsibilities, deliverables and sharing.",
+      "description": "The file makes roles explicit; it doesn't transfer any responsibility.",
+      "items": [
+        {
+          "who": "The client",
+          "items": [
+            "States their goal and decides",
+            "Provides the documents they hold",
+            "Authorises each professional's access to their documents"
+          ]
+        },
+        {
+          "who": "You, the professional",
+          "items": [
+            "Define your scope and deliverables",
+            "Carry out your own checks and approvals",
+            "Remain responsible for your opinions, quotes and commitments"
+          ]
+        },
+        {
+          "who": "CIEL AVENUE (planned)",
+          "items": [
+            "Organises the file's information and history",
+            "Shows missing documents and the next action",
+            "Produces no professional opinion or regulatory approval"
+          ]
+        }
+      ],
+      "sharing": {
+        "title": "Intended document-sharing principles",
+        "items": [
+          "Access limited to documents useful to your assignment",
+          "Authorisation given by the client, per document or per assignment",
+          "No global visibility on client data by default",
+          "Each document keeps its source and date"
+        ],
+        "note": "These principles are under study: access, retention and confidentiality rules will be defined before any real sharing."
+      }
+    },
+    "celeste": {
+      "badge": "Planned assistant · not available",
+      "title": "Céleste would prepare the information. You bring the expertise.",
+      "description": "The planned assistant would help structure client context, spot missing documents and prepare follow-ups. Its suggestions would still need checking.",
+      "can": {
+        "title": "What it could do",
+        "items": ["Summarise the client's request", "Spot documents that seem to be missing", "Draft a follow-up message"]
+      },
+      "cannot": {
+        "title": "What it won't do",
+        "items": ["Sign an opinion or certify compliance", "Quote an assignment or works", "Replace your professional judgement"]
+      },
+      "questionsTitle": "Three questions to prepare what comes next",
+      "questions": [
+        {
+          "question": "Which documents does my work require?",
+          "answer": "Your trade determines the useful documents and checks. The file helps request them, within the access the client grants."
+        },
+        {
+          "question": "What is blocking the scoping?",
+          "answer": "A goal, a document or an approval may be missing. The point is to make it explicit and identify who should handle it."
+        },
+        {
+          "question": "Who owns the next action?",
+          "answer": "Specify the expected action, the person responsible and the conditions for moving forward."
+        }
+      ],
+      "note": "The client keeps the decision, you keep responsibility for your opinions. Céleste doesn't replace any qualified professional."
+    },
+    "benefits": {
+      "title": "What the file should make more usable for your trade.",
+      "description": "Examples of uses the pilot should test, not proven results.",
+      "brief": {
+        "title": "A better-framed request",
+        "description": "Client goal, intended use and limits of your assignment: an explicit starting point.",
+        "example": "Example: before travelling, a surveyor knows whether the property is in a co-ownership, its approximate size and which surveys already exist."
+      },
+      "documents": {
+        "title": "Documents to examine, not guess",
+        "description": "Identify available documents and request missing ones, within authorisations.",
+        "example": "Example: a tradesperson sees the plans exist but the EPC is over ten years old, and flags it before quoting."
+      },
+      "followUp": {
+        "title": "Clearer follow-up",
+        "description": "Clarify expected actions, approvals to obtain and what to pass on to the next party.",
+        "example": "Example: an estate agent knows the listing is waiting for the works completion certificate, and who must provide it."
+      },
+      "note": "Fictitious examples. No volume of assignments, revenue or time saving is guaranteed.",
+      "cta": "Apply for the pilot"
+    },
+    "trust": {
+      "title": "What to know before applying.",
+      "access": {
+        "title": "Access limited to your work.",
+        "description": "Intended sharing follows the client's authorisations and the assignment's scope. No global visibility by default."
+      },
+      "territory": {
+        "title": "A pilot to test professional uses.",
+        "description": "The target area is Rennes and Ille-et-Vilaine. Applications help specify activity, area and coordination needs."
+      },
+      "responsibility": {
+        "title": "Responsibilities stay explicit.",
+        "description": "Organising the file is not a survey, a regulatory approval or a compliance guarantee."
+      }
+    },
+    "visionMission": {
+      "label": "Vision and mission",
+      "vision": {
+        "eyebrow": "Our vision",
+        "title": "Continuity between trades has to be prepared.",
+        "description": "Technical, property or legal work depends on information others hold. Having it in a file isn't enough: you need to know its source and scope.",
+        "points": []
+      },
+      "mission": {
+        "eyebrow": "Our mission",
+        "title": "Scope before coordinating.",
+        "description": "Who expects what, from whom, and at which step? The assignment's scope and required approvals must be explicit.",
+        "points": ["Define the scope of your work.", "Identify expected documents and approvals.", "Assign the next coordination action."]
+      }
+    },
+    "journal": {
+      "title": "Follow usage tests and coordination topics.",
+      "description": "Behind the scenes, journey tests and product changes, distinguishing what is done, prototyped or still being studied.",
+      "topics": ["Framing the client request", "Identifying accessible documents", "Preparing coordination", "Clarifying approvals"]
+    },
+    "faq": {
+      "title": "Points to clarify before applying.",
+      "items": [
+        {
+          "question": "Who can apply for the pilot?",
+          "answer": "The pilot targets property and construction professionals working in Rennes and Ille-et-Vilaine: surveyors, tradespeople, estate agents, architects, notaries, property managers… Admission criteria are still to be defined: applying doesn't mean admission."
+        },
+        {
+          "question": "What works today?",
+          "answer": "A prototype with fictitious data can be viewed. The Property Passport and file sharing are being designed; the Céleste assistant is planned. No professional space is open."
+        },
+        {
+          "question": "Which documents will I be able to access?",
+          "answer": "Only those the client authorises for your assignment, under rules to be defined before any real sharing. No full access to the client file is planned by default."
+        },
+        {
+          "question": "Does the file replace my own checks?",
+          "answer": "No. You keep the checks, obligations and responsibilities of your trade. A document in the file doesn't validate its content."
+        },
+        {
+          "question": "How are responsibilities split?",
+          "answer": "Each assignment's scope, deliverables and approvals are agreed between you and the client. The file makes these explicit; it doesn't transfer responsibility."
+        },
+        {
+          "question": "Does the platform guarantee me assignments?",
+          "answer": "No. No volume of projects, revenue, meetings or conversion rate is guaranteed. CIEL AVENUE is not presented as a lead provider."
+        },
+        {
+          "question": "How do I apply and how does onboarding work?",
+          "answer": "Describe your company, trade, area and the coordination need to test. The current form is a demonstration that sends nothing; pilot onboarding will be specified when it opens."
+        },
+        {
+          "question": "What are the commercial terms?",
+          "answer": "The Expert Pro and Organisation Pilot offers are shown with provisional prices. Content, pricing and terms are still to be confirmed."
+        },
+        {
+          "question": "What would Céleste do in a professional journey?",
+          "answer": "The planned assistant would help structure the brief, spot missing documents and prepare follow-ups. It produces no professional approval or commitment on your behalf, and its suggestions need checking."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Preparing the right intervention starts with the right context.",
+      "button": "Describe my trade and my need",
+      "note": "The application form is a demonstration for now: no data is sent."
+    }
   }
 }

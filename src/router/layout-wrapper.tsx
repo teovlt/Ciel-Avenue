@@ -10,7 +10,9 @@ export const LayoutWrapper = ({ withLayout = true }: LayoutWrapperProps) => {
   return (
     <>
       {withLayout && <Navbar />}
-      <Outlet />
+      <main id="main-content" tabIndex={-1} className="outline-none">
+        <Outlet />
+      </main>
       {withLayout && <Footer />}
     </>
   );

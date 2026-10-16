@@ -1,262 +1,310 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Building2, Users, Shield, Zap, CheckCircle2, Award, ChevronDown } from "lucide-react";
+import {
+  ArrowRight,
+  FolderOpen,
+  GitCompare,
+  MessagesSquare,
+  MapPin,
+  FlaskConical,
+  ShieldCheck,
+  User,
+  Briefcase,
+  Check,
+} from "lucide-react";
+import { pilotMailto } from "@/lib/contact";
+import { SectionHeading } from "@/components/customs/section-heading";
+import { Faq, type FaqItem } from "@/components/customs/faq";
+import { ProjectPreview } from "./components/ProjectPreview";
+import { PassportMockup } from "./components/PassportMockup";
+
+const primaryCta = "bg-caramel text-caramel-foreground hover:bg-caramel/90 text-base px-6 h-12 rounded-xl group";
+const secondaryCta = "text-base px-6 h-12 rounded-xl border-foreground/20 bg-background";
 
 export function Home() {
   const { t } = useTranslation();
 
-  const stats = [
-    { value: "2 500+", label: t("home.hero.stats.users"), icon: Users },
-    { value: "15 000+", label: t("home.hero.stats.properties"), icon: Building2 },
-    { value: "350+", label: t("home.hero.stats.experts"), icon: Award },
-    { value: "98%", label: t("home.hero.stats.satisfaction"), icon: CheckCircle2 },
+  const list = (key: string) => {
+    const value = t(key, { returnObjects: true });
+    return Array.isArray(value) ? (value as string[]) : [];
+  };
+
+  const faqItems = t("home.faq.items", { returnObjects: true }) as FaqItem[];
+
+  const benefits = [
+    { key: "b1", icon: FolderOpen },
+    { key: "b2", icon: GitCompare },
+    { key: "b3", icon: MessagesSquare },
   ];
 
+  const journeys = [
+    { key: "individuals", icon: User, audience: "individual" as const },
+    { key: "professionals", icon: Briefcase, audience: "professional" as const },
+  ];
+
+  const trustItems = [
+    { key: "territory", icon: MapPin },
+    { key: "status", icon: FlaskConical },
+    { key: "sharing", icon: ShieldCheck },
+  ];
+
+  const availability = ["available", "inProgress", "planned"] as const;
+
   return (
-    <div className="min-h-screen">
-      {/* Hero Section - Clean & Professional */}
-      <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1920&q=80"
-            alt="Architecture moderne"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/80" />
-        </div>
-
-        {/* Main Content */}
-        <div className="container mx-auto px-4 lg:px-8 pt-32 pb-20 relative z-10">
-          <div className="max-w-3xl space-y-8">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary animate-fade-in-up">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-              </span>
-              {t("home.hero.badge")}
+    <div className="overflow-x-hidden">
+      {/* 1. Hero */}
+      <section
+        aria-labelledby="hero-title"
+        className="relative pt-28 pb-16 md:pt-36 md:pb-24 bg-gradient-to-b from-secondary/50 to-background"
+      >
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
+            <div className="space-y-7 animate-fade-in-up">
+              <h1 id="hero-title" className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-[1.08]">
+                {t("home.hero.title")}
+              </h1>
+              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-xl">{t("home.hero.description")}</p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button asChild size="lg" className={primaryCta}>
+                  <a href={pilotMailto()}>
+                    {t("home.hero.ctaPrimary")}
+                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className={secondaryCta}>
+                  <a href="#methode">{t("home.hero.ctaSecondary")}</a>
+                </Button>
+              </div>
+              <p className="flex items-start gap-2 text-sm text-muted-foreground">
+                <FlaskConical className="h-4 w-4 mt-0.5 shrink-0 text-caramel" aria-hidden="true" />
+                {t("home.hero.microtext")}
+              </p>
             </div>
-
-            {/* Title */}
-            <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground tracking-tight leading-[1.1] animate-fade-in-up-delay-1">
-              {t("home.hero.titleStart")} <span className="text-primary">{t("home.hero.titleHighlight")}</span> {t("home.hero.titleEnd")}
-            </h1>
-
-            {/* Description */}
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed animate-fade-in-up-delay-2">
-              {t("home.hero.description")}
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in-up-delay-3">
-              <Button asChild size="lg" className="text-lg px-8 py-6 h-auto rounded-xl group">
-                <Link to="/journey">
-                  {t("home.hero.ctaPrimary")}
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6 h-auto rounded-xl">
-                <Link to="/how-it-works">{t("home.hero.ctaSecondary")}</Link>
-              </Button>
+            <div className="animate-fade-in-up-delay-2">
+              <ProjectPreview />
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Stats Bar */}
-        <div className="relative z-10 border-t border-border/50 bg-background/80 backdrop-blur-sm">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-border/50">
-              {stats.map((stat) => (
-                <div key={stat.label} className="py-6 sm:py-8 px-2 sm:px-4 md:px-8 text-center">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-1">{stat.value}</div>
-                  <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
+      {/* 2. Three benefits */}
+      <section aria-labelledby="benefits-title" className="py-20 md:py-28 bg-background">
+        <div className="container mx-auto px-4 lg:px-8 max-w-6xl space-y-12">
+          <SectionHeading id="benefits-title" title={t("home.benefits.title")} />
+          <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {benefits.map(({ key, icon: Icon }) => (
+              <li key={key} className="flex flex-col gap-4 p-7 rounded-2xl bg-card border border-border">
+                <div className="h-12 w-12 rounded-xl bg-secondary flex items-center justify-center">
+                  <Icon className="h-6 w-6 text-caramel" aria-hidden="true" />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground">{t(`home.benefits.${key}.title`)}</h3>
+                <p className="text-muted-foreground leading-relaxed">{t(`home.benefits.${key}.description`)}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* 3. Three-step method */}
+      <section id="methode" aria-labelledby="method-title" className="py-20 md:py-28 bg-muted/50 scroll-mt-20">
+        <div className="container mx-auto px-4 lg:px-8 max-w-6xl space-y-12">
+          <SectionHeading
+            id="method-title"
+            eyebrow={t("home.method.eyebrow")}
+            title={t("home.method.title")}
+            description={t("home.method.description")}
+          />
+          <ol className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {(["step1", "step2", "step3"] as const).map((key, i) => (
+              <li key={key} className="relative p-7 rounded-2xl bg-card border border-border space-y-3">
+                <span
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-caramel text-caramel-foreground font-bold"
+                  aria-hidden="true"
+                >
+                  {i + 1}
+                </span>
+                <h3 className="text-lg font-semibold text-foreground">
+                  <span className="sr-only">{t("home.method.stepLabel", { n: i + 1 })} </span>
+                  {t(`home.method.${key}.title`)}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">{t(`home.method.${key}.description`)}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* 4. Two journeys */}
+      <section id="parcours" aria-labelledby="journeys-title" className="py-20 md:py-28 bg-background scroll-mt-20">
+        <div className="container mx-auto px-4 lg:px-8 max-w-6xl space-y-12">
+          <SectionHeading id="journeys-title" eyebrow={t("home.journeys.eyebrow")} title={t("home.journeys.title")} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {journeys.map(({ key, icon: Icon, audience }) => (
+              <article
+                key={key}
+                aria-labelledby={`journey-${key}`}
+                className="flex flex-col gap-6 p-7 md:p-8 rounded-2xl bg-card border border-border shadow-sm"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="h-11 w-11 shrink-0 rounded-xl bg-secondary flex items-center justify-center">
+                    <Icon className="h-5 w-5 text-caramel" aria-hidden="true" />
+                  </div>
+                  <p className="text-sm font-semibold uppercase tracking-wide text-caramel">{t(`home.journeys.${key}.label`)}</p>
+                </div>
+                <h3 id={`journey-${key}`} className="text-2xl font-bold text-foreground">
+                  {t(`home.journeys.${key}.title`)}
+                </h3>
+                <ul className="space-y-3 flex-1">
+                  {list(`home.journeys.${key}.benefits`).map((benefit) => (
+                    <li key={benefit} className="flex gap-3 text-foreground">
+                      <Check className="h-5 w-5 mt-0.5 shrink-0 text-caramel" aria-hidden="true" />
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex flex-col gap-3">
+                  <Button asChild size="lg" className={`${primaryCta} w-full sm:w-auto sm:self-start`}>
+                    <a href={pilotMailto(audience)}>
+                      {t(`home.journeys.${key}.cta`)}
+                      <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    </a>
+                  </Button>
+                  {(key === "individuals" || key === "professionals") && (
+                    <Link
+                      to={key === "individuals" ? "/particuliers" : "/professionnels"}
+                      className="inline-flex items-center min-h-11 text-sm font-medium text-caramel underline underline-offset-4 hover:no-underline self-start"
+                    >
+                      {t(`home.journeys.${key}.pageLink`)}
+                    </Link>
+                  )}
+                  <Link
+                    to="/journey"
+                    className="inline-flex items-center min-h-11 text-sm font-medium text-caramel underline underline-offset-4 hover:no-underline self-start"
+                  >
+                    {t("home.journeys.demoLink")}
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Passeport du bien */}
+      <section id="passeport" aria-labelledby="passport-title" className="py-20 md:py-28 bg-muted/50 scroll-mt-20">
+        <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <SectionHeading
+                id="passport-title"
+                eyebrow={t("home.passport.eyebrow")}
+                title={t("home.passport.title")}
+                description={t("home.passport.description")}
+              />
+              <ul className="space-y-3">
+                {list("home.passport.points").map((point) => (
+                  <li key={point} className="flex gap-3 text-foreground">
+                    <Check className="h-5 w-5 mt-0.5 shrink-0 text-caramel" aria-hidden="true" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-sm text-muted-foreground">{t("home.passport.status")}</p>
+            </div>
+            <PassportMockup />
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Trust & local focus */}
+      <section aria-labelledby="trust-title" className="py-20 md:py-28 bg-background">
+        <div className="container mx-auto px-4 lg:px-8 max-w-6xl space-y-12">
+          <SectionHeading id="trust-title" title={t("home.trust.title")} description={t("home.trust.description")} />
+          <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {trustItems.map(({ key, icon: Icon }) => (
+              <li key={key} className="flex gap-4 items-start">
+                <div className="h-11 w-11 rounded-xl bg-secondary flex items-center justify-center shrink-0">
+                  <Icon className="h-5 w-5 text-caramel" aria-hidden="true" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground">{t(`home.trust.${key}.title`)}</h3>
+                  <p className="text-muted-foreground mt-1">{t(`home.trust.${key}.description`)}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <div className="rounded-2xl border border-border bg-card p-6 md:p-8">
+            <h3 className="text-lg font-semibold text-foreground mb-6">{t("home.trust.availability.title")}</h3>
+            <dl className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {availability.map((key) => (
+                <div key={key} className="space-y-2">
+                  <dt className="inline-flex rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-secondary-foreground">
+                    {t(`home.trust.availability.${key}.label`)}
+                  </dt>
+                  <dd className="text-muted-foreground">{t(`home.trust.availability.${key}.description`)}</dd>
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <button
-          onClick={() => document.getElementById("vision-section")?.scrollIntoView({ behavior: "smooth" })}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer hover:opacity-80 transition-opacity"
-          aria-label="Scroll to next section"
-        >
-          <ChevronDown className="h-6 w-6 text-muted-foreground/50" />
-        </button>
-      </section>
-
-      {/* Vision Section */}
-      <section id="vision-section" className="py-24 md:py-32 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center space-y-6 mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground">{t("home.vision.title")}</h2>
-            <p className="text-xl text-muted-foreground leading-relaxed">{t("home.vision.description")}</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="border-0 shadow-lg bg-card">
-              <CardContent className="pt-8 pb-8 space-y-4">
-                <div className="h-14 w-14 rounded-2xl bg-blue-50 dark:bg-blue-950 flex items-center justify-center">
-                  <Shield className="h-7 w-7 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">{t("home.vision.card1.title")}</h3>
-                <p className="text-muted-foreground leading-relaxed">{t("home.vision.card1.description")}</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg bg-card">
-              <CardContent className="pt-8 pb-8 space-y-4">
-                <div className="h-14 w-14 rounded-2xl bg-emerald-50 dark:bg-emerald-950 flex items-center justify-center">
-                  <Zap className="h-7 w-7 text-emerald-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">{t("home.vision.card2.title")}</h3>
-                <p className="text-muted-foreground leading-relaxed">{t("home.vision.card2.description")}</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg bg-card">
-              <CardContent className="pt-8 pb-8 space-y-4">
-                <div className="h-14 w-14 rounded-2xl bg-purple-50 dark:bg-purple-950 flex items-center justify-center">
-                  <Users className="h-7 w-7 text-purple-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">{t("home.vision.card3.title")}</h3>
-                <p className="text-muted-foreground leading-relaxed">{t("home.vision.card3.description")}</p>
-              </CardContent>
-            </Card>
+            </dl>
           </div>
         </div>
       </section>
 
-      {/* Mission Section with Image */}
-      <section className="py-24 md:py-32 bg-muted/30">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-8">
-                <h2 className="text-3xl md:text-5xl font-bold text-foreground leading-tight">{t("home.mission.title")}</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">{t("home.mission.description")}</p>
-
-                <div className="space-y-6">
-                  {[1, 2, 3].map((num) => (
-                    <div key={num} className="flex gap-4">
-                      <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <CheckCircle2 className="h-5 w-5 text-primary" />
-                      </div>
-                      <div>
-                        <span className="font-semibold text-foreground">{t(`home.mission.feature${num}.title`)}</span>
-                        <span className="text-muted-foreground"> {t(`home.mission.feature${num}.description`)}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+      {/* 7. Céleste — secondary, planned */}
+      <section aria-labelledby="celeste-title" className="pb-20 md:pb-28 bg-background">
+        <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
+          <div className="flex flex-col sm:flex-row gap-6 items-start rounded-2xl bg-muted/60 border border-border p-6 md:p-8">
+            <img
+              src="/images/celeste-avatar.png"
+              alt=""
+              width={64}
+              height={64}
+              loading="lazy"
+              className="h-16 w-16 rounded-full object-cover shrink-0"
+            />
+            <div className="space-y-2">
+              <div className="flex flex-wrap items-center gap-3">
+                <h2 id="celeste-title" className="text-xl font-bold text-foreground">
+                  {t("home.celeste.title")}
+                </h2>
+                <span className="rounded-full border border-border bg-background px-3 py-0.5 text-xs font-semibold text-muted-foreground">
+                  {t("home.celeste.badge")}
+                </span>
               </div>
-
-              <div className="relative">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-                  <img
-                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80"
-                    alt={t("home.mission.imageAlt")}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                {/* Decorative element */}
-                <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-primary/5 rounded-2xl -z-10" />
-              </div>
+              <p className="text-muted-foreground leading-relaxed max-w-3xl">{t("home.celeste.description")}</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Value Proposition */}
-      <section className="py-24 md:py-32 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center space-y-6 mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground">{t("home.value.title")}</h2>
-            <p className="text-xl text-muted-foreground leading-relaxed">{t("home.value.description")}</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* For Clients */}
-            <Card className="border-0 shadow-lg overflow-hidden">
-              <div className="h-2 bg-gradient-to-r from-blue-500 to-blue-600" />
-              <CardContent className="pt-8 pb-8 space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="h-12 w-12 rounded-xl bg-blue-50 dark:bg-blue-950 flex items-center justify-center">
-                    <Users className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-foreground">{t("home.value.clients.title")}</h3>
-                    <p className="text-sm text-muted-foreground">{t("home.value.clients.subtitle")}</p>
-                  </div>
-                </div>
-                <ul className="space-y-4">
-                  {[1, 2, 3, 4].map((num) => (
-                    <li key={num} className="flex gap-3 text-muted-foreground">
-                      <CheckCircle2 className="h-5 w-5 text-blue-500 flex-shrink-0 mt-0.5" />
-                      <span>{t(`home.value.clients.feature${num}`)}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* For Experts */}
-            <Card className="border-0 shadow-lg overflow-hidden">
-              <div className="h-2 bg-gradient-to-r from-emerald-500 to-emerald-600" />
-              <CardContent className="pt-8 pb-8 space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="h-12 w-12 rounded-xl bg-emerald-50 dark:bg-emerald-950 flex items-center justify-center">
-                    <Award className="h-6 w-6 text-emerald-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-foreground">{t("home.value.experts.title")}</h3>
-                    <p className="text-sm text-muted-foreground">{t("home.value.experts.subtitle")}</p>
-                  </div>
-                </div>
-                <ul className="space-y-4">
-                  {[1, 2, 3, 4].map((num) => (
-                    <li key={num} className="flex gap-3 text-muted-foreground">
-                      <CheckCircle2 className="h-5 w-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                      <span>{t(`home.value.experts.feature${num}`)}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
+      {/* 8. FAQ */}
+      <section id="faq" aria-labelledby="faq-title" className="py-20 md:py-28 bg-muted/50 scroll-mt-20">
+        <div className="container mx-auto px-4 lg:px-8 max-w-3xl space-y-10">
+          <SectionHeading id="faq-title" title={t("home.faq.title")} />
+          {Array.isArray(faqItems) && <Faq items={faqItems} />}
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 md:py-32 bg-primary text-primary-foreground">
+      {/* 9. Final CTA */}
+      <section aria-labelledby="cta-title" className="py-20 md:py-28 bg-caramel text-caramel-foreground">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <h2 className="text-3xl md:text-5xl font-bold leading-tight">{t("home.cta.title")}</h2>
-            <p className="text-xl text-primary-foreground/80 leading-relaxed max-w-2xl mx-auto">{t("home.cta.description")}</p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <Button
-                asChild
-                size="lg"
-                className="bg-background text-foreground hover:bg-background/90 text-lg px-8 py-6 h-auto rounded-xl group"
-              >
-                <Link to="/journey">
-                  {t("home.cta.ctaPrimary")}
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-lg px-8 py-6 h-auto rounded-xl"
-              >
-                <Link to="/contact">{t("home.cta.ctaSecondary")}</Link>
-              </Button>
-            </div>
+          <div className="max-w-3xl mx-auto text-center space-y-6">
+            <h2 id="cta-title" className="text-3xl md:text-4xl font-bold leading-tight">
+              {t("home.cta.title")}
+            </h2>
+            <p className="text-lg opacity-90 leading-relaxed">{t("home.cta.description")}</p>
+            <Button
+              asChild
+              size="lg"
+              className="bg-background text-foreground hover:bg-background/90 text-base px-6 h-12 rounded-xl group focus-visible:outline-background"
+            >
+              <a href={pilotMailto()}>
+                {t("home.cta.button")}
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+              </a>
+            </Button>
+            <p className="text-sm opacity-80">{t("home.cta.note")}</p>
           </div>
         </div>
       </section>

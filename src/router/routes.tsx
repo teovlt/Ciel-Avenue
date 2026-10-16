@@ -10,6 +10,8 @@ import About from "@/pages/About";
 import HowItWorks from "@/pages/How-it-works";
 import ProfilPage from "@/pages/Profile";
 import Journey from "@/pages/Journey";
+import Individuals from "@/pages/Individuals";
+import Professionals from "@/pages/Professionals";
 import { MaintenancePage } from "@/pages/Maintenance";
 
 export const Router = () => {
@@ -22,6 +24,8 @@ export const Router = () => {
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
+          <Route path="/particuliers" element={<Individuals />} />
+          <Route path="/professionnels" element={<Professionals />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/journey" element={<Journey />} />
           <Route path="/dashboard" element={<Dashboard />} />
@@ -39,4 +43,3 @@ export const Router = () => {
     </>
   );
 };
-

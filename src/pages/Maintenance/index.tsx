@@ -20,10 +20,7 @@ export function MaintenancePage() {
       metaDesc.setAttribute("name", "description");
       document.head.appendChild(metaDesc);
     }
-    metaDesc.setAttribute(
-      "content",
-      "Le site CIEL AVENUE est actuellement en travaux. Nous serons de retour très prochainement."
-    );
+    metaDesc.setAttribute("content", "Le site CIEL AVENUE est actuellement en travaux. Nous serons de retour très prochainement.");
 
     return () => {
       document.title = prevTitle;
@@ -58,12 +55,8 @@ export function MaintenancePage() {
               <Crown className="h-6 w-6" />
             </div>
             <div>
-              <span className="text-xl sm:text-2xl font-bold tracking-tight text-primary block leading-none">
-                CIEL AVENUE
-              </span>
-              <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">
-                L'immobilier d'exception
-              </span>
+              <span className="text-xl sm:text-2xl font-bold tracking-tight text-primary block leading-none">CIEL AVENUE</span>
+              <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">L'immobilier d'exception</span>
             </div>
           </div>
 
@@ -97,21 +90,14 @@ export function MaintenancePage() {
               </div>
 
               {/* Title (Single H1) */}
-              <h1
-                id="maintenance-main-title"
-                className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground"
-              >
+              <h1 id="maintenance-main-title" className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
                 {t("maintenance.title")}
               </h1>
 
               {/* Description */}
               <div className="space-y-2 max-w-md mx-auto">
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  {t("maintenance.description")}
-                </p>
-                <p className="text-xs sm:text-sm text-muted-foreground/80 font-medium">
-                  {t("maintenance.subtext")}
-                </p>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{t("maintenance.description")}</p>
+                <p className="text-xs sm:text-sm text-muted-foreground/80 font-medium">{t("maintenance.subtext")}</p>
               </div>
             </CardContent>
           </Card>

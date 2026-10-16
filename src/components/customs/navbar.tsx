@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Crown, User, Moon, Sun, LogOut, UserCircle } from "lucide-react";
@@ -20,6 +20,7 @@ import { FR, GB } from "country-flag-icons/react/3x2";
 import { getFullNamesOfLocales, listOfLocales } from "@/lib/i18n";
 import { toast } from "sonner";
 import { RoleSwitcher } from "@/pages/Dashboard/components/RoleSwitcher";
+import { pilotMailto } from "@/lib/contact";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -28,6 +29,14 @@ export function Navbar() {
 
   const { user, logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
+
+  // Close the mobile menu with Escape
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => e.key === "Escape" && setMobileMenuOpen(false);
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [mobileMenuOpen]);
 
   const handleChangeLanguage = (l: string) => {
     localStorage.setItem("i18nextLng", l);
@@ -42,39 +51,50 @@ export function Navbar() {
     toast.success(t("navbar.loggedOut"));
   };
 
+  const navLinks = [
+    { to: "/#methode", label: t("navbar.method") },
+    { to: "/particuliers", label: t("navbar.individuals") },
+    { to: "/professionnels", label: t("navbar.professionals") },
+    { to: "/#passeport", label: t("navbar.passport") },
+    { to: "/#faq", label: t("navbar.faq") },
+    { to: "/dashboard", label: t("navbar.dashboard") },
+    { to: "/contact", label: t("navbar.contact") },
+  ];
+
+  const linkClass =
+    "inline-flex items-center min-h-11 rounded-md px-1 text-sm font-medium whitespace-nowrap text-foreground hover:text-caramel transition-colors";
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto px-4 lg:px-8">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:z-50 focus:rounded-md focus:bg-caramel focus:px-4 focus:py-2 focus:text-caramel-foreground"
+      >
+        {t("navbar.skipToContent")}
+      </a>
+      <nav aria-label={t("navbar.mainNav")} className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <Crown className="h-6 w-6 text-primary" />
-            <div className="text-2xl font-bold text-primary">CIEL AVENUE</div>
+          <Link to="/" className="flex items-center gap-2 min-h-11 whitespace-nowrap" aria-label={t("navbar.homeAria")}>
+            <Crown className="h-6 w-6 text-caramel" aria-hidden="true" />
+            <span className="text-xl sm:text-2xl font-bold text-caramel">CIEL AVENUE</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            <Link to="/" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              {t("navbar.home")}
-            </Link>
-            <Link to="/how-it-works" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              {t("navbar.howItWorks")}
-            </Link>
-            <Link to="/dashboard" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              {t("navbar.dashboard")}
-            </Link>
-            <Link to="/contact" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              {t("navbar.contact")}
-            </Link>
-            <Link to="/about" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              {t("navbar.about")}
-            </Link>
-          </div>
+          <ul className="hidden xl:flex items-center gap-5">
+            {navLinks.map((link) => (
+              <li key={link.to}>
+                <Link to={link.to} className={linkClass}>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden xl:flex items-center gap-2">
             {!isAuthenticated ? (
-              <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-                <Link to="/journey">{t("navbar.start")}</Link>
+              <Button asChild className="bg-caramel text-caramel-foreground hover:bg-caramel/90 h-11 px-5 rounded-xl">
+                <a href={pilotMailto()}>{t("navbar.cta")}</a>
               </Button>
             ) : (
               <>
@@ -184,64 +204,48 @@ export function Navbar() {
           </div>
 
           {/* Mobile menu button */}
-          <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          <button
+            type="button"
+            className="xl:hidden inline-flex h-11 w-11 items-center justify-center rounded-md hover:bg-muted"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={mobileMenuOpen ? t("navbar.closeMenu") : t("navbar.openMenu")}
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
-            <div className="flex flex-col gap-4">
-              <Link
-                to="/"
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t("navbar.home")}
-              </Link>
-              <Link
-                to="/how-it-works"
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t("navbar.howItWorks")}
-              </Link>
-              <Link
-                to="/dashboard"
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t("navbar.dashboard")}
-              </Link>
-              <Link
-                to="/contact"
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t("navbar.contact")}
-              </Link>
-              <Link
-                to="/about"
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t("navbar.about")}
-              </Link>
-              {isAuthenticated && (
-                <Link
-                  to="/profile"
-                  className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {t("navbar.profile")}
+          <div id="mobile-menu" className="xl:hidden py-4 border-t border-border max-h-[calc(100vh-5rem)] overflow-y-auto">
+            <ul className="flex flex-col">
+              {navLinks.map((link) => (
+                <li key={link.to}>
+                  <Link to={link.to} className={`${linkClass} w-full text-base`} onClick={() => setMobileMenuOpen(false)}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link to="/about" className={`${linkClass} w-full text-base`} onClick={() => setMobileMenuOpen(false)}>
+                  {t("navbar.about")}
                 </Link>
+              </li>
+              {isAuthenticated && (
+                <li>
+                  <Link to="/profile" className={`${linkClass} w-full text-base`} onClick={() => setMobileMenuOpen(false)}>
+                    {t("navbar.profile")}
+                  </Link>
+                </li>
               )}
-              <div className="flex items-center justify-between pt-2">
+            </ul>
+            <div className="flex flex-col gap-3 pt-4">
+              <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-foreground">{t("navbar.theme")}</span>
                 <ThemeChanger />
               </div>
-              <div className="flex items-center justify-between pt-2">
+              <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-foreground">{t("navbar.language")}</span>
                 <LanguageChanger />
               </div>
@@ -252,22 +256,22 @@ export function Navbar() {
                     setMobileMenuOpen(false);
                   }}
                   variant="destructive"
-                  className="w-full"
+                  className="w-full h-11"
                 >
                   <LogOut className="mr-2 h-4 w-4" />
                   {t("navbar.logout")}
                 </Button>
               ) : (
-                <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 w-full">
-                  <Link to="/journey" onClick={() => setMobileMenuOpen(false)}>
-                    {t("navbar.start")}
-                  </Link>
+                <Button asChild className="bg-caramel text-caramel-foreground hover:bg-caramel/90 w-full h-11 rounded-xl">
+                  <a href={pilotMailto()} onClick={() => setMobileMenuOpen(false)}>
+                    {t("navbar.cta")}
+                  </a>
                 </Button>
               )}
             </div>
           </div>
         )}
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }
